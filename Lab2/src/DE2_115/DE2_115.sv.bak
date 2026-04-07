@@ -138,14 +138,12 @@ module DE2_115 (
 
 // please replace this module with the qsys module you generated
 // and connect all the ports
-rsa_qsys my_qsys(
+DE2_115_qsys my_qsys(
 	.clk_clk(CLOCK_50),
-	.reset_reset_n(KEY[0]),
+	.rst_reset_n(KEY[0]),
 	.uart_0_external_connection_rxd(UART_RXD),
 	.uart_0_external_connection_txd(UART_TXD)
 );
 
-assign LEDR[0] = UART_RXD; // 當 PC 傳資料過來時，紅燈 LEDR[0] 會閃爍
-assign LEDG[0] = UART_TXD; // 當 FPGA 回傳資料時，綠燈 LEDG[0] 會閃爍
 
 endmodule

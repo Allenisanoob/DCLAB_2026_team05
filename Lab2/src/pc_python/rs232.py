@@ -13,7 +13,8 @@ s = Serial(
     rtscts=False
 )
 fp_key = open('key.bin', 'rb')
-fp_enc = open('enc.bin', 'rb')
+# fp_enc = open('enc.bin', 'rb')
+fp_enc = open('./golden/enc1.bin', 'rb')
 fp_dec = open('dec.bin', 'wb')
 assert fp_key and fp_enc and fp_dec
 
@@ -30,3 +31,5 @@ for i in range(0, len(enc), 32):
 fp_key.close()
 fp_enc.close()
 fp_dec.close()
+
+print("DOOOOOOOOOONE!")
