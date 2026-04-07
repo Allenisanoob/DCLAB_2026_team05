@@ -81,7 +81,7 @@ always_comb begin
             if (!avm_waitrequest) begin
                 case(avm_address)
                     RX_BASE: begin
-                        if (bytes_counter_w < 32) begin
+                        if (bytes_counter_r < 32) begin
                             // if it's the last byte, switch state to get the data
                             if (bytes_counter_r == 0) begin
                                 state_w = S_GET_DATA;
@@ -103,7 +103,7 @@ always_comb begin
                             StartRead(RX_BASE);
                         end
                         // if its the first cycle in this state, prepare to recieve 64 bytes or data
-                        if (bytes_counter_r < 0) begin  
+                        if (bytes_counter_r[6]) begin  
                             bytes_counter_w = 63;
                         end
                     end
@@ -132,7 +132,7 @@ always_comb begin
                             StartRead(RX_BASE);
                         end
                         // if its the first cycle in this state, prepare to recieve 32 bytes or data
-                        if (bytes_counter_r < 0) begin  
+                        if (bytes_counter_r[6]) begin  
                             bytes_counter_w = 31;
                         end
                     end
@@ -141,6 +141,8 @@ always_comb begin
         end
 
         S_WAIT_CALCULATE: begin
+            // stop rsa_start after one cycle
+            rsa_start_w = 0;
             // wait until the calculation is done
             if (rsa_finished) begin
                 // copy the data into dec_r
@@ -156,7 +158,7 @@ always_comb begin
                     TX_BASE: begin
                         // if it's the last 8 bits, switch state to key the next key
                         if (bytes_counter_r == 0) begin
-                            state_w = S_GET_KEY;
+                            state_w = S_GET_DATA;
                         end
                         dec_w[247:8] = dec_r[239:0];                // shift and send 8 bits of data in dec_r
                         bytes_counter_w = bytes_counter_r - 1;      // update bytes_counter_r                     
@@ -168,8 +170,8 @@ always_comb begin
                             StartWrite(TX_BASE);
                         end
                         // if its the first cycle in this state, prepare to send 32 bytes or data
-                        if (bytes_counter_r < 0) begin  
-                            bytes_counter_w = 31;
+                        if (bytes_counter_r[6]) begin  
+                            bytes_counter_w = 30;
                         end
                     end
                 endcase
