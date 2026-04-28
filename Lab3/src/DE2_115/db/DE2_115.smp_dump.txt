@@ -1,0 +1,49 @@
+
+State Machine - |DE2_115|Top:top0|state_r
+Name state_r.S_WAIT_R state_r.S_STOP state_r.S_PLAY_PAUSE state_r.S_PLAY state_r.S_RECD_PAUSE state_r.S_RECD state_r.S_IDLE state_r.S_I2C state_r.S_WAIT_P 
+state_r.S_I2C 0 0 0 0 0 0 0 0 0 
+state_r.S_IDLE 0 0 0 0 0 0 1 1 0 
+state_r.S_RECD 0 0 0 0 0 1 0 1 0 
+state_r.S_RECD_PAUSE 0 0 0 0 1 0 0 1 0 
+state_r.S_PLAY 0 0 0 1 0 0 0 1 0 
+state_r.S_PLAY_PAUSE 0 0 1 0 0 0 0 1 0 
+state_r.S_STOP 0 1 0 0 0 0 0 1 0 
+state_r.S_WAIT_R 1 0 0 0 0 0 0 1 0 
+state_r.S_WAIT_P 0 0 0 0 0 0 0 1 1 
+
+State Machine - |DE2_115|Top:top0|AudRecorder:recorder0|state_r
+Name state_r.RIGHT state_r.LEFT state_r.PAUSE state_r.IDLE state_r.STOP 
+state_r.IDLE 0 0 0 0 0 
+state_r.PAUSE 0 0 1 1 0 
+state_r.LEFT 0 1 0 1 0 
+state_r.RIGHT 1 0 0 1 0 
+state_r.STOP 0 0 0 1 1 
+
+State Machine - |DE2_115|Top:top0|AudPlayer:player0|state_r
+Name state_r.IDLE state_r.WAIT state_r.SEND 
+state_r.IDLE 0 0 0 
+state_r.SEND 1 0 1 
+state_r.WAIT 1 1 0 
+
+State Machine - |DE2_115|Top:top0|AudDSP:dsp0|state_r
+Name state_r.S_SEND state_r.S_GET_4 state_r.S_GET_3 state_r.S_GET_2 state_r.S_GET_1 state_r.S_GET_0 state_r.S_PAUSE state_r.S_IDLE state_r.S_STOP 
+state_r.S_IDLE 0 0 0 0 0 0 0 0 0 
+state_r.S_PAUSE 0 0 0 0 0 0 1 1 0 
+state_r.S_GET_0 0 0 0 0 0 1 0 1 0 
+state_r.S_GET_1 0 0 0 0 1 0 0 1 0 
+state_r.S_GET_2 0 0 0 1 0 0 0 1 0 
+state_r.S_GET_3 0 0 1 0 0 0 0 1 0 
+state_r.S_GET_4 0 1 0 0 0 0 0 1 0 
+state_r.S_SEND 1 0 0 0 0 0 0 1 0 
+state_r.S_STOP 0 0 0 0 0 0 0 1 1 
+
+State Machine - |DE2_115|Top:top0|I2cInitializer:init0|state_r
+Name state_r.STOP_2nd state_r.STOP_1st state_r.DATA_end state_r.DATA_2nd state_r.DATA_1st state_r.START_2nd state_r.START_1st state_r.IDLE 
+state_r.IDLE 0 0 0 0 0 0 0 0 
+state_r.START_1st 0 0 0 0 0 0 1 1 
+state_r.START_2nd 0 0 0 0 0 1 0 1 
+state_r.DATA_1st 0 0 0 0 1 0 0 1 
+state_r.DATA_2nd 0 0 0 1 0 0 0 1 
+state_r.DATA_end 0 0 1 0 0 0 0 1 
+state_r.STOP_1st 0 1 0 0 0 0 0 1 
+state_r.STOP_2nd 1 0 0 0 0 0 0 1 

@@ -14,7 +14,7 @@ s = Serial(
 )
 fp_key = open('key.bin', 'rb')
 # fp_enc = open('enc.bin', 'rb')
-fp_enc = open('./golden/enc1.bin', 'rb')
+fp_enc = open('./golden/enc3.bin', 'rb')  # ./golden/cipher_20260409.bin
 fp_dec = open('dec.bin', 'wb')
 assert fp_key and fp_enc and fp_dec
 
