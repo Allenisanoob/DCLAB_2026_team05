@@ -36,14 +36,3 @@ state_r.S_GET_3 0 0 1 0 0 0 0 1 0
 state_r.S_GET_4 0 1 0 0 0 0 0 1 0 
 state_r.S_SEND 1 0 0 0 0 0 0 1 0 
 state_r.S_STOP 0 0 0 0 0 0 0 1 1 
-
-State Machine - |DE2_115|Top:top0|I2cInitializer:init0|state_r
-Name state_r.STOP_2nd state_r.STOP_1st state_r.DATA_end state_r.DATA_2nd state_r.DATA_1st state_r.START_2nd state_r.START_1st state_r.IDLE 
-state_r.IDLE 0 0 0 0 0 0 0 0 
-state_r.START_1st 0 0 0 0 0 0 1 1 
-state_r.START_2nd 0 0 0 0 0 1 0 1 
-state_r.DATA_1st 0 0 0 0 1 0 0 1 
-state_r.DATA_2nd 0 0 0 1 0 0 0 1 
-state_r.DATA_end 0 0 1 0 0 0 0 1 
-state_r.STOP_1st 0 1 0 0 0 0 0 1 
-state_r.STOP_2nd 1 0 0 0 0 0 0 1 

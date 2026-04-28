@@ -139,10 +139,10 @@ module DE2_115 (
 logic key0down, key1down, key2down, key3down;
 logic CLK_12M, CLK_100K;
 // logic CLK_800K;
-logic [8:0] state_led;
+logic [15:0] state_led;
 assign AUD_XCK = CLK_12M;
-assign LEDR[8:0]  = state_led;
-assign LEDR[17:9] = 9'd0;
+assign LEDR[15:0]  = state_led;
+assign LEDR[17:16] = 2'd0;
 
 lab3_qsys pll0( // generate with qsys, please follow lab2 tutorials
 	.clk_clk(CLOCK_50),

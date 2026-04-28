@@ -30,7 +30,7 @@ module Top (
 	inout  i_AUD_DACLRCK,
 	output o_AUD_DACDAT,
 	// LED state display
-	output [8:0] o_state_led
+	output [15:0] o_state_led
 
 	// SEVENDECODER (optional display)
 	// output [5:0] o_record_time,
@@ -90,6 +90,9 @@ assign o_state_led[6] = (state_r == S_STOP);
 assign o_state_led[7] = (state_r == S_WAIT_P);
 assign o_state_led[8] = (state_r == S_WAIT_R);
 
+// logic [3:0] dbg;
+// assign o_state_led = (1 << dbg); // one-hot display, only one bit is on according to current state
+
 // below is a simple example for module division
 // you can design these as you like
 
@@ -104,6 +107,8 @@ I2cInitializer init0(
 	.o_sclk(o_I2C_SCLK),
 	.o_sdat(i2c_sdat),
 	.o_oen(i2c_oen) // you are outputing (you are not outputing only when you are "ack"ing.)
+
+	// .dbg(dbg) // for debug, you can check which setting is being sent out
 );
 
 // === AudDSP ===

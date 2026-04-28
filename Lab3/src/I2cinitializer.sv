@@ -6,6 +6,8 @@ module I2cInitializer (
     output o_sclk,
     output o_sdat,
     output o_oen
+
+    // output [3:0] dbg
 );
 
 localparam [26:0] RESET                          = 27'b0011_0100_0_000_1111_0_0_0000_0000_0;
@@ -20,20 +22,22 @@ localparam [26:0] DIGITAL_AUDIO_INTERFACE_FORMAT = 27'b0011_0100_0_000_0111_0_0_
 localparam [26:0] SAMPLING_CONTROL               = 27'b0011_0100_0_000_1000_0_0_0001_1001_0;
 localparam [26:0] ACTIVE_CONTROL                 = 27'b0011_0100_0_000_1001_0_0_0000_0001_0;
 
-localparam [2:0] IDLE      = 2'd0;
-localparam [2:0] START_1st = 2'd1;
-localparam [2:0] START_2nd = 2'd2;
-localparam [2:0] DATA_1st  = 2'd3;
-localparam [2:0] DATA_2nd  = 2'd4;
-localparam [2:0] DATA_end  = 2'd5;
-localparam [2:0] STOP_1st  = 2'd6;
-localparam [2:0] STOP_2nd  = 2'd7;
+localparam [2:0] IDLE      = 3'd0;
+localparam [2:0] START_1st = 3'd1;
+localparam [2:0] START_2nd = 3'd2;
+localparam [2:0] DATA_1st  = 3'd3;
+localparam [2:0] DATA_2nd  = 3'd4;
+localparam [2:0] DATA_end  = 3'd5;
+localparam [2:0] STOP_1st  = 3'd6;
+localparam [2:0] STOP_2nd  = 3'd7;
 
 logic [2:0]  state_w, state_r;
 logic [3:0]  command_cnt_w, command_cnt_r;
 logic [4:0]  bit_cnt_w, bit_cnt_r;
 logic        o_finished_w, o_finished_r;
 logic [26:0] data;
+
+assign dbg = {1'b0, state_r};
 
 assign o_finished = o_finished_r;
 assign o_sclk = o_finished_r                                 ? 1'b1 : 
@@ -63,6 +67,7 @@ always_comb begin
         4'd8  : data = DIGITAL_AUDIO_INTERFACE_FORMAT;
         4'd9  : data = SAMPLING_CONTROL;
         4'd10 : data = ACTIVE_CONTROL;
+        default : data = RESET;
     endcase
 
     case (state_r)

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_115
-Tue Apr 28 23:23:21 2026
+Wed Apr 29 02:17:35 2026
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -19,38 +19,37 @@ Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
  11. State Machine - |DE2_115|Top:top0|AudRecorder:recorder0|state_r
  12. State Machine - |DE2_115|Top:top0|AudPlayer:player0|state_r
  13. State Machine - |DE2_115|Top:top0|AudDSP:dsp0|state_r
- 14. State Machine - |DE2_115|Top:top0|I2cInitializer:init0|state_r
- 15. Registers Removed During Synthesis
- 16. Removed Registers Triggering Further Register Optimizations
- 17. General Register Statistics
- 18. Inverted Register Statistics
- 19. Multiplexer Restructuring Statistics (Restructuring Performed)
- 20. Source assignments for lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0
- 21. Source assignments for lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0|lab3_qsys_altpll_0_stdsync_sv6:stdsync2|lab3_qsys_altpll_0_dffpipe_l2c:dffpipe3
- 22. Source assignments for lab3_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
- 23. Source assignments for lab3_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1
- 24. Parameter Settings for User Entity Instance: lab3_qsys:pll0|altera_reset_controller:rst_controller
- 25. Parameter Settings for User Entity Instance: lab3_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
- 26. Parameter Settings for User Entity Instance: lab3_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1
- 27. Parameter Settings for User Entity Instance: Debounce:deb0
- 28. Parameter Settings for User Entity Instance: Debounce:deb1
- 29. Parameter Settings for User Entity Instance: Debounce:deb2
- 30. Parameter Settings for User Entity Instance: Top:top0
- 31. Parameter Settings for Inferred Entity Instance: Top:top0|AudDSP:dsp0|lpm_mult:Mult0
- 32. Parameter Settings for Inferred Entity Instance: Top:top0|AudDSP:dsp0|lpm_divide:Div0
- 33. lpm_mult Parameter Settings by Entity Instance
- 34. Port Connectivity Checks: "Top:top0|AudDSP:dsp0"
- 35. Port Connectivity Checks: "Debounce:deb2"
- 36. Port Connectivity Checks: "Debounce:deb1"
- 37. Port Connectivity Checks: "Debounce:deb0"
- 38. Port Connectivity Checks: "lab3_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
- 39. Port Connectivity Checks: "lab3_qsys:pll0|altera_reset_controller:rst_controller"
- 40. Port Connectivity Checks: "lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0|lab3_qsys_altpll_0_altpll_kpa2:sd1"
- 41. Port Connectivity Checks: "lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0"
- 42. Post-Synthesis Netlist Statistics for Top Partition
- 43. Elapsed Time Per Partition
- 44. Analysis & Synthesis Messages
- 45. Analysis & Synthesis Suppressed Messages
+ 14. Registers Removed During Synthesis
+ 15. Removed Registers Triggering Further Register Optimizations
+ 16. General Register Statistics
+ 17. Inverted Register Statistics
+ 18. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 19. Source assignments for lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0
+ 20. Source assignments for lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0|lab3_qsys_altpll_0_stdsync_sv6:stdsync2|lab3_qsys_altpll_0_dffpipe_l2c:dffpipe3
+ 21. Source assignments for lab3_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
+ 22. Source assignments for lab3_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1
+ 23. Parameter Settings for User Entity Instance: lab3_qsys:pll0|altera_reset_controller:rst_controller
+ 24. Parameter Settings for User Entity Instance: lab3_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
+ 25. Parameter Settings for User Entity Instance: lab3_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1
+ 26. Parameter Settings for User Entity Instance: Debounce:deb0
+ 27. Parameter Settings for User Entity Instance: Debounce:deb1
+ 28. Parameter Settings for User Entity Instance: Debounce:deb2
+ 29. Parameter Settings for User Entity Instance: Top:top0
+ 30. Parameter Settings for Inferred Entity Instance: Top:top0|AudDSP:dsp0|lpm_mult:Mult0
+ 31. Parameter Settings for Inferred Entity Instance: Top:top0|AudDSP:dsp0|lpm_divide:Div0
+ 32. lpm_mult Parameter Settings by Entity Instance
+ 33. Port Connectivity Checks: "Top:top0|AudDSP:dsp0"
+ 34. Port Connectivity Checks: "Debounce:deb2"
+ 35. Port Connectivity Checks: "Debounce:deb1"
+ 36. Port Connectivity Checks: "Debounce:deb0"
+ 37. Port Connectivity Checks: "lab3_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
+ 38. Port Connectivity Checks: "lab3_qsys:pll0|altera_reset_controller:rst_controller"
+ 39. Port Connectivity Checks: "lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0|lab3_qsys_altpll_0_altpll_kpa2:sd1"
+ 40. Port Connectivity Checks: "lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0"
+ 41. Post-Synthesis Netlist Statistics for Top Partition
+ 42. Elapsed Time Per Partition
+ 43. Analysis & Synthesis Messages
+ 44. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -77,15 +76,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Apr 28 23:23:21 2026       ;
+; Analysis & Synthesis Status        ; Successful - Wed Apr 29 02:17:34 2026       ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                     ;
 ; Top-level Entity Name              ; DE2_115                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 799                                         ;
-;     Total combinational functions  ; 762                                         ;
-;     Dedicated logic registers      ; 201                                         ;
-; Total registers                    ; 201                                         ;
+; Total logic elements               ; 794                                         ;
+;     Total combinational functions  ; 761                                         ;
+;     Dedicated logic registers      ; 196                                         ;
+; Total registers                    ; 196                                         ;
 ; Total pins                         ; 480                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -203,18 +202,17 @@ agreement for further details.
 +------------------------------------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------+-----------+
 ; File Name with User-Entered Path                           ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                  ; Library   ;
 +------------------------------------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------------+-----------+
-; ../NAudPlayer.sv                                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/NAudPlayer.sv                                                      ;           ;
-; lab3_qsys/synthesis/lab3_qsys.v                            ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/DE2_115/lab3_qsys/synthesis/lab3_qsys.v                            ; lab3_qsys ;
-; lab3_qsys/synthesis/submodules/altera_reset_controller.v   ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/DE2_115/lab3_qsys/synthesis/submodules/altera_reset_controller.v   ; lab3_qsys ;
-; lab3_qsys/synthesis/submodules/altera_reset_synchronizer.v ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/DE2_115/lab3_qsys/synthesis/submodules/altera_reset_synchronizer.v ; lab3_qsys ;
-; lab3_qsys/synthesis/submodules/lab3_qsys_altpll_0.v        ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/DE2_115/lab3_qsys/synthesis/submodules/lab3_qsys_altpll_0.v        ; lab3_qsys ;
-; ../Top.sv                                                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/Top.sv                                                             ;           ;
-; ../I2cInitializer.sv                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/I2cInitializer.sv                                                  ;           ;
 ; ../AudRecorder.sv                                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/AudRecorder.sv                                                     ;           ;
 ; ../AudPlayer.sv                                            ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/AudPlayer.sv                                                       ;           ;
 ; ../AudDSP.sv                                               ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/AudDSP.sv                                                          ;           ;
 ; Debounce.sv                                                ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/DE2_115/Debounce.sv                                                ;           ;
 ; DE2_115.sv                                                 ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/DE2_115/DE2_115.sv                                                 ;           ;
+; ../Top.sv                                                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/Top.sv                                                             ;           ;
+; lab3_qsys/synthesis/lab3_qsys.v                            ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/DE2_115/lab3_qsys/synthesis/lab3_qsys.v                            ; lab3_qsys ;
+; lab3_qsys/synthesis/submodules/altera_reset_controller.v   ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/DE2_115/lab3_qsys/synthesis/submodules/altera_reset_controller.v   ; lab3_qsys ;
+; lab3_qsys/synthesis/submodules/altera_reset_synchronizer.v ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/DE2_115/lab3_qsys/synthesis/submodules/altera_reset_synchronizer.v ; lab3_qsys ;
+; lab3_qsys/synthesis/submodules/lab3_qsys_altpll_0.v        ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/DE2_115/lab3_qsys/synthesis/submodules/lab3_qsys_altpll_0.v        ; lab3_qsys ;
+; ../I2cInitializer.sv                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/I2cInitializer.sv                                                  ;           ;
 ; lpm_mult.tdf                                               ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_mult.tdf                                                                   ;           ;
 ; aglobal150.inc                                             ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/aglobal150.inc                                                                 ;           ;
 ; lpm_add_sub.inc                                            ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_add_sub.inc                                                                ;           ;
@@ -240,20 +238,20 @@ agreement for further details.
 +---------------------------------------------+--------------+
 ; Resource                                    ; Usage        ;
 +---------------------------------------------+--------------+
-; Estimated Total logic elements              ; 799          ;
+; Estimated Total logic elements              ; 794          ;
 ;                                             ;              ;
-; Total combinational functions               ; 762          ;
+; Total combinational functions               ; 761          ;
 ; Logic element usage by number of LUT inputs ;              ;
-;     -- 4 input functions                    ; 293          ;
-;     -- 3 input functions                    ; 296          ;
-;     -- <=2 input functions                  ; 173          ;
+;     -- 4 input functions                    ; 290          ;
+;     -- 3 input functions                    ; 297          ;
+;     -- <=2 input functions                  ; 174          ;
 ;                                             ;              ;
 ; Logic elements by mode                      ;              ;
-;     -- normal mode                          ; 560          ;
+;     -- normal mode                          ; 559          ;
 ;     -- arithmetic mode                      ; 202          ;
 ;                                             ;              ;
-; Total registers                             ; 201          ;
-;     -- Dedicated logic registers            ; 201          ;
+; Total registers                             ; 196          ;
+;     -- Dedicated logic registers            ; 196          ;
 ;     -- I/O registers                        ; 0            ;
 ;                                             ;              ;
 ; I/O pins                                    ; 480          ;
@@ -264,8 +262,8 @@ agreement for further details.
 ;     -- PLLs                                 ; 1            ;
 ;                                             ;              ;
 ; Maximum fan-out node                        ; KEY[3]~input ;
-; Maximum fan-out                             ; 208          ;
-; Total fan-out                               ; 3768         ;
+; Maximum fan-out                             ; 203          ;
+; Total fan-out                               ; 3756         ;
 ; Average fan-out                             ; 1.82         ;
 +---------------------------------------------+--------------+
 
@@ -275,11 +273,11 @@ agreement for further details.
 +-----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                    ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                             ; Library Name ;
 +-----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |DE2_115                                      ; 762 (0)           ; 201 (0)      ; 0           ; 2            ; 0       ; 1         ; 480  ; 0            ; |DE2_115                                                                                                                                        ; work         ;
+; |DE2_115                                      ; 761 (0)           ; 196 (0)      ; 0           ; 2            ; 0       ; 1         ; 480  ; 0            ; |DE2_115                                                                                                                                        ; work         ;
 ;    |Debounce:deb0|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb0                                                                                                                          ; work         ;
 ;    |Debounce:deb1|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb1                                                                                                                          ; work         ;
 ;    |Debounce:deb2|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb2                                                                                                                          ; work         ;
-;    |Top:top0|                                 ; 744 (60)          ; 186 (9)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                               ; work         ;
+;    |Top:top0|                                 ; 743 (60)          ; 181 (9)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                               ; work         ;
 ;       |AudDSP:dsp0|                           ; 475 (153)         ; 87 (87)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0                                                                                                                   ; work         ;
 ;          |lpm_divide:Div0|                    ; 322 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0                                                                                                   ; work         ;
 ;             |lpm_divide_n0p:auto_generated|   ; 322 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated                                                                     ; work         ;
@@ -291,7 +289,7 @@ agreement for further details.
 ;             |mult_h4t:auto_generated|         ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_mult:Mult0|mult_h4t:auto_generated                                                                            ; work         ;
 ;       |AudPlayer:player0|                     ; 24 (24)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudPlayer:player0                                                                                                             ; work         ;
 ;       |AudRecorder:recorder0|                 ; 133 (133)         ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudRecorder:recorder0                                                                                                         ; work         ;
-;       |I2cInitializer:init0|                  ; 52 (52)           ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|I2cInitializer:init0                                                                                                          ; work         ;
+;       |I2cInitializer:init0|                  ; 51 (51)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|I2cInitializer:init0                                                                                                          ; work         ;
 ;    |lab3_qsys:pll0|                           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0                                                                                                                         ; lab3_qsys    ;
 ;       |lab3_qsys_altpll_0:altpll_0|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0                                                                                             ; lab3_qsys    ;
 ;          |lab3_qsys_altpll_0_altpll_kpa2:sd1| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0|lab3_qsys_altpll_0_altpll_kpa2:sd1                                                          ; lab3_qsys    ;
@@ -390,23 +388,6 @@ Encoding Type:  One-Hot
 +-----------------+----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+----------------+----------------+
 
 
-Encoding Type:  One-Hot
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |DE2_115|Top:top0|I2cInitializer:init0|state_r                                                                                                          ;
-+-------------------+------------------+------------------+------------------+------------------+------------------+-------------------+-------------------+--------------+
-; Name              ; state_r.STOP_2nd ; state_r.STOP_1st ; state_r.DATA_end ; state_r.DATA_2nd ; state_r.DATA_1st ; state_r.START_2nd ; state_r.START_1st ; state_r.IDLE ;
-+-------------------+------------------+------------------+------------------+------------------+------------------+-------------------+-------------------+--------------+
-; state_r.IDLE      ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                 ; 0                 ; 0            ;
-; state_r.START_1st ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                 ; 1                 ; 1            ;
-; state_r.START_2nd ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                 ; 0                 ; 1            ;
-; state_r.DATA_1st  ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                 ; 0                 ; 1            ;
-; state_r.DATA_2nd  ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                 ; 0                 ; 1            ;
-; state_r.DATA_end  ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                 ; 0                 ; 1            ;
-; state_r.STOP_1st  ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                 ; 0                 ; 1            ;
-; state_r.STOP_2nd  ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                 ; 0                 ; 1            ;
-+-------------------+------------------+------------------+------------------+------------------+------------------+-------------------+-------------------+--------------+
-
-
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Registers Removed During Synthesis                                                                                                                                                 ;
 +-------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
@@ -423,10 +404,7 @@ Encoding Type:  One-Hot
 ; Top:top0|AudDSP:dsp0|state_r~4                                                                                                            ; Lost fanout                            ;
 ; Top:top0|AudDSP:dsp0|state_r~5                                                                                                            ; Lost fanout                            ;
 ; Top:top0|AudDSP:dsp0|state_r~6                                                                                                            ; Lost fanout                            ;
-; Top:top0|I2cInitializer:init0|state_r~4                                                                                                   ; Lost fanout                            ;
-; Top:top0|I2cInitializer:init0|state_r~5                                                                                                   ; Lost fanout                            ;
-; Top:top0|I2cInitializer:init0|state_r~6                                                                                                   ; Lost fanout                            ;
-; Total Number of Removed Registers = 15                                                                                                    ;                                        ;
+; Total Number of Removed Registers = 12                                                                                                    ;                                        ;
 +-------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
 
 
@@ -446,12 +424,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 201   ;
-; Number of registers using Synchronous Clear  ; 16    ;
+; Total registers                              ; 196   ;
+; Number of registers using Synchronous Clear  ; 21    ;
 ; Number of registers using Synchronous Load   ; 20    ;
-; Number of registers using Asynchronous Clear ; 201   ;
+; Number of registers using Asynchronous Clear ; 196   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 86    ;
+; Number of registers using Clock Enable       ; 91    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -467,21 +445,24 @@ Encoding Type:  One-Hot
 +-------------------------------------------+---------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |DE2_115|Top:top0|AudDSP:dsp0|data_old_r[10]      ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |DE2_115|Top:top0|AudDSP:dsp0|data_new_r[6]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|counter_w           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|o_dac_data_w        ;
-; 4:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|addr_w              ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|AudPlayer:player0|Selector1     ;
-; 12:1               ; 4 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |DE2_115|Top:top0|AudRecorder:recorder0|Selector1 ;
-; 14:1               ; 4 bits    ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; No         ; |DE2_115|Top:top0|Selector1                       ;
-; 17:1               ; 2 bits    ; 22 LEs        ; 12 LEs               ; 10 LEs                 ; No         ; |DE2_115|Top:top0|Selector3                       ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |DE2_115|Top:top0|AudDSP:dsp0|data_old_r[5]             ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|state_r[2]       ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|bit_cnt_r[4]     ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|command_cnt_r[3] ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |DE2_115|Top:top0|AudDSP:dsp0|data_new_r[3]             ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|counter_w                 ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|o_dac_data_w              ;
+; 4:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|addr_w                    ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|AudPlayer:player0|Selector0           ;
+; 12:1               ; 4 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |DE2_115|Top:top0|AudRecorder:recorder0|Selector1       ;
+; 14:1               ; 4 bits    ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; No         ; |DE2_115|Top:top0|Selector1                             ;
+; 17:1               ; 2 bits    ; 22 LEs        ; 12 LEs               ; 10 LEs                 ; No         ; |DE2_115|Top:top0|Selector2                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 
 
 +-------------------------------------------------------------------+
@@ -823,11 +804,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 480                         ;
-; cycloneiii_ff         ; 201                         ;
-;     CLR               ; 95                          ;
+; cycloneiii_ff         ; 196                         ;
+;     CLR               ; 85                          ;
 ;     CLR SLD           ; 20                          ;
 ;     ENA CLR           ; 70                          ;
-;     ENA CLR SCLR      ; 16                          ;
+;     ENA CLR SCLR      ; 21                          ;
 ; cycloneiii_io_obuf    ; 141                         ;
 ; cycloneiii_lcell_comb ; 765                         ;
 ;     arith             ; 202                         ;
@@ -835,16 +816,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         3 data inputs ; 143                         ;
 ;     normal            ; 563                         ;
 ;         0 data inputs ; 22                          ;
-;         1 data inputs ; 5                           ;
-;         2 data inputs ; 90                          ;
-;         3 data inputs ; 153                         ;
-;         4 data inputs ; 293                         ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 91                          ;
+;         3 data inputs ; 154                         ;
+;         4 data inputs ; 290                         ;
 ; cycloneiii_mac_mult   ; 1                           ;
 ; cycloneiii_mac_out    ; 1                           ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 61.40                       ;
-; Average LUT depth     ; 22.64                       ;
+; Average LUT depth     ; 22.72                       ;
 +-----------------------+-----------------------------+
 
 
@@ -863,11 +844,21 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
-    Info: Processing started: Tue Apr 28 23:23:06 2026
+    Info: Processing started: Wed Apr 29 02:17:19 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
 Info (11104): Parallel Compilation has detected 12 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 6 of the 6 physical processors detected instead.
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/naudplayer.sv
-    Info (12023): Found entity 1: NAudPlayer
+Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/audrecorder.sv
+    Info (12023): Found entity 1: AudRecorder
+Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/audplayer.sv
+    Info (12023): Found entity 1: AudPlayer
+Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/auddsp.sv
+    Info (12023): Found entity 1: AudDSP
+Info (12021): Found 1 design units, including 1 entities, in source file debounce.sv
+    Info (12023): Found entity 1: Debounce
+Info (12021): Found 1 design units, including 1 entities, in source file de2_115.sv
+    Info (12023): Found entity 1: DE2_115
+Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/top.sv
+    Info (12023): Found entity 1: Top
 Info (12021): Found 1 design units, including 1 entities, in source file lab3_qsys/synthesis/lab3_qsys.v
     Info (12023): Found entity 1: lab3_qsys
 Info (12021): Found 1 design units, including 1 entities, in source file lab3_qsys/synthesis/submodules/altera_reset_controller.v
@@ -879,22 +870,9 @@ Info (12021): Found 4 design units, including 4 entities, in source file lab3_qs
     Info (12023): Found entity 2: lab3_qsys_altpll_0_stdsync_sv6
     Info (12023): Found entity 3: lab3_qsys_altpll_0_altpll_kpa2
     Info (12023): Found entity 4: lab3_qsys_altpll_0
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/top.sv
-    Info (12023): Found entity 1: Top
 Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/i2cinitializer.sv
     Info (12023): Found entity 1: I2cInitializer
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/audrecorder.sv
-    Info (12023): Found entity 1: AudRecorder
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/audplayer.sv
-    Info (12023): Found entity 1: AudPlayer
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/auddsp.sv
-    Info (12023): Found entity 1: AudDSP
-Info (12021): Found 1 design units, including 1 entities, in source file sevenhexdecoder.sv
-    Info (12023): Found entity 1: SevenHexDecoder
-Info (12021): Found 1 design units, including 1 entities, in source file debounce.sv
-    Info (12023): Found entity 1: Debounce
-Info (12021): Found 1 design units, including 1 entities, in source file de2_115.sv
-    Info (12023): Found entity 1: DE2_115
+Warning (10236): Verilog HDL Implicit Net warning at I2cInitializer.sv(40): created implicit net for "dbg"
 Info (12127): Elaborating entity "DE2_115" for the top level hierarchy
 Warning (10034): Output port "LEDG" at DE2_115.sv(8) has no driver
 Warning (10034): Output port "VGA_B" at DE2_115.sv(38) has no driver
@@ -964,9 +942,12 @@ Info (12128): Elaborating entity "Debounce" for hierarchy "Debounce:deb0"
 Warning (10230): Verilog HDL assignment warning at Debounce.sv(23): truncated value with size 32 to match size of target (3)
 Warning (10230): Verilog HDL assignment warning at Debounce.sv(25): truncated value with size 32 to match size of target (3)
 Info (12128): Elaborating entity "Top" for hierarchy "Top:top0"
+Warning (10034): Output port "o_state_led[15..9]" at Top.sv(51) has no driver
 Info (12128): Elaborating entity "I2cInitializer" for hierarchy "Top:top0|I2cInitializer:init0"
-Warning (10230): Verilog HDL assignment warning at I2cInitializer.sv(93): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at I2cInitializer.sv(111): truncated value with size 32 to match size of target (4)
+Warning (10036): Verilog HDL or VHDL warning at I2cInitializer.sv(40): object "dbg" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at I2cInitializer.sv(40): truncated value with size 4 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at I2cInitializer.sv(97): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at I2cInitializer.sv(115): truncated value with size 32 to match size of target (4)
 Info (12128): Elaborating entity "AudDSP" for hierarchy "Top:top0|AudDSP:dsp0"
 Warning (10230): Verilog HDL assignment warning at AudDSP.sv(99): truncated value with size 32 to match size of target (21)
 Warning (10230): Verilog HDL assignment warning at AudDSP.sv(101): truncated value with size 32 to match size of target (21)
@@ -1366,7 +1347,7 @@ Warning (332009): The launch and latch times for the relationship between source
 Info (286030): Timing-Driven Synthesis is running
 Warning (332009): The launch and latch times for the relationship between source clock: pll0|altpll_0|sd1|pll7|clk[1] and destination clock: AUD_BCLK are outside of the legal time range. The relationship difference is correct, however the launch time is set to 0.
 Warning (332009): The launch and latch times for the relationship between source clock: pll0|altpll_0|sd1|pll7|clk[1] and destination clock: AUD_BCLK are outside of the legal time range. The relationship difference is correct, however the launch time is set to 0.
-Info (17049): 14 registers lost all their fanouts during netlist optimizations.
+Info (17049): 11 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/DE2_115/output_files/DE2_115.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
@@ -1451,18 +1432,18 @@ Warning (21074): Design contains 80 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[14]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[15]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[16]"
-Info (21057): Implemented 1282 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1277 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 91 input pins
     Info (21059): Implemented 248 output pins
     Info (21060): Implemented 141 bidirectional pins
-    Info (21061): Implemented 799 logic cells
+    Info (21061): Implemented 794 logic cells
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 2 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 495 warnings
-    Info: Peak virtual memory: 4890 megabytes
-    Info: Processing ended: Tue Apr 28 23:23:21 2026
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:25
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 499 warnings
+    Info: Peak virtual memory: 4891 megabytes
+    Info: Processing ended: Wed Apr 29 02:17:35 2026
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:24
 
 
 +------------------------------------------+

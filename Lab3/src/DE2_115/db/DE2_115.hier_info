@@ -23,13 +23,13 @@ LEDR[5] << Top:top0.o_state_led
 LEDR[6] << Top:top0.o_state_led
 LEDR[7] << Top:top0.o_state_led
 LEDR[8] << Top:top0.o_state_led
-LEDR[9] << <GND>
-LEDR[10] << <GND>
-LEDR[11] << <GND>
-LEDR[12] << <GND>
-LEDR[13] << <GND>
-LEDR[14] << <GND>
-LEDR[15] << <GND>
+LEDR[9] << Top:top0.o_state_led
+LEDR[10] << Top:top0.o_state_led
+LEDR[11] << Top:top0.o_state_led
+LEDR[12] << Top:top0.o_state_led
+LEDR[13] << Top:top0.o_state_led
+LEDR[14] << Top:top0.o_state_led
+LEDR[15] << Top:top0.o_state_led
 LEDR[16] << <GND>
 LEDR[17] << <GND>
 KEY[0] => KEY[0].IN1
@@ -806,6 +806,13 @@ o_state_led[5] <= o_state_led[5].DB_MAX_OUTPUT_PORT_TYPE
 o_state_led[6] <= o_state_led[6].DB_MAX_OUTPUT_PORT_TYPE
 o_state_led[7] <= o_state_led[7].DB_MAX_OUTPUT_PORT_TYPE
 o_state_led[8] <= o_state_led[8].DB_MAX_OUTPUT_PORT_TYPE
+o_state_led[9] <= <GND>
+o_state_led[10] <= <GND>
+o_state_led[11] <= <GND>
+o_state_led[12] <= <GND>
+o_state_led[13] <= <GND>
+o_state_led[14] <= <GND>
+o_state_led[15] <= <GND>
 
 
 |DE2_115|Top:top0|I2cInitializer:init0
@@ -819,7 +826,9 @@ i_rst_n => command_cnt_r[0].ACLR
 i_rst_n => command_cnt_r[1].ACLR
 i_rst_n => command_cnt_r[2].ACLR
 i_rst_n => command_cnt_r[3].ACLR
-i_rst_n => state_r~3.DATAIN
+i_rst_n => state_r[0].ACLR
+i_rst_n => state_r[1].ACLR
+i_rst_n => state_r[2].ACLR
 i_clk => o_finished_r.CLK
 i_clk => bit_cnt_r[0].CLK
 i_clk => bit_cnt_r[1].CLK
@@ -830,12 +839,9 @@ i_clk => command_cnt_r[0].CLK
 i_clk => command_cnt_r[1].CLK
 i_clk => command_cnt_r[2].CLK
 i_clk => command_cnt_r[3].CLK
-i_clk => state_r~1.DATAIN
-i_start => state_w.OUTPUTSELECT
-i_start => state_w.OUTPUTSELECT
-i_start => state_w.OUTPUTSELECT
-i_start => state_w.OUTPUTSELECT
-i_start => state_w.OUTPUTSELECT
+i_clk => state_r[0].CLK
+i_clk => state_r[1].CLK
+i_clk => state_r[2].CLK
 i_start => state_w.OUTPUTSELECT
 i_start => state_w.OUTPUTSELECT
 i_start => state_w.OUTPUTSELECT
