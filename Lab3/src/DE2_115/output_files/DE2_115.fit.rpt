@@ -1,5 +1,5 @@
 Fitter report for DE2_115
-Wed Apr 29 02:18:02 2026
+Wed Apr 29 02:40:14 2026
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -75,7 +75,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Wed Apr 29 02:18:02 2026       ;
+; Fitter Status                      ; Successful - Wed Apr 29 02:40:14 2026       ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                     ;
 ; Top-level Entity Name              ; DE2_115                                     ;
@@ -162,13 +162,13 @@ agreement for further details.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 6           ;
 ;                            ;             ;
-; Average used               ; 2.05        ;
+; Average used               ; 1.59        ;
 ; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;  22.7%      ;
-;     Processors 5-6         ;  18.2%      ;
+;     Processors 2-4         ;  13.6%      ;
+;     Processors 5-6         ;   9.1%      ;
 ;     Processors 7-12        ;   0.0%      ;
 +----------------------------+-------------+
 
@@ -4485,7 +4485,7 @@ Warning (15705): Ignored locations or region assignments to the following nodes
     Warning (15706): Node "HSMC_TX_D_N[8]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "HSMC_TX_D_N[9]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "OTG_DREQ[0]" is assigned to location or region, but does not exist in design
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:04
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:05
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
@@ -4798,8 +4798,8 @@ Warning (169064): Following 124 pins have no output enable or a GND or VCC outpu
 Info (144001): Generated suppressed messages file C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Lab3/src/DE2_115/output_files/DE2_115.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 84 warnings
     Info: Peak virtual memory: 6031 megabytes
-    Info: Processing ended: Wed Apr 29 02:18:03 2026
-    Info: Elapsed time: 00:00:26
+    Info: Processing ended: Wed Apr 29 02:40:15 2026
+    Info: Elapsed time: 00:00:28
     Info: Total CPU time (on all processors): 00:00:36
 
 

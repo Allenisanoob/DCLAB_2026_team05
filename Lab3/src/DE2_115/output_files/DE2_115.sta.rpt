@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for DE2_115
-Wed Apr 29 02:18:25 2026
+Wed Apr 29 02:40:38 2026
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -152,12 +152,12 @@ agreement for further details.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 6           ;
 ;                            ;             ;
-; Average used               ; 1.17        ;
+; Average used               ; 1.40        ;
 ; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  16.7%      ;
+;     Processor 2            ;  40.0%      ;
 ;     Processors 3-6         ; < 0.1%      ;
 ;     Processors 7-12        ;   0.0%      ;
 +----------------------------+-------------+
@@ -168,8 +168,8 @@ agreement for further details.
 +------------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                              ; Status ; Read at                  ;
 +------------------------------------------------------------+--------+--------------------------+
-; DE2_115.sdc                                                ; OK     ; Wed Apr 29 02:18:21 2026 ;
-; lab3_qsys/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Wed Apr 29 02:18:21 2026 ;
+; DE2_115.sdc                                                ; OK     ; Wed Apr 29 02:40:33 2026 ;
+; lab3_qsys/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Wed Apr 29 02:40:33 2026 ;
 +------------------------------------------------------------+--------+--------------------------+
 
 
@@ -807,20 +807,20 @@ No paths to report.
 ; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[1]     ; Top:top0|AudRecorder:recorder0|data_r[1]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
 ; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[2]     ; Top:top0|AudRecorder:recorder0|data_r[2]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
 ; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[4]     ; Top:top0|AudRecorder:recorder0|data_r[4]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
-; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[5]     ; Top:top0|AudRecorder:recorder0|data_r[5]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
+; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[6]     ; Top:top0|AudRecorder:recorder0|data_r[6]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
 ; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[9]     ; Top:top0|AudRecorder:recorder0|data_r[9]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
-; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[10]    ; Top:top0|AudRecorder:recorder0|data_r[10]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
-; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[12]    ; Top:top0|AudRecorder:recorder0|data_r[12]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
-; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[13]    ; Top:top0|AudRecorder:recorder0|data_r[13]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
 ; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[3]     ; Top:top0|AudRecorder:recorder0|data_r[3]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
-; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[15]    ; Top:top0|AudRecorder:recorder0|data_r[15]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
 ; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[11]    ; Top:top0|AudRecorder:recorder0|data_r[11]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
+; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[5]     ; Top:top0|AudRecorder:recorder0|data_r[5]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
+; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[13]    ; Top:top0|AudRecorder:recorder0|data_r[13]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
+; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[15]    ; Top:top0|AudRecorder:recorder0|data_r[15]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
+; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[12]    ; Top:top0|AudRecorder:recorder0|data_r[12]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
 ; 0.440 ; Top:top0|AudPlayer:player0|counter_r[1]      ; Top:top0|AudPlayer:player0|counter_r[1]      ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
-; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[14]    ; Top:top0|AudRecorder:recorder0|data_r[14]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
+; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[10]    ; Top:top0|AudRecorder:recorder0|data_r[10]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
 ; 0.440 ; Top:top0|AudPlayer:player0|counter_r[2]      ; Top:top0|AudPlayer:player0|counter_r[2]      ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
 ; 0.440 ; Top:top0|AudPlayer:player0|o_aud_dacdat_r    ; Top:top0|AudPlayer:player0|o_aud_dacdat_r    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
 ; 0.440 ; Top:top0|AudPlayer:player0|counter_r[3]      ; Top:top0|AudPlayer:player0|counter_r[3]      ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
-; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[6]     ; Top:top0|AudRecorder:recorder0|data_r[6]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
+; 0.440 ; Top:top0|AudRecorder:recorder0|data_r[14]    ; Top:top0|AudRecorder:recorder0|data_r[14]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.669      ;
 ; 0.504 ; Top:top0|AudPlayer:player0|state_r.SEND      ; Top:top0|AudPlayer:player0|counter_r[3]      ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.048      ; 0.738      ;
 ; 0.508 ; Top:top0|AudPlayer:player0|state_r.SEND      ; Top:top0|AudPlayer:player0|counter_r[1]      ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.048      ; 0.742      ;
 ; 0.692 ; Top:top0|AudRecorder:recorder0|addr_r[7]     ; Top:top0|AudRecorder:recorder0|addr_r[7]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 0.921      ;
@@ -2197,28 +2197,28 @@ No paths to report.
 ; Slack ; From Node                                    ; To Node                                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+----------------------------------------------+----------------------------------------------+--------------+-------------+--------------+------------+------------+
 ; 0.387 ; Top:top0|AudRecorder:recorder0|state_r.STOP  ; Top:top0|AudRecorder:recorder0|state_r.STOP  ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudRecorder:recorder0|counter_r[1]  ; Top:top0|AudRecorder:recorder0|counter_r[1]  ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
 ; 0.387 ; Top:top0|AudRecorder:recorder0|counter_r[0]  ; Top:top0|AudRecorder:recorder0|counter_r[0]  ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudRecorder:recorder0|counter_r[1]  ; Top:top0|AudRecorder:recorder0|counter_r[1]  ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
 ; 0.387 ; Top:top0|AudRecorder:recorder0|counter_r[2]  ; Top:top0|AudRecorder:recorder0|counter_r[2]  ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
 ; 0.387 ; Top:top0|AudRecorder:recorder0|counter_r[3]  ; Top:top0|AudRecorder:recorder0|counter_r[3]  ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
 ; 0.387 ; Top:top0|AudRecorder:recorder0|counter_r[4]  ; Top:top0|AudRecorder:recorder0|counter_r[4]  ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
 ; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[1]     ; Top:top0|AudRecorder:recorder0|data_r[1]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
 ; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[2]     ; Top:top0|AudRecorder:recorder0|data_r[2]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
 ; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[4]     ; Top:top0|AudRecorder:recorder0|data_r[4]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[5]     ; Top:top0|AudRecorder:recorder0|data_r[5]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[9]     ; Top:top0|AudRecorder:recorder0|data_r[9]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[10]    ; Top:top0|AudRecorder:recorder0|data_r[10]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[12]    ; Top:top0|AudRecorder:recorder0|data_r[12]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[13]    ; Top:top0|AudRecorder:recorder0|data_r[13]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[3]     ; Top:top0|AudRecorder:recorder0|data_r[3]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[15]    ; Top:top0|AudRecorder:recorder0|data_r[15]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[11]    ; Top:top0|AudRecorder:recorder0|data_r[11]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudPlayer:player0|counter_r[1]      ; Top:top0|AudPlayer:player0|counter_r[1]      ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[14]    ; Top:top0|AudRecorder:recorder0|data_r[14]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudPlayer:player0|counter_r[2]      ; Top:top0|AudPlayer:player0|counter_r[2]      ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
 ; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[6]     ; Top:top0|AudRecorder:recorder0|data_r[6]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
-; 0.387 ; Top:top0|AudPlayer:player0|o_aud_dacdat_r    ; Top:top0|AudPlayer:player0|o_aud_dacdat_r    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[9]     ; Top:top0|AudRecorder:recorder0|data_r[9]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[3]     ; Top:top0|AudRecorder:recorder0|data_r[3]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[11]    ; Top:top0|AudRecorder:recorder0|data_r[11]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[12]    ; Top:top0|AudRecorder:recorder0|data_r[12]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[14]    ; Top:top0|AudRecorder:recorder0|data_r[14]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[10]    ; Top:top0|AudRecorder:recorder0|data_r[10]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[5]     ; Top:top0|AudRecorder:recorder0|data_r[5]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[13]    ; Top:top0|AudRecorder:recorder0|data_r[13]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudPlayer:player0|counter_r[2]      ; Top:top0|AudPlayer:player0|counter_r[2]      ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
 ; 0.387 ; Top:top0|AudPlayer:player0|counter_r[3]      ; Top:top0|AudPlayer:player0|counter_r[3]      ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudPlayer:player0|counter_r[1]      ; Top:top0|AudPlayer:player0|counter_r[1]      ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudPlayer:player0|o_aud_dacdat_r    ; Top:top0|AudPlayer:player0|o_aud_dacdat_r    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
+; 0.387 ; Top:top0|AudRecorder:recorder0|data_r[15]    ; Top:top0|AudRecorder:recorder0|data_r[15]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.597      ;
 ; 0.462 ; Top:top0|AudPlayer:player0|state_r.SEND      ; Top:top0|AudPlayer:player0|counter_r[3]      ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.044      ; 0.677      ;
 ; 0.466 ; Top:top0|AudPlayer:player0|state_r.SEND      ; Top:top0|AudPlayer:player0|counter_r[1]      ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.044      ; 0.681      ;
 ; 0.631 ; Top:top0|AudRecorder:recorder0|addr_r[9]     ; Top:top0|AudRecorder:recorder0|addr_r[9]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.039      ; 0.841      ;
@@ -2257,8 +2257,8 @@ No paths to report.
 ; 0.922 ; Top:top0|AudRecorder:recorder0|addr_r[4]     ; Top:top0|AudRecorder:recorder0|addr_r[5]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 1.136      ;
 ; 0.924 ; Top:top0|AudRecorder:recorder0|addr_r[16]    ; Top:top0|AudRecorder:recorder0|addr_r[17]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.045      ; 1.140      ;
 ; 0.925 ; Top:top0|AudRecorder:recorder0|addr_r[12]    ; Top:top0|AudRecorder:recorder0|addr_r[13]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.045      ; 1.141      ;
-; 0.928 ; Top:top0|AudRecorder:recorder0|addr_r[11]    ; Top:top0|AudRecorder:recorder0|addr_r[12]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.045      ; 1.144      ;
 ; 0.928 ; Top:top0|AudRecorder:recorder0|addr_r[18]    ; Top:top0|AudRecorder:recorder0|addr_r[19]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.045      ; 1.144      ;
+; 0.928 ; Top:top0|AudRecorder:recorder0|addr_r[11]    ; Top:top0|AudRecorder:recorder0|addr_r[12]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.045      ; 1.144      ;
 ; 0.928 ; Top:top0|AudRecorder:recorder0|addr_r[0]     ; Top:top0|AudRecorder:recorder0|addr_r[2]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 1.142      ;
 ; 0.929 ; Top:top0|AudRecorder:recorder0|addr_r[10]    ; Top:top0|AudRecorder:recorder0|addr_r[12]    ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.045      ; 1.145      ;
 ; 0.932 ; Top:top0|AudRecorder:recorder0|addr_r[6]     ; Top:top0|AudRecorder:recorder0|addr_r[8]     ; AUD_BCLK     ; AUD_BCLK    ; 0.000        ; 0.043      ; 1.146      ;
@@ -3583,27 +3583,27 @@ No paths to report.
 ; Slack ; From Node                                    ; To Node                                      ; Launch Clock                  ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+----------------------------------------------+----------------------------------------------+-------------------------------+-------------+--------------+------------+------------+
 ; 0.199 ; Top:top0|AudRecorder:recorder0|state_r.STOP  ; Top:top0|AudRecorder:recorder0|state_r.STOP  ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
-; 0.199 ; Top:top0|AudRecorder:recorder0|counter_r[1]  ; Top:top0|AudRecorder:recorder0|counter_r[1]  ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudRecorder:recorder0|counter_r[0]  ; Top:top0|AudRecorder:recorder0|counter_r[0]  ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
+; 0.199 ; Top:top0|AudRecorder:recorder0|counter_r[1]  ; Top:top0|AudRecorder:recorder0|counter_r[1]  ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudRecorder:recorder0|counter_r[2]  ; Top:top0|AudRecorder:recorder0|counter_r[2]  ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudRecorder:recorder0|counter_r[3]  ; Top:top0|AudRecorder:recorder0|counter_r[3]  ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudRecorder:recorder0|counter_r[4]  ; Top:top0|AudRecorder:recorder0|counter_r[4]  ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[1]     ; Top:top0|AudRecorder:recorder0|data_r[1]     ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[2]     ; Top:top0|AudRecorder:recorder0|data_r[2]     ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[4]     ; Top:top0|AudRecorder:recorder0|data_r[4]     ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
-; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[5]     ; Top:top0|AudRecorder:recorder0|data_r[5]     ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
+; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[6]     ; Top:top0|AudRecorder:recorder0|data_r[6]     ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[9]     ; Top:top0|AudRecorder:recorder0|data_r[9]     ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[3]     ; Top:top0|AudRecorder:recorder0|data_r[3]     ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[11]    ; Top:top0|AudRecorder:recorder0|data_r[11]    ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
-; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[12]    ; Top:top0|AudRecorder:recorder0|data_r[12]    ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
-; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[6]     ; Top:top0|AudRecorder:recorder0|data_r[6]     ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
-; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[14]    ; Top:top0|AudRecorder:recorder0|data_r[14]    ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
-; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[15]    ; Top:top0|AudRecorder:recorder0|data_r[15]    ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
+; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[5]     ; Top:top0|AudRecorder:recorder0|data_r[5]     ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[13]    ; Top:top0|AudRecorder:recorder0|data_r[13]    ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
+; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[15]    ; Top:top0|AudRecorder:recorder0|data_r[15]    ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
+; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[12]    ; Top:top0|AudRecorder:recorder0|data_r[12]    ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
+; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[14]    ; Top:top0|AudRecorder:recorder0|data_r[14]    ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudPlayer:player0|counter_r[2]      ; Top:top0|AudPlayer:player0|counter_r[2]      ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudPlayer:player0|counter_r[3]      ; Top:top0|AudPlayer:player0|counter_r[3]      ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
-; 0.199 ; Top:top0|AudPlayer:player0|o_aud_dacdat_r    ; Top:top0|AudPlayer:player0|o_aud_dacdat_r    ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudPlayer:player0|counter_r[1]      ; Top:top0|AudPlayer:player0|counter_r[1]      ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
+; 0.199 ; Top:top0|AudPlayer:player0|o_aud_dacdat_r    ; Top:top0|AudPlayer:player0|o_aud_dacdat_r    ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.199 ; Top:top0|AudRecorder:recorder0|data_r[10]    ; Top:top0|AudRecorder:recorder0|data_r[10]    ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.024      ; 0.307      ;
 ; 0.226 ; Top:top0|AudPlayer:player0|state_r.SEND      ; Top:top0|AudPlayer:player0|counter_r[3]      ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.025      ; 0.335      ;
 ; 0.231 ; Top:top0|AudPlayer:player0|state_r.SEND      ; Top:top0|AudPlayer:player0|counter_r[1]      ; AUD_BCLK                      ; AUD_BCLK    ; 0.000        ; 0.025      ; 0.340      ;
@@ -6637,7 +6637,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
-    Info: Processing started: Wed Apr 29 02:18:17 2026
+    Info: Processing started: Wed Apr 29 02:40:29 2026
 Info: Command: quartus_sta DE2_115 -c DE2_115
 Info: qsta_default_script.tcl version: #11
 Info (11104): Parallel Compilation has detected 12 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 6 of the 6 physical processors detected instead.
@@ -6747,8 +6747,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 13 warnings
     Info: Peak virtual memory: 4990 megabytes
-    Info: Processing ended: Wed Apr 29 02:18:25 2026
-    Info: Elapsed time: 00:00:08
+    Info: Processing ended: Wed Apr 29 02:40:38 2026
+    Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:06
 
 

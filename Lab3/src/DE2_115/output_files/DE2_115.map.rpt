@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_115
-Wed Apr 29 02:17:35 2026
+Wed Apr 29 02:39:45 2026
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -76,7 +76,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 29 02:17:34 2026       ;
+; Analysis & Synthesis Status        ; Successful - Wed Apr 29 02:39:45 2026       ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                     ;
 ; Top-level Entity Name              ; DE2_115                                     ;
@@ -844,7 +844,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
-    Info: Processing started: Wed Apr 29 02:17:19 2026
+    Info: Processing started: Wed Apr 29 02:39:30 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
 Info (11104): Parallel Compilation has detected 12 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 6 of the 6 physical processors detected instead.
 Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/audrecorder.sv
@@ -1441,8 +1441,8 @@ Info (21057): Implemented 1277 device resources after synthesis - the final reso
     Info (21062): Implemented 2 DSP elements
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 499 warnings
     Info: Peak virtual memory: 4891 megabytes
-    Info: Processing ended: Wed Apr 29 02:17:35 2026
-    Info: Elapsed time: 00:00:16
+    Info: Processing ended: Wed Apr 29 02:39:45 2026
+    Info: Elapsed time: 00:00:15
     Info: Total CPU time (on all processors): 00:00:24
 
 
