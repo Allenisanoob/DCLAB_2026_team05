@@ -63,7 +63,7 @@ parameter S_WAIT_P	   = 8; // wait for play
 
 logic i2c_oen, i2c_sdat;
 logic [19:0] addr_record, addr_play;
-logic [15:0] data_record, data_play, dac_data;
+logic signed [15:0] data_record, data_play, dac_data;
 logic [3:0] state_r, state_w;
 logic i2c_finished; // o_finished by I2cInitializer 
 logic sram_we_record;

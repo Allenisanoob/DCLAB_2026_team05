@@ -7,7 +7,7 @@ module AudRecorder (
     input         i_stop,
     input         i_data,
     output [19:0] o_address,
-    output [15:0] o_data,
+    output signed [15:0] o_data,
     output        o_sram_we_n
 );
     localparam IDLE  = 3'd0;
@@ -21,7 +21,7 @@ module AudRecorder (
     logic        is_stop_r, is_stop_w;
     logic [4:0]  counter_r, counter_w;
     logic [19:0] addr_r, addr_w;
-    logic [15:0] data_r, data_w;
+    logic signed [15:0] data_r, data_w;
     
     assign o_address   = addr_r;
     assign o_data      = data_r;

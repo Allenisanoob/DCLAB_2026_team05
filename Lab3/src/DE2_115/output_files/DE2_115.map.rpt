@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_115
-Wed Apr 29 02:39:45 2026
+Wed Apr 29 03:31:42 2026
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -76,13 +76,13 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 29 02:39:45 2026       ;
+; Analysis & Synthesis Status        ; Successful - Wed Apr 29 03:31:42 2026       ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                     ;
 ; Top-level Entity Name              ; DE2_115                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 794                                         ;
-;     Total combinational functions  ; 761                                         ;
+; Total logic elements               ; 793                                         ;
+;     Total combinational functions  ; 760                                         ;
 ;     Dedicated logic registers      ; 196                                         ;
 ; Total registers                    ; 196                                         ;
 ; Total pins                         ; 480                                         ;
@@ -238,16 +238,16 @@ agreement for further details.
 +---------------------------------------------+--------------+
 ; Resource                                    ; Usage        ;
 +---------------------------------------------+--------------+
-; Estimated Total logic elements              ; 794          ;
+; Estimated Total logic elements              ; 793          ;
 ;                                             ;              ;
-; Total combinational functions               ; 761          ;
+; Total combinational functions               ; 760          ;
 ; Logic element usage by number of LUT inputs ;              ;
-;     -- 4 input functions                    ; 290          ;
-;     -- 3 input functions                    ; 297          ;
+;     -- 4 input functions                    ; 291          ;
+;     -- 3 input functions                    ; 295          ;
 ;     -- <=2 input functions                  ; 174          ;
 ;                                             ;              ;
 ; Logic elements by mode                      ;              ;
-;     -- normal mode                          ; 559          ;
+;     -- normal mode                          ; 558          ;
 ;     -- arithmetic mode                      ; 202          ;
 ;                                             ;              ;
 ; Total registers                             ; 196          ;
@@ -263,7 +263,7 @@ agreement for further details.
 ;                                             ;              ;
 ; Maximum fan-out node                        ; KEY[3]~input ;
 ; Maximum fan-out                             ; 203          ;
-; Total fan-out                               ; 3756         ;
+; Total fan-out                               ; 3754         ;
 ; Average fan-out                             ; 1.82         ;
 +---------------------------------------------+--------------+
 
@@ -273,11 +273,11 @@ agreement for further details.
 +-----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                    ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                             ; Library Name ;
 +-----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |DE2_115                                      ; 761 (0)           ; 196 (0)      ; 0           ; 2            ; 0       ; 1         ; 480  ; 0            ; |DE2_115                                                                                                                                        ; work         ;
+; |DE2_115                                      ; 760 (0)           ; 196 (0)      ; 0           ; 2            ; 0       ; 1         ; 480  ; 0            ; |DE2_115                                                                                                                                        ; work         ;
 ;    |Debounce:deb0|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb0                                                                                                                          ; work         ;
 ;    |Debounce:deb1|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb1                                                                                                                          ; work         ;
 ;    |Debounce:deb2|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb2                                                                                                                          ; work         ;
-;    |Top:top0|                                 ; 743 (60)          ; 181 (9)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                               ; work         ;
+;    |Top:top0|                                 ; 742 (60)          ; 181 (9)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                               ; work         ;
 ;       |AudDSP:dsp0|                           ; 475 (153)         ; 87 (87)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0                                                                                                                   ; work         ;
 ;          |lpm_divide:Div0|                    ; 322 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0                                                                                                   ; work         ;
 ;             |lpm_divide_n0p:auto_generated|   ; 322 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated                                                                     ; work         ;
@@ -288,7 +288,7 @@ agreement for further details.
 ;          |lpm_mult:Mult0|                     ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_mult:Mult0                                                                                                    ; work         ;
 ;             |mult_h4t:auto_generated|         ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_mult:Mult0|mult_h4t:auto_generated                                                                            ; work         ;
 ;       |AudPlayer:player0|                     ; 24 (24)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudPlayer:player0                                                                                                             ; work         ;
-;       |AudRecorder:recorder0|                 ; 133 (133)         ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudRecorder:recorder0                                                                                                         ; work         ;
+;       |AudRecorder:recorder0|                 ; 132 (132)         ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudRecorder:recorder0                                                                                                         ; work         ;
 ;       |I2cInitializer:init0|                  ; 51 (51)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|I2cInitializer:init0                                                                                                          ; work         ;
 ;    |lab3_qsys:pll0|                           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0                                                                                                                         ; lab3_qsys    ;
 ;       |lab3_qsys_altpll_0:altpll_0|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0                                                                                             ; lab3_qsys    ;
@@ -810,22 +810,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA CLR           ; 70                          ;
 ;     ENA CLR SCLR      ; 21                          ;
 ; cycloneiii_io_obuf    ; 141                         ;
-; cycloneiii_lcell_comb ; 765                         ;
+; cycloneiii_lcell_comb ; 764                         ;
 ;     arith             ; 202                         ;
 ;         2 data inputs ; 59                          ;
 ;         3 data inputs ; 143                         ;
-;     normal            ; 563                         ;
+;     normal            ; 562                         ;
 ;         0 data inputs ; 22                          ;
 ;         1 data inputs ; 6                           ;
 ;         2 data inputs ; 91                          ;
-;         3 data inputs ; 154                         ;
-;         4 data inputs ; 290                         ;
+;         3 data inputs ; 152                         ;
+;         4 data inputs ; 291                         ;
 ; cycloneiii_mac_mult   ; 1                           ;
 ; cycloneiii_mac_out    ; 1                           ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 61.40                       ;
-; Average LUT depth     ; 22.72                       ;
+; Average LUT depth     ; 22.73                       ;
 +-----------------------+-----------------------------+
 
 
@@ -844,7 +844,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
-    Info: Processing started: Wed Apr 29 02:39:30 2026
+    Info: Processing started: Wed Apr 29 03:31:27 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
 Info (11104): Parallel Compilation has detected 12 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 6 of the 6 physical processors detected instead.
 Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/audrecorder.sv
@@ -1432,17 +1432,17 @@ Warning (21074): Design contains 80 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[14]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[15]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[16]"
-Info (21057): Implemented 1277 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1276 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 91 input pins
     Info (21059): Implemented 248 output pins
     Info (21060): Implemented 141 bidirectional pins
-    Info (21061): Implemented 794 logic cells
+    Info (21061): Implemented 793 logic cells
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 2 DSP elements
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 499 warnings
     Info: Peak virtual memory: 4891 megabytes
-    Info: Processing ended: Wed Apr 29 02:39:45 2026
-    Info: Elapsed time: 00:00:15
+    Info: Processing ended: Wed Apr 29 03:31:43 2026
+    Info: Elapsed time: 00:00:16
     Info: Total CPU time (on all processors): 00:00:24
 
 

@@ -13,7 +13,7 @@ module AudPlayer (
     logic [1:0]  state_r, state_w;
     logic [3:0]  counter_r, counter_w;
     logic        o_aud_dacdat_r, o_aud_dacdat_w;
-    logic [15:0] i_dac_data_r, i_dac_data_w;
+    logic signed [15:0] i_dac_data_r, i_dac_data_w;
 
     assign o_aud_dacdat = o_aud_dacdat_r;
 

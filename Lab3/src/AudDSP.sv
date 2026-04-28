@@ -33,7 +33,7 @@ module AudDSP (
     reg        [19:0] addr_r, addr_w;
     reg signed [15:0] data_old_r, data_old_w;
     reg signed [15:0] data_new_r, data_new_w;
-    reg        [15:0] o_dac_data_r, o_dac_data_w;
+    reg signed [15:0] o_dac_data_r, o_dac_data_w;
     reg        [20:0] temp_addr;
     reg signed [16:0] diff;
     reg signed [20:0] temp1, temp2;
