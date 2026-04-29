@@ -140,9 +140,10 @@ logic key0down, key1down, key2down, key3down;
 logic CLK_12M, CLK_100K;
 // logic CLK_800K;
 logic [15:0] state_led;
+logic [7:0] state_led_volume;
 assign AUD_XCK = CLK_12M;
-assign LEDR[15:0]  = state_led;
-assign LEDR[17:16] = 2'd0;
+assign LEDR[17:0] = {2'd0, state_led};
+assign LEDG[7:0] = state_led_volume;
 
 lab3_qsys pll0( // generate with qsys, please follow lab2 tutorials
 	.clk_clk(CLOCK_50),
@@ -206,7 +207,8 @@ Top top0(
 	.i_AUD_BCLK(AUD_BCLK),
 	.i_AUD_DACLRCK(AUD_DACLRCK),
 	.o_AUD_DACDAT(AUD_DACDAT),
-	.o_state_led(state_led)
+	.o_state_led(state_led),
+	.o_state_led_volume(state_led_volume)
 
 	// SEVENDECODER (optional display)
 	// .o_record_time(recd_time),

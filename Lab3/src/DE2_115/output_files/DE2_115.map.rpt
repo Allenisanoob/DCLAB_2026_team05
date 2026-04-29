@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_115
-Wed Apr 29 17:41:41 2026
+Wed Apr 29 18:17:46 2026
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -76,13 +76,13 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 29 17:41:41 2026       ;
+; Analysis & Synthesis Status        ; Successful - Wed Apr 29 18:17:45 2026       ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                     ;
 ; Top-level Entity Name              ; DE2_115                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 857                                         ;
-;     Total combinational functions  ; 840                                         ;
+; Total logic elements               ; 907                                         ;
+;     Total combinational functions  ; 890                                         ;
 ;     Dedicated logic registers      ; 194                                         ;
 ; Total registers                    ; 194                                         ;
 ; Total pins                         ; 480                                         ;
@@ -239,17 +239,17 @@ agreement for further details.
 +---------------------------------------------+--------------+
 ; Resource                                    ; Usage        ;
 +---------------------------------------------+--------------+
-; Estimated Total logic elements              ; 857          ;
+; Estimated Total logic elements              ; 907          ;
 ;                                             ;              ;
-; Total combinational functions               ; 840          ;
+; Total combinational functions               ; 890          ;
 ; Logic element usage by number of LUT inputs ;              ;
-;     -- 4 input functions                    ; 320          ;
-;     -- 3 input functions                    ; 348          ;
-;     -- <=2 input functions                  ; 172          ;
+;     -- 4 input functions                    ; 342          ;
+;     -- 3 input functions                    ; 354          ;
+;     -- <=2 input functions                  ; 194          ;
 ;                                             ;              ;
 ; Logic elements by mode                      ;              ;
-;     -- normal mode                          ; 600          ;
-;     -- arithmetic mode                      ; 240          ;
+;     -- normal mode                          ; 635          ;
+;     -- arithmetic mode                      ; 255          ;
 ;                                             ;              ;
 ; Total registers                             ; 194          ;
 ;     -- Dedicated logic registers            ; 194          ;
@@ -264,36 +264,37 @@ agreement for further details.
 ;                                             ;              ;
 ; Maximum fan-out node                        ; KEY[3]~input ;
 ; Maximum fan-out                             ; 202          ;
-; Total fan-out                               ; 4001         ;
-; Average fan-out                             ; 1.87         ;
+; Total fan-out                               ; 4168         ;
+; Average fan-out                             ; 1.90         ;
 +---------------------------------------------+--------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                   ;
-+-----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node                    ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                        ; Library Name ;
-+-----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------+--------------+
-; |DE2_115                                      ; 840 (0)           ; 194 (0)      ; 0           ; 2            ; 0       ; 1         ; 480  ; 0            ; |DE2_115                                                                                                                   ; work         ;
-;    |Debounce:deb0|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb0                                                                                                     ; work         ;
-;    |Debounce:deb1|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb1                                                                                                     ; work         ;
-;    |Debounce:deb2|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb2                                                                                                     ; work         ;
-;    |Top:top0|                                 ; 822 (37)          ; 179 (9)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                          ; work         ;
-;       |AudDSP:dsp0|                           ; 572 (253)         ; 86 (86)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0                                                                                              ; work         ;
-;          |lpm_divide:Div0|                    ; 319 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0                                                                              ; work         ;
-;             |lpm_divide_n0p:auto_generated|   ; 319 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated                                                ; work         ;
-;                |abs_divider_ibg:divider|      ; 319 (32)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated|abs_divider_ibg:divider                        ; work         ;
-;                   |alt_u_div_27f:divider|     ; 254 (254)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated|abs_divider_ibg:divider|alt_u_div_27f:divider  ; work         ;
-;                   |lpm_abs_g0a:my_abs_num|    ; 33 (33)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated|abs_divider_ibg:divider|lpm_abs_g0a:my_abs_num ; work         ;
-;          |lpm_mult:Mult0|                     ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_mult:Mult0                                                                               ; work         ;
-;             |mult_h4t:auto_generated|         ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_mult:Mult0|mult_h4t:auto_generated                                                       ; work         ;
-;       |AudPlayer:player0|                     ; 29 (29)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudPlayer:player0                                                                                        ; work         ;
-;       |AudRecorder:recorder0|                 ; 133 (133)         ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudRecorder:recorder0                                                                                    ; work         ;
-;       |I2cInitializer:init0|                  ; 51 (51)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|I2cInitializer:init0                                                                                     ; work         ;
-;    |lab3_qsys:pll0|                           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0                                                                                                    ; lab3_qsys    ;
-;       |lab3_qsys_altpll_0:altpll_0|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0                                                                        ; lab3_qsys    ;
-;          |lab3_qsys_altpll_0_altpll_kpa2:sd1| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0|lab3_qsys_altpll_0_altpll_kpa2:sd1                                     ; lab3_qsys    ;
-+-----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                        ;
++-----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                    ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                             ; Library Name ;
++-----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; |DE2_115                                      ; 890 (0)           ; 194 (0)      ; 0           ; 2            ; 0       ; 1         ; 480  ; 0            ; |DE2_115                                                                                                                                        ; work         ;
+;    |Debounce:deb0|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb0                                                                                                                          ; work         ;
+;    |Debounce:deb1|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb1                                                                                                                          ; work         ;
+;    |Debounce:deb2|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb2                                                                                                                          ; work         ;
+;    |Top:top0|                                 ; 872 (103)         ; 179 (9)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                               ; work         ;
+;       |AudDSP:dsp0|                           ; 579 (253)         ; 86 (86)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0                                                                                                                   ; work         ;
+;          |lpm_divide:Div0|                    ; 326 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0                                                                                                   ; work         ;
+;             |lpm_divide_n0p:auto_generated|   ; 326 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated                                                                     ; work         ;
+;                |abs_divider_ibg:divider|      ; 326 (32)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated|abs_divider_ibg:divider                                             ; work         ;
+;                   |alt_u_div_27f:divider|     ; 255 (254)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated|abs_divider_ibg:divider|alt_u_div_27f:divider                       ; work         ;
+;                      |add_sub_8pc:add_sub_1|  ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated|abs_divider_ibg:divider|alt_u_div_27f:divider|add_sub_8pc:add_sub_1 ; work         ;
+;                   |lpm_abs_g0a:my_abs_num|    ; 39 (39)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated|abs_divider_ibg:divider|lpm_abs_g0a:my_abs_num                      ; work         ;
+;          |lpm_mult:Mult0|                     ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_mult:Mult0                                                                                                    ; work         ;
+;             |mult_h4t:auto_generated|         ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_mult:Mult0|mult_h4t:auto_generated                                                                            ; work         ;
+;       |AudPlayer:player0|                     ; 29 (29)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudPlayer:player0                                                                                                             ; work         ;
+;       |AudRecorder:recorder0|                 ; 110 (110)         ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudRecorder:recorder0                                                                                                         ; work         ;
+;       |I2cInitializer:init0|                  ; 51 (51)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|I2cInitializer:init0                                                                                                          ; work         ;
+;    |lab3_qsys:pll0|                           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0                                                                                                                         ; lab3_qsys    ;
+;       |lab3_qsys_altpll_0:altpll_0|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0                                                                                             ; lab3_qsys    ;
+;          |lab3_qsys_altpll_0_altpll_kpa2:sd1| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0|lab3_qsys_altpll_0_altpll_kpa2:sd1                                                          ; lab3_qsys    ;
++-----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -424,7 +425,7 @@ Encoding Type:  One-Hot
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 194   ;
-; Number of registers using Synchronous Clear  ; 21    ;
+; Number of registers using Synchronous Clear  ; 37    ;
 ; Number of registers using Synchronous Load   ; 20    ;
 ; Number of registers using Asynchronous Clear ; 194   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
@@ -439,7 +440,7 @@ Encoding Type:  One-Hot
 ; Inverted Register                         ; Fan out ;
 +-------------------------------------------+---------+
 ; Top:top0|AudRecorder:recorder0|is_pause_r ; 7       ;
-; Top:top0|AudDSP:dsp0|is_pause_r           ; 8       ;
+; Top:top0|AudDSP:dsp0|is_pause_r           ; 7       ;
 ; Total number of inverted registers = 2    ;         ;
 +-------------------------------------------+---------+
 
@@ -449,20 +450,21 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |DE2_115|Top:top0|AudDSP:dsp0|data_old_r[7]             ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|state_r[2]       ;
-; 4:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |DE2_115|Top:top0|AudPlayer:player0|o_aud_dacdat_r[8]   ;
-; 9:1                ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|bit_cnt_r[1]     ;
-; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|command_cnt_r[0] ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |DE2_115|Top:top0|AudDSP:dsp0|data_new_r[13]            ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |DE2_115|Top:top0|AudDSP:dsp0|data_old_r[9]             ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|state_r[1]       ;
+; 4:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |DE2_115|Top:top0|AudPlayer:player0|o_aud_dacdat_r[4]   ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|bit_cnt_r[2]     ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|command_cnt_r[3] ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |DE2_115|Top:top0|AudDSP:dsp0|data_new_r[1]             ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|current_signal[11]                    ;
 ; 3:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|o_SRAM_ADDR[0]                        ;
 ; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|temp_addr                 ;
 ; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|o_dac_data_w              ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|counter_w                 ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|AudPlayer:player0|Selector1           ;
-; 12:1               ; 4 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |DE2_115|Top:top0|AudRecorder:recorder0|Selector4       ;
-; 13:1               ; 4 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; No         ; |DE2_115|Top:top0|Selector7                             ;
-; 18:1               ; 2 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; No         ; |DE2_115|Top:top0|Selector3                             ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|AudPlayer:player0|Selector2           ;
+; 12:1               ; 4 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |DE2_115|Top:top0|AudRecorder:recorder0|Selector0       ;
+; 13:1               ; 4 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; No         ; |DE2_115|Top:top0|Selector1                             ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; No         ; |DE2_115|Top:top0|Selector2                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 
 
@@ -806,27 +808,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; boundary_port         ; 480                         ;
 ; cycloneiii_ff         ; 194                         ;
-;     CLR               ; 104                         ;
+;     CLR               ; 88                          ;
+;     CLR SCLR          ; 16                          ;
 ;     CLR SLD           ; 20                          ;
 ;     ENA CLR           ; 49                          ;
 ;     ENA CLR SCLR      ; 21                          ;
 ; cycloneiii_io_obuf    ; 141                         ;
-; cycloneiii_lcell_comb ; 844                         ;
-;     arith             ; 240                         ;
-;         2 data inputs ; 59                          ;
+; cycloneiii_lcell_comb ; 894                         ;
+;     arith             ; 255                         ;
+;         2 data inputs ; 74                          ;
 ;         3 data inputs ; 181                         ;
-;     normal            ; 604                         ;
+;     normal            ; 639                         ;
 ;         0 data inputs ; 22                          ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 89                          ;
-;         3 data inputs ; 167                         ;
-;         4 data inputs ; 320                         ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 95                          ;
+;         3 data inputs ; 173                         ;
+;         4 data inputs ; 342                         ;
 ; cycloneiii_mac_mult   ; 1                           ;
 ; cycloneiii_mac_out    ; 1                           ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 60.40                       ;
-; Average LUT depth     ; 21.41                       ;
+; Average LUT depth     ; 21.27                       ;
 +-----------------------+-----------------------------+
 
 
@@ -845,7 +848,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
-    Info: Processing started: Wed Apr 29 17:41:26 2026
+    Info: Processing started: Wed Apr 29 18:17:30 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
 Info (11104): Parallel Compilation has detected 12 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 6 of the 6 physical processors detected instead.
 Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/audrecorder.sv
@@ -875,7 +878,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file /users/
     Info (12023): Found entity 1: I2cInitializer
 Warning (10236): Verilog HDL Implicit Net warning at I2cInitializer.sv(40): created implicit net for "dbg"
 Info (12127): Elaborating entity "DE2_115" for the top level hierarchy
-Warning (10034): Output port "LEDG" at DE2_115.sv(8) has no driver
+Warning (10034): Output port "LEDG[8]" at DE2_115.sv(8) has no driver
 Warning (10034): Output port "VGA_B" at DE2_115.sv(38) has no driver
 Warning (10034): Output port "VGA_G" at DE2_115.sv(41) has no driver
 Warning (10034): Output port "VGA_R" at DE2_115.sv(43) has no driver
@@ -943,7 +946,7 @@ Info (12128): Elaborating entity "Debounce" for hierarchy "Debounce:deb0"
 Warning (10230): Verilog HDL assignment warning at Debounce.sv(23): truncated value with size 32 to match size of target (3)
 Warning (10230): Verilog HDL assignment warning at Debounce.sv(25): truncated value with size 32 to match size of target (3)
 Info (12128): Elaborating entity "Top" for hierarchy "Top:top0"
-Warning (10034): Output port "o_state_led[15..9]" at Top.sv(52) has no driver
+Warning (10034): Output port "o_state_led[15..9]" at Top.sv(34) has no driver
 Info (12128): Elaborating entity "I2cInitializer" for hierarchy "Top:top0|I2cInitializer:init0"
 Warning (10036): Verilog HDL or VHDL warning at I2cInitializer.sv(40): object "dbg" assigned a value but never read
 Warning (10230): Verilog HDL assignment warning at I2cInitializer.sv(40): truncated value with size 4 to match size of target (1)
@@ -1130,14 +1133,6 @@ Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "SMA_CLKOUT" is stuck at GND
-    Warning (13410): Pin "LEDG[0]" is stuck at GND
-    Warning (13410): Pin "LEDG[1]" is stuck at GND
-    Warning (13410): Pin "LEDG[2]" is stuck at GND
-    Warning (13410): Pin "LEDG[3]" is stuck at GND
-    Warning (13410): Pin "LEDG[4]" is stuck at GND
-    Warning (13410): Pin "LEDG[5]" is stuck at GND
-    Warning (13410): Pin "LEDG[6]" is stuck at GND
-    Warning (13410): Pin "LEDG[7]" is stuck at GND
     Warning (13410): Pin "LEDG[8]" is stuck at GND
     Warning (13410): Pin "LEDR[9]" is stuck at GND
     Warning (13410): Pin "LEDR[10]" is stuck at GND
@@ -1435,17 +1430,17 @@ Warning (21074): Design contains 79 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[14]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[15]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[16]"
-Info (21057): Implemented 1340 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1390 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 91 input pins
     Info (21059): Implemented 248 output pins
     Info (21060): Implemented 141 bidirectional pins
-    Info (21061): Implemented 857 logic cells
+    Info (21061): Implemented 907 logic cells
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 2 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 501 warnings
-    Info: Peak virtual memory: 4890 megabytes
-    Info: Processing ended: Wed Apr 29 17:41:41 2026
-    Info: Elapsed time: 00:00:15
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 493 warnings
+    Info: Peak virtual memory: 4891 megabytes
+    Info: Processing ended: Wed Apr 29 18:17:46 2026
+    Info: Elapsed time: 00:00:16
     Info: Total CPU time (on all processors): 00:00:24
 
 

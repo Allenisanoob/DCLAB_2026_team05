@@ -71,6 +71,7 @@ module AudRecorder (
             end
             STOP: begin
                 is_stop_w = 1'b1;
+                data_w = 16'd0;
             end
         endcase
     end

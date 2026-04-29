@@ -31,7 +31,8 @@ module Top (
 	inout  i_AUD_DACLRCK,
 	output o_AUD_DACDAT,
 	// LED state display
-	output [15:0] o_state_led
+	output [15:0] o_state_led,
+	output [7:0] o_state_led_volume
 
 	//SevenHexDecoder
 	output [6:0] o_HEX0, // 毫秒個位 (0.001s)
@@ -91,6 +92,7 @@ assign d3 = (display_ms / 1000) % 10;   // 秒個位
 assign d4 = (display_ms / 10000) % 10;  // 秒十位
 assign d5 = 4'd0;                       // 百位固定為 0 (或可顯示最高位)
 
+logic signed [15:0] current_signal, current_volume;
 
 assign io_I2C_SDAT = (i2c_oen) ? i2c_sdat : 1'bz;
 
@@ -114,11 +116,19 @@ assign o_state_led[6] = (state_r == S_STOP);
 assign o_state_led[7] = (state_r == S_WAIT_P);
 assign o_state_led[8] = (state_r == S_WAIT_R);
 
-// logic [3:0] dbg;
-// assign o_state_led = (1 << dbg); // one-hot display, only one bit is on according to current state
+assign current_signal = (state_r == S_RECD)? data_record :
+						(state_r == S_PLAY)? data_play : 15'd0;
+assign current_volume = (current_signal > 0) ? current_signal : -current_signal;
 
-// below is a simple example for module division
-// you can design these as you like
+// Show volume in log scale on LED
+assign o_state_led_volume[0] = (current_volume > 16'h0080);
+assign o_state_led_volume[1] = (current_volume > 16'h0100);
+assign o_state_led_volume[2] = (current_volume > 16'h0200);
+assign o_state_led_volume[3] = (current_volume > 16'h0400);
+assign o_state_led_volume[4] = (current_volume > 16'h0800);
+assign o_state_led_volume[5] = (current_volume > 16'h1000);
+assign o_state_led_volume[6] = (current_volume > 16'h2000);
+assign o_state_led_volume[7] = (current_volume > 16'h4000);
 
 
 // === I2cInitializer ===
