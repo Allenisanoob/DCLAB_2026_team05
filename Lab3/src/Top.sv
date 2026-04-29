@@ -33,9 +33,14 @@ module Top (
 	// LED state display
 	output [15:0] o_state_led
 
-	// SEVENDECODER (optional display)
-	// output [5:0] o_record_time,
-	// output [5:0] o_play_time,
+	//SevenHexDecoder
+	output [6:0] o_HEX0, // 毫秒個位 (0.001s)
+    output [6:0] o_HEX1, // 毫秒十位 (0.010s)
+    output [6:0] o_HEX2, // 毫秒百位 (0.100s)
+    output [6:0] o_HEX3, // 秒個位   (1.000s)
+    output [6:0] o_HEX4, // 秒十位   (10.000s)
+    output [6:0] o_HEX5  // 百秒/空白 (可顯示 0)
+
 
 	// LCD (optional display)
 	// input        i_clk_800k,
@@ -68,6 +73,24 @@ logic signed [15:0] data_record, data_play, dac_data;
 logic [3:0] state_r, state_w;
 logic i2c_finished; // o_finished by I2cInitializer 
 logic sram_we_record;
+
+logic [15:0] cnt_1ms;      // 50,000 次 clock 產生 1ms (50MHz / 1000)
+logic [15:0] ms_record;    // 錄音總毫秒數 (0~32000)
+logic [15:0] ms_play;      // 播放總毫秒數 (0~32000
+
+// 根據當前狀態決定要顯示錄音還是播放的秒數
+logic [15:0] display_ms;
+assign display_ms = (state_r == S_RECD || state_r == S_RECD_PAUSE) ? ms_record : ms_play;
+
+// 拆解位數 (BCD Conversion)
+logic [3:0] d0, d1, d2, d3, d4, d5;
+assign d0 = display_ms % 10;            // 毫秒個位
+assign d1 = (display_ms / 10) % 10;     // 毫秒十位
+assign d2 = (display_ms / 100) % 10;    // 毫秒百位
+assign d3 = (display_ms / 1000) % 10;   // 秒個位
+assign d4 = (display_ms / 10000) % 10;  // 秒十位
+assign d5 = 4'd0;                       // 百位固定為 0 (或可顯示最高位)
+
 
 assign io_I2C_SDAT = (i2c_oen) ? i2c_sdat : 1'bz;
 
@@ -208,11 +231,44 @@ end
 
 always_ff @(posedge i_clk or negedge i_rst_n) begin
 	if (!i_rst_n) begin
-        state_r <= S_I2C;  
-    end
-    else begin
-        state_r <= state_w; 
+        state_r   <= S_I2C;
+        cnt_1ms   <= 16'd0;
+        ms_record <= 16'd0;
+        ms_play   <= 16'd0;
+    end else begin
+        state_r <= state_w;
+        case (state_r)
+            S_RECD: begin
+                if (cnt_1ms >= 16'd50_000) begin
+                    cnt_1ms <= 16'd0;
+                    if (ms_record < 16'd32_000) ms_record <= ms_record + 1'b1;
+                end else begin
+                    cnt_1ms <= cnt_1ms + 1'b1;
+                end
+            end
+            S_PLAY: begin
+                if (cnt_1ms >= 16'd50_000) begin
+                    cnt_1ms <= 16'd0;
+                    if (ms_play < 16'd32_000) ms_play <= ms_play + 1'b1;
+                end else begin
+                    cnt_1ms <= cnt_1ms + 1'b1;
+                end
+            end
+            S_IDLE, S_STOP, S_I2C: begin // 重置計時器
+                cnt_1ms   <= 16'd0;
+                ms_record <= 16'd0;
+                ms_play   <= 16'd0;
+            end
+            default: cnt_1ms <= cnt_1ms; // PAUSE 狀態下停止計時
+        endcase
     end
 end
+
+SevenHexDecoder hex_inst0(.i_hex(d0), .o_seven(o_HEX0));
+SevenHexDecoder hex_inst1(.i_hex(d1), .o_seven(o_HEX1));
+SevenHexDecoder hex_inst2(.i_hex(d2), .o_seven(o_HEX2));
+SevenHexDecoder hex_inst3(.i_hex(d3), .o_seven(o_HEX3));
+SevenHexDecoder hex_inst4(.i_hex(d4), .o_seven(o_HEX4));
+SevenHexDecoder hex_inst5(.i_hex(d5), .o_seven(o_HEX5));
 
 endmodule
