@@ -1,4 +1,4 @@
-// Note "Maybe wrong" denote the possible mistakes
+
 module Top (
 	input i_rst_n,
 	input i_clk,
@@ -116,7 +116,7 @@ I2cInitializer init0(
 // in other words, determine which data addr to be fetch for player 
 AudDSP dsp0(
 	.i_rst_n(i_rst_n),
-	.i_clk(i_clk),
+	.i_clk(i_AUD_BCLK),
 	.i_start(state_r == S_WAIT_P),
 	.i_pause(i_key_1),
 	.i_stop(state_r == S_STOP), 
@@ -125,6 +125,7 @@ AudDSP dsp0(
 	.i_slow_mode(i_slow_mode), // constant interpolation = 0, linear interpolation	= 1
 	.i_daclrck(i_AUD_DACLRCK),
 	.i_sram_data(data_play),
+	.i_stop_addr(addr_record),
 	.o_dac_data(dac_data),
 	.o_sram_addr(addr_play),
 	.o_is_pause() // optional, you can use LED to indicate current state
@@ -176,6 +177,7 @@ always_comb begin
         S_RECD_PAUSE: begin
             if(i_key_0) state_w = S_RECD;       // Key0 Continue recording
             if(i_key_1) state_w = S_WAIT_P;       // Key2 transit to S_PLAY
+			if(i_key_2) state_w = S_STOP;       // Key2 STOP and return to addr 0
             if(!i_rst_n) state_w = S_IDLE;
         end
 		S_WAIT_R: begin

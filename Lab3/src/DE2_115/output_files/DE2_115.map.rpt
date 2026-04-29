@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_115
-Wed Apr 29 03:31:42 2026
+Wed Apr 29 16:08:49 2026
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -76,15 +76,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 29 03:31:42 2026       ;
+; Analysis & Synthesis Status        ; Successful - Wed Apr 29 16:08:49 2026       ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                     ;
 ; Top-level Entity Name              ; DE2_115                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 793                                         ;
-;     Total combinational functions  ; 760                                         ;
-;     Dedicated logic registers      ; 196                                         ;
-; Total registers                    ; 196                                         ;
+; Total logic elements               ; 819                                         ;
+;     Total combinational functions  ; 802                                         ;
+;     Dedicated logic registers      ; 194                                         ;
+; Total registers                    ; 194                                         ;
 ; Total pins                         ; 480                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -189,11 +189,12 @@ agreement for further details.
 ; Maximum allowed            ; 6           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 5           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-12        ;   0.0%      ;
+;     Processors 2-5         ; < 0.1%      ;
+;     Processors 6-12        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -238,20 +239,20 @@ agreement for further details.
 +---------------------------------------------+--------------+
 ; Resource                                    ; Usage        ;
 +---------------------------------------------+--------------+
-; Estimated Total logic elements              ; 793          ;
+; Estimated Total logic elements              ; 819          ;
 ;                                             ;              ;
-; Total combinational functions               ; 760          ;
+; Total combinational functions               ; 802          ;
 ; Logic element usage by number of LUT inputs ;              ;
-;     -- 4 input functions                    ; 291          ;
-;     -- 3 input functions                    ; 295          ;
+;     -- 4 input functions                    ; 298          ;
+;     -- 3 input functions                    ; 330          ;
 ;     -- <=2 input functions                  ; 174          ;
 ;                                             ;              ;
 ; Logic elements by mode                      ;              ;
-;     -- normal mode                          ; 558          ;
-;     -- arithmetic mode                      ; 202          ;
+;     -- normal mode                          ; 581          ;
+;     -- arithmetic mode                      ; 221          ;
 ;                                             ;              ;
-; Total registers                             ; 196          ;
-;     -- Dedicated logic registers            ; 196          ;
+; Total registers                             ; 194          ;
+;     -- Dedicated logic registers            ; 194          ;
 ;     -- I/O registers                        ; 0            ;
 ;                                             ;              ;
 ; I/O pins                                    ; 480          ;
@@ -262,9 +263,9 @@ agreement for further details.
 ;     -- PLLs                                 ; 1            ;
 ;                                             ;              ;
 ; Maximum fan-out node                        ; KEY[3]~input ;
-; Maximum fan-out                             ; 203          ;
-; Total fan-out                               ; 3754         ;
-; Average fan-out                             ; 1.82         ;
+; Maximum fan-out                             ; 202          ;
+; Total fan-out                               ; 3900         ;
+; Average fan-out                             ; 1.86         ;
 +---------------------------------------------+--------------+
 
 
@@ -273,12 +274,12 @@ agreement for further details.
 +-----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                    ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                             ; Library Name ;
 +-----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |DE2_115                                      ; 760 (0)           ; 196 (0)      ; 0           ; 2            ; 0       ; 1         ; 480  ; 0            ; |DE2_115                                                                                                                                        ; work         ;
+; |DE2_115                                      ; 802 (0)           ; 194 (0)      ; 0           ; 2            ; 0       ; 1         ; 480  ; 0            ; |DE2_115                                                                                                                                        ; work         ;
 ;    |Debounce:deb0|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb0                                                                                                                          ; work         ;
 ;    |Debounce:deb1|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb1                                                                                                                          ; work         ;
 ;    |Debounce:deb2|                            ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb2                                                                                                                          ; work         ;
-;    |Top:top0|                                 ; 742 (60)          ; 181 (9)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                               ; work         ;
-;       |AudDSP:dsp0|                           ; 475 (153)         ; 87 (87)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0                                                                                                                   ; work         ;
+;    |Top:top0|                                 ; 784 (57)          ; 179 (9)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                               ; work         ;
+;       |AudDSP:dsp0|                           ; 514 (192)         ; 86 (86)      ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0                                                                                                                   ; work         ;
 ;          |lpm_divide:Div0|                    ; 322 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0                                                                                                   ; work         ;
 ;             |lpm_divide_n0p:auto_generated|   ; 322 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated                                                                     ; work         ;
 ;                |abs_divider_ibg:divider|      ; 322 (32)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated|abs_divider_ibg:divider                                             ; work         ;
@@ -287,8 +288,8 @@ agreement for further details.
 ;                   |lpm_abs_g0a:my_abs_num|    ; 35 (35)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_divide:Div0|lpm_divide_n0p:auto_generated|abs_divider_ibg:divider|lpm_abs_g0a:my_abs_num                      ; work         ;
 ;          |lpm_mult:Mult0|                     ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_mult:Mult0                                                                                                    ; work         ;
 ;             |mult_h4t:auto_generated|         ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|AudDSP:dsp0|lpm_mult:Mult0|mult_h4t:auto_generated                                                                            ; work         ;
-;       |AudPlayer:player0|                     ; 24 (24)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudPlayer:player0                                                                                                             ; work         ;
-;       |AudRecorder:recorder0|                 ; 132 (132)         ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudRecorder:recorder0                                                                                                         ; work         ;
+;       |AudPlayer:player0|                     ; 29 (29)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudPlayer:player0                                                                                                             ; work         ;
+;       |AudRecorder:recorder0|                 ; 133 (133)         ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|AudRecorder:recorder0                                                                                                         ; work         ;
 ;       |I2cInitializer:init0|                  ; 51 (51)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|I2cInitializer:init0                                                                                                          ; work         ;
 ;    |lab3_qsys:pll0|                           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0                                                                                                                         ; lab3_qsys    ;
 ;       |lab3_qsys_altpll_0:altpll_0|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|lab3_qsys:pll0|lab3_qsys_altpll_0:altpll_0                                                                                             ; lab3_qsys    ;
@@ -371,21 +372,20 @@ Encoding Type:  One-Hot
 
 
 Encoding Type:  One-Hot
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |DE2_115|Top:top0|AudDSP:dsp0|state_r                                                                                                                          ;
-+-----------------+----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+----------------+----------------+
-; Name            ; state_r.S_SEND ; state_r.S_GET_4 ; state_r.S_GET_3 ; state_r.S_GET_2 ; state_r.S_GET_1 ; state_r.S_GET_0 ; state_r.S_PAUSE ; state_r.S_IDLE ; state_r.S_STOP ;
-+-----------------+----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+----------------+----------------+
-; state_r.S_IDLE  ; 0              ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ;
-; state_r.S_PAUSE ; 0              ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 1              ; 0              ;
-; state_r.S_GET_0 ; 0              ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 1              ; 0              ;
-; state_r.S_GET_1 ; 0              ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 1              ; 0              ;
-; state_r.S_GET_2 ; 0              ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 1              ; 0              ;
-; state_r.S_GET_3 ; 0              ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 1              ; 0              ;
-; state_r.S_GET_4 ; 0              ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1              ; 0              ;
-; state_r.S_SEND  ; 1              ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1              ; 0              ;
-; state_r.S_STOP  ; 0              ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1              ; 1              ;
-+-----------------+----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+----------------+----------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |DE2_115|Top:top0|AudDSP:dsp0|state_r                                                                                                        ;
++-----------------+----------------+----------------+-----------------+-----------------+-----------------+-----------------+-----------------+----------------+
+; Name            ; state_r.S_STOP ; state_r.S_SEND ; state_r.S_GET_3 ; state_r.S_GET_2 ; state_r.S_GET_1 ; state_r.S_GET_0 ; state_r.S_PAUSE ; state_r.S_IDLE ;
++-----------------+----------------+----------------+-----------------+-----------------+-----------------+-----------------+-----------------+----------------+
+; state_r.S_IDLE  ; 0              ; 0              ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ;
+; state_r.S_PAUSE ; 0              ; 0              ; 0               ; 0               ; 0               ; 0               ; 1               ; 1              ;
+; state_r.S_GET_0 ; 0              ; 0              ; 0               ; 0               ; 0               ; 1               ; 0               ; 1              ;
+; state_r.S_GET_1 ; 0              ; 0              ; 0               ; 0               ; 1               ; 0               ; 0               ; 1              ;
+; state_r.S_GET_2 ; 0              ; 0              ; 0               ; 1               ; 0               ; 0               ; 0               ; 1              ;
+; state_r.S_GET_3 ; 0              ; 0              ; 1               ; 0               ; 0               ; 0               ; 0               ; 1              ;
+; state_r.S_SEND  ; 0              ; 1              ; 0               ; 0               ; 0               ; 0               ; 0               ; 1              ;
+; state_r.S_STOP  ; 1              ; 0              ; 0               ; 0               ; 0               ; 0               ; 0               ; 1              ;
++-----------------+----------------+----------------+-----------------+-----------------+-----------------+-----------------+-----------------+----------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -424,12 +424,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 196   ;
-; Number of registers using Synchronous Clear  ; 21    ;
+; Total registers                              ; 194   ;
+; Number of registers using Synchronous Clear  ; 41    ;
 ; Number of registers using Synchronous Load   ; 20    ;
-; Number of registers using Asynchronous Clear ; 196   ;
+; Number of registers using Asynchronous Clear ; 194   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 91    ;
+; Number of registers using Clock Enable       ; 90    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -440,7 +440,7 @@ Encoding Type:  One-Hot
 ; Inverted Register                         ; Fan out ;
 +-------------------------------------------+---------+
 ; Top:top0|AudRecorder:recorder0|is_pause_r ; 7       ;
-; Top:top0|AudDSP:dsp0|is_pause_r           ; 8       ;
+; Top:top0|AudDSP:dsp0|is_pause_r           ; 7       ;
 ; Total number of inverted registers = 2    ;         ;
 +-------------------------------------------+---------+
 
@@ -450,18 +450,19 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |DE2_115|Top:top0|AudDSP:dsp0|data_old_r[5]             ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|state_r[2]       ;
-; 9:1                ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|bit_cnt_r[4]     ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |DE2_115|Top:top0|AudDSP:dsp0|data_old_r[11]            ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|state_r[1]       ;
+; 4:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |DE2_115|Top:top0|AudPlayer:player0|o_aud_dacdat_r[13]  ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|bit_cnt_r[2]     ;
 ; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |DE2_115|Top:top0|I2cInitializer:init0|command_cnt_r[3] ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |DE2_115|Top:top0|AudDSP:dsp0|data_new_r[3]             ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|counter_w                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |DE2_115|Top:top0|AudDSP:dsp0|data_new_r[11]            ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|temp_addr                 ;
 ; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|o_dac_data_w              ;
-; 4:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|addr_w                    ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|AudPlayer:player0|Selector0           ;
-; 12:1               ; 4 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |DE2_115|Top:top0|AudRecorder:recorder0|Selector1       ;
-; 14:1               ; 4 bits    ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; No         ; |DE2_115|Top:top0|Selector1                             ;
-; 17:1               ; 2 bits    ; 22 LEs        ; 12 LEs               ; 10 LEs                 ; No         ; |DE2_115|Top:top0|Selector2                             ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|AudDSP:dsp0|counter_w                 ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|AudPlayer:player0|Selector2           ;
+; 12:1               ; 4 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |DE2_115|Top:top0|AudRecorder:recorder0|Selector3       ;
+; 13:1               ; 4 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; No         ; |DE2_115|Top:top0|Selector7                             ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; No         ; |DE2_115|Top:top0|Selector3                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 
 
@@ -804,28 +805,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 480                         ;
-; cycloneiii_ff         ; 196                         ;
-;     CLR               ; 85                          ;
+; cycloneiii_ff         ; 194                         ;
+;     CLR               ; 84                          ;
 ;     CLR SLD           ; 20                          ;
-;     ENA CLR           ; 70                          ;
-;     ENA CLR SCLR      ; 21                          ;
+;     ENA CLR           ; 49                          ;
+;     ENA CLR SCLR      ; 41                          ;
 ; cycloneiii_io_obuf    ; 141                         ;
-; cycloneiii_lcell_comb ; 764                         ;
-;     arith             ; 202                         ;
+; cycloneiii_lcell_comb ; 806                         ;
+;     arith             ; 221                         ;
 ;         2 data inputs ; 59                          ;
-;         3 data inputs ; 143                         ;
-;     normal            ; 562                         ;
+;         3 data inputs ; 162                         ;
+;     normal            ; 585                         ;
 ;         0 data inputs ; 22                          ;
 ;         1 data inputs ; 6                           ;
 ;         2 data inputs ; 91                          ;
-;         3 data inputs ; 152                         ;
-;         4 data inputs ; 291                         ;
+;         3 data inputs ; 168                         ;
+;         4 data inputs ; 298                         ;
 ; cycloneiii_mac_mult   ; 1                           ;
 ; cycloneiii_mac_out    ; 1                           ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 61.40                       ;
-; Average LUT depth     ; 22.73                       ;
+; Average LUT depth     ; 22.40                       ;
 +-----------------------+-----------------------------+
 
 
@@ -844,7 +845,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
-    Info: Processing started: Wed Apr 29 03:31:27 2026
+    Info: Processing started: Wed Apr 29 16:08:33 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
 Info (11104): Parallel Compilation has detected 12 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 6 of the 6 physical processors detected instead.
 Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/lab3/src/audrecorder.sv
@@ -949,14 +950,14 @@ Warning (10230): Verilog HDL assignment warning at I2cInitializer.sv(40): trunca
 Warning (10230): Verilog HDL assignment warning at I2cInitializer.sv(97): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at I2cInitializer.sv(115): truncated value with size 32 to match size of target (4)
 Info (12128): Elaborating entity "AudDSP" for hierarchy "Top:top0|AudDSP:dsp0"
-Warning (10230): Verilog HDL assignment warning at AudDSP.sv(99): truncated value with size 32 to match size of target (21)
 Warning (10230): Verilog HDL assignment warning at AudDSP.sv(101): truncated value with size 32 to match size of target (21)
-Warning (10230): Verilog HDL assignment warning at AudDSP.sv(104): truncated value with size 21 to match size of target (20)
-Warning (10230): Verilog HDL assignment warning at AudDSP.sv(168): truncated value with size 33 to match size of target (21)
-Warning (10230): Verilog HDL assignment warning at AudDSP.sv(169): truncated value with size 21 to match size of target (16)
-Warning (10230): Verilog HDL assignment warning at AudDSP.sv(200): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at AudDSP.sv(103): truncated value with size 32 to match size of target (21)
+Warning (10230): Verilog HDL assignment warning at AudDSP.sv(106): truncated value with size 21 to match size of target (20)
+Warning (10230): Verilog HDL assignment warning at AudDSP.sv(170): truncated value with size 33 to match size of target (21)
+Warning (10230): Verilog HDL assignment warning at AudDSP.sv(171): truncated value with size 21 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at AudDSP.sv(202): truncated value with size 32 to match size of target (4)
 Info (12128): Elaborating entity "AudPlayer" for hierarchy "Top:top0|AudPlayer:player0"
-Warning (10230): Verilog HDL assignment warning at AudPlayer.sv(34): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at AudPlayer.sv(39): truncated value with size 32 to match size of target (4)
 Info (12128): Elaborating entity "AudRecorder" for hierarchy "Top:top0|AudRecorder:recorder0"
 Warning (10230): Verilog HDL assignment warning at AudRecorder.sv(68): truncated value with size 32 to match size of target (5)
 Warning (10230): Verilog HDL assignment warning at AudRecorder.sv(69): truncated value with size 32 to match size of target (20)
@@ -1344,7 +1345,10 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HSMC_TX_D_P[15]" is stuck at GND
     Warning (13410): Pin "HSMC_TX_D_P[16]" is stuck at GND
 Warning (332009): The launch and latch times for the relationship between source clock: pll0|altpll_0|sd1|pll7|clk[1] and destination clock: AUD_BCLK are outside of the legal time range. The relationship difference is correct, however the launch time is set to 0.
+Warning (332009): The launch and latch times for the relationship between source clock: pll0|altpll_0|sd1|pll7|clk[1] and destination clock: AUD_BCLK are outside of the legal time range. The relationship difference is correct, however the launch time is set to 0.
 Info (286030): Timing-Driven Synthesis is running
+Warning (332009): The launch and latch times for the relationship between source clock: pll0|altpll_0|sd1|pll7|clk[1] and destination clock: AUD_BCLK are outside of the legal time range. The relationship difference is correct, however the launch time is set to 0.
+Warning (332009): The launch and latch times for the relationship between source clock: pll0|altpll_0|sd1|pll7|clk[1] and destination clock: AUD_BCLK are outside of the legal time range. The relationship difference is correct, however the launch time is set to 0.
 Warning (332009): The launch and latch times for the relationship between source clock: pll0|altpll_0|sd1|pll7|clk[1] and destination clock: AUD_BCLK are outside of the legal time range. The relationship difference is correct, however the launch time is set to 0.
 Warning (332009): The launch and latch times for the relationship between source clock: pll0|altpll_0|sd1|pll7|clk[1] and destination clock: AUD_BCLK are outside of the legal time range. The relationship difference is correct, however the launch time is set to 0.
 Info (17049): 11 registers lost all their fanouts during netlist optimizations.
@@ -1432,18 +1436,18 @@ Warning (21074): Design contains 80 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[14]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[15]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[16]"
-Info (21057): Implemented 1276 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1302 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 91 input pins
     Info (21059): Implemented 248 output pins
     Info (21060): Implemented 141 bidirectional pins
-    Info (21061): Implemented 793 logic cells
+    Info (21061): Implemented 819 logic cells
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 2 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 499 warnings
-    Info: Peak virtual memory: 4891 megabytes
-    Info: Processing ended: Wed Apr 29 03:31:43 2026
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 502 warnings
+    Info: Peak virtual memory: 4918 megabytes
+    Info: Processing ended: Wed Apr 29 16:08:49 2026
     Info: Elapsed time: 00:00:16
-    Info: Total CPU time (on all processors): 00:00:24
+    Info: Total CPU time (on all processors): 00:00:25
 
 
 +------------------------------------------+
