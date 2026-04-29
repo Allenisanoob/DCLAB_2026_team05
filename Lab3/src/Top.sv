@@ -68,6 +68,7 @@ parameter S_STOP	   = 6;
 parameter S_WAIT_R	   = 7; // wait for record
 parameter S_WAIT_P	   = 8; // wait for play
 
+
 logic i2c_oen, i2c_sdat;
 logic [19:0] addr_record, addr_play;
 logic signed [15:0] data_record, data_play, dac_data;
@@ -86,11 +87,11 @@ assign display_ms = (state_r == S_RECD || state_r == S_RECD_PAUSE) ? ms_record :
 // 拆解位數 (BCD Conversion)
 logic [3:0] d0, d1, d2, d3, d4, d5;
 assign d0 = display_ms % 10;            // 毫秒個位
-assign d1 = (display_ms / 10) % 10;     // 毫秒十位
-assign d2 = (display_ms / 100) % 10;    // 毫秒百位
-assign d3 = (display_ms / 1000) % 10;   // 秒個位
-assign d4 = (display_ms / 10000) % 10;  // 秒十位
-assign d5 = 4'd0;                       // 百位固定為 0 (或可顯示最高位)
+assign d1 = (display_ms < 10) ? 4'hA : (display_ms / 10) % 10;     // 毫秒十位
+assign d2 = (display_ms < 100) ? 4'hA : (display_ms / 100) % 10;    // 毫秒百位
+assign d3 = (display_ms < 1000) ? 4'hA : (display_ms / 1000) % 10;   // 秒個位
+assign d4 = (display_ms < 10000) ? 4'hA : (display_ms / 10000) % 10;  // 秒十位
+assign d5 = (display_ms < 100000) ? 4'hA : (display_ms / 10000) % 10;  // 百位可顯示最高位
 
 logic signed [15:0] current_signal, current_volume;
 
