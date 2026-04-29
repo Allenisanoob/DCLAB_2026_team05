@@ -183,6 +183,7 @@ Top top0(
 	.i_speed(SW[2:0]),
 	.i_fast(SW[3]),
 	.i_slow_mode(SW[4]),
+	.i_backward_mode(SW[5]), // play backward
 	// design how user can decide mode on your own
 	
 	// AudDSP and SRAM
