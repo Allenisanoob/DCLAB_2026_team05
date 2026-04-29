@@ -258,8 +258,13 @@ always_ff @(posedge i_clk or negedge i_rst_n) begin
             S_PLAY: begin
                 if (cnt_1ms >= 16'd50_000) begin
                     cnt_1ms <= 16'd0;
-                    if (ms_play < 16'd32_000) ms_play <= ms_play + 1'b1;
-                end else begin
+				end
+				if (ms_play >= ms_record) begin 
+            				ms_play <= 16'd0;
+        		end else begin
+                    //if (ms_play < 16'd32_000) 
+					ms_play <= ms_play + 1'b1;
+                //end else begin
                     cnt_1ms <= cnt_1ms + 1'b1;
                 end
             end
