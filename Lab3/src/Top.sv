@@ -32,7 +32,7 @@ module Top (
 	output o_AUD_DACDAT,
 	// LED state display
 	output [15:0] o_state_led,
-	output [7:0] o_state_led_volume
+	output [7:0] o_state_led_volume,
 
 	//SevenHexDecoder
 	output [6:0] o_HEX0, // 毫秒個位 (0.001s)
