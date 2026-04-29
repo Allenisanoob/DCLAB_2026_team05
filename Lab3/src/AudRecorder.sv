@@ -64,7 +64,7 @@ module AudRecorder (
             RIGHT: begin
                 if (!i_lrc) state_w = LEFT;
                 if (i_pause) is_pause_w = 1'b1;
-                if (i_stop || addr_r == 20'd1048575) is_stop_w = 1'b1;
+                if (i_stop || addr_r == 20'd1048574) is_stop_w = 1'b1;
                 if (counter_r < 16) counter_w = counter_r + 1;
                 if (state_w == LEFT && counter_r >= 15) addr_w = addr_r + 1;
                 if (counter_r < 16) data_w[15 - counter_r] = i_data;
