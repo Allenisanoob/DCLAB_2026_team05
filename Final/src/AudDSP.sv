@@ -69,7 +69,7 @@ module AudDSP (
                 if (state_w == RIGHT) get_cnt_w = 0;
                 else if (state_w == LEFT && get_cnt_r < 3)  get_cnt_w = get_cnt_r + 1;
                 if (get_cnt_r == 0) begin
-                    addr_R_w = (addr_R_r >= 20'd524288 + i_stop_addr) ? 20'd524288 : (addr_R_r + 1);
+                    addr_R_w = (addr_R_r + 1 >= 20'd524288 + i_stop_addr) ? 20'd524288 : (addr_R_r + 1);
                 end else if (get_cnt_r == 2) begin
                     data_w = i_sram_data;
                 end else if (get_cnt_r == 3) begin
@@ -85,7 +85,7 @@ module AudDSP (
                 if (state_w == LEFT) get_cnt_w = 0;
                 else if (state_w == RIGHT && get_cnt_r < 3)  get_cnt_w = get_cnt_r + 1;
                 if (get_cnt_r == 0) begin
-                    addr_L_w = (addr_L_r >= i_stop_addr) ? 20'd0 : (addr_L_r + 1);
+                    addr_L_w = (addr_L_r + 1 >= i_stop_addr) ? 20'd0 : (addr_L_r + 1);
                 end else if (get_cnt_r == 2) begin
                     data_w = i_sram_data;
                 end else if (get_cnt_r == 3) begin

@@ -8,7 +8,8 @@ module AudRecorder (
     input                i_data,
     output        [19:0] o_address,
     output signed [15:0] o_data
-    output               o_sram_we_n;
+    output               o_sram_we_n,
+    output        [19:0] o_stop_addr
 );
     localparam IDLE  = 3'd0;
     localparam PAUSE = 3'd1;
@@ -32,27 +33,28 @@ module AudRecorder (
     assign o_en_L      = (state_r == LEFT && counter_r == 16);
     assign o_en_R      = (state_r == RIGHT && counter_r == 16);
     assign o_sram_we_n = !(o_en_L || o_en_R);
+    assign o_stop_addr = addr_L_r;
 
     always_comb begin
-        state_w    = state_r;
-        is_pause_w = is_pause_r;
-        is_stop_w  = is_stop_r;
-        counter_w  = counter_r;
-        addr_L_w   = addr_L_r;
-        addr_R_w   = addr_R_r;
-        data_L_w   = data_L_r;
-        data_R_w   = data_R_r;
+        state_w     = state_r;
+        is_pause_w  = is_pause_r;
+        is_stop_w   = is_stop_r;
+        counter_w   = counter_r;
+        addr_L_w    = addr_L_r;
+        addr_R_w    = addr_R_r;
+        data_L_w    = data_L_r;
+        data_R_w    = data_R_r;
 
         case (state_r)
             IDLE: begin
                 if (i_start) state_w = PAUSE;
-                is_pause_w = 1'b1;
-                is_stop_w  = 1'b0;
-                counter_w  = 5'd0;
-                addr_L_w   = 20'd0;
-                addr_R_w   = 20'd524288;
-                data_L_w   = 16'd0;
-                data_R_w   = 16'd0;
+                is_pause_w  = 1'b1;
+                is_stop_w   = 1'b0;
+                counter_w   = 5'd0;
+                addr_L_w    = 20'd0;
+                addr_R_w    = 20'd524288;
+                data_L_w    = 16'd0;
+                data_R_w    = 16'd0;
             end
             PAUSE: begin
                 if (is_stop_r) state_w = STOP;
@@ -65,8 +67,8 @@ module AudRecorder (
                 data_R_w = 16'd0;
             end
             LEFT: begin
-                if (is_stop_r) state_w = STOP;
-                else if (is_pause_r) state_w = PAUSE;
+                if (is_stop_r && counter_r == 17) state_w = STOP;
+                else if (is_pause_r && counter_r == 17) state_w = PAUSE;
                 else if (i_lrc) state_w = RIGHT;
                 if (i_pause) is_pause_w = 1'b1;
                 if (i_stop || addr_L_r == 20'd5242847) is_stop_w = 1'b1;
@@ -76,8 +78,8 @@ module AudRecorder (
                 if (counter_r < 16) data_L_w[15 - counter_r] = i_data;
             end
             RIGHT: begin
-                if (is_stop_r) state_w = STOP;
-                else if (is_pause_r) state_w = PAUSE;
+                if (is_stop_r && counter_r == 17) state_w = STOP;
+                else if (is_pause_r && counter_r == 17) state_w = PAUSE;
                 else if (!i_lrc) state_w = LEFT;
                 if (i_pause) is_pause_w = 1'b1;
                 if (i_stop || addr_R_r == 20'd1048575) is_stop_w = 1'b1;
@@ -106,15 +108,15 @@ module AudRecorder (
             data_R_r   <= 16'd0;
             lrc_prev_r <= i_lrc;
         end else begin
-            state_r    <= state_w;
-            is_pause_r <= is_pause_w;
-            is_stop_r  <= is_stop_w;
-            counter_r  <= counter_w;
-            addr_L_r   <= addr_L_w;
-            addr_R_r   <= addr_R_w;
-            data_L_r   <= data_L_w;
-            data_R_r   <= data_R_w;
-            lrc_prev_r <= i_lrc;
+            state_r     <= state_w;
+            is_pause_r  <= is_pause_w;
+            is_stop_r   <= is_stop_w;
+            counter_r   <= counter_w;
+            addr_L_r    <= addr_L_w;
+            addr_R_r    <= addr_R_w;
+            data_L_r    <= data_L_w;
+            data_R_r    <= data_R_w;
+            lrc_prev_r  <= i_lrc;
         end
     end
 endmodule
