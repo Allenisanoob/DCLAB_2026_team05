@@ -9,7 +9,8 @@
 
 // single module
 2-1. overdrive 破音
-2-2. fuzz
+2-2. distortion
+2-3. fuzz
 
 // multiple module
 3-1. delay
@@ -23,7 +24,17 @@
 5. Wah, ...
 
 ////
-	II - Drum  Machine
+	II - Computer User Interface (Optional)
+////
+
+////
+	III - Hardware (Optional)
+////
+
+EXTRA
+
+////
+	IV - Drum  Machine
 ////
 1. Store sample on board and play (once)
 2. Play fixed sequence at fixed speed
@@ -31,15 +42,7 @@
 4. Multiple sample, configurable sequence, configurable speed
 
 ////
-	III - Combine 2 Projects
-////
-
-////
-	IV - Computer User Interface (Optional)
-////
-
-////
-	V - Hardware (Optional)
+	V - Combine 2 Projects
 ////
 
 ////
