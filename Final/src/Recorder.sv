@@ -8,15 +8,15 @@ module Recorder (
 );
 
     localparam IDLE  = 2'd0;
-    localparam RIGHT = 2'd1;
-    localparam LEFT  = 2'd2;
+    localparam LEFT = 2'd1;
+    localparam RIGHT  = 2'd2;
 
     logic [1:0]  state_r, state_w;
     logic [4:0]  counter_r, counter_w;
     logic signed [15:0] data_r, data_w;
     
     assign o_raw_data  = data_r;
-    assign o_R2D_valid = (state_r == RIGHT && counter_r == 16) ? 1'b0 : 1'b1;
+    assign o_R2D_valid = (state_r == LEFT && counter_r == 16) ? 1'b0 : 1'b1;
 
     always_comb begin
         state_w    = state_r;
@@ -25,17 +25,17 @@ module Recorder (
 
         case (state_r)
             IDLE: begin
-                if (!i_ADC_LRCK) state_w = LEFT;
+                if (i_ADC_LRCK) state_w = RIGHT;
                 counter_w = 5'd0;
                 data_w = 16'd0;
             end
-            LEFT: begin
-                if (i_ADC_LRCK) state_w = RIGHT;
+            RIGHT: begin
+                if (!i_ADC_LRCK) state_w = LEFT;
                 counter_w = 5'd0;
                 //data_w = 16'd0;
             end
-            RIGHT: begin
-                if (!i_ADC_LRCK) state_w = LEFT;
+            LEFT: begin
+                if (i_ADC_LRCK) state_w = RIGHT;
                 if (counter_r < 17) begin
                 counter_w = counter_r + 1;
                 data_w[15 - counter_r] = i_ADC_DAT;
