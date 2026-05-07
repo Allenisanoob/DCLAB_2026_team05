@@ -1,7 +1,7 @@
 module Player (
     input         i_rst,
     input         i_BCLK,
-    input         i_daclrck,
+    input         i_DAC_LRCK,
     input         i_en,
     input  [15:0] i_dac_data,
     output        o_aud_dacdat
@@ -41,7 +41,7 @@ module Player (
                 //o_aud_dacdat_w = i_dac_data_r[15];
             end
             WAIT: begin
-                if (i_daclrck) state_w = IDLE;
+                if (i_DAC_LRCK) state_w = IDLE;
             end
         endcase
     end
