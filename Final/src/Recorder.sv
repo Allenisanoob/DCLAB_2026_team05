@@ -1,4 +1,4 @@
-module AudRecorder (
+module Recorder (
     input         i_rst,
     input         i_BCLK,
     input         i_ADC_LRCK,
