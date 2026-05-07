@@ -5,7 +5,8 @@ module Player (
     input         i_en,
     input  [15:0] i_out_data,
     output        o_DAC_DAT,
-    output        B2P_rq
+    output        o_B2P_request_l,
+    output        o_B2P_request_r,
 );
     localparam IDLE = 2'd0;
     localparam SEND = 2'd1;
