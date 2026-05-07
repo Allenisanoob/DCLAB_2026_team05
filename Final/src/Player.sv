@@ -4,7 +4,8 @@ module Player (
     input         i_DAC_LRCK,
     input         i_en,
     input  [15:0] i_dac_data,
-    output        o_aud_dacdat
+    output        o_aud_dacdat,
+    output        B2P_rq
 );
     localparam IDLE = 2'd0;
     localparam SEND = 2'd1;
