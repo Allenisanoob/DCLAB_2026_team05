@@ -2,48 +2,46 @@ module Player (
     input         i_rst,
     input         i_BCLK,
     input         i_DAC_LRCK,
-    input         i_en,
     input  [15:0] i_out_data,
     output        o_DAC_DAT,
     output        o_B2P_request_l,
-    output        o_B2P_request_r,
+    output        o_B2P_request_r
 );
-    localparam IDLE = 2'd0;
-    localparam SEND = 2'd1;
-    localparam WAIT = 2'd2;
+    localparam IDLE = 1'd0;
+    localparam SEND = 1'd1;
 
-    logic [1:0]  state_r, state_w;
+    logic        state_r, state_w;
     logic [3:0]  counter_r, counter_w;
-    logic [15:0]  o_DAC_DAT_r, o_DAC_DAT_w;
-    //logic       o_DAC_DAT_r, o_DAC_DAT_w;
-    //logic signed [15:0] i_out_data_r, i_out_data_w;
+    logic [15:0] o_DAC_DAT_r, o_DAC_DAT_w;
+    logic        daclrck_prev_r;
+    logic        lrc_edge;
 
-    assign o_DAC_DAT = o_DAC_DAT_r[15];
-    //assign o_DAC_DAT = o_DAC_DAT_r;
+    assign o_DAC_DAT   = o_DAC_DAT_r[15];
+    assign lrc_edge    = (i_DAC_LRCK != daclrck_prev_r);
 
     always_comb begin
-        state_w        = state_r;
-        counter_w      = counter_r;
-        o_DAC_DAT_w = o_DAC_DAT_r;
-        //i_out_data_w   = i_out_data_r;
+        state_w         = state_r;
+        counter_w       = counter_r;
+        o_DAC_DAT_w     = o_DAC_DAT_r;
+        o_B2P_request_l = 1'b0; 
+        o_B2P_request_r = 1'b0; 
 
         case(state_r)
             IDLE: begin
-                if (i_en) begin
+                if (lrc_edge) begin
                     state_w = SEND;
                     o_DAC_DAT_w = i_out_data;
                 end
                 counter_w = 4'd0;
-                //i_out_data_w = i_out_data;
             end
             SEND: begin
-                if (counter_r == 15) state_w = WAIT;
+                if (counter_r == 15) begin 
+                    state_w = IDLE;
+                    if (i_DAC_LRCK) o_B2P_request_l = 1'b1;
+                    else o_B2P_request_r = 1'b1;
+                end
                 counter_w = counter_r + 1;
                 o_DAC_DAT_w = o_DAC_DAT_r << 1;
-                //o_DAC_DAT_w = i_out_data_r[15];
-            end
-            WAIT: begin
-                if (i_DAC_LRCK) state_w = IDLE;
             end
         endcase
     end
@@ -52,13 +50,13 @@ module Player (
         if (!i_rst) begin
             state_r        <= IDLE;
             counter_r      <= 4'd0;
-            o_DAC_DAT_r <= 1'b0;
-            //i_out_data_r   <= 16'd0;
+            o_DAC_DAT_r    <= 16'd0;
+            daclrck_prev_r <= i_DAC_LRCK;
         end else begin
             state_r        <= state_w;
             counter_r      <= counter_w;
-            o_DAC_DAT_r <= o_DAC_DAT_w;
-            //i_out_data_r   <= i_out_data_w;
+            o_DAC_DAT_r    <= o_DAC_DAT_w;
+            daclrck_prev_r <= i_DAC_LRCK;
         end
     end
 endmodule
