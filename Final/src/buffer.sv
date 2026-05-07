@@ -17,31 +17,31 @@ module buffer(
 
     assign o_data = out_data;
 
-    always @(posedge i_clk or posedge i_rst) begin
+    always_ff @(posedge i_clk or posedge i_rst) begin
         if (i_rst) begin
-            buf_ptr_w <= 0;
+            buf_ptr_w   <= 0;
             buf_ptr_r_l <= 0;
             buf_ptr_r_r <= 0;
-            fifo_cnt <= 0;
-            out_data <= 0;
-            is_read_l <= 0;
-            is_read_r <= 0;
+            fifo_cnt    <= 0;
+            out_data    <= 0;
+            is_read_l   <= 0;
+            is_read_r   <= 0;
         end else begin
             if (i_D2B_valid && !fifo_cnt[5] && !fifo_cnt[0]) begin
                 buf_data_l[buf_ptr_w] <= i_buf_data_l;
                 buf_data_r[buf_ptr_w] <= i_buf_data_r;
-                buf_ptr_w <= buf_ptr_w + 1;
-                fifo_cnt <= fifo_cnt + 2;
+                buf_ptr_w             <= buf_ptr_w + 1;
+                fifo_cnt              <= fifo_cnt + 2;
             end else if (i_B2P_request_l && fifo_cnt > 0 && !is_read_l) begin
-                out_data <= buf_data_l[buf_ptr_r_l];
+                out_data    <= buf_data_l[buf_ptr_r_l];
                 buf_ptr_r_l <= buf_ptr_r_l + 1;
-                fifo_cnt <= fifo_cnt - 1;
-                is_read_l <= 1;
+                fifo_cnt    <= fifo_cnt - 1;
+                is_read_l   <= 1;
             end else if (i_B2P_request_r && fifo_cnt > 0 && !is_read_r) begin
-                out_data <= buf_data_r[buf_ptr_r_r];
+                out_data    <= buf_data_r[buf_ptr_r_r];
                 buf_ptr_r_r <= buf_ptr_r_r + 1;
-                fifo_cnt <= fifo_cnt - 1;
-                is_read_r <= 1;
+                fifo_cnt    <= fifo_cnt - 1;
+                is_read_r   <= 1;
             end
             if (!i_B2P_request_l) is_read_l <= 0;
             if (!i_B2P_request_r) is_read_r <= 0;
