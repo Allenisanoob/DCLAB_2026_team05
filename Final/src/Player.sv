@@ -1,6 +1,6 @@
 module Player (
-    input         i_rst_n,
-    input         i_bclk,
+    input         i_rst,
+    input         i_BCLK,
     input         i_daclrck,
     input         i_en,
     input  [15:0] i_dac_data,
@@ -46,8 +46,8 @@ module Player (
         endcase
     end
 
-    always_ff @(negedge i_bclk or negedge i_rst_n) begin
-        if (!i_rst_n) begin
+    always_ff @(negedge i_BCLK or negedge i_rst) begin
+        if (!i_rst) begin
             state_r        <= IDLE;
             counter_r      <= 4'd0;
             o_aud_dacdat_r <= 1'b0;
