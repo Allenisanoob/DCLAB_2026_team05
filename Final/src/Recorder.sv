@@ -36,7 +36,7 @@ module Recorder (
             end
             RIGHT: begin
                 if (!i_ADC_LRCK) state_w = LEFT;
-                if (counter_r < 16) begin
+                if (counter_r < 17) begin
                 counter_w = counter_r + 1;
                 data_w[15 - counter_r] = i_ADC_DAT;
                 end
