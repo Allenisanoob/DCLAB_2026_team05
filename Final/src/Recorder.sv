@@ -16,7 +16,7 @@ module Recorder (
     logic signed [15:0] data_r, data_w;
     
     assign o_raw_data  = data_r;
-    assign o_R2D_valid = (state_r == LEFT && counter_r == 16) ? 1'b0 : 1'b1;
+    assign o_R2D_valid = (state_r == LEFT && counter_r == 16) ? 1'b1 : 1'b0;
 
     always_comb begin
         state_w    = state_r;
