@@ -32,7 +32,7 @@ module AudRecorder (
             LEFT: begin
                 if (i_ADC_LRCK) state_w = RIGHT;
                 counter_w = 5'd0;
-                data_w = 16'd0;
+                //data_w = 16'd0;
             end
             RIGHT: begin
                 if (!i_ADC_LRCK) state_w = LEFT;
