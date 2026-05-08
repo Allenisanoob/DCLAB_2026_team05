@@ -218,7 +218,12 @@ module sram_scheduler(
                     else state_w = PROC_R;
                 end
             end
-            PROC_W : 
+            PROC_W : begin
+                if (counter_r == 6) begin
+                    state_w = IDLE;
+                end
+                counter_w = counter_r + 1;
+            end
             PROC_R : begin
                 if (counter_r == 5) begin
                     case (req_buffer[buf_ptr_i][38:37])
@@ -239,8 +244,14 @@ module sram_scheduler(
                             o_B3_r_data_w     = i_sram_data;
                         end
                     endcase
+                end else if (counter_r == 6) begin
+                    state_w = IDLE;
                 end
                 counter_w = counter_r + 1;
+            end
+            default : begin
+                state_w = IDLE;
+                counter_w = 0;
             end
         endcase
     end
@@ -310,6 +321,10 @@ module sram_scheduler(
                     // do nothing
                 end
             endcase
+        end
+        if ((state_r == PROC_R || state_r == PROC_W) && counter_r == 6) begin
+            buf_ptr_i <= buf_ptr_i + 1;
+            fifo_cnt  <= fifo_cnt - 1;
         end
     end
 endmodule
