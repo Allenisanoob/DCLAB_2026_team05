@@ -11,15 +11,20 @@ RECORDER
 DSP
 	I - i_clk
 	I - i_rst
+	I - i_R2D_valid
+	I - [15:0] i_raw_data
+	O - [15:0] o_final_data_l
+	O - [15:0] o_final_data_r
+	O - o_D2B_valid
 	
-	Without SRAM
+	Blocks Without SRAM
 		I - i_prev_valid
 		I - [15:0] i_data
 		I - other control signals
 		O - o_next_valid
 		O - [15:0] o_data
 		
-	With SRAM
+	Blocks With SRAM
 		// all above
 		I - [15:0] i_SRAM_r_data //read
 		O - [15:0] o_SRAM_r_addr //read
