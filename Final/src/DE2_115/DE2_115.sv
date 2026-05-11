@@ -143,7 +143,7 @@ logic [15:0] state_led;
 logic [7:0] state_led_volume;
 assign AUD_XCK = CLK_12M;
 
-lab3_qsys pll0( // generate with qsys, please follow lab2 tutorials
+final_qsys pll0( // generate with qsys, please follow lab2 tutorials
 	.clk_clk(CLOCK_50),
 	.reset_reset_n(KEY[3]),
 	.altpll_12m_clk(CLK_12M),
