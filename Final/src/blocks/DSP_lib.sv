@@ -46,6 +46,68 @@ module Data_Catcher (
 
 endmodule
 
+module Reverb_basic(
+    input i_clk,
+    input i_rst,
+    input i_valid,
+    input [7:0] r, // Q0.8
+    input [7:0] i_freq, // Q0.8
+    input [7:0] w_rate, // Q0.8
+    input signed [15:0] i_data,
+    output o_valid,
+    output signed [15:0] o_data
+
+    logic        [7:0]  w_rate_r;
+    logic signed [15:0] y0, y1, y2; // y0 -> y[n], y1 -> y[n-1], y2 -> y[n-2]
+    logic signed [15:0] x0, x1; // x0 -> x[n], x1 -> x[n-1]
+    logic signed [17:0] A; // Q2.16
+    logic        [15:0] B; // Q0.16
+    logic signed [7:0]  cos_val; // Q2.6
+    logic               valid_reg_1, valid_reg_2;
+
+    assign o_data = y0;
+    assign o_valid = valid_reg_2;
+    
+    cosine cosine_0 (
+        .f(i_freq),
+        .cos_2pif(cos_val)
+    );
+    
+    always_comb begin
+        A = $signed({$signed(r * cos_val), 2'b00}); // Q2.16
+        B = r * r; // Q0.16
+    end
+
+    always_ff @(posedge i_clk or negedge i_rst) begin
+        if (!i_rst) begin
+            w_rate_r <= 8'b0;
+            y0 <= 16'b0;
+            y1 <= 16'b0;
+            y2 <= 16'b0;
+            x0 <= 16'b0;
+            x1 <= 16'b0;
+            valid_reg_1 <= 1'b0;
+            valid_reg_2 <= 1'b0;
+        end else if (i_valid) begin
+            w_rate_r <= w_rate;
+            // y0 still needs to be updated
+            y0 <= $signed($signed($signed(($signed(2 * A * y1) - $signed(B * y2) + x0 - $signed(A * x1))) * w_rate_r) + $signed(x0 * (~w_rate_r + 1'b1))); // Q2.16 -> Q2.0 -> Q15.16 -> Q15.0
+            y1 <= y0;
+            y2 <= y1;
+            if (i_valid) begin
+                x0 <= i_data;
+            end else begin
+                x0 <= 16'b0;
+            end
+            x1 <= x0;
+            valid_reg_1 <= i_valid;
+            valid_reg_2 <= valid_reg_1;
+        end
+    end
+);
+
+endmodule
+
 module cosine(
     input         [7:0] f, // Q0.8
     output signed [7:0] cos_2pif // Q2.6
