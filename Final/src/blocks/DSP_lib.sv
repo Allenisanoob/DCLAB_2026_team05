@@ -45,3 +45,97 @@ module Data_Catcher (
     end
 
 endmodule
+
+module cosine(
+    input         [7:0] f, // Q0.8
+    output signed [7:0] cos_2pif // Q2.6
+);
+    logic        [5:0] tran_f;
+    logic signed [7:0] cos_LUT;
+
+    assign cos_2pif = (f[7] == f[6]) ? cos_LUT : -cos_LUT;
+
+    always_comb begin
+        if (f[5:0] == 6'b000000) begin
+            case (f[7:6])
+                2'b00: cos_LUT = 8'b01000000; // 1.0
+                2'b01: cos_LUT = 8'b00000000; // 0.0
+                2'b10: cos_LUT = 8'b11000000; // -1.0
+                2'b11: cos_LUT = 8'b00000000; // 0.0
+            endcase
+        end else begin
+            case (f[7:6])
+                2'b00: tran_f = f[5:0];
+                2'b01: tran_f = (~f[5:0]) + 1'b1;
+                2'b10: tran_f = f[5:0];
+                2'b11: tran_f = (~f[5:0]) + 1'b1;
+            endcase
+            case (tran_f)
+                6'b000001: cos_LUT = 8'b01000000;
+                6'b000010: cos_LUT = 8'b01000000;
+                6'b000011: cos_LUT = 8'b01000000;
+                6'b000100: cos_LUT = 8'b01000000;
+                6'b000101: cos_LUT = 8'b01000000;
+                6'b000110: cos_LUT = 8'b00111111;
+                6'b000111: cos_LUT = 8'b00111111;
+                6'b001000: cos_LUT = 8'b00111111;
+                6'b001001: cos_LUT = 8'b00111110;
+                6'b001010: cos_LUT = 8'b00111110;
+                6'b001011: cos_LUT = 8'b00111110;
+                6'b001100: cos_LUT = 8'b00111101;
+                6'b001101: cos_LUT = 8'b00111101;
+                6'b001110: cos_LUT = 8'b00111100;
+                6'b001111: cos_LUT = 8'b00111100;
+                6'b010000: cos_LUT = 8'b00111011;
+                6'b010001: cos_LUT = 8'b00111011;
+                6'b010010: cos_LUT = 8'b00111010;
+                6'b010011: cos_LUT = 8'b00111001;
+                6'b010100: cos_LUT = 8'b00111000;
+                6'b010101: cos_LUT = 8'b00111000;
+                6'b010110: cos_LUT = 8'b00110111;
+                6'b010111: cos_LUT = 8'b00110110;
+                6'b011000: cos_LUT = 8'b00110101;
+                6'b011001: cos_LUT = 8'b00110100;
+                6'b011010: cos_LUT = 8'b00110011;
+                6'b011011: cos_LUT = 8'b00110010;
+                6'b011100: cos_LUT = 8'b00110001;
+                6'b011101: cos_LUT = 8'b00110000;
+                6'b011110: cos_LUT = 8'b00101111;
+                6'b011111: cos_LUT = 8'b00101110;
+                6'b100000: cos_LUT = 8'b00101101;
+                6'b100001: cos_LUT = 8'b00101100;
+                6'b100010: cos_LUT = 8'b00101011;
+                6'b100011: cos_LUT = 8'b00101010;
+                6'b100100: cos_LUT = 8'b00101001;
+                6'b100101: cos_LUT = 8'b00100111;
+                6'b100110: cos_LUT = 8'b00100110;
+                6'b100111: cos_LUT = 8'b00100101;
+                6'b101000: cos_LUT = 8'b00100100;
+                6'b101001: cos_LUT = 8'b00100010;
+                6'b101010: cos_LUT = 8'b00100001;
+                6'b101011: cos_LUT = 8'b00100000;
+                6'b101100: cos_LUT = 8'b00011110;
+                6'b101101: cos_LUT = 8'b00011101;
+                6'b101110: cos_LUT = 8'b00011011;
+                6'b101111: cos_LUT = 8'b00011010;
+                6'b110000: cos_LUT = 8'b00011000;
+                6'b110001: cos_LUT = 8'b00010111;
+                6'b110010: cos_LUT = 8'b00010110;
+                6'b110011: cos_LUT = 8'b00010100;
+                6'b110100: cos_LUT = 8'b00010011;
+                6'b110101: cos_LUT = 8'b00010001;
+                6'b110110: cos_LUT = 8'b00010000;
+                6'b110111: cos_LUT = 8'b00001110;
+                6'b111000: cos_LUT = 8'b00001100;
+                6'b111001: cos_LUT = 8'b00001011;
+                6'b111010: cos_LUT = 8'b00001001;
+                6'b111011: cos_LUT = 8'b00001000;
+                6'b111100: cos_LUT = 8'b00000110;
+                6'b111101: cos_LUT = 8'b00000101;
+                6'b111110: cos_LUT = 8'b00000011;
+                6'b111111: cos_LUT = 8'b00000010;
+                default: cos_LUT = 8'b00000000;
+            endcase
+        end
+    end
+endmodule
