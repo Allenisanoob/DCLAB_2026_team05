@@ -51,31 +51,55 @@ module Reverb_basic(
     input i_rst,
     input i_valid,
     input [7:0] r, // Q0.8
-    input [7:0] i_freq, // Q0.8
+    input [7:0] i_cosw, // Q1.7
     input [7:0] w_rate, // Q0.8
     input signed [15:0] i_data,
     output o_valid,
     output signed [15:0] o_data
 
-    logic        [7:0]  w_rate_r;
+    logic        [7:0]  w_rate_r; // Q0.8
     logic signed [15:0] y0, y1, y2; // y0 -> y[n], y1 -> y[n-1], y2 -> y[n-2]
     logic signed [15:0] x0, x1; // x0 -> x[n], x1 -> x[n-1]
-    logic signed [17:0] A; // Q2.16
+    logic signed [16:0] A; // Q1.16
     logic        [15:0] B; // Q0.16
-    logic signed [7:0]  cos_val; // Q2.6
+    logic signed [33:0] C; // Q18.16
+    logic signed [31:0] D; // Q16.16
+    logic signed [32:0] E; // Q17.16
+    logic signed [35:0] F; // Q20.16
+    logic signed [43:0] G; // Q20.24
+    logic signed [19:0] H; // Q20.0
+    logic signed [15:0] I; // Q16.0
+    logic signed [16:0] J; // Q17.0
+    logic signed [15:0] y0_next; // Q16.0
     logic               valid_reg_1, valid_reg_2;
 
     assign o_data = y0;
     assign o_valid = valid_reg_2;
     
-    cosine cosine_0 (
-        .f(i_freq),
-        .cos_2pif(cos_val)
-    );
-    
     always_comb begin
-        A = $signed({$signed(r * cos_val), 2'b00}); // Q2.16
+        A = $signed({$signed(r * i_cosw), 1'b0}); // Q1.16
         B = r * r; // Q0.16
+        C = $signed(2 * A * y1); // Q18.16
+        D = $signed(B * y2); // Q16.16
+        E = $signed(A * x1); // Q17.16
+        F = $signed(C - D - E); // Q20.16
+        G = $signed(F * w_rate_r); // Q20.24
+        H = $signed(G >>> 24); // Q20.0
+        if (H > 20'sd32767) begin
+            I = 16'sd32767;
+        end else if (H < -20'sd32768) begin
+            I = -16'sd32768;
+        end else begin
+            I = H[15:0]; // Q16.0
+        end
+        J = $signed(I + x0); // Q17.0
+        if (J > 17'sd32767) begin
+            y0_next = 16'sd32767;
+        end else if (J < -17'sd32768) begin
+            y0_next = -16'sd32768;
+        end else begin
+            y0_next = J[15:0]; // Q16.0
+        end
     end
 
     always_ff @(posedge i_clk or negedge i_rst) begin
@@ -90,8 +114,7 @@ module Reverb_basic(
             valid_reg_2 <= 1'b0;
         end else if (i_valid) begin
             w_rate_r <= w_rate;
-            // y0 still needs to be updated
-            y0 <= $signed($signed($signed(($signed(2 * A * y1) - $signed(B * y2) + x0 - $signed(A * x1))) * w_rate_r) + $signed(x0 * (~w_rate_r + 1'b1))); // Q2.16 -> Q2.0 -> Q15.16 -> Q15.0
+            y0 <= y0_next;
             y1 <= y0;
             y2 <= y1;
             if (i_valid) begin
