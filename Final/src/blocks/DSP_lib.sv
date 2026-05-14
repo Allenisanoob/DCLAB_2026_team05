@@ -84,7 +84,7 @@ module Reverb_basic(
         E = $signed(A * x1); // Q17.16
         F = $signed(C - D - E); // Q20.16
         G = $signed(F * w_rate_r); // Q20.24
-        H = $signed(G >>> 24); // Q20.0
+        H = $signed($signed(G >>> 24) + G[23]); // Q20.0
         if (H > 20'sd32767) begin
             I = 16'sd32767;
         end else if (H < -20'sd32768) begin
@@ -131,96 +131,108 @@ module Reverb_basic(
 
 endmodule
 
-module cosine(
-    input         [7:0] f, // Q0.8
-    output signed [7:0] cos_2pif // Q2.6
+module cosine (
+    input         [15:0] f, // Q0.16
+    output signed [15:0] cos_2pif // Q1.15
 );
-    logic        [5:0] tran_f;
-    logic signed [7:0] cos_LUT;
+    logic        [13:0] tran_f;
+    logic        [5:0]  seg_f;
+    logic        [7:0]  frac_f; // Q0.16
+    logic        [18:0] neg_slope_LUT; // Q3.16
+    logic        [15:0] base_LUT; // Q0.16
+    logic        [26:0] diff; // Q0.32
+    logic        [32:0] cos_LUT_temp; // Q1.32
+    logic signed [15:0] cos_LUT; // Q1.15
 
-    assign cos_2pif = (f[7] == f[6]) ? cos_LUT : -cos_LUT;
+    assign seg_f  = tran_f[13:8];
+    assign frac_f = tran_f[7:0];
+    assign cos_2pif = (f[13:0] == 14'd0 || f[15] == f[14]) ? $signed(cos_LUT) : $signed(-cos_LUT);
 
     always_comb begin
-        if (f[5:0] == 6'b000000) begin
-            case (f[7:6])
-                2'b00: cos_LUT = 8'b01000000; // 1.0
-                2'b01: cos_LUT = 8'b00000000; // 0.0
-                2'b10: cos_LUT = 8'b11000000; // -1.0
-                2'b11: cos_LUT = 8'b00000000; // 0.0
+        case (f[15:14])
+            2'b00: tran_f = f[13:0];
+            2'b01: tran_f = (~f[13:0]) + 1'b1;
+            2'b10: tran_f = f[13:0];
+            2'b11: tran_f = (~f[13:0]) + 1'b1;
+        endcase
+        case (seg_f)
+            6'b000000: begin neg_slope_LUT = 19'd5053; base_LUT = 16'd65535; end
+            6'b000001: begin neg_slope_LUT = 19'd15156; base_LUT = 16'd65516; end
+            6'b000010: begin neg_slope_LUT = 19'd25250; base_LUT = 16'd65457; end
+            6'b000011: begin neg_slope_LUT = 19'd35328; base_LUT = 16'd65358; end
+            6'b000100: begin neg_slope_LUT = 19'd45386; base_LUT = 16'd65220; end
+            6'b000101: begin neg_slope_LUT = 19'd55416; base_LUT = 16'd65043; end
+            6'b000110: begin neg_slope_LUT = 19'd65412; base_LUT = 16'd64827; end
+            6'b000111: begin neg_slope_LUT = 19'd75369; base_LUT = 16'd64571; end
+            6'b001000: begin neg_slope_LUT = 19'd85281; base_LUT = 16'd64277; end
+            6'b001001: begin neg_slope_LUT = 19'd95142; base_LUT = 16'd63944; end
+            6'b001010: begin neg_slope_LUT = 19'd104945; base_LUT = 16'd63572; end
+            6'b001011: begin neg_slope_LUT = 19'd114685; base_LUT = 16'd63162; end
+            6'b001100: begin neg_slope_LUT = 19'd124355; base_LUT = 16'd62714; end
+            6'b001101: begin neg_slope_LUT = 19'd133951; base_LUT = 16'd62228; end
+            6'b001110: begin neg_slope_LUT = 19'd143466; base_LUT = 16'd61705; end
+            6'b001111: begin neg_slope_LUT = 19'd152895; base_LUT = 16'd61145; end
+            6'b010000: begin neg_slope_LUT = 19'd162232; base_LUT = 16'd60547; end
+            6'b010001: begin neg_slope_LUT = 19'd171471; base_LUT = 16'd59914; end
+            6'b010010: begin neg_slope_LUT = 19'd180607; base_LUT = 16'd59244; end
+            6'b010011: begin neg_slope_LUT = 19'd189633; base_LUT = 16'd58538; end
+            6'b010100: begin neg_slope_LUT = 19'd198546; base_LUT = 16'd57798; end
+            6'b010101: begin neg_slope_LUT = 19'd207339; base_LUT = 16'd57022; end
+            6'b010110: begin neg_slope_LUT = 19'd216007; base_LUT = 16'd56212; end
+            6'b010111: begin neg_slope_LUT = 19'd224545; base_LUT = 16'd55368; end
+            6'b011000: begin neg_slope_LUT = 19'd232948; base_LUT = 16'd54491; end
+            6'b011001: begin neg_slope_LUT = 19'd241211; base_LUT = 16'd53581; end
+            6'b011010: begin neg_slope_LUT = 19'd249328; base_LUT = 16'd52639; end
+            6'b011011: begin neg_slope_LUT = 19'd257295; base_LUT = 16'd51665; end
+            6'b011100: begin neg_slope_LUT = 19'd265107; base_LUT = 16'd50660; end
+            6'b011101: begin neg_slope_LUT = 19'd272759; base_LUT = 16'd49624; end
+            6'b011110: begin neg_slope_LUT = 19'd280247; base_LUT = 16'd48559; end
+            6'b011111: begin neg_slope_LUT = 19'd287567; base_LUT = 16'd47464; end
+            6'b100000: begin neg_slope_LUT = 19'd294713; base_LUT = 16'd46341; end
+            6'b100001: begin neg_slope_LUT = 19'd301681; base_LUT = 16'd45190; end
+            6'b100010: begin neg_slope_LUT = 19'd308468; base_LUT = 16'd44011; end
+            6'b100011: begin neg_slope_LUT = 19'd315069; base_LUT = 16'd42806; end
+            6'b100100: begin neg_slope_LUT = 19'd321480; base_LUT = 16'd41576; end
+            6'b100101: begin neg_slope_LUT = 19'd327697; base_LUT = 16'd40320; end
+            6'b100110: begin neg_slope_LUT = 19'd333718; base_LUT = 16'd39040; end
+            6'b100111: begin neg_slope_LUT = 19'd339537; base_LUT = 16'd37736; end
+            6'b101000: begin neg_slope_LUT = 19'd345151; base_LUT = 16'd36410; end
+            6'b101001: begin neg_slope_LUT = 19'd350558; base_LUT = 16'd35062; end
+            6'b101010: begin neg_slope_LUT = 19'd355753; base_LUT = 16'd33692; end
+            6'b101011: begin neg_slope_LUT = 19'd360735; base_LUT = 16'd32303; end
+            6'b101100: begin neg_slope_LUT = 19'd365498; base_LUT = 16'd30893; end
+            6'b101101: begin neg_slope_LUT = 19'd370042; base_LUT = 16'd29466; end
+            6'b101110: begin neg_slope_LUT = 19'd374363; base_LUT = 16'd28020; end
+            6'b101111: begin neg_slope_LUT = 19'd378458; base_LUT = 16'd26558; end
+            6'b110000: begin neg_slope_LUT = 19'd382326; base_LUT = 16'd25080; end
+            6'b110001: begin neg_slope_LUT = 19'd385963; base_LUT = 16'd23586; end
+            6'b110010: begin neg_slope_LUT = 19'd389368; base_LUT = 16'd22078; end
+            6'b110011: begin neg_slope_LUT = 19'd392538; base_LUT = 16'd20557; end
+            6'b110100: begin neg_slope_LUT = 19'd395471; base_LUT = 16'd19024; end
+            6'b110101: begin neg_slope_LUT = 19'd398167; base_LUT = 16'd17479; end
+            6'b110110: begin neg_slope_LUT = 19'd400622; base_LUT = 16'd15924; end
+            6'b110111: begin neg_slope_LUT = 19'd402836; base_LUT = 16'd14359; end
+            6'b111000: begin neg_slope_LUT = 19'd404808; base_LUT = 16'd12785; end
+            6'b111001: begin neg_slope_LUT = 19'd406536; base_LUT = 16'd11204; end
+            6'b111010: begin neg_slope_LUT = 19'd408019; base_LUT = 16'd9616; end
+            6'b111011: begin neg_slope_LUT = 19'd409256; base_LUT = 16'd8022; end
+            6'b111100: begin neg_slope_LUT = 19'd410246; base_LUT = 16'd6424; end
+            6'b111101: begin neg_slope_LUT = 19'd410990; base_LUT = 16'd4821; end
+            6'b111110: begin neg_slope_LUT = 19'd411485; base_LUT = 16'd3216; end
+            6'b111111: begin neg_slope_LUT = 19'd411733; base_LUT = 16'd1608; end
+        endcase
+        diff = neg_slope_LUT * frac_f;
+        cos_LUT_temp = {1'b0, base_LUT, 16'b0} - {6'b0, diff};
+        if (f[13:0] == 14'd0) begin
+            cos_LUT = base_LUT;
+            case (f[15:14])
+                2'b00: cos_LUT = 16'h7FFF; // 1.0
+                2'b01: cos_LUT = 16'h0000; // 0.0
+                2'b10: cos_LUT = 16'h8000; // -1.0
+                2'b11: cos_LUT = 16'h0000; // 0.0
             endcase
         end else begin
-            case (f[7:6])
-                2'b00: tran_f = f[5:0];
-                2'b01: tran_f = (~f[5:0]) + 1'b1;
-                2'b10: tran_f = f[5:0];
-                2'b11: tran_f = (~f[5:0]) + 1'b1;
-            endcase
-            case (tran_f)
-                6'b000001: cos_LUT = 8'b01000000;
-                6'b000010: cos_LUT = 8'b01000000;
-                6'b000011: cos_LUT = 8'b01000000;
-                6'b000100: cos_LUT = 8'b01000000;
-                6'b000101: cos_LUT = 8'b01000000;
-                6'b000110: cos_LUT = 8'b00111111;
-                6'b000111: cos_LUT = 8'b00111111;
-                6'b001000: cos_LUT = 8'b00111111;
-                6'b001001: cos_LUT = 8'b00111110;
-                6'b001010: cos_LUT = 8'b00111110;
-                6'b001011: cos_LUT = 8'b00111110;
-                6'b001100: cos_LUT = 8'b00111101;
-                6'b001101: cos_LUT = 8'b00111101;
-                6'b001110: cos_LUT = 8'b00111100;
-                6'b001111: cos_LUT = 8'b00111100;
-                6'b010000: cos_LUT = 8'b00111011;
-                6'b010001: cos_LUT = 8'b00111011;
-                6'b010010: cos_LUT = 8'b00111010;
-                6'b010011: cos_LUT = 8'b00111001;
-                6'b010100: cos_LUT = 8'b00111000;
-                6'b010101: cos_LUT = 8'b00111000;
-                6'b010110: cos_LUT = 8'b00110111;
-                6'b010111: cos_LUT = 8'b00110110;
-                6'b011000: cos_LUT = 8'b00110101;
-                6'b011001: cos_LUT = 8'b00110100;
-                6'b011010: cos_LUT = 8'b00110011;
-                6'b011011: cos_LUT = 8'b00110010;
-                6'b011100: cos_LUT = 8'b00110001;
-                6'b011101: cos_LUT = 8'b00110000;
-                6'b011110: cos_LUT = 8'b00101111;
-                6'b011111: cos_LUT = 8'b00101110;
-                6'b100000: cos_LUT = 8'b00101101;
-                6'b100001: cos_LUT = 8'b00101100;
-                6'b100010: cos_LUT = 8'b00101011;
-                6'b100011: cos_LUT = 8'b00101010;
-                6'b100100: cos_LUT = 8'b00101001;
-                6'b100101: cos_LUT = 8'b00100111;
-                6'b100110: cos_LUT = 8'b00100110;
-                6'b100111: cos_LUT = 8'b00100101;
-                6'b101000: cos_LUT = 8'b00100100;
-                6'b101001: cos_LUT = 8'b00100010;
-                6'b101010: cos_LUT = 8'b00100001;
-                6'b101011: cos_LUT = 8'b00100000;
-                6'b101100: cos_LUT = 8'b00011110;
-                6'b101101: cos_LUT = 8'b00011101;
-                6'b101110: cos_LUT = 8'b00011011;
-                6'b101111: cos_LUT = 8'b00011010;
-                6'b110000: cos_LUT = 8'b00011000;
-                6'b110001: cos_LUT = 8'b00010111;
-                6'b110010: cos_LUT = 8'b00010110;
-                6'b110011: cos_LUT = 8'b00010100;
-                6'b110100: cos_LUT = 8'b00010011;
-                6'b110101: cos_LUT = 8'b00010001;
-                6'b110110: cos_LUT = 8'b00010000;
-                6'b110111: cos_LUT = 8'b00001110;
-                6'b111000: cos_LUT = 8'b00001100;
-                6'b111001: cos_LUT = 8'b00001011;
-                6'b111010: cos_LUT = 8'b00001001;
-                6'b111011: cos_LUT = 8'b00001000;
-                6'b111100: cos_LUT = 8'b00000110;
-                6'b111101: cos_LUT = 8'b00000101;
-                6'b111110: cos_LUT = 8'b00000011;
-                6'b111111: cos_LUT = 8'b00000010;
-                default: cos_LUT = 8'b00000000;
-            endcase
+            cos_LUT = cos_LUT_temp[32:17] + cos_LUT_temp[16]; // Q1.15
         end
     end
 endmodule
