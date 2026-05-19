@@ -4,6 +4,7 @@ module Top (
 	input i_key_0,
 	input i_key_1,
 	input i_key_2,
+	input [17:0] i_sw,
 	
 	// SRAM
 	output [19:0] o_SRAM_ADDR,
@@ -168,7 +169,8 @@ module Top (
 		.o_B3_w_data(B3_w_data),
 		.o_B3_write_req(B3_write_req),
 
-		.i_sram_ready(sram_ready)
+		.i_sram_ready(sram_ready),
+		.sw(i_sw[0])
 	);
 
 	// Buffer

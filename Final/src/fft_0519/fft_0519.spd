@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="simulation/submodules/fft_0519_fft_ii_0_2n4096sin.hex"
+   type="HEX"
+   library="fft_ii_0" />
+ <file
+   path="simulation/submodules/fft_0519_fft_ii_0_3n4096cos.hex"
+   type="HEX"
+   library="fft_ii_0" />
+ <file
+   path="simulation/submodules/fft_0519_fft_ii_0_3n4096sin.hex"
+   type="HEX"
+   library="fft_ii_0" />
+ <file
+   path="simulation/submodules/fft_0519_fft_ii_0_1n4096cos.hex"
+   type="HEX"
+   library="fft_ii_0" />
+ <file
+   path="simulation/submodules/fft_0519_fft_ii_0_2n4096cos.hex"
+   type="HEX"
+   library="fft_ii_0" />
+ <file
+   path="simulation/submodules/fft_0519_fft_ii_0_1n4096sin.hex"
+   type="HEX"
+   library="fft_ii_0" />
+ <file
+   path="simulation/submodules/fft_0519_fft_ii_0.vo"
+   type="VERILOG"
+   library="fft_ii_0" />
+ <file path="simulation/fft_0519.v" type="VERILOG" />
+ <topLevel name="fft_0519" />
+ <deviceFamily name="cycloneive" />
+</simPackage>

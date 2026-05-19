@@ -13,7 +13,7 @@ module overdrive (
     // ==========================================
     logic signed [15:0] tanh_unnorm;
     logic        [15:0] inv_tanh_val;
-    logic signed [31:0] y_norm_full;
+    logic signed [32:0] y_norm_full;
     logic signed [15:0] overdrive_out;
 
     // ==========================================
@@ -34,6 +34,8 @@ module overdrive (
     // 組合邏輯：正規化與飽和保護
     // ==========================================
     always_comb begin
+        overdrive_out = 16'sd0; // 預設輸出為 0
+        y_norm_full = 33'sd0; // 預設未正規化的結果為 0 (使用 33 bits 以防止溢位)
         if (i_gain == 8'd0) begin
             // 當 gain 為 0 時 bypass 原始音訊
             overdrive_out = i_data; 
@@ -43,12 +45,12 @@ module overdrive (
 
             // 2. 將 Q8.24 轉回 Q1.15：加上 256 (即 2^8) 進行四捨五入，然後向右平移 9 bits
             // 並且加入飽和保護，避免浮點運算產生的微小溢位造成波形反轉 (Pop sound)
-            if (y_norm_full > 32'sd16776704) begin        // (32767 << 9) - 256
+            if (y_norm_full > 33'sd16776704) begin        // (32767 << 9) - 256
                 overdrive_out = 16'sd32767;
-            end else if (y_norm_full < -32'sd16777216) begin // (-32768 << 9)
+            end else if (y_norm_full < -33'sd16777216) begin // (-32768 << 9)
                 overdrive_out = -16'sd32768;
             end else begin
-                overdrive_out = (y_norm_full + 32'sd256) >>> 9;
+                overdrive_out = (y_norm_full + 33'sd256) >>> 9;
             end
         end
     end
@@ -56,8 +58,8 @@ module overdrive (
     // ==========================================
     // 輸出時序邏輯 (Register)
     // ==========================================
-    always_ff @(posedge i_clk or posedge i_rst) begin
-        if (i_rst) begin
+    always_ff @(posedge i_clk or negedge i_rst) begin
+        if (!i_rst) begin
             o_data <= 16'sd0;
             o_en   <= 1'b0;
         end else begin

@@ -56,6 +56,7 @@ module Reverb_basic(
     input signed [15:0] i_data,
     output o_valid,
     output signed [15:0] o_data
+);
 
     logic        [7:0]  w_rate_r; // Q0.8
     logic signed [15:0] y0, y1, y2; // y0 -> y[n], y1 -> y[n-1], y2 -> y[n-2]
@@ -127,7 +128,6 @@ module Reverb_basic(
             valid_reg_2 <= valid_reg_1;
         end
     end
-);
 
 endmodule
 

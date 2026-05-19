@@ -1052,21 +1052,6 @@ set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to KEY
 set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to SW
 set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name LAST_QUARTUS_VERSION 15.0.0
-set_global_assignment -name SYSTEMVERILOG_FILE ../Digital_EFX_Processer.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/WM8731_init.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/SRAM_Scheduler.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/Recorder.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/Player.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/DSP.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/Buffer.sv
-set_global_assignment -name VERILOG_FILE final/synthesis/final_qsys.v
-set_global_assignment -name QIP_FILE final/synthesis/final_qsys.qip
-set_global_assignment -name SYSTEMVERILOG_FILE SevenHexDecoder.sv
-set_global_assignment -name SYSTEMVERILOG_FILE Debounce.sv
-set_global_assignment -name SYSTEMVERILOG_FILE DE2_115.sv
-set_global_assignment -name SDC_FILE DE2_115.sdc
-set_global_assignment -name SOURCE_FILE DE2_115.qsf
-set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/DSP_lib.sv
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name DEVICE EP4CE115F29C7
 set_global_assignment -name FAMILY "Cyclone IV E"
@@ -1085,4 +1070,26 @@ set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/tanh.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/overdrive.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/inv_tanh.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/fuzz.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/distortion.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../Digital_EFX_Processer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/WM8731_init.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/SRAM_Scheduler.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/Recorder.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/Player.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/DSP.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/Buffer.sv
+set_global_assignment -name VERILOG_FILE final/synthesis/final_qsys.v -library final_qsys
+set_global_assignment -name QIP_FILE final/synthesis/final_qsys.qip
+set_global_assignment -name SYSTEMVERILOG_FILE SevenHexDecoder.sv
+set_global_assignment -name SYSTEMVERILOG_FILE Debounce.sv
+set_global_assignment -name SYSTEMVERILOG_FILE DE2_115.sv
+set_global_assignment -name SDC_FILE DE2_115.sdc
+set_global_assignment -name SOURCE_FILE DE2_115.qsf
+set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/DSP_lib.sv
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
