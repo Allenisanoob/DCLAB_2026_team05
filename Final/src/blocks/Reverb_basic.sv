@@ -69,9 +69,9 @@ module Reverb_basic(
                     w_rate_w  = w_rate;
                     i_data_w  = i_data;
                     state_w   = CALC;
-                    o_valid_w = 1'b0;
-                    o_data_w  = 16'sd0;
                 end
+                o_valid_w = 1'b0;
+                o_data_w  = 16'sd0;
             end
             CALC: begin
                 state_w   = IDLE;
