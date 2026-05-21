@@ -64,11 +64,11 @@ module Reverb_basic(
         case (state_r)
             IDLE: begin
                 if (i_valid) begin
-                    r_w       = r;
-                    i_cosw_w  = i_cosw;
-                    w_rate_w  = w_rate;
-                    i_data_w  = i_data;
-                    state_w   = CALC;
+                    r_w      = r;
+                    i_cosw_w = i_cosw;
+                    w_rate_w = w_rate;
+                    i_data_w = i_data;
+                    state_w  = CALC;
                 end
                 o_valid_w = 1'b0;
                 o_data_w  = 16'sd0;
