@@ -3,9 +3,9 @@ module distortion (
     input                      i_rst,      
     input        signed [15:0] i_data,     
     input               [7:0]  i_gain,     
-    input                      i_valid,
+    input                      i_en,
     output       logic signed [15:0] o_data,    
-    output       logic         o_valid
+    output       logic         o_en
 );
 
     // Hard clipping threshold: about 90% of Q1.15 full scale
@@ -66,10 +66,10 @@ module distortion (
     always_ff @(posedge i_clk or negedge i_rst) begin
         if (!i_rst) begin
             o_data  <= 16'sd0;
-            o_valid <= 1'b0;
+            o_en <= 1'b0;
         end else begin
-            o_valid <= i_valid;
-            if (i_valid) begin
+            o_en <= i_en;
+            if (i_en) begin
                 o_data <= dist_out;
             end
         end

@@ -89,28 +89,28 @@ module DSP (
     /* -------------------------------------------------------------
     |    Placeholder for now, should replaced by the stager        |
     ------------------------------------------------------------- */
-/*
+
     // Final Volume Control
-    assign i_volume_control = 127; // Full volume for now, can be controlled by the user interface later
-    Volume final_volume (
-        .i_prev_valid(processed_valid),
-        .i_data(processed_data),
-        .i_volume_control(i_volume_control),
-        .o_next_valid(final_valid),
-        .o_data(final_data)
-    );
-*/
-/*
-    overdrive OverDrive(
-        .i_clk(i_clk),
-        .i_rst(i_rst),
-        .i_data(processed_data),
-        .i_gain(i_gain),
-        .i_en(processed_valid),
-        .o_data(final_data),
-        .o_en(final_valid)
-    );
-*/
+    // assign i_volume_control = 127; // Full volume for now, can be controlled by the user interface later
+    // Volume final_volume (
+    //     .i_prev_valid(processed_valid),
+    //     .i_data(processed_data),
+    //     .i_volume_control(i_volume_control),
+    //     .o_next_valid(final_valid),
+    //     .o_data(final_data)
+    // );
+
+
+    // overdrive OverDrive(
+    //     .i_clk(i_clk),
+    //     .i_rst(i_rst),
+    //     .i_data(processed_data),
+    //     .i_gain(i_gain),
+    //     .i_en(processed_valid),
+    //     .o_data(final_data),
+    //     .o_en(final_valid)
+    // );
+
  Reverb_basic Reverb(
         .i_clk(i_clk),
         .i_rst(i_rst),
@@ -122,27 +122,27 @@ module DSP (
         .o_data(final_data),
         .o_valid(final_valid)
     );
-/*
-    fuzz Fuzz(
-        .i_clk(i_clk),
-        .i_rst(i_rst),
-        .i_data(processed_data),
-        .i_gain(i_gain),
-        .i_en(processed_valid),
-        .o_data(final_data),
-        .o_en(final_valid)
-    );
-*/
-/*
-    distortion Distortion(
-        .i_clk(i_clk),
-        .i_rst(i_rst),
-        .i_data(processed_data),
-        .i_gain(i_gain),
-        .i_en(processed_valid),
-        .o_data(final_data),
-        .o_en(final_valid)
-    );
-*/
+
+    // fuzz Fuzz(
+    //     .i_clk(i_clk),
+    //     .i_rst(i_rst),
+    //     .i_data(processed_data),
+    //     .i_gain(i_gain),
+    //     .i_en(processed_valid),
+    //     .o_data(final_data),
+    //     .o_en(final_valid)
+    // );
+
+
+    // distortion Distortion(
+    //     .i_clk(i_clk),
+    //     .i_rst(i_rst),
+    //     .i_data(processed_data),
+    //     .i_gain(i_gain),
+    //     .i_en(processed_valid),
+    //     .o_data(final_data),
+    //     .o_en(final_valid)
+    // );
+
 
 endmodule
