@@ -16,26 +16,18 @@ module fuzz (
         input logic        [7:0]  f_gain
     );
         // 變數宣告
-        logic signed [23:0] data_ext;
-        logic signed [23:0] gain_ext;
-        logic signed [47:0] mult_full;
         logic signed [23:0] z_full;
         logic               z_sign;
         logic signed [23:0] z_trans;
         logic        [22:0] z_abs;
         
         // 運算暫存用變數 (使用 32-bit 防止運算過程溢位)
-        logic        [31:0] x_val;  // unsigned magnitude, scaled with 15 fractional bits; may exceed 1.0 after gain
-        logic        [31:0] x_sq;   // x 的平方，仍保留 15 fractional bits
-        logic        [31:0] y_val;  // 最終正半波結果，Q1.15 unsigned magnitude
-        logic signed [32:0] y_poly; // signed polynomial 暫存，避免 unsigned subtraction underflow
+        logic        [31:0] x_val; // Q1.15 無號絕對值
+        logic        [31:0] x_sq;  // x 的平方 (Q3.15 格式)
+        logic        [31:0] y_val; // 運算暫存結果
 
         // 1. 套用 Gain: Q1.15 * Q2.6 = Q3.21 (總共 24 bits)
-        //    明確展寬後再乘，避免不同工具對乘法結果寬度推導不一致。
-        data_ext = {{8{f_data[15]}}, f_data};
-        gain_ext = {16'd0, f_gain};
-        mult_full = data_ext * gain_ext;
-        z_full    = mult_full[23:0];
+        z_full = f_data * $signed({1'b0, f_gain});
 
         // 2. 提取符號與絕對值
         z_sign  = z_full[23];
@@ -60,18 +52,11 @@ module fuzz (
             x_sq = (x_val * x_val) >> 15;
             
             // 執行多項式加減 (利用位元平移取代乘以 4)
-            // 用 signed 暫存，避免 unsigned subtraction 在邊界或截位誤差時 underflow。
-            y_poly = $signed({1'b0, (x_val << 2)})
-                   - $signed({1'b0, (x_sq * 32'd3)})
-                   - 33'sd10923;
+            y_val = (x_val << 2) - (x_sq * 3) - 32'd10923;
             
-            // 防溢位/防 underflow 保護：限制在 Q1.15 正半波範圍 0 ~ 32767。
-            if (y_poly > 33'sd32767) begin
+            // 防溢位保護：理論上 x=2/3 時會剛好算出 32768，會造成 signed 16-bit 負數溢位
+            if (y_val > 32'd32767) begin
                 y_val = 32'd32767;
-            end else if (y_poly < 33'sd0) begin
-                y_val = 32'd0;
-            end else begin
-                y_val = y_poly[31:0];
             end
             
         end else begin 
@@ -98,8 +83,8 @@ module fuzz (
         end
     end
 
-    always_ff @(posedge i_clk or negedge i_rst) begin
-        if (!i_rst) begin
+    always_ff @(posedge i_clk or posedge i_rst) begin
+        if (i_rst) begin
             o_data <= 16'sd0;
             o_en   <= 1'b0;
         end else begin
