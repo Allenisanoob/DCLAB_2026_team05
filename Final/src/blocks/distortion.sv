@@ -63,8 +63,8 @@ module distortion (
         end
     end
 
-    always_ff @(posedge i_clk or posedge i_rst) begin
-        if (i_rst) begin
+    always_ff @(posedge i_clk or negedge i_rst) begin
+        if (!i_rst) begin
             o_data  <= 16'sd0;
             o_valid <= 1'b0;
         end else begin
