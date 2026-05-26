@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_115
-Tue May 26 21:01:08 2026
+Tue May 26 22:32:34 2026
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -14,48 +14,43 @@ Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
-  9. Analysis & Synthesis DSP Block Usage Summary
- 10. Analysis & Synthesis IP Cores Summary
- 11. State Machine - |DE2_115|Top:top0|state_r
- 12. State Machine - |DE2_115|Top:top0|SRAM_Scheduler:sram_scheduler|state_r
- 13. State Machine - |DE2_115|Top:top0|Recorder:recorder|state_r
- 14. Registers Removed During Synthesis
- 15. Removed Registers Triggering Further Register Optimizations
- 16. General Register Statistics
- 17. Inverted Register Statistics
- 18. Registers Added for RAM Pass-Through Logic
- 19. Multiplexer Restructuring Statistics (Restructuring Performed)
- 20. Source assignments for final_qsys:pll0|final_qsys_altpll_0:altpll_0
- 21. Source assignments for final_qsys:pll0|final_qsys_altpll_0:altpll_0|final_qsys_altpll_0_stdsync_sv6:stdsync2|final_qsys_altpll_0_dffpipe_l2c:dffpipe3
- 22. Source assignments for final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
- 23. Source assignments for final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1
- 24. Source assignments for Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0|altsyncram_rbi1:auto_generated
- 25. Source assignments for Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0|altsyncram_rbi1:auto_generated
- 26. Parameter Settings for User Entity Instance: final_qsys:pll0|altera_reset_controller:rst_controller
- 27. Parameter Settings for User Entity Instance: final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
- 28. Parameter Settings for User Entity Instance: final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1
- 29. Parameter Settings for User Entity Instance: Debounce:deb0
- 30. Parameter Settings for User Entity Instance: Debounce:deb1
- 31. Parameter Settings for User Entity Instance: Debounce:deb2
- 32. Parameter Settings for Inferred Entity Instance: Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0
- 33. Parameter Settings for Inferred Entity Instance: Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0
- 34. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult3
- 35. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult4
- 36. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult2
- 37. altsyncram Parameter Settings by Entity Instance
- 38. lpm_mult Parameter Settings by Entity Instance
- 39. Port Connectivity Checks: "Top:top0|DSP:dsp|Reverb_basic:Reverb"
- 40. Port Connectivity Checks: "Debounce:deb2"
- 41. Port Connectivity Checks: "Debounce:deb1"
- 42. Port Connectivity Checks: "Debounce:deb0"
- 43. Port Connectivity Checks: "final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
- 44. Port Connectivity Checks: "final_qsys:pll0|altera_reset_controller:rst_controller"
- 45. Port Connectivity Checks: "final_qsys:pll0|final_qsys_altpll_0:altpll_0|final_qsys_altpll_0_altpll_kpa2:sd1"
- 46. Port Connectivity Checks: "final_qsys:pll0|final_qsys_altpll_0:altpll_0"
- 47. Post-Synthesis Netlist Statistics for Top Partition
- 48. Elapsed Time Per Partition
- 49. Analysis & Synthesis Messages
- 50. Analysis & Synthesis Suppressed Messages
+  9. Analysis & Synthesis IP Cores Summary
+ 10. State Machine - |DE2_115|Top:top0|state_r
+ 11. State Machine - |DE2_115|Top:top0|SRAM_Scheduler:sram_scheduler|state_r
+ 12. State Machine - |DE2_115|Top:top0|Recorder:recorder|state_r
+ 13. Registers Removed During Synthesis
+ 14. Removed Registers Triggering Further Register Optimizations
+ 15. General Register Statistics
+ 16. Inverted Register Statistics
+ 17. Registers Added for RAM Pass-Through Logic
+ 18. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 19. Source assignments for final_qsys:pll0|final_qsys_altpll_0:altpll_0
+ 20. Source assignments for final_qsys:pll0|final_qsys_altpll_0:altpll_0|final_qsys_altpll_0_stdsync_sv6:stdsync2|final_qsys_altpll_0_dffpipe_l2c:dffpipe3
+ 21. Source assignments for final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
+ 22. Source assignments for final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1
+ 23. Source assignments for Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0|altsyncram_rbi1:auto_generated
+ 24. Source assignments for Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0|altsyncram_rbi1:auto_generated
+ 25. Parameter Settings for User Entity Instance: final_qsys:pll0|altera_reset_controller:rst_controller
+ 26. Parameter Settings for User Entity Instance: final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
+ 27. Parameter Settings for User Entity Instance: final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1
+ 28. Parameter Settings for User Entity Instance: Debounce:deb0
+ 29. Parameter Settings for User Entity Instance: Debounce:deb1
+ 30. Parameter Settings for User Entity Instance: Debounce:deb2
+ 31. Parameter Settings for Inferred Entity Instance: Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0
+ 32. Parameter Settings for Inferred Entity Instance: Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0
+ 33. altsyncram Parameter Settings by Entity Instance
+ 34. Port Connectivity Checks: "Top:top0|DSP:dsp|Volume:final_volume"
+ 35. Port Connectivity Checks: "Debounce:deb2"
+ 36. Port Connectivity Checks: "Debounce:deb1"
+ 37. Port Connectivity Checks: "Debounce:deb0"
+ 38. Port Connectivity Checks: "final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
+ 39. Port Connectivity Checks: "final_qsys:pll0|altera_reset_controller:rst_controller"
+ 40. Port Connectivity Checks: "final_qsys:pll0|final_qsys_altpll_0:altpll_0|final_qsys_altpll_0_altpll_kpa2:sd1"
+ 41. Port Connectivity Checks: "final_qsys:pll0|final_qsys_altpll_0:altpll_0"
+ 42. Post-Synthesis Netlist Statistics for Top Partition
+ 43. Elapsed Time Per Partition
+ 44. Analysis & Synthesis Messages
+ 45. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -82,19 +77,19 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue May 26 21:01:07 2026       ;
+; Analysis & Synthesis Status        ; Successful - Tue May 26 22:32:34 2026       ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                     ;
 ; Top-level Entity Name              ; DE2_115                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 735                                         ;
-;     Total combinational functions  ; 586                                         ;
-;     Dedicated logic registers      ; 286                                         ;
-; Total registers                    ; 286                                         ;
+; Total logic elements               ; 396                                         ;
+;     Total combinational functions  ; 297                                         ;
+;     Dedicated logic registers      ; 203                                         ;
+; Total registers                    ; 203                                         ;
 ; Total pins                         ; 480                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 512                                         ;
-; Embedded Multiplier 9-bit elements ; 16                                          ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
 ; Total PLLs                         ; 1                                           ;
 +------------------------------------+---------------------------------------------+
 
@@ -195,12 +190,12 @@ agreement for further details.
 ; Maximum allowed            ; 6           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 6           ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-6         ; < 0.1%      ;
-;     Processors 7-12        ;   0.0%      ;
+;     Processor 2            ; < 0.1%      ;
+;     Processors 3-12        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -209,7 +204,7 @@ agreement for further details.
 +--------------------------------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------+------------+
 ; File Name with User-Entered Path                       ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                               ; Library    ;
 +--------------------------------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------+------------+
-; ../blocks/Reverb_basic.sv                              ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/blocks/Reverb_basic.sv                                         ;            ;
+; DE2_115.sv                                             ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/DE2_115/DE2_115.sv                                             ;            ;
 ; ../Digital_EFX_Processer.sv                            ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/Digital_EFX_Processer.sv                                       ;            ;
 ; ../main_modules/WM8731_init.sv                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/main_modules/WM8731_init.sv                                    ;            ;
 ; ../main_modules/SRAM_Scheduler.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/main_modules/SRAM_Scheduler.sv                                 ;            ;
@@ -222,7 +217,6 @@ agreement for further details.
 ; final/synthesis/submodules/altera_reset_synchronizer.v ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/DE2_115/final/synthesis/submodules/altera_reset_synchronizer.v ; final_qsys ;
 ; final/synthesis/submodules/final_qsys_altpll_0.v       ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/DE2_115/final/synthesis/submodules/final_qsys_altpll_0.v       ; final_qsys ;
 ; Debounce.sv                                            ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/DE2_115/Debounce.sv                                            ;            ;
-; DE2_115.sv                                             ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/DE2_115/DE2_115.sv                                             ;            ;
 ; ../blocks/DSP_lib.sv                                   ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/blocks/DSP_lib.sv                                              ;            ;
 ; altsyncram.tdf                                         ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altsyncram.tdf                                                              ;            ;
 ; stratix_ram_block.inc                                  ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/stratix_ram_block.inc                                                       ;            ;
@@ -234,14 +228,6 @@ agreement for further details.
 ; altram.inc                                             ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altram.inc                                                                  ;            ;
 ; altdpram.inc                                           ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altdpram.inc                                                                ;            ;
 ; db/altsyncram_rbi1.tdf                                 ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_rbi1.tdf                                 ;            ;
-; lpm_mult.tdf                                           ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_mult.tdf                                                                ;            ;
-; lpm_add_sub.inc                                        ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_add_sub.inc                                                             ;            ;
-; multcore.inc                                           ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/multcore.inc                                                                ;            ;
-; bypassff.inc                                           ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/bypassff.inc                                                                ;            ;
-; altshift.inc                                           ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altshift.inc                                                                ;            ;
-; db/mult_f6t.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/DE2_115/db/mult_f6t.tdf                                        ;            ;
-; db/mult_l4t.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/DE2_115/db/mult_l4t.tdf                                        ;            ;
-; db/mult_36t.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/GitHub/DCLAB_2026_team05/Final/src/DE2_115/db/mult_36t.tdf                                        ;            ;
 +--------------------------------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------+------------+
 
 
@@ -250,34 +236,34 @@ agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 735            ;
+; Estimated Total logic elements              ; 396            ;
 ;                                             ;                ;
-; Total combinational functions               ; 586            ;
+; Total combinational functions               ; 297            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 180            ;
-;     -- 3 input functions                    ; 239            ;
-;     -- <=2 input functions                  ; 167            ;
+;     -- 4 input functions                    ; 169            ;
+;     -- 3 input functions                    ; 71             ;
+;     -- <=2 input functions                  ; 57             ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 311            ;
-;     -- arithmetic mode                      ; 275            ;
+;     -- normal mode                          ; 265            ;
+;     -- arithmetic mode                      ; 32             ;
 ;                                             ;                ;
-; Total registers                             ; 286            ;
-;     -- Dedicated logic registers            ; 286            ;
+; Total registers                             ; 203            ;
+;     -- Dedicated logic registers            ; 203            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 480            ;
 ; Total memory bits                           ; 512            ;
 ;                                             ;                ;
-; Embedded Multiplier 9-bit elements          ; 16             ;
+; Embedded Multiplier 9-bit elements          ; 0              ;
 ;                                             ;                ;
 ; Total PLLs                                  ; 1              ;
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 255            ;
-; Total fan-out                               ; 3927           ;
-; Average fan-out                             ; 1.94           ;
+; Maximum fan-out                             ; 172            ;
+; Total fan-out                               ; 2706           ;
+; Average fan-out                             ; 1.66           ;
 +---------------------------------------------+----------------+
 
 
@@ -286,26 +272,19 @@ agreement for further details.
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                     ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                        ; Library Name ;
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------+--------------+
-; |DE2_115                                       ; 586 (0)           ; 286 (0)      ; 512         ; 16           ; 0       ; 8         ; 480  ; 0            ; |DE2_115                                                                                   ; work         ;
+; |DE2_115                                       ; 297 (0)           ; 203 (0)      ; 512         ; 0            ; 0       ; 0         ; 480  ; 0            ; |DE2_115                                                                                   ; work         ;
 ;    |Debounce:deb0|                             ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb0                                                                     ; work         ;
-;    |Top:top0|                                  ; 580 (47)          ; 281 (1)      ; 512         ; 16           ; 0       ; 8         ; 0    ; 0            ; |DE2_115|Top:top0                                                                          ; work         ;
-;       |Buffer:buffer|                          ; 110 (110)         ; 120 (120)    ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer                                                            ; work         ;
+;    |Top:top0|                                  ; 291 (48)          ; 198 (1)      ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0                                                                          ; work         ;
+;       |Buffer:buffer|                          ; 111 (111)         ; 120 (120)    ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer                                                            ; work         ;
 ;          |altsyncram:buf_data_l_rtl_0|         ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0                                ; work         ;
 ;             |altsyncram_rbi1:auto_generated|   ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0|altsyncram_rbi1:auto_generated ; work         ;
 ;          |altsyncram:buf_data_r_rtl_0|         ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0                                ; work         ;
 ;             |altsyncram_rbi1:auto_generated|   ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0|altsyncram_rbi1:auto_generated ; work         ;
-;       |DSP:dsp|                                ; 292 (0)           ; 101 (0)      ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp                                                                  ; work         ;
+;       |DSP:dsp|                                ; 1 (0)             ; 18 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp                                                                  ; work         ;
 ;          |Data_Catcher:raw_data_catcher|       ; 1 (1)             ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Data_Catcher:raw_data_catcher                                    ; work         ;
-;          |Reverb_basic:Reverb|                 ; 291 (139)         ; 83 (83)      ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb_basic:Reverb                                              ; work         ;
-;             |lpm_mult:Mult2|                   ; 29 (0)            ; 0 (0)        ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult2                               ; work         ;
-;                |mult_36t:auto_generated|       ; 29 (29)           ; 0 (0)        ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult2|mult_36t:auto_generated       ; work         ;
-;             |lpm_mult:Mult3|                   ; 47 (0)            ; 0 (0)        ; 0           ; 6            ; 0       ; 3         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult3                               ; work         ;
-;                |mult_f6t:auto_generated|       ; 47 (47)           ; 0 (0)        ; 0           ; 6            ; 0       ; 3         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult3|mult_f6t:auto_generated       ; work         ;
-;             |lpm_mult:Mult4|                   ; 76 (0)            ; 0 (0)        ; 0           ; 6            ; 0       ; 3         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult4                               ; work         ;
-;                |mult_l4t:auto_generated|       ; 76 (76)           ; 0 (0)        ; 0           ; 6            ; 0       ; 3         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult4|mult_l4t:auto_generated       ; work         ;
 ;       |Player:player|                          ; 28 (28)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Player:player                                                            ; work         ;
-;       |Recorder:recorder|                      ; 52 (52)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Recorder:recorder                                                        ; work         ;
-;       |WM8731_init:wm8731_init|                ; 51 (51)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|WM8731_init:wm8731_init                                                  ; work         ;
+;       |Recorder:recorder|                      ; 51 (51)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Recorder:recorder                                                        ; work         ;
+;       |WM8731_init:wm8731_init|                ; 52 (52)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|WM8731_init:wm8731_init                                                  ; work         ;
 ;    |final_qsys:pll0|                           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|final_qsys:pll0                                                                   ; final_qsys   ;
 ;       |final_qsys_altpll_0:altpll_0|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|final_qsys:pll0|final_qsys_altpll_0:altpll_0                                      ; final_qsys   ;
 ;          |final_qsys_altpll_0_altpll_kpa2:sd1| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|final_qsys:pll0|final_qsys_altpll_0:altpll_0|final_qsys_altpll_0_altpll_kpa2:sd1  ; final_qsys   ;
@@ -321,24 +300,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0|altsyncram_rbi1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 16           ; 16           ; 16           ; 16           ; 256  ; None ;
 ; Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0|altsyncram_rbi1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 16           ; 16           ; 16           ; 16           ; 256  ; None ;
 +----------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
-
-
-+-----------------------------------------------------+
-; Analysis & Synthesis DSP Block Usage Summary        ;
-+---------------------------------------+-------------+
-; Statistic                             ; Number Used ;
-+---------------------------------------+-------------+
-; Simple Multipliers (9-bit)            ; 0           ;
-; Simple Multipliers (18-bit)           ; 8           ;
-; Embedded Multiplier Blocks            ; --          ;
-; Embedded Multiplier 9-bit elements    ; 16          ;
-; Signed Embedded Multipliers           ; 3           ;
-; Unsigned Embedded Multipliers         ; 0           ;
-; Mixed Sign Embedded Multipliers       ; 5           ;
-; Variable Sign Embedded Multipliers    ; 0           ;
-; Dedicated Input Shift Register Chains ; 0           ;
-+---------------------------------------+-------------+
-Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -395,8 +356,6 @@ Encoding Type:  One-Hot
 ; final_qsys:pll0|final_qsys_altpll_0:altpll_0|prev_reset                                                                                    ; Stuck at GND due to stuck port data_in                              ;
 ; final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain_out  ; Lost fanout                                                         ;
 ; final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain[0,1] ; Lost fanout                                                         ;
-; Top:top0|DSP:dsp|Reverb_basic:Reverb|r_r[0..2,4,6,7]                                                                                       ; Stuck at GND due to stuck port data_in                              ;
-; Top:top0|DSP:dsp|Reverb_basic:Reverb|i_cosw_r[0..13,15]                                                                                    ; Stuck at GND due to stuck port data_in                              ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|buf_ptr_f[0..3]                                                                                     ; Lost fanout                                                         ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][10]                                                                                   ; Merged with Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][0] ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][11]                                                                                   ; Merged with Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][0] ;
@@ -989,8 +948,6 @@ Encoding Type:  One-Hot
 ; Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[9][7]                                                                                    ; Merged with Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][0] ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[9][8]                                                                                    ; Merged with Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][0] ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[9][9]                                                                                    ; Merged with Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][0] ;
-; Top:top0|DSP:dsp|Reverb_basic:Reverb|r_r[3,5,8..23]                                                                                        ; Merged with Top:top0|DSP:dsp|Reverb_basic:Reverb|i_cosw_r[14]       ;
-; Top:top0|DSP:dsp|Reverb_basic:Reverb|w_rate_r[0..7]                                                                                        ; Merged with Top:top0|DSP:dsp|Reverb_basic:Reverb|i_cosw_r[14]       ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][0]                                                                                    ; Stuck at GND due to stuck port data_in                              ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|buf_ptr_i[0..3]                                                                                     ; Lost fanout                                                         ;
 ; Top:top0|state_r~5                                                                                                                         ; Lost fanout                                                         ;
@@ -1000,7 +957,7 @@ Encoding Type:  One-Hot
 ; Top:top0|SRAM_Scheduler:sram_scheduler|state_r.IDLE                                                                                        ; Lost fanout                                                         ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|counter_r[0..2]                                                                                     ; Lost fanout                                                         ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|state_r.PROC_R                                                                                      ; Lost fanout                                                         ;
-; Total Number of Removed Registers = 664                                                                                                    ;                                                                     ;
+; Total Number of Removed Registers = 617                                                                                                    ;                                                                     ;
 +--------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
 
 
@@ -1034,12 +991,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 286   ;
-; Number of registers using Synchronous Clear  ; 15    ;
+; Total registers                              ; 203   ;
+; Number of registers using Synchronous Clear  ; 14    ;
 ; Number of registers using Synchronous Load   ; 16    ;
-; Number of registers using Asynchronous Clear ; 212   ;
+; Number of registers using Asynchronous Clear ; 129   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 176   ;
+; Number of registers using Clock Enable       ; 111   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -1049,7 +1006,7 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; Top:top0|Player:player|is_init_r       ; 4       ;
+; Top:top0|Player:player|is_init_r       ; 3       ;
 ; Total number of inverted registers = 1 ;         ;
 +----------------------------------------+---------+
 
@@ -1117,19 +1074,17 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |DE2_115|Top:top0|Player:player|o_DAC_DAT_r[1]               ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |DE2_115|Top:top0|Player:player|o_DAC_DAT_r[13]              ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |DE2_115|Top:top0|SRAM_Scheduler:sram_scheduler|counter_r[2] ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |DE2_115|Top:top0|Recorder:recorder|counter_r[1]             ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb_basic:Reverb|y1_r[10]       ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |DE2_115|Top:top0|Buffer:buffer|fifo_cnt[5]                  ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb_basic:Reverb|o_data_r[1]    ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |DE2_115|Top:top0|Recorder:recorder|counter_r[4]             ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |DE2_115|Top:top0|Buffer:buffer|fifo_cnt[1]                  ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|state_r[1]         ;
 ; 9:1                ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|bit_cnt_r[2]       ;
 ; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|command_cnt_r[2]   ;
 ; 7:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|Buffer:buffer|out_data[13]                 ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|Recorder:recorder|Selector1                ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|Recorder:recorder|Selector0                ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|state_w.S_MENU                             ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|SRAM_Scheduler:sram_scheduler|Selector3    ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|SRAM_Scheduler:sram_scheduler|Selector5    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
 
 
@@ -1396,111 +1351,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult3 ;
-+------------------------------------------------+--------------+--------------------------------------+
-; Parameter Name                                 ; Value        ; Type                                 ;
-+------------------------------------------------+--------------+--------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                           ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                         ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                         ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                       ;
-; LPM_WIDTHA                                     ; 49           ; Untyped                              ;
-; LPM_WIDTHB                                     ; 16           ; Untyped                              ;
-; LPM_WIDTHP                                     ; 65           ; Untyped                              ;
-; LPM_WIDTHR                                     ; 65           ; Untyped                              ;
-; LPM_WIDTHS                                     ; 1            ; Untyped                              ;
-; LPM_REPRESENTATION                             ; SIGNED       ; Untyped                              ;
-; LPM_PIPELINE                                   ; 0            ; Untyped                              ;
-; LATENCY                                        ; 0            ; Untyped                              ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                              ;
-; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                              ;
-; USE_EAB                                        ; OFF          ; Untyped                              ;
-; MAXIMIZE_SPEED                                 ; 5            ; Untyped                              ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                              ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped                              ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K                  ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                              ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                              ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                              ;
-; CBXI_PARAMETER                                 ; mult_f6t     ; Untyped                              ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                              ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                              ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                              ;
-+------------------------------------------------+--------------+--------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult4 ;
-+------------------------------------------------+--------------+--------------------------------------+
-; Parameter Name                                 ; Value        ; Type                                 ;
-+------------------------------------------------+--------------+--------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                           ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                         ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                         ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                       ;
-; LPM_WIDTHA                                     ; 9            ; Untyped                              ;
-; LPM_WIDTHB                                     ; 51           ; Untyped                              ;
-; LPM_WIDTHP                                     ; 60           ; Untyped                              ;
-; LPM_WIDTHR                                     ; 60           ; Untyped                              ;
-; LPM_WIDTHS                                     ; 1            ; Untyped                              ;
-; LPM_REPRESENTATION                             ; SIGNED       ; Untyped                              ;
-; LPM_PIPELINE                                   ; 0            ; Untyped                              ;
-; LATENCY                                        ; 0            ; Untyped                              ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                              ;
-; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                              ;
-; USE_EAB                                        ; OFF          ; Untyped                              ;
-; MAXIMIZE_SPEED                                 ; 5            ; Untyped                              ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                              ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped                              ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K                  ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                              ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                              ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                              ;
-; CBXI_PARAMETER                                 ; mult_l4t     ; Untyped                              ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                              ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                              ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                              ;
-+------------------------------------------------+--------------+--------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult2 ;
-+------------------------------------------------+--------------+--------------------------------------+
-; Parameter Name                                 ; Value        ; Type                                 ;
-+------------------------------------------------+--------------+--------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                           ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                         ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                         ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                       ;
-; LPM_WIDTHA                                     ; 23           ; Untyped                              ;
-; LPM_WIDTHB                                     ; 18           ; Untyped                              ;
-; LPM_WIDTHP                                     ; 41           ; Untyped                              ;
-; LPM_WIDTHR                                     ; 41           ; Untyped                              ;
-; LPM_WIDTHS                                     ; 1            ; Untyped                              ;
-; LPM_REPRESENTATION                             ; SIGNED       ; Untyped                              ;
-; LPM_PIPELINE                                   ; 0            ; Untyped                              ;
-; LATENCY                                        ; 0            ; Untyped                              ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                              ;
-; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                              ;
-; USE_EAB                                        ; OFF          ; Untyped                              ;
-; MAXIMIZE_SPEED                                 ; 5            ; Untyped                              ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                              ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped                              ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K                  ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                              ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                              ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                              ;
-; CBXI_PARAMETER                                 ; mult_36t     ; Untyped                              ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                              ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                              ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                              ;
-+------------------------------------------------+--------------+--------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
 +------------------------------------------------------------------------------------------------+
 ; altsyncram Parameter Settings by Entity Instance                                               ;
 +-------------------------------------------+----------------------------------------------------+
@@ -1532,64 +1382,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+----------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------+
-; lpm_mult Parameter Settings by Entity Instance                                              ;
-+---------------------------------------+-----------------------------------------------------+
-; Name                                  ; Value                                               ;
-+---------------------------------------+-----------------------------------------------------+
-; Number of entity instances            ; 3                                                   ;
-; Entity Instance                       ; Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult3 ;
-;     -- LPM_WIDTHA                     ; 49                                                  ;
-;     -- LPM_WIDTHB                     ; 16                                                  ;
-;     -- LPM_WIDTHP                     ; 65                                                  ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                              ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                  ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                  ;
-;     -- USE_EAB                        ; OFF                                                 ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                  ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                  ;
-; Entity Instance                       ; Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult4 ;
-;     -- LPM_WIDTHA                     ; 9                                                   ;
-;     -- LPM_WIDTHB                     ; 51                                                  ;
-;     -- LPM_WIDTHP                     ; 60                                                  ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                              ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                  ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                  ;
-;     -- USE_EAB                        ; OFF                                                 ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                  ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                  ;
-; Entity Instance                       ; Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult2 ;
-;     -- LPM_WIDTHA                     ; 23                                                  ;
-;     -- LPM_WIDTHB                     ; 18                                                  ;
-;     -- LPM_WIDTHP                     ; 41                                                  ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                              ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                  ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                  ;
-;     -- USE_EAB                        ; OFF                                                 ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                  ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                  ;
-+---------------------------------------+-----------------------------------------------------+
-
-
 +------------------------------------------------------------------+
-; Port Connectivity Checks: "Top:top0|DSP:dsp|Reverb_basic:Reverb" ;
-+---------------+-------+----------+-------------------------------+
-; Port          ; Type  ; Severity ; Details                       ;
-+---------------+-------+----------+-------------------------------+
-; r[23..8]      ; Input ; Info     ; Stuck at VCC                  ;
-; r[7..6]       ; Input ; Info     ; Stuck at GND                  ;
-; r[2..0]       ; Input ; Info     ; Stuck at GND                  ;
-; r[5]          ; Input ; Info     ; Stuck at VCC                  ;
-; r[4]          ; Input ; Info     ; Stuck at GND                  ;
-; r[3]          ; Input ; Info     ; Stuck at VCC                  ;
-; i_cosw[13..0] ; Input ; Info     ; Stuck at GND                  ;
-; i_cosw[15]    ; Input ; Info     ; Stuck at GND                  ;
-; i_cosw[14]    ; Input ; Info     ; Stuck at VCC                  ;
-; w_rate        ; Input ; Info     ; Stuck at VCC                  ;
-+---------------+-------+----------+-------------------------------+
+; Port Connectivity Checks: "Top:top0|DSP:dsp|Volume:final_volume" ;
++------------------+-------+----------+----------------------------+
+; Port             ; Type  ; Severity ; Details                    ;
++------------------+-------+----------+----------------------------+
+; i_volume_control ; Input ; Info     ; Stuck at VCC               ;
++------------------+-------+----------+----------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1703,32 +1502,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 480                         ;
-; cycloneiii_ff         ; 286                         ;
-;     CLR               ; 63                          ;
-;     CLR SCLR          ; 5                           ;
+; cycloneiii_ff         ; 203                         ;
+;     CLR               ; 46                          ;
+;     CLR SCLR          ; 4                           ;
 ;     ENA               ; 32                          ;
-;     ENA CLR           ; 118                         ;
+;     ENA CLR           ; 53                          ;
 ;     ENA CLR SCLR      ; 10                          ;
 ;     ENA CLR SLD       ; 16                          ;
 ;     plain             ; 42                          ;
 ; cycloneiii_io_obuf    ; 141                         ;
-; cycloneiii_lcell_comb ; 590                         ;
-;     arith             ; 275                         ;
-;         2 data inputs ; 129                         ;
-;         3 data inputs ; 146                         ;
-;     normal            ; 315                         ;
-;         0 data inputs ; 4                           ;
-;         1 data inputs ; 16                          ;
-;         2 data inputs ; 22                          ;
-;         3 data inputs ; 93                          ;
-;         4 data inputs ; 180                         ;
-; cycloneiii_mac_mult   ; 8                           ;
-; cycloneiii_mac_out    ; 8                           ;
+; cycloneiii_lcell_comb ; 301                         ;
+;     arith             ; 32                          ;
+;         2 data inputs ; 32                          ;
+;     normal            ; 269                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 14                          ;
+;         2 data inputs ; 13                          ;
+;         3 data inputs ; 71                          ;
+;         4 data inputs ; 169                         ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 32                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 9.80                        ;
-; Average LUT depth     ; 4.38                        ;
+; Max LUT depth         ; 6.50                        ;
+; Average LUT depth     ; 2.32                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1737,7 +1533,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -1747,9 +1543,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
-    Info: Processing started: Tue May 26 21:00:51 2026
+    Info: Processing started: Tue May 26 22:32:19 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
 Info (11104): Parallel Compilation has detected 12 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 6 of the 6 physical processors detected instead.
+Info (12021): Found 1 design units, including 1 entities, in source file de2_115.sv
+    Info (12023): Found entity 1: DE2_115
 Warning (10259): Verilog HDL error at Reverb_basic.sv(82): constant value overflow
 Warning (10259): Verilog HDL error at Reverb_basic.sv(90): constant value overflow
 Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/final/src/blocks/reverb_basic.sv
@@ -1765,7 +1563,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file /users/
     Info (12023): Found entity 1: fuzz
 Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/final/src/blocks/distortion.sv
     Info (12023): Found entity 1: distortion
-Warning (10275): Verilog HDL Module Instantiation warning at Digital_EFX_Processer.sv(173): ignored dangling comma in List of Port Connections
 Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/final/src/digital_efx_processer.sv
     Info (12023): Found entity 1: Top
 Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/github/dclab_2026_team05/final/src/main_modules/wm8731_init.sv
@@ -1795,8 +1592,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file sevenhe
     Info (12023): Found entity 1: SevenHexDecoder
 Info (12021): Found 1 design units, including 1 entities, in source file debounce.sv
     Info (12023): Found entity 1: Debounce
-Info (12021): Found 1 design units, including 1 entities, in source file de2_115.sv
-    Info (12023): Found entity 1: DE2_115
 Info (12021): Found 3 design units, including 3 entities, in source file /users/dclab/documents/github/dclab_2026_team05/final/src/blocks/dsp_lib.sv
     Info (12023): Found entity 1: Volume
     Info (12023): Found entity 2: Data_Catcher
@@ -1870,7 +1665,6 @@ Info (12128): Elaborating entity "Debounce" for hierarchy "Debounce:deb0"
 Warning (10230): Verilog HDL assignment warning at Debounce.sv(23): truncated value with size 32 to match size of target (3)
 Warning (10230): Verilog HDL assignment warning at Debounce.sv(25): truncated value with size 32 to match size of target (3)
 Info (12128): Elaborating entity "Top" for hierarchy "Top:top0"
-Warning (10230): Verilog HDL assignment warning at Digital_EFX_Processer.sv(91): truncated value with size 16 to match size of target (13)
 Info (12128): Elaborating entity "WM8731_init" for hierarchy "Top:top0|WM8731_init:wm8731_init"
 Warning (10036): Verilog HDL or VHDL warning at WM8731_init.sv(52): object "dbg" assigned a value but never read
 Warning (10230): Verilog HDL assignment warning at WM8731_init.sv(52): truncated value with size 4 to match size of target (1)
@@ -1879,7 +1673,9 @@ Warning (10230): Verilog HDL assignment warning at WM8731_init.sv(127): truncate
 Info (12128): Elaborating entity "Recorder" for hierarchy "Top:top0|Recorder:recorder"
 Warning (10230): Verilog HDL assignment warning at Recorder.sv(40): truncated value with size 32 to match size of target (5)
 Info (12128): Elaborating entity "DSP" for hierarchy "Top:top0|DSP:dsp"
-Warning (10036): Verilog HDL or VHDL warning at DSP.sv(60): object "i_gain" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at DSP.sv(52): object "r" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at DSP.sv(53): object "i_cosw" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at DSP.sv(54): object "w_rate" assigned a value but never read
 Warning (10034): Output port "o_B0_r_addr" at DSP.sv(12) has no driver
 Warning (10034): Output port "o_B0_w_addr" at DSP.sv(16) has no driver
 Warning (10034): Output port "o_B0_w_data" at DSP.sv(17) has no driver
@@ -1901,7 +1697,8 @@ Warning (10034): Output port "o_B2_write_req" at DSP.sv(34) has no driver
 Warning (10034): Output port "o_B3_read_req" at DSP.sv(38) has no driver
 Warning (10034): Output port "o_B3_write_req" at DSP.sv(42) has no driver
 Info (12128): Elaborating entity "Data_Catcher" for hierarchy "Top:top0|DSP:dsp|Data_Catcher:raw_data_catcher"
-Info (12128): Elaborating entity "Reverb_basic" for hierarchy "Top:top0|DSP:dsp|Reverb_basic:Reverb"
+Info (12128): Elaborating entity "Volume" for hierarchy "Top:top0|DSP:dsp|Volume:final_volume"
+Warning (10230): Verilog HDL assignment warning at DSP_lib.sv(13): truncated value with size 24 to match size of target (16)
 Info (12128): Elaborating entity "Buffer" for hierarchy "Top:top0|Buffer:buffer"
 Warning (10230): Verilog HDL assignment warning at Buffer.sv(33): truncated value with size 32 to match size of target (4)
 Warning (10230): Verilog HDL assignment warning at Buffer.sv(34): truncated value with size 32 to match size of target (6)
@@ -1959,10 +1756,6 @@ Info (19000): Inferred 2 megafunctions from design logic
         Info (286033): Parameter INDATA_ACLR_A set to NONE
         Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
         Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
-Info (278001): Inferred 3 megafunctions from design logic
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Reverb_basic:Reverb|Mult3"
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Reverb_basic:Reverb|Mult4"
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Reverb_basic:Reverb|Mult2"
 Info (12130): Elaborated megafunction instantiation "Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0"
 Info (12133): Instantiated megafunction "Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
@@ -1982,48 +1775,7 @@ Info (12133): Instantiated megafunction "Top:top0|Buffer:buffer|altsyncram:buf_d
     Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_rbi1.tdf
     Info (12023): Found entity 1: altsyncram_rbi1
-Info (12130): Elaborated megafunction instantiation "Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult3"
-Info (12133): Instantiated megafunction "Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult3" with the following parameter:
-    Info (12134): Parameter "LPM_WIDTHA" = "49"
-    Info (12134): Parameter "LPM_WIDTHB" = "16"
-    Info (12134): Parameter "LPM_WIDTHP" = "65"
-    Info (12134): Parameter "LPM_WIDTHR" = "65"
-    Info (12134): Parameter "LPM_WIDTHS" = "1"
-    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
-    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Info (12021): Found 1 design units, including 1 entities, in source file db/mult_f6t.tdf
-    Info (12023): Found entity 1: mult_f6t
-Info (12130): Elaborated megafunction instantiation "Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult4"
-Info (12133): Instantiated megafunction "Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult4" with the following parameter:
-    Info (12134): Parameter "LPM_WIDTHA" = "9"
-    Info (12134): Parameter "LPM_WIDTHB" = "51"
-    Info (12134): Parameter "LPM_WIDTHP" = "60"
-    Info (12134): Parameter "LPM_WIDTHR" = "60"
-    Info (12134): Parameter "LPM_WIDTHS" = "1"
-    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
-    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Info (12021): Found 1 design units, including 1 entities, in source file db/mult_l4t.tdf
-    Info (12023): Found entity 1: mult_l4t
-Info (12130): Elaborated megafunction instantiation "Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult2"
-Info (12133): Instantiated megafunction "Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult2" with the following parameter:
-    Info (12134): Parameter "LPM_WIDTHA" = "23"
-    Info (12134): Parameter "LPM_WIDTHB" = "18"
-    Info (12134): Parameter "LPM_WIDTHP" = "41"
-    Info (12134): Parameter "LPM_WIDTHR" = "41"
-    Info (12134): Parameter "LPM_WIDTHS" = "1"
-    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
-    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Info (12021): Found 1 design units, including 1 entities, in source file db/mult_36t.tdf
-    Info (12023): Found entity 1: mult_36t
 Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Info (13014): Ignored 332 buffer(s)
-    Info (13019): Ignored 332 SOFT buffer(s)
 Warning (13039): The following bidirectional pins have no drivers
     Warning (13040): bidirectional pin "AUD_ADCLRCK" has no driver
     Warning (13040): bidirectional pin "AUD_BCLK" has no driver
@@ -2479,19 +2231,18 @@ Warning (21074): Design contains 87 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[14]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[15]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[16]"
-Info (21057): Implemented 1273 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 917 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 91 input pins
     Info (21059): Implemented 248 output pins
     Info (21060): Implemented 141 bidirectional pins
-    Info (21061): Implemented 744 logic cells
+    Info (21061): Implemented 404 logic cells
     Info (21064): Implemented 32 RAM segments
     Info (21065): Implemented 1 PLLs
-    Info (21062): Implemented 16 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 559 warnings
-    Info: Peak virtual memory: 4922 megabytes
-    Info: Processing ended: Tue May 26 21:01:08 2026
-    Info: Elapsed time: 00:00:17
-    Info: Total CPU time (on all processors): 00:00:25
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 560 warnings
+    Info: Peak virtual memory: 4919 megabytes
+    Info: Processing ended: Tue May 26 22:32:35 2026
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:24
 
 
 +------------------------------------------+
