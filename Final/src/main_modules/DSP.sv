@@ -50,15 +50,15 @@ module DSP (
 
     //For testing Reverb
     logic [23:0] r; 
-    logic [15:0] i_cosw;
+    logic signed [15:0] i_cosw;
     logic [7:0] w_rate;
-    assign r = 24'd16777000; // Reverb intensity, can be controlled by the user interface later
-    assign i_cosw = 16'sd16384; // cos(2*pi*1000Hz/48000Hz) in Q15 format, can be calculated for different frequencies if needed
-    assign w_rate = 8'd255; // Reverb update rate, can be controlled by the user interface later
+    assign r      = 24'd15099494; // about 0.999
+    assign i_cosw = 16'sd16384;   // about 1000 Hz
+    assign w_rate = 8'd128;       // 0.5
     
     // For testing Overdrive, Fuzz, Distortion
-    logic [7:0] i_gain; 
-    assign i_gain = 8'd100;
+    // logic [7:0] i_gain; 
+    // assign i_gain = 8'd100;
 
     assign o_D2B_valid = final_valid;
     assign o_buf_data_l = final_data; // Playing the same data on both channels for now
@@ -88,15 +88,15 @@ module DSP (
     |    Placeholder for now, should replaced by the stager        |
     ------------------------------------------------------------- */
 
-    // Final Volume Control
-    // assign i_volume_control = 127; // Full volume for now, can be controlled by the user interface later
-    // Volume final_volume (
-    //     .i_prev_valid(processed_valid),
-    //     .i_data(processed_data),
-    //     .i_volume_control(i_volume_control),
-    //     .o_next_valid(final_valid),
-    //     .o_data(final_data)
-    // );
+    //Final Volume Control
+    assign i_volume_control = 127; // Full volume for now, can be controlled by the user interface later
+    Volume final_volume (
+        .i_prev_valid(processed_valid),
+        .i_data(processed_data),
+        .i_volume_control(i_volume_control),
+        .o_next_valid(final_valid),
+        .o_data(final_data)
+    );
 
 
     // overdrive OverDrive(
@@ -109,17 +109,17 @@ module DSP (
     //     .o_en(final_valid)
     // );
 
- Reverb_basic Reverb(
-        .i_clk(i_clk),
-        .i_rst(i_rst),
-        .i_data(processed_data),
-        .r(r),
-        .i_cosw(i_cosw),
-        .w_rate(w_rate),
-        .i_valid(processed_valid),
-        .o_data(final_data),
-        .o_valid(final_valid)
-    );
+//  Reverb_basic Reverb(
+//         .i_clk(i_clk),
+//         .i_rst(i_rst),
+//         .i_data(processed_data),
+//         .r(r),
+//         .i_cosw(i_cosw),
+//         .w_rate(w_rate),
+//         .i_valid(processed_valid),
+//         .o_data(final_data),
+//         .o_valid(final_valid)
+//     );
 
     // fuzz Fuzz(
     //     .i_clk(i_clk),

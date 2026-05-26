@@ -1,5 +1,5 @@
 Flow report for DE2_115
-Tue May 26 21:02:01 2026
+Tue May 26 22:33:22 2026
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -41,21 +41,21 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue May 26 21:01:51 2026       ;
+; Flow Status                        ; Successful - Tue May 26 22:33:13 2026       ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                     ;
 ; Top-level Entity Name              ; DE2_115                                     ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 673 / 114,480 ( < 1 % )                     ;
-;     Total combinational functions  ; 589 / 114,480 ( < 1 % )                     ;
-;     Dedicated logic registers      ; 285 / 114,480 ( < 1 % )                     ;
-; Total registers                    ; 285                                         ;
+; Total logic elements               ; 387 / 114,480 ( < 1 % )                     ;
+;     Total combinational functions  ; 300 / 114,480 ( < 1 % )                     ;
+;     Dedicated logic registers      ; 203 / 114,480 ( < 1 % )                     ;
+; Total registers                    ; 203                                         ;
 ; Total pins                         ; 518 / 529 ( 98 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 512 / 3,981,312 ( < 1 % )                   ;
-; Embedded Multiplier 9-bit elements ; 16 / 532 ( 3 % )                            ;
+; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                             ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                              ;
 +------------------------------------+---------------------------------------------+
 
@@ -65,7 +65,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/26/2026 21:00:55 ;
+; Start date & time ; 05/26/2026 22:32:23 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE2_115             ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ agreement for further details.
 +-------------------------------------+--------------------------------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                                        ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+--------------------------------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 13870905072823.177980045509400                               ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 13870905072823.177980594307228                               ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                           ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                            ; --            ; --          ; --         ;
 ; MISC_FILE                           ; final/synthesis/../final_qsys.cmp                            ; --            ; --          ; --         ;
@@ -104,11 +104,11 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:16     ; 1.0                     ; 4922 MB             ; 00:00:24                           ;
-; Fitter                    ; 00:00:28     ; 2.1                     ; 6046 MB             ; 00:00:41                           ;
-; Assembler                 ; 00:00:10     ; 1.0                     ; 4768 MB             ; 00:00:05                           ;
-; TimeQuest Timing Analyzer ; 00:00:08     ; 1.0                     ; 4986 MB             ; 00:00:05                           ;
-; Total                     ; 00:01:02     ; --                      ; --                  ; 00:01:15                           ;
+; Analysis & Synthesis      ; 00:00:15     ; 1.0                     ; 4919 MB             ; 00:00:23                           ;
+; Fitter                    ; 00:00:24     ; 2.0                     ; 6027 MB             ; 00:00:33                           ;
+; Assembler                 ; 00:00:10     ; 1.0                     ; 4770 MB             ; 00:00:05                           ;
+; TimeQuest Timing Analyzer ; 00:00:07     ; 1.0                     ; 4983 MB             ; 00:00:04                           ;
+; Total                     ; 00:00:56     ; --                      ; --                  ; 00:01:05                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
