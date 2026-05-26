@@ -52,15 +52,15 @@ module Reverb_basic(
         y2_w      = y2_r;
         A = $signed($signed({1'b0, r_r}) * i_cosw_r); // Q2.39
         B = r_r * r_r; // Q0.48
-        C = $signed($signed({y1_r[15], y1_r, 1'b0}) - $signed({2{x1_r[15]}, x1_r})); // Q18.0
+        C = $signed($signed({y1_r[15], y1_r, 1'b0}) - $signed({{2{x1_r[15]}}, x1_r})); // Q18.0
         D = $signed(A * C); // Q20.39
         E = $signed($signed({1'b0, B}) * y2_r); // Q17.48
-        F = $signed($signed({D[58], D, 9'd0}) - $signed({4{E[64]}, E})); // Q21.48
+        F = $signed($signed({D[58], D, 9'd0}) - $signed({{4{E[64]}}, E})); // Q21.48
         G = $signed($signed({1'b0, w_rate_r}) * F); // Q22.56
         H = $signed($signed(F[68:48]) + $signed({20'd0, F[47]})); // Q21.0
         I = $signed($signed(G[77:56]) + $signed({21'd0, G[55]})); // Q22.0
-        J = $signed($signed({H[20], H}) + $signed({6{i_data_r[15]}, i_data_r})); // Q22.0
-        K = $signed($signed({I[21], I}) + $signed({7{i_data_r[15]}, i_data_r})); // Q23.0
+        J = $signed($signed({H[20], H}) + $signed({{6{i_data_r[15]}}, i_data_r})); // Q22.0
+        K = $signed($signed({I[21], I}) + $signed({{7{i_data_r[15]}}, i_data_r})); // Q23.0
         case (state_r)
             IDLE: begin
                 if (i_valid) begin

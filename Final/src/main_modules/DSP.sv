@@ -41,8 +41,7 @@ module DSP (
     output [15:0] o_B3_w_data,
     output        o_B3_write_req,
 
-    input         i_sram_ready,    // SRAM scheduler is not full
-    input         sw
+    input         i_sram_ready    // SRAM scheduler is not full
 );
     
     logic [6:0] i_volume_control; // 0 - Muted, 127 - Full Volume
@@ -50,13 +49,12 @@ module DSP (
     logic signed [15:0] original_data, final_data;
 
     //For testing Reverb
-    logic [7:0] r; 
+    logic [23:0] r; 
     logic [15:0] i_cosw;
     logic [7:0] w_rate;
-    assign r = 8'd255; // Reverb intensity, can be controlled by the user interface later
+    assign r = 24'd16777000; // Reverb intensity, can be controlled by the user interface later
     assign i_cosw = 16'sd16384; // cos(2*pi*1000Hz/48000Hz) in Q15 format, can be calculated for different frequencies if needed
-   // assign w_rate = 8'd255; // Reverb update rate, can be controlled by the user interface later
-    assign w_rate = sw ?  8'd0 : 8'd250; 
+    assign w_rate = 8'd255; // Reverb update rate, can be controlled by the user interface later
     
     // For testing Overdrive, Fuzz, Distortion
     logic [7:0] i_gain; 

@@ -4,7 +4,6 @@ module Top (
 	input i_key_0,
 	input i_key_1,
 	input i_key_2,
-	input [17:0] i_sw,
 	
 	// SRAM
 	output [19:0] o_SRAM_ADDR,
@@ -89,7 +88,7 @@ module Top (
 	assign o_ledr[16] = D2B_valid; // Indicate processing
 	assign o_ledr[15] = (B2P_request_l || B2P_request_r); // Indicate playing
 
-	assign o_ledr[14:2] = 16'b0;
+	assign o_ledr[14:2] = 13'b0;
 
 
 
@@ -169,8 +168,8 @@ module Top (
 		.o_B3_w_data(B3_w_data),
 		.o_B3_write_req(B3_write_req),
 
-		.i_sram_ready(sram_ready),
-		.sw(i_sw[0])
+		.i_sram_ready(sram_ready)
+		
 	);
 
 	// Buffer
