@@ -36,21 +36,21 @@ module overdrive (
     always_comb begin
         overdrive_out = 16'sd0; // 預設輸出為 0
         y_norm_full = 33'sd0; // 預設未正規化的結果為 0 (使用 33 bits 以防止溢位)
-        if (i_gain == 8'd0) begin
-            // 當 gain 為 0 時 bypass 原始音訊
+        if (i_gain <= 8'd4) begin
+            // 當 gain 為 4 時 bypass 原始音訊
             overdrive_out = i_data; 
         end else begin
             // 1. Make-up Gain 正規化乘法: Q1.15 (有號) * Q7.9 (無號) = Q8.24 (有號)
             y_norm_full = tanh_unnorm * $signed({1'b0, inv_tanh_val});
 
-            // 2. 將 Q8.24 轉回 Q1.15：加上 256 (即 2^8) 進行四捨五入，然後向右平移 9 bits
-            // 並且加入飽和保護，避免浮點運算產生的微小溢位造成波形反轉 (Pop sound)
-            if (y_norm_full > 33'sd16776704) begin        // (32767 << 9) - 256
+            // 2. 將 Q8.24 轉回 Q1.15：加上 256 = 2^8 進行 rounding，然後 arithmetic right shift 9 bits
+            // 並加入 saturation，避免超過 Q1.15 範圍造成 wrap-around / pop sound
+            if (y_norm_full > 33'sd16776704) begin             // 32767 << 9, max Q1.15 in Q8.24 scale
                 overdrive_out = 16'sd32767;
-            end else if (y_norm_full < -33'sd16777216) begin // (-32768 << 9)
-                overdrive_out = -16'sd32768;
+            end else if (y_norm_full < -33'sd16777216) begin   // -32768 << 9, min Q1.15 in Q8.24 scale
+                        overdrive_out = -16'sd32768;
             end else begin
-                overdrive_out = (y_norm_full + 33'sd256) >>> 9;
+                        overdrive_out = (y_norm_full + 33'sd256) >>> 9;
             end
         end
     end

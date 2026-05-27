@@ -46,90 +46,90 @@ module Data_Catcher (
 
 endmodule
 
-module Reverb_basic(
-    input i_clk,
-    input i_rst,
-    input i_valid,
-    input [7:0] r, // Q0.8
-    input [7:0] i_cosw, // Q1.7
-    input [7:0] w_rate, // Q0.8
-    input signed [15:0] i_data,
-    output o_valid,
-    output signed [15:0] o_data
-);
+// module Reverb_basic(
+//     input i_clk,
+//     input i_rst,
+//     input i_valid,
+//     input [7:0] r, // Q0.8
+//     input [7:0] i_cosw, // Q1.7
+//     input [7:0] w_rate, // Q0.8
+//     input signed [15:0] i_data,
+//     output o_valid,
+//     output signed [15:0] o_data
+// );
 
-    logic        [7:0]  w_rate_r; // Q0.8
-    logic signed [15:0] y0, y1, y2; // y0 -> y[n], y1 -> y[n-1], y2 -> y[n-2]
-    logic signed [15:0] x0, x1; // x0 -> x[n], x1 -> x[n-1]
-    logic signed [16:0] A; // Q1.16
-    logic        [15:0] B; // Q0.16
-    logic signed [33:0] C; // Q18.16
-    logic signed [31:0] D; // Q16.16
-    logic signed [32:0] E; // Q17.16
-    logic signed [35:0] F; // Q20.16
-    logic signed [43:0] G; // Q20.24
-    logic signed [19:0] H; // Q20.0
-    logic signed [15:0] I; // Q16.0
-    logic signed [16:0] J; // Q17.0
-    logic signed [15:0] y0_next; // Q16.0
-    logic               valid_reg_1, valid_reg_2;
+//     logic        [7:0]  w_rate_r; // Q0.8
+//     logic signed [15:0] y0, y1, y2; // y0 -> y[n], y1 -> y[n-1], y2 -> y[n-2]
+//     logic signed [15:0] x0, x1; // x0 -> x[n], x1 -> x[n-1]
+//     logic signed [16:0] A; // Q1.16
+//     logic        [15:0] B; // Q0.16
+//     logic signed [33:0] C; // Q18.16
+//     logic signed [31:0] D; // Q16.16
+//     logic signed [32:0] E; // Q17.16
+//     logic signed [35:0] F; // Q20.16
+//     logic signed [43:0] G; // Q20.24
+//     logic signed [19:0] H; // Q20.0
+//     logic signed [15:0] I; // Q16.0
+//     logic signed [16:0] J; // Q17.0
+//     logic signed [15:0] y0_next; // Q16.0
+//     logic               valid_reg_1, valid_reg_2;
 
-    assign o_data = y0;
-    assign o_valid = valid_reg_2;
+//     assign o_data = y0;
+//     assign o_valid = valid_reg_2;
     
-    always_comb begin
-        A = $signed({$signed(r * i_cosw), 1'b0}); // Q1.16
-        B = r * r; // Q0.16
-        C = $signed(2 * A * y1); // Q18.16
-        D = $signed(B * y2); // Q16.16
-        E = $signed(A * x1); // Q17.16
-        F = $signed(C - D - E); // Q20.16
-        G = $signed(F * w_rate_r); // Q20.24
-        H = $signed($signed(G >>> 24) + G[23]); // Q20.0
-        if (H > 20'sd32767) begin
-            I = 16'sd32767;
-        end else if (H < -20'sd32768) begin
-            I = -16'sd32768;
-        end else begin
-            I = H[15:0]; // Q16.0
-        end
-        J = $signed(I + x0); // Q17.0
-        if (J > 17'sd32767) begin
-            y0_next = 16'sd32767;
-        end else if (J < -17'sd32768) begin
-            y0_next = -16'sd32768;
-        end else begin
-            y0_next = J[15:0]; // Q16.0
-        end
-    end
+//     always_comb begin
+//         A = $signed({$signed(r * i_cosw), 1'b0}); // Q1.16
+//         B = r * r; // Q0.16
+//         C = $signed(2 * A * y1); // Q18.16
+//         D = $signed(B * y2); // Q16.16
+//         E = $signed(A * x1); // Q17.16
+//         F = $signed(C - D - E); // Q20.16
+//         G = $signed(F * w_rate_r); // Q20.24
+//         H = $signed($signed(G >>> 24) + G[23]); // Q20.0
+//         if (H > 20'sd32767) begin
+//             I = 16'sd32767;
+//         end else if (H < -20'sd32768) begin
+//             I = -16'sd32768;
+//         end else begin
+//             I = H[15:0]; // Q16.0
+//         end
+//         J = $signed(I + x0); // Q17.0
+//         if (J > 17'sd32767) begin
+//             y0_next = 16'sd32767;
+//         end else if (J < -17'sd32768) begin
+//             y0_next = -16'sd32768;
+//         end else begin
+//             y0_next = J[15:0]; // Q16.0
+//         end
+//     end
 
-    always_ff @(posedge i_clk or negedge i_rst) begin
-        if (!i_rst) begin
-            w_rate_r <= 8'b0;
-            y0 <= 16'b0;
-            y1 <= 16'b0;
-            y2 <= 16'b0;
-            x0 <= 16'b0;
-            x1 <= 16'b0;
-            valid_reg_1 <= 1'b0;
-            valid_reg_2 <= 1'b0;
-        end else if (i_valid) begin
-            w_rate_r <= w_rate;
-            y0 <= y0_next;
-            y1 <= y0;
-            y2 <= y1;
-            if (i_valid) begin
-                x0 <= i_data;
-            end else begin
-                x0 <= 16'b0;
-            end
-            x1 <= x0;
-            valid_reg_1 <= i_valid;
-            valid_reg_2 <= valid_reg_1;
-        end
-    end
-
-endmodule
+//     always_ff @(posedge i_clk or negedge i_rst) begin
+//         if (!i_rst) begin
+//             w_rate_r <= 8'b0;
+//             y0 <= 16'b0;
+//             y1 <= 16'b0;
+//             y2 <= 16'b0;
+//             x0 <= 16'b0;
+//             x1 <= 16'b0;
+//             valid_reg_1 <= 1'b0;
+//             valid_reg_2 <= 1'b0;
+//         end else if (i_valid) begin
+//             w_rate_r <= w_rate;
+//             y0 <= y0_next;
+//             y1 <= y0;
+//             y2 <= y1;
+//             if (i_valid) begin
+//                 x0 <= i_data;
+//             end else begin
+//                 x0 <= 16'b0;
+//             end
+//             x1 <= x0;
+//             valid_reg_1 <= i_valid;
+//             valid_reg_2 <= valid_reg_1;
+//         end
+//     end
+// 
+// endmodule
 
 module cosine (
     input         [15:0] f, // Q0.16

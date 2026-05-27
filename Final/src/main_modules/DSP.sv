@@ -41,8 +41,7 @@ module DSP (
     output [15:0] o_B3_w_data,
     output        o_B3_write_req,
 
-    input         i_sram_ready,    // SRAM scheduler is not full
-    input         sw
+    input         i_sram_ready    // SRAM scheduler is not full
 );
     
     logic [6:0] i_volume_control; // 0 - Muted, 127 - Full Volume
@@ -50,17 +49,16 @@ module DSP (
     logic signed [15:0] original_data, final_data;
 
     //For testing Reverb
-    logic [7:0] r; 
-    logic [15:0] i_cosw;
+    logic [23:0] r; 
+    logic signed [15:0] i_cosw;
     logic [7:0] w_rate;
-    assign r = 8'd255; // Reverb intensity, can be controlled by the user interface later
-    assign i_cosw = 16'sd16384; // cos(2*pi*1000Hz/48000Hz) in Q15 format, can be calculated for different frequencies if needed
-   // assign w_rate = 8'd255; // Reverb update rate, can be controlled by the user interface later
-    assign w_rate = sw ?  8'd0 : 8'd250; 
+    assign r      = 24'd15099494; // about 0.999
+    assign i_cosw = 16'sd16384;   // about 1000 Hz
+    assign w_rate = 8'd128;       // 0.5
     
     // For testing Overdrive, Fuzz, Distortion
-    logic [7:0] i_gain; 
-    assign i_gain = 8'd100;
+    // logic [7:0] i_gain; 
+    // assign i_gain = 8'd100;
 
     assign o_D2B_valid = final_valid;
     assign o_buf_data_l = final_data; // Playing the same data on both channels for now
@@ -89,8 +87,8 @@ module DSP (
     /* -------------------------------------------------------------
     |    Placeholder for now, should replaced by the stager        |
     ------------------------------------------------------------- */
-/*
-    // Final Volume Control
+
+    //Final Volume Control
     assign i_volume_control = 127; // Full volume for now, can be controlled by the user interface later
     Volume final_volume (
         .i_prev_valid(processed_valid),
@@ -99,50 +97,50 @@ module DSP (
         .o_next_valid(final_valid),
         .o_data(final_data)
     );
-*/
-/*
-    overdrive OverDrive(
-        .i_clk(i_clk),
-        .i_rst(i_rst),
-        .i_data(processed_data),
-        .i_gain(i_gain),
-        .i_en(processed_valid),
-        .o_data(final_data),
-        .o_en(final_valid)
-    );
-*/
- Reverb_basic Reverb(
-        .i_clk(i_clk),
-        .i_rst(i_rst),
-        .i_data(processed_data),
-        .r(r),
-        .i_cosw(i_cosw),
-        .w_rate(w_rate),
-        .i_valid(processed_valid),
-        .o_data(final_data),
-        .o_valid(final_valid)
-    );
-/*
-    fuzz Fuzz(
-        .i_clk(i_clk),
-        .i_rst(i_rst),
-        .i_data(processed_data),
-        .i_gain(i_gain),
-        .i_en(processed_valid),
-        .o_data(final_data),
-        .o_en(final_valid)
-    );
-*/
-/*
-    distortion Distortion(
-        .i_clk(i_clk),
-        .i_rst(i_rst),
-        .i_data(processed_data),
-        .i_gain(i_gain),
-        .i_en(processed_valid),
-        .o_data(final_data),
-        .o_en(final_valid)
-    );
-*/
+
+
+    // overdrive OverDrive(
+    //     .i_clk(i_clk),
+    //     .i_rst(i_rst),
+    //     .i_data(processed_data),
+    //     .i_gain(i_gain),
+    //     .i_en(processed_valid),
+    //     .o_data(final_data),
+    //     .o_en(final_valid)
+    // );
+
+//  Reverb_basic Reverb(
+//         .i_clk(i_clk),
+//         .i_rst(i_rst),
+//         .i_data(processed_data),
+//         .r(r),
+//         .i_cosw(i_cosw),
+//         .w_rate(w_rate),
+//         .i_valid(processed_valid),
+//         .o_data(final_data),
+//         .o_valid(final_valid)
+//     );
+
+    // fuzz Fuzz(
+    //     .i_clk(i_clk),
+    //     .i_rst(i_rst),
+    //     .i_data(processed_data),
+    //     .i_gain(i_gain),
+    //     .i_en(processed_valid),
+    //     .o_data(final_data),
+    //     .o_en(final_valid)
+    // );
+
+
+    // distortion Distortion(
+    //     .i_clk(i_clk),
+    //     .i_rst(i_rst),
+    //     .i_data(processed_data),
+    //     .i_gain(i_gain),
+    //     .i_en(processed_valid),
+    //     .o_data(final_data),
+    //     .o_en(final_valid)
+    // );
+
 
 endmodule
