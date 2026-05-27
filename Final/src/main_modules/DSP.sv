@@ -60,8 +60,8 @@ module DSP (
     assign w_rate = 8'd128;       // 0.5
     
     // For testing Overdrive, Fuzz, Distortion
-    // logic [7:0] i_gain; 
-    // assign i_gain = 8'd100;
+    logic [7:0] i_gain; 
+    assign i_gain = 8'd100;
 
     /* -------------------------------------------------------------
     |                 Switch for independent Modules                    |
@@ -105,6 +105,8 @@ module DSP (
     logic signed [15:0] processed_data;
     // assign processed_valid = original_valid;
     // assign processed_data = original_data;
+    assign final_valid = processed_valid;
+    assign final_data  = processed_data;
     /* -------------------------------------------------------------
     |    Placeholder for now, should replaced by the stager        |
     ------------------------------------------------------------- */
