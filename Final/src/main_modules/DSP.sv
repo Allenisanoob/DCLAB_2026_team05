@@ -4,6 +4,9 @@ module DSP (
     input         i_clk,
     input         i_R2D_valid,
     input  signed [15:0] i_raw_data,
+
+    input  [3:0]  i_fx_sw,
+
     output        o_D2B_valid,
     output signed [15:0] o_buf_data_l,
     output signed [15:0] o_buf_data_r,
@@ -57,12 +60,30 @@ module DSP (
     assign w_rate = 8'd128;       // 0.5
     
     // For testing Overdrive, Fuzz, Distortion
-    // logic [7:0] i_gain; 
-    // assign i_gain = 8'd100;
+    logic [7:0] i_gain; 
+    assign i_gain = 8'd100;
+
+    /* -------------------------------------------------------------
+    |                 Switch for independent Modules                    |
+    ------------------------------------------------------------- */
+    logic signed [15:0] od_data;
+    logic signed [15:0] fuzz_data;
+    logic signed [15:0] dist_data;
+    logic signed [15:0] reverb_data;
+    logic od_valid;
+    logic fuzz_valid;
+    logic dist_valid;
+    logic reverb_valid;
+    /* -------------------------------------------------------------
+    |                   Switch for independent Modules                |
+    ------------------------------------------------------------- */
+
 
     assign o_D2B_valid = final_valid;
     assign o_buf_data_l = final_data; // Playing the same data on both channels for now
     assign o_buf_data_r = final_data; // Playing the same data on both channels for now
+
+
 
     // Raw Data Catcher
     Data_Catcher raw_data_catcher (
@@ -82,65 +103,133 @@ module DSP (
     ------------------------------------------------------------- */
     logic processed_valid;
     logic signed [15:0] processed_data;
-    assign processed_valid = original_valid;
-    assign processed_data = original_data;
+    // assign processed_valid = original_valid;
+    // assign processed_data = original_data;
+    assign final_valid = processed_valid;
+    assign final_data  = processed_data;
     /* -------------------------------------------------------------
     |    Placeholder for now, should replaced by the stager        |
     ------------------------------------------------------------- */
 
     //Final Volume Control
-    assign i_volume_control = 127; // Full volume for now, can be controlled by the user interface later
-    Volume final_volume (
-        .i_prev_valid(processed_valid),
-        .i_data(processed_data),
-        .i_volume_control(i_volume_control),
-        .o_next_valid(final_valid),
-        .o_data(final_data)
+    // assign i_volume_control = 127; // Full volume for now, can be controlled by the user interface later
+    // Volume final_volume (
+    //     .i_prev_valid(processed_valid),
+    //     .i_data(processed_data),
+    //     .i_volume_control(i_volume_control),
+    //     .o_next_valid(final_valid),
+    //     .o_data(final_data)
+    // );
+
+
+    overdrive OverDrive(
+        // .i_clk(i_clk),
+        // .i_rst(i_rst),
+        // .i_data(processed_data),
+        // .i_gain(i_gain),
+        // .i_en(processed_valid),
+        // .o_data(final_data),
+        // .o_en(final_valid)
+
+        .i_clk  (i_clk),
+        .i_rst  (i_rst),
+        .i_data (original_data),
+        .i_gain (i_gain),
+        .i_en   (original_valid),
+        .o_data (od_data),
+        .o_en   (od_valid)
+    );
+
+    fuzz Fuzz(
+        // .i_clk(i_clk),
+        // .i_rst(i_rst),
+        // .i_data(processed_data),
+        // .i_gain(i_gain),
+        // .i_en(processed_valid),
+        // .o_data(final_data),
+        // .o_en(final_valid)
+
+        .i_clk  (i_clk),
+        .i_rst  (i_rst),
+        .i_data (original_data),
+        .i_gain (i_gain),
+        .i_en   (original_valid),
+        .o_data (fuzz_data),
+        .o_en   (fuzz_valid)
     );
 
 
-    // overdrive OverDrive(
-    //     .i_clk(i_clk),
-    //     .i_rst(i_rst),
-    //     .i_data(processed_data),
-    //     .i_gain(i_gain),
-    //     .i_en(processed_valid),
-    //     .o_data(final_data),
-    //     .o_en(final_valid)
-    // );
+    distortion Distortion(
+        // .i_clk(i_clk),
+        // .i_rst(i_rst),
+        // .i_data(processed_data),
+        // .i_gain(i_gain),
+        // .i_en(processed_valid),
+        // .o_data(final_data),
+        // .o_en(final_valid)
 
-//  Reverb_basic Reverb(
-//         .i_clk(i_clk),
-//         .i_rst(i_rst),
-//         .i_data(processed_data),
-//         .r(r),
-//         .i_cosw(i_cosw),
-//         .w_rate(w_rate),
-//         .i_valid(processed_valid),
-//         .o_data(final_data),
-//         .o_valid(final_valid)
-//     );
+        .i_clk  (i_clk),
+        .i_rst  (i_rst),
+        .i_data (original_data),
+        .i_gain (i_gain),
+        .i_en   (original_valid),
+        .o_data (dist_data),
+        .o_en   (dist_valid)
+    );
 
-    // fuzz Fuzz(
-    //     .i_clk(i_clk),
-    //     .i_rst(i_rst),
-    //     .i_data(processed_data),
-    //     .i_gain(i_gain),
-    //     .i_en(processed_valid),
-    //     .o_data(final_data),
-    //     .o_en(final_valid)
-    // );
+    Reverb_basic Reverb(
+        // .i_clk(i_clk),
+        // .i_rst(i_rst),
+        // .i_data(processed_data),
+        // .r(r),
+        // .i_cosw(i_cosw),
+        // .w_rate(w_rate),
+        // .i_valid(processed_valid),
+        // .o_data(final_data),
+        // .o_valid(final_valid)
 
+        .i_clk    (i_clk),
+        .i_rst    (i_rst),
+        .i_data   (original_data),
+        .r        (r),
+        .i_cosw   (i_cosw),
+        .w_rate   (w_rate),
+        .i_valid  (original_valid),
+        .o_data   (reverb_data),
+        .o_valid  (reverb_valid)
+    );
 
-    // distortion Distortion(
-    //     .i_clk(i_clk),
-    //     .i_rst(i_rst),
-    //     .i_data(processed_data),
-    //     .i_gain(i_gain),
-    //     .i_en(processed_valid),
-    //     .o_data(final_data),
-    //     .o_en(final_valid)
-    // );
+    always_comb begin
+    processed_data  = original_data;
+    processed_valid = original_valid;
+
+    case (i_fx_sw)
+        4'b0001: begin
+            processed_data  = od_data;
+            processed_valid = od_valid;
+        end
+
+        4'b0010: begin
+            processed_data  = fuzz_data;
+            processed_valid = fuzz_valid;
+        end
+
+        4'b0100: begin
+            processed_data  = dist_data;
+            processed_valid = dist_valid;
+        end
+
+        4'b1000: begin
+            processed_data  = reverb_data;
+            processed_valid = reverb_valid;
+        end
+
+        default: begin
+            processed_data  = original_data;
+            processed_valid = original_valid;
+        end
+    endcase
+end
 
 
 endmodule

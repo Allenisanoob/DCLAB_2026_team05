@@ -45,13 +45,17 @@ module overdrive (
 
             // 2. 將 Q8.24 轉回 Q1.15：加上 256 = 2^8 進行 rounding，然後 arithmetic right shift 9 bits
             // 並加入 saturation，避免超過 Q1.15 範圍造成 wrap-around / pop sound
-            if (y_norm_full > 33'sd16776704) begin             // 32767 << 9, max Q1.15 in Q8.24 scale
+            if (y_norm_full > 33'sd16776447) begin             // 32767 << 9, max Q1.15 in Q8.24 scale
                 overdrive_out = 16'sd32767;
             end else if (y_norm_full < -33'sd16777216) begin   // -32768 << 9, min Q1.15 in Q8.24 scale
                         overdrive_out = -16'sd32768;
             end else begin
-                        overdrive_out = (y_norm_full + 33'sd256) >>> 9;
-            end
+                        if (y_norm_full >= 0)
+                            overdrive_out = (y_norm_full + 33'sd256) >>> 9;
+                        else
+                            overdrive_out = (y_norm_full - 33'sd256) >>> 9;
+                        
+                        end
         end
     end
 
