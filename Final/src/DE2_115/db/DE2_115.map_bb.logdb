@@ -1,13 +1,1 @@
 v1
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|fuzz:Fuzz|lpm_mult:Mult1|mult_adt:auto_generated|mac_out2,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|overdrive:OverDrive|tanh:u_tanh|lpm_mult:Mult1|mult_66t:auto_generated|mac_out2,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult4|mult_35t:auto_generated|mac_out8,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult4|mult_35t:auto_generated|mac_out6,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult2|mult_h6t:auto_generated|mac_out4,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult3|mult_d6t:auto_generated|mac_out6,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult3|mult_d6t:auto_generated|mac_out4,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult2|mult_h6t:auto_generated|mac_out6,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult2|mult_h6t:auto_generated|mac_out2,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult4|mult_35t:auto_generated|mac_out4,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult3|mult_d6t:auto_generated|mac_out2,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Reverb_basic:Reverb|lpm_mult:Mult4|mult_35t:auto_generated|mac_out2,

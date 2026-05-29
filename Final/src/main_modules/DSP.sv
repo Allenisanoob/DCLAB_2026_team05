@@ -5,11 +5,7 @@ module DSP (
     input         i_R2D_valid,
     input  signed [15:0] i_raw_data,
 
-<<<<<<< Updated upstream
     input  [17:0]  i_fx_sw,
-=======
-    input  [3:0]  i_fx_sw,
->>>>>>> Stashed changes
 
     output        o_D2B_valid,
     output signed [15:0] o_buf_data_l,
@@ -50,60 +46,34 @@ module DSP (
 
     input         i_sram_ready    // SRAM scheduler is not full
 );  
-    logic [3:0] i_fx_sw_r; // Registered version of i_fx_sw for synchronous processing
-    
+
     logic [17:0] i_fx_sw_w, i_fx_sw_r;
     assign i_fx_sw_w = i_fx_sw;
 
-    logic original_valid, final_valid;
     logic signed [15:0] original_data, final_data;
+    logic original_valid, final_valid;
+    
+    logic signed [15:0] processed_data;
+    logic processed_valid;
 
-<<<<<<< Updated upstream
     /* -------------------------------------------------------------
     |                 Data from Independent Modules                |
-=======
-    // For testing Reverb
-    logic [23:0] r; 
-    logic signed [15:0] i_cosw;
-    logic [7:0] w_rate;
-    assign r      = 24'h800000; // about 0.999
-    assign i_cosw = 16'sd32767;   // about 1000 Hz
-    assign w_rate = 8'hFF;       // 0.5
-    
-    //For testing Overdrive, Fuzz, Distortion
-    logic [7:0] i_gain; 
-    assign i_gain = 8'd250;
-
-
-     /* -------------------------------------------------------------
-    |                 Switch for independent Modules                    |
->>>>>>> Stashed changes
     ------------------------------------------------------------- */
     logic signed [15:0] od_data;
     logic signed [15:0] fuzz_data;
     logic signed [15:0] dist_data;
     logic signed [15:0] reverb_data;
-<<<<<<< Updated upstream
     logic signed [15:0] ng_data;
     logic signed [15:0] de_data;
-=======
->>>>>>> Stashed changes
     logic od_valid;
     logic fuzz_valid;
     logic dist_valid;
     logic reverb_valid;
-<<<<<<< Updated upstream
     logic ng_valid;
     logic de_valid;
     /* -------------------------------------------------------------
     |                 Data from Independent Modules                |
     ------------------------------------------------------------- */
-=======
-    /* -------------------------------------------------------------
-    |                   Switch for independent Modules                |
-    ------------------------------------------------------------- */
-
->>>>>>> Stashed changes
 
     assign o_D2B_valid = final_valid;
     assign o_buf_data_l = final_data; // Playing the same data on both channels for now
@@ -119,35 +89,22 @@ module DSP (
         .o_data(original_data)
     );
     
-    // TODO: Implement the stager to pipeline the data through the DSP blocks
-    // Stager8 stager8 ();
+   
 
     /* ----------------------------------------------------------------
     |    Placeholder for now, should be replaced by the stager        |
     ---------------------------------------------------------------- */
-    logic processed_valid;
-    logic signed [15:0] processed_data;
-    // assign processed_valid = original_valid;
-    // assign processed_data = original_data;
-<<<<<<< Updated upstream
-    assign final_valid = processed_valid;
-    assign final_data  = processed_data;
+
+        // TODO: Implement the stager to pipeline the data through the DSP blocks
+        // Stager8 stager8 ();
+
     /* ----------------------------------------------------------------
     |    Placeholder for now, should be replaced by the stager        |
     ---------------------------------------------------------------- */
 
     // Final Volume Control
     logic [6:0] i_volume_control; // 0 - Muted, 127 - Full Volume
-    assign i_volume_control = 127; // Full volume for now, can be controlled by the user interface later
-=======
-    // assign processed_data = 0;
-    /* -------------------------------------------------------------
-    |    Placeholder for now, should replaced by the stager        |
-    ------------------------------------------------------------- */
-
-    // Final Volume Control
-    assign i_volume_control = 7'd127; // Full volume for now, can be controlled by the user interface later
->>>>>>> Stashed changes
+    assign i_volume_control = 7'd90; // Full volume for now, can be controlled by the user interface later
     Volume final_volume (
         .i_prev_valid       (processed_valid),
         .i_data             (processed_data),
@@ -170,7 +127,6 @@ module DSP (
         .o_en   (od_valid)
     );
 
-<<<<<<< Updated upstream
     fuzz Fuzz(
         .i_clk  (i_clk),
         .i_rst  (i_rst),
@@ -180,19 +136,6 @@ module DSP (
         .o_data (fuzz_data),
         .o_en   (fuzz_valid)
     );
-=======
-	//  Reverb_basic Reverb(
-    //     .i_clk(i_clk),
-    //     .i_rst(i_rst),
-    //     .i_data(processed_data),
-    //     .r(r),
-    //     .i_cosw(i_cosw),
-    //     .w_rate(w_rate),
-    //     .i_valid(processed_valid),
-    //     .o_data(final_data),
-    //     .o_valid(final_valid)
-    // );
->>>>>>> Stashed changes
 
     distortion Distortion(
         .i_clk  (i_clk),
@@ -229,11 +172,15 @@ module DSP (
     logic [15:0] ng_hold;          // in samples
     logic [14:0] ng_threshold_lo;  // unsigned Q0.15
     logic [14:0] ng_threshold_hi;  // unsigned Q0.15
-    assign ng_rise_rate  = 8'b1000_0000;  // 0.5
-    assign ng_decay_rate = 8'b0010_0000;  // 0.125
+    // assign ng_rise_rate  = 16'b0000_0000_0000_1000;  // 1/8192
+    // assign ng_decay_rate = 16'b0000_0000_0000_0010;  // 1/32768
+    assign ng_rise_rate  = 8'd4;    // about 4/256
+    assign ng_decay_rate = 8'd1;    // about 1/256
     assign ng_hold = 16'd24000;    // 0.5s
-    assign ng_threshold_lo = 15'b00010_00000_00000;    // 1/16 max strength
-    assign ng_threshold_hi = 15'b00100_00000_00000;    // 2/16 max strength
+    // assign ng_threshold_lo = 15'b00010_00000_00000;    // 1/16 max strength
+    // assign ng_threshold_hi = 15'b00100_00000_00000;    // 2/16 max strength
+    assign ng_threshold_lo = 15'b11000_00000_00000;    //  6/8 max strength
+    assign ng_threshold_hi = 15'b11100_00000_00000;    //  7/8 max strength
     Noise_Gate Noise_Gate(
         .i_clk          (i_clk),
         .i_rst          (i_rst),
@@ -248,7 +195,6 @@ module DSP (
         .o_data         (ng_data)
     );
 
-<<<<<<< Updated upstream
     // Delay Effect
     logic [15:0] de_time;     // Delay duration in samples
     logic [7:0]  de_feedback; // Feedback ratio (0 to 127, where 128 is 100%)
@@ -276,145 +222,42 @@ module DSP (
         .o_write_req    (o_B0_write_req)
     );
   
-=======
-    overdrive OverDrive(
-        // .i_clk(i_clk),
-        // .i_rst(i_rst),
-        // .i_data(processed_data),
-        // .i_gain(i_gain),
-        // .i_en(processed_valid),
-        // .o_data(final_data),
-        // .o_en(final_valid)
-
-        .i_clk  (i_clk),
-        .i_rst  (i_rst),
-        .i_data (original_data),
-        .i_gain (i_gain),
-        .i_en   (original_valid),
-        .o_data (od_data),
-        .o_en   (od_valid)
-    );
-
-    fuzz Fuzz(
-        // .i_clk(i_clk),
-        // .i_rst(i_rst),
-        // .i_data(processed_data),
-        // .i_gain(i_gain),
-        // .i_en(processed_valid),
-        // .o_data(final_data),
-        // .o_en(final_valid)
-
-        .i_clk  (i_clk),
-        .i_rst  (i_rst),
-        .i_data (original_data),
-        .i_gain (i_gain),
-        .i_en   (original_valid),
-        .o_data (fuzz_data),
-        .o_en   (fuzz_valid)
-    );
-
-
-    distortion Distortion(
-        // .i_clk(i_clk),
-        // .i_rst(i_rst),
-        // .i_data(processed_data),
-        // .i_gain(i_gain),
-        // .i_en(processed_valid),
-        // .o_data(final_data),
-        // .o_en(final_valid)
-
-        .i_clk  (i_clk),
-        .i_rst  (i_rst),
-        .i_data (original_data),
-        .i_gain (i_gain),
-        .i_en   (original_valid),
-        .o_data (dist_data),
-        .o_en   (dist_valid)
-    );
-
-    Reverb_basic Reverb(
-        // .i_clk(i_clk),
-        // .i_rst(i_rst),
-        // .i_data(processed_data),
-        // .r(r),
-        // .i_cosw(i_cosw),
-        // .w_rate(w_rate),
-        // .i_valid(processed_valid),
-        // .o_data(final_data),
-        // .o_valid(final_valid)
-
-        .i_clk    (i_clk),
-        .i_rst    (i_rst),
-        .i_data   (original_data),
-        .r        (r),
-        .i_cosw   (i_cosw),
-        .w_rate   (w_rate),
-        .i_valid  (original_valid),
-        .o_data   (reverb_data),
-        .o_valid  (reverb_valid)
-    );
->>>>>>> Stashed changes
 
     always_comb begin
         processed_data  = original_data;
         processed_valid = original_valid;
 
-<<<<<<< Updated upstream
-        case (i_fx_sw[5:0])
-            6'b000001: begin
-=======
-        case (i_fx_sw)
-            4'b0000: begin
-                processed_data  = original_data;
-                processed_valid = original_valid;
-            end
-            
-            4'b0001: begin
->>>>>>> Stashed changes
-                processed_data  = od_data;
-                processed_valid = od_valid;
-            end
+        case (i_fx_sw_r[5:0])
+            // 6'b000001: begin
+            //     processed_data  = od_data;
+            //     processed_valid = od_valid;
+            // end
 
-<<<<<<< Updated upstream
-            6'b000010: begin
-=======
-            4'b0010: begin
->>>>>>> Stashed changes
-                processed_data  = fuzz_data;
-                processed_valid = fuzz_valid;
-            end
+            // 6'b000010: begin
+            //     processed_data  = fuzz_data;
+            //     processed_valid = fuzz_valid;
+            // end
 
-<<<<<<< Updated upstream
-            6'b000100: begin
-=======
-            4'b0100: begin
->>>>>>> Stashed changes
-                processed_data  = dist_data;
-                processed_valid = dist_valid;
-            end
+            // 6'b000100: begin
+            //     processed_data  = dist_data;
+            //     processed_valid = dist_valid;
+            // end
 
-<<<<<<< Updated upstream
-            6'b001000: begin
-=======
-            4'b1000: begin
->>>>>>> Stashed changes
-                processed_data  = reverb_data;
-                processed_valid = reverb_valid;
-            end
+            // 6'b001000: begin
+            //     processed_data  = reverb_data;
+            //     processed_valid = reverb_valid;
+            // end
 
-<<<<<<< Updated upstream
-            6'b010000: begin
-                processed_data  = ng_data;
-                processed_valid = ng_valid;
-            end
+            // 6'b010000: begin
+            //     processed_data  = ng_data;
+            //     processed_valid = ng_valid;
+            // end
 
-            6'b100000: begin
-                processed_data  = de_data;
-                processed_valid = de_valid;
-            end
+            // 6'b100000: begin
+            //     processed_data  = de_data;
+            //     processed_valid = de_valid;
+            // end
 
-=======
->>>>>>> Stashed changes
             default: begin
                 processed_data  = original_data;
                 processed_valid = original_valid;
@@ -423,17 +266,11 @@ module DSP (
     end
 
     always_ff @(posedge i_clk or negedge i_rst) begin
-<<<<<<< Updated upstream
-        i_fx_sw_r <= i_fx_sw_w;
-    end
-=======
         if (!i_rst) begin
-            i_fx_sw_r <= 4'b0000;
+            i_fx_sw_r <= 18'b0;
         end else begin
-            i_fx_sw_r <= i_fx_sw;
+            i_fx_sw_r <= i_fx_sw_w;
         end
     end
-
->>>>>>> Stashed changes
 
 endmodule

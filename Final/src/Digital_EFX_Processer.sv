@@ -4,7 +4,7 @@ module Top (
 	input i_key_0,
 	input i_key_1,
 	input i_key_2,
-	input [3:0] i_sw,
+	input [17:0] i_sw,
 	
 	// SRAM
 	output [19:0] o_SRAM_ADDR,
@@ -29,7 +29,10 @@ module Top (
 
 	// LED
 	output [8:0]  o_ledg,
-	output [17:0] o_ledr
+	output [17:0] o_ledr,
+
+	// For Debugging
+	output [3:0] o_sw_count
 
 	// LCD (optional display)
 	// input        i_clk_800k,
@@ -69,10 +72,10 @@ module Top (
 	assign o_SRAM_UB_N = 1'b0;
 
 	// Show volume in log scale on LEDG
-	// assign current_volume = (raw_data[15]) ? -raw_data : raw_data;
+	assign current_volume = (raw_data[15]) ? -raw_data : raw_data;
 	// assign current_volume = (buf_data_l[15]) ? -buf_data_l : buf_data_l;
 	// assign current_volume = (buf_data_r[15]) ? -buf_data_r : buf_data_r;
-	assign current_volume = (out_data[15]) ? -out_data : out_data;
+	// assign current_volume = (out_data[15]) ? -out_data : out_data;
 
 	assign o_ledg[0] = (current_volume > 16'h0080);
 	assign o_ledg[1] = (current_volume > 16'h0100);
@@ -266,6 +269,28 @@ module Top (
 			state_r <= S_SETUP;
 		end else begin
 			state_r <= state_w;
+		end
+	end
+
+	// Switch Debugging
+	logic [3:0] sw_count_w, sw_count_r;
+	logic sw_on;
+	assign o_sw_count = sw_count_r;
+	assign sw_on = (i_sw[0] || i_sw[1] || i_sw[2] || i_sw[3] || i_sw[4] || i_sw[5]);
+
+	always_comb begin
+		if (sw_on) begin
+			sw_count_w = sw_count_r + 1;
+		end else begin
+			sw_count_w = 0;
+		end
+	end
+
+	always_ff @(posedge i_clk or negedge i_rst_n) begin
+		if (!i_rst_n) begin
+			sw_count_r <= 0;
+		end else begin
+			sw_count_r <= sw_count_w;
 		end
 	end
 

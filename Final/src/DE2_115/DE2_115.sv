@@ -177,11 +177,7 @@ Top top0(
 	.i_key_0(key0down),
 	.i_key_1(key1down),
 	.i_key_2(key2down),
-<<<<<<< Updated upstream
 	.i_sw(SW[17:0]),
-=======
-	.i_sw(SW[3:0]),
->>>>>>> Stashed changes
 
 	// SRAM
 	.o_SRAM_ADDR(SRAM_ADDR), // [19:0]
@@ -206,7 +202,10 @@ Top top0(
 
 	// LED
 	.o_ledg(LEDG), // [8:0]
-	.o_ledr(LEDR) // [17:0]
+	.o_ledr(LEDR), // [17:0]
+
+	// For Debugging
+	.o_sw_count(sw_count) // [3:0]
 
 	// LCD (optional display)
 	// .i_clk_800k(CLK_800K),
@@ -218,13 +217,14 @@ Top top0(
 	// .o_LCD_BLON(LCD_BLON),
 );
 
-// SevenHexDecoder seven_dec(
-// 	.i_num(play_time),	// [3:0]
-// 	.o_seven(HEX0) 		// [6:0]
-// );
+logic [3:0] sw_count;
+SevenHexDecoder seven_dec(
+	.i_hex(sw_count),	// [3:0]
+	.o_seven(HEX0) 		// [6:0]
+);
 
 // comment those are use for display
-assign HEX0 = '1;
+// assign HEX0 = '1;
 assign HEX1 = '1;
 assign HEX2 = '1;
 assign HEX3 = '1;
