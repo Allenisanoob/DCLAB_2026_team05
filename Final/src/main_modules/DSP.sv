@@ -5,7 +5,7 @@ module DSP (
     input         i_R2D_valid,
     input  signed [15:0] i_raw_data,
 
-    input  [3:0]  i_fx_sw,
+    input  [17:0]  i_fx_sw,
 
     output        o_D2B_valid,
     output signed [15:0] o_buf_data_l,
@@ -47,43 +47,34 @@ module DSP (
     input         i_sram_ready    // SRAM scheduler is not full
 );
     
-    logic [6:0] i_volume_control; // 0 - Muted, 127 - Full Volume
+    logic [17:0] i_fx_sw_w, i_fx_sw_r;
+    assign i_fx_sw_w = i_fx_sw;
+
     logic original_valid, final_valid;
     logic signed [15:0] original_data, final_data;
 
-    //For testing Reverb
-    logic [23:0] r; 
-    logic signed [15:0] i_cosw;
-    logic [7:0] w_rate;
-    assign r      = 24'd15099494; // about 0.999
-    assign i_cosw = 16'sd16384;   // about 1000 Hz
-    assign w_rate = 8'd128;       // 0.5
-    
-    // For testing Overdrive, Fuzz, Distortion
-    logic [7:0] i_gain; 
-    assign i_gain = 8'd100;
-
     /* -------------------------------------------------------------
-    |                 Switch for independent Modules                    |
+    |                 Data from Independent Modules                |
     ------------------------------------------------------------- */
     logic signed [15:0] od_data;
     logic signed [15:0] fuzz_data;
     logic signed [15:0] dist_data;
     logic signed [15:0] reverb_data;
+    logic signed [15:0] ng_data;
+    logic signed [15:0] de_data;
     logic od_valid;
     logic fuzz_valid;
     logic dist_valid;
     logic reverb_valid;
+    logic ng_valid;
+    logic de_valid;
     /* -------------------------------------------------------------
-    |                   Switch for independent Modules                |
+    |                 Data from Independent Modules                |
     ------------------------------------------------------------- */
-
 
     assign o_D2B_valid = final_valid;
     assign o_buf_data_l = final_data; // Playing the same data on both channels for now
     assign o_buf_data_r = final_data; // Playing the same data on both channels for now
-
-
 
     // Raw Data Catcher
     Data_Catcher raw_data_catcher (
@@ -98,39 +89,35 @@ module DSP (
     // TODO: Implement the stager to pipeline the data through the DSP blocks
     // Stager8 stager8 ();
 
-    /* -------------------------------------------------------------
-    |    Placeholder for now, should replaced by the stager        |
-    ------------------------------------------------------------- */
+    /* ----------------------------------------------------------------
+    |    Placeholder for now, should be replaced by the stager        |
+    ---------------------------------------------------------------- */
     logic processed_valid;
     logic signed [15:0] processed_data;
     // assign processed_valid = original_valid;
     // assign processed_data = original_data;
     assign final_valid = processed_valid;
     assign final_data  = processed_data;
-    /* -------------------------------------------------------------
-    |    Placeholder for now, should replaced by the stager        |
-    ------------------------------------------------------------- */
+    /* ----------------------------------------------------------------
+    |    Placeholder for now, should be replaced by the stager        |
+    ---------------------------------------------------------------- */
 
-    //Final Volume Control
-    // assign i_volume_control = 127; // Full volume for now, can be controlled by the user interface later
-    // Volume final_volume (
-    //     .i_prev_valid(processed_valid),
-    //     .i_data(processed_data),
-    //     .i_volume_control(i_volume_control),
-    //     .o_next_valid(final_valid),
-    //     .o_data(final_data)
-    // );
+    // Final Volume Control
+    logic [6:0] i_volume_control; // 0 - Muted, 127 - Full Volume
+    assign i_volume_control = 127; // Full volume for now, can be controlled by the user interface later
+    Volume final_volume (
+        .i_prev_valid       (processed_valid),
+        .i_data             (processed_data),
+        .i_volume_control   (i_volume_control),
+        .o_next_valid       (final_valid),
+        .o_data             (final_data)
+    );
 
 
+    // Overdrive, Fuzz, Distortion
+    logic [7:0] i_gain; 
+    assign i_gain = 8'd100;
     overdrive OverDrive(
-        // .i_clk(i_clk),
-        // .i_rst(i_rst),
-        // .i_data(processed_data),
-        // .i_gain(i_gain),
-        // .i_en(processed_valid),
-        // .o_data(final_data),
-        // .o_en(final_valid)
-
         .i_clk  (i_clk),
         .i_rst  (i_rst),
         .i_data (original_data),
@@ -141,14 +128,6 @@ module DSP (
     );
 
     fuzz Fuzz(
-        // .i_clk(i_clk),
-        // .i_rst(i_rst),
-        // .i_data(processed_data),
-        // .i_gain(i_gain),
-        // .i_en(processed_valid),
-        // .o_data(final_data),
-        // .o_en(final_valid)
-
         .i_clk  (i_clk),
         .i_rst  (i_rst),
         .i_data (original_data),
@@ -158,16 +137,7 @@ module DSP (
         .o_en   (fuzz_valid)
     );
 
-
     distortion Distortion(
-        // .i_clk(i_clk),
-        // .i_rst(i_rst),
-        // .i_data(processed_data),
-        // .i_gain(i_gain),
-        // .i_en(processed_valid),
-        // .o_data(final_data),
-        // .o_en(final_valid)
-
         .i_clk  (i_clk),
         .i_rst  (i_rst),
         .i_data (original_data),
@@ -177,17 +147,14 @@ module DSP (
         .o_en   (dist_valid)
     );
 
+    // Reverb
+    logic [23:0] r; 
+    logic signed [15:0] i_cosw;
+    logic [7:0] w_rate;
+    assign r      = 24'd15099494; // about 0.999
+    assign i_cosw = 16'sd16384;   // about 1000 Hz
+    assign w_rate = 8'd128;       // 0.5
     Reverb_basic Reverb(
-        // .i_clk(i_clk),
-        // .i_rst(i_rst),
-        // .i_data(processed_data),
-        // .r(r),
-        // .i_cosw(i_cosw),
-        // .w_rate(w_rate),
-        // .i_valid(processed_valid),
-        // .o_data(final_data),
-        // .o_valid(final_valid)
-
         .i_clk    (i_clk),
         .i_rst    (i_rst),
         .i_data   (original_data),
@@ -199,37 +166,103 @@ module DSP (
         .o_valid  (reverb_valid)
     );
 
+    // Noise Gate
+    logic [7:0]  ng_rise_rate;      // in bits
+    logic [7:0]  ng_decay_rate;     // in bits
+    logic [15:0] ng_hold;          // in samples
+    logic [14:0] ng_threshold_lo;  // unsigned Q0.15
+    logic [14:0] ng_threshold_hi;  // unsigned Q0.15
+    assign ng_rise_rate  = 8'b1000_0000;  // 0.5
+    assign ng_decay_rate = 8'b0010_0000;  // 0.125
+    assign ng_hold = 16'd24000;    // 0.5s
+    assign ng_threshold_lo = 15'b00010_00000_00000;    // 1/16 max strength
+    assign ng_threshold_hi = 15'b00100_00000_00000;    // 2/16 max strength
+    Noise_Gate Noise_Gate(
+        .i_clk          (i_clk),
+        .i_rst          (i_rst),
+        .i_prev_valid   (original_valid),
+        .i_data         (original_data),
+        .i_rise_rate    (ng_rise_rate),
+        .i_decay_rate   (ng_decay_rate),
+        .i_hold         (ng_hold),
+        .i_threshold_lo (ng_threshold_lo),
+        .i_threshold_hi (ng_threshold_hi),
+        .o_next_valid   (ng_valid),
+        .o_data         (ng_data)
+    );
+
+    // Delay Effect
+    logic [15:0] de_time;     // Delay duration in samples
+    logic [7:0]  de_feedback; // Feedback ratio (0 to 127, where 128 is 100%)
+    logic [7:0]  de_mix;      // Mix ratio      (0 to 127, where 128 is 100%)
+    assign de_time = 16'd24000;         // 0.5s
+    assign de_feedback = 8'd0110_0000;  // x0.375
+    assign de_mix = 8'd0110_0000;       // x0.375
+    Delay_Effect #(.BASE_ADDR(20'h00000)) Delay_Effect(
+        .i_clk          (i_clk),
+        .i_rst          (i_rst),
+        .i_prev_valid   (original_valid),
+        .i_data         (original_data),
+        .i_time         (de_time),
+        .i_feedback     (de_feedback),
+        .i_mix          (de_mix),
+        .o_next_valid   (de_valid),
+        .o_data         (de_data),
+        // SRAM connection
+        .o_SRAM_r_addr  (o_B0_r_addr),
+        .i_SRAM_r_data  (i_B0_r_data),
+        .o_read_req     (o_B0_read_req),
+        .i_read_valid   (i_B0_read_valid),
+        .o_SRAM_w_addr  (o_B0_w_addr),
+        .o_SRAM_w_data  (o_B0_w_data),
+        .o_write_req    (o_B0_write_req)
+    );
+  
+
     always_comb begin
-    processed_data  = original_data;
-    processed_valid = original_valid;
+        processed_data  = original_data;
+        processed_valid = original_valid;
 
-    case (i_fx_sw)
-        4'b0001: begin
-            processed_data  = od_data;
-            processed_valid = od_valid;
-        end
+        case (i_fx_sw[5:0])
+            6'b000001: begin
+                processed_data  = od_data;
+                processed_valid = od_valid;
+            end
 
-        4'b0010: begin
-            processed_data  = fuzz_data;
-            processed_valid = fuzz_valid;
-        end
+            6'b000010: begin
+                processed_data  = fuzz_data;
+                processed_valid = fuzz_valid;
+            end
 
-        4'b0100: begin
-            processed_data  = dist_data;
-            processed_valid = dist_valid;
-        end
+            6'b000100: begin
+                processed_data  = dist_data;
+                processed_valid = dist_valid;
+            end
 
-        4'b1000: begin
-            processed_data  = reverb_data;
-            processed_valid = reverb_valid;
-        end
+            6'b001000: begin
+                processed_data  = reverb_data;
+                processed_valid = reverb_valid;
+            end
 
-        default: begin
-            processed_data  = original_data;
-            processed_valid = original_valid;
-        end
-    endcase
-end
+            6'b010000: begin
+                processed_data  = ng_data;
+                processed_valid = ng_valid;
+            end
 
+            6'b100000: begin
+                processed_data  = de_data;
+                processed_valid = de_valid;
+            end
+
+            default: begin
+                processed_data  = original_data;
+                processed_valid = original_valid;
+            end
+        endcase
+    end
+
+    always_ff @(posedge i_clk or negedge i_rst) begin
+        i_fx_sw_r <= i_fx_sw_w;
+    end
 
 endmodule

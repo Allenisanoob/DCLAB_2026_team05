@@ -26,12 +26,13 @@ DSP
 		
 	Blocks With SRAM
 		// all above
-		I - [15:0] i_SRAM_r_data //read
 		O - [15:0] o_SRAM_r_addr //read
+		I - [15:0] i_SRAM_r_data //read
+		O - o_read_req   		 //read
+		I - i_read_valid 		 //read
 		O - [15:0] o_SRAM_w_addr //write
 		O - [15:0] o_SRAM_w_data //write
-		I - i_read_valid 		 //read
-		O - o_write_valid		 //write
+		O - o_write_req		     //write
 		
 	Stager
 		// TODO
