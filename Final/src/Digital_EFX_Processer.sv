@@ -69,7 +69,10 @@ module Top (
 	assign o_SRAM_UB_N = 1'b0;
 
 	// Show volume in log scale on LEDG
-	assign current_volume = (out_data[15]) ? -out_data : out_data; // absolute value
+	// assign current_volume = (raw_data[15]) ? -raw_data : raw_data;
+	// assign current_volume = (buf_data_l[15]) ? -buf_data_l : buf_data_l;
+	// assign current_volume = (buf_data_r[15]) ? -buf_data_r : buf_data_r;
+	assign current_volume = (out_data[15]) ? -out_data : out_data;
 
 	assign o_ledg[0] = (current_volume > 16'h0080);
 	assign o_ledg[1] = (current_volume > 16'h0100);

@@ -57,8 +57,10 @@ module Reverb_basic(
         E = $signed({1'b0, B}) * y2_r; // Q17.48
         F = $signed({D[58], D, 9'd0}) - $signed({E[64], E}); // Q21.48
         G = $signed({1'b0, w_rate_r}) * F; // Q22.56
-        H = $signed(F[68:48]) + $signed({20'd0, F[47]}); // Q21.0
-        I = $signed(G[77:56]) + $signed({21'd0, G[55]}); // Q22.0
+        // H = $signed(F[68:48]) + $signed({20'd0, F[47]}); // Q21.0
+		  H = $signed(F[68:48]); // Q21.0
+        // I = $signed(G[77:56]) + $signed({21'd0, G[55]}); // Q22.0
+		  I = $signed(G[77:56]); // Q22.0
         J = $signed({H[20], H}) + $signed({i_data_r[15], i_data_r}); // Q22.0
         K = $signed({I[21], I}) + $signed({i_data_r[15], i_data_r}); // Q23.0
         case (state_r)
@@ -71,7 +73,7 @@ module Reverb_basic(
                     state_w  = CALC;
                 end
                 o_valid_w = 1'b0;
-                o_data_w  = 16'sd0;
+                // o_data_w  = 16'sd0;
             end
             CALC: begin
                 state_w   = IDLE;

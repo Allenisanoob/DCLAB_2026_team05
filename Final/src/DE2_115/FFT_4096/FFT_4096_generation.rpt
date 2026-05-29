@@ -1,0 +1,28 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\DCLAB\Documents\GitHub\DCLAB_2026_team05\Final\src\DE2_115\FFT_4096.qsys --block-symbol-file --output-directory=C:\Users\DCLAB\Documents\GitHub\DCLAB_2026_team05\Final\src\DE2_115\FFT_4096 --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading DE2_115/FFT_4096.qsys
+Progress: Reading input file
+Progress: Adding fft_ii_0 [altera_fft_ii 15.0]
+Progress: Parameterizing module fft_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\DCLAB\Documents\GitHub\DCLAB_2026_team05\Final\src\DE2_115\FFT_4096.qsys --synthesis=VERILOG --output-directory=C:\Users\DCLAB\Documents\GitHub\DCLAB_2026_team05\Final\src\DE2_115\FFT_4096\synthesis --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading DE2_115/FFT_4096.qsys
+Progress: Reading input file
+Progress: Adding fft_ii_0 [altera_fft_ii 15.0]
+Progress: Parameterizing module fft_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: FFT_4096: Generating FFT_4096 "FFT_4096" for QUARTUS_SYNTH
+Info: fft_ii_0: "FFT_4096" instantiated altera_fft_ii "fft_ii_0"
+Info: FFT_4096: Done "FFT_4096" with 2 modules, 106 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

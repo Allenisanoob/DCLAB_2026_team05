@@ -30,8 +30,8 @@ module Player (
 
         case(state_r)
             IDLE: begin
-                if (is_init_r && i_DAC_LRCK) o_B2P_request_l = 1'b1;
-                else if(is_init_r && !i_DAC_LRCK) o_B2P_request_r = 1'b1;
+                if (is_init_r && !i_DAC_LRCK) o_B2P_request_l = 1'b1;
+                else if(is_init_r && i_DAC_LRCK) o_B2P_request_r = 1'b1;
                 is_init_w       = 1'b0;
                 if (lrc_edge) begin
                     state_w = SEND;
