@@ -57,7 +57,7 @@ module DSP (
     logic processed_valid;
 
     /* -------------------------------------------------------------
-    |                 Data from Independent Modules                |
+    |               For Testing Independent Modules                |
     ------------------------------------------------------------- */
     logic signed [15:0] od_data;
     logic signed [15:0] fuzz_data;
@@ -65,14 +65,22 @@ module DSP (
     logic signed [15:0] reverb_data;
     logic signed [15:0] ng_data;
     logic signed [15:0] de_data;
-    logic od_valid;
-    logic fuzz_valid;
-    logic dist_valid;
-    logic reverb_valid;
-    logic ng_valid;
-    logic de_valid;
+
+    logic od_valid,     od_en;
+    logic fuzz_valid,   fuzz_en;
+    logic dist_valid,   dist_en;
+    logic reverb_valid, reverb_en;
+    logic ng_valid,     ng_en;
+    logic de_valid,     de_en;
+
+    assign od_en     = (i_fx_sw_r[5:0] == 6'b000001) ? original_valid : 1'b0;
+    assign fuzz_en   = (i_fx_sw_r[5:0] == 6'b000010) ? original_valid : 1'b0;
+    assign dist_en   = (i_fx_sw_r[5:0] == 6'b000100) ? original_valid : 1'b0;
+    assign reverb_en = (i_fx_sw_r[5:0] == 6'b001000) ? original_valid : 1'b0;
+    assign ng_en     = (i_fx_sw_r[5:0] == 6'b010000) ? original_valid : 1'b0;
+    assign de_en     = (i_fx_sw_r[5:0] == 6'b100000) ? original_valid : 1'b0;
     /* -------------------------------------------------------------
-    |                 Data from Independent Modules                |
+    |               For Testing Independent Modules                |
     ------------------------------------------------------------- */
 
     assign o_D2B_valid = final_valid;
@@ -88,8 +96,6 @@ module DSP (
         .o_next_valid(original_valid),
         .o_data(original_data)
     );
-    
-   
 
     /* ----------------------------------------------------------------
     |    Placeholder for now, should be replaced by the stager        |
@@ -122,7 +128,7 @@ module DSP (
         .i_rst  (i_rst),
         .i_data (original_data),
         .i_gain (i_gain),
-        .i_en   (original_valid),
+        .i_en   (od_en),
         .o_data (od_data),
         .o_en   (od_valid)
     );
@@ -132,7 +138,7 @@ module DSP (
         .i_rst  (i_rst),
         .i_data (original_data),
         .i_gain (i_gain),
-        .i_en   (original_valid),
+        .i_en   (fuzz_en),
         .o_data (fuzz_data),
         .o_en   (fuzz_valid)
     );
@@ -142,7 +148,7 @@ module DSP (
         .i_rst  (i_rst),
         .i_data (original_data),
         .i_gain (i_gain),
-        .i_en   (original_valid),
+        .i_en   (dist_en),
         .o_data (dist_data),
         .o_en   (dist_valid)
     );
@@ -161,7 +167,7 @@ module DSP (
         .r        (r),
         .i_cosw   (i_cosw),
         .w_rate   (w_rate),
-        .i_valid  (original_valid),
+        .i_valid  (reverb_en),
         .o_data   (reverb_data),
         .o_valid  (reverb_valid)
     );
@@ -184,7 +190,7 @@ module DSP (
     Noise_Gate Noise_Gate(
         .i_clk          (i_clk),
         .i_rst          (i_rst),
-        .i_prev_valid   (original_valid),
+        .i_prev_valid   (ng_en),
         .i_data         (original_data),
         .i_rise_rate    (ng_rise_rate),
         .i_decay_rate   (ng_decay_rate),
@@ -205,7 +211,7 @@ module DSP (
     Delay_Effect #(.BASE_ADDR(20'h00000)) Delay_Effect(
         .i_clk          (i_clk),
         .i_rst          (i_rst),
-        .i_prev_valid   (original_valid),
+        .i_prev_valid   (de_en),
         .i_data         (original_data),
         .i_time         (de_time),
         .i_feedback     (de_feedback),
@@ -228,35 +234,35 @@ module DSP (
         processed_valid = original_valid;
 
         case (i_fx_sw_r[5:0])
-            // 6'b000001: begin
-            //     processed_data  = od_data;
-            //     processed_valid = od_valid;
-            // end
+            6'b000001: begin
+                processed_data  = od_data;
+                processed_valid = od_valid;
+            end
 
-            // 6'b000010: begin
-            //     processed_data  = fuzz_data;
-            //     processed_valid = fuzz_valid;
-            // end
+            6'b000010: begin
+                processed_data  = fuzz_data;
+                processed_valid = fuzz_valid;
+            end
 
-            // 6'b000100: begin
-            //     processed_data  = dist_data;
-            //     processed_valid = dist_valid;
-            // end
+            6'b000100: begin
+                processed_data  = dist_data;
+                processed_valid = dist_valid;
+            end
 
-            // 6'b001000: begin
-            //     processed_data  = reverb_data;
-            //     processed_valid = reverb_valid;
-            // end
+            6'b001000: begin
+                processed_data  = reverb_data;
+                processed_valid = reverb_valid;
+            end
 
-            // 6'b010000: begin
-            //     processed_data  = ng_data;
-            //     processed_valid = ng_valid;
-            // end
+            6'b010000: begin
+                processed_data  = ng_data;
+                processed_valid = ng_valid;
+            end
 
-            // 6'b100000: begin
-            //     processed_data  = de_data;
-            //     processed_valid = de_valid;
-            // end
+            6'b100000: begin
+                processed_data  = de_data;
+                processed_valid = de_valid;
+            end
 
             default: begin
                 processed_data  = original_data;
