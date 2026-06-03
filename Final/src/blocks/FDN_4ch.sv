@@ -2,7 +2,8 @@ module FDN_4ch #(
     parameter integer delay_sample_0 = 1423,
     parameter integer delay_sample_1 = 1787,
     parameter integer delay_sample_2 = 2131,
-    parameter integer delay_sample_3 = 2531
+    parameter integer delay_sample_3 = 2531,
+    parameter [7:0] gain = 8'd128 // Q0.8
 )(
     input clk,
     input rst,
@@ -11,7 +12,6 @@ module FDN_4ch #(
     input signed [15:0] in_1,
     input signed [15:0] in_2,
     input signed [15:0] in_3,
-    input        [7:0]  gain, // Q0.9
     output reg out_valid,
     output signed reg [15:0] out
 );
@@ -36,18 +36,18 @@ logic signed [15:0] ch0_delay; // ch0_delay = is_loop_0 ? ch0_read : 16'sd0
 logic signed [15:0] ch1_delay; // ch1_delay = is_loop_1 ? ch1_read : 16'sd0
 logic signed [15:0] ch2_delay; // ch2_delay = is_loop_2 ? ch2_read : 16'sd0
 logic signed [15:0] ch3_delay; // ch3_delay = is_loop_3 ? ch3_read : 16'sd0
-logic signed [23:0] ch0_temp_0; // ch0_temp_0 = gain * ch0_delay // Q15.9
-logic signed [23:0] ch1_temp_0; // ch1_temp_0 = gain * ch1_delay // Q15.9
-logic signed [23:0] ch2_temp_0; // ch2_temp_0 = gain * ch2_delay // Q15.9
-logic signed [23:0] ch3_temp_0; // ch3_temp_0 = gain * ch3_delay // Q15.9
-logic signed [25:0] ch0_temp_1; // ch0_temp_1 = ch0_temp_0 + ch1_temp_0 + ch2_temp_0 + ch3_temp_0 // Q16.10
-logic signed [25:0] ch1_temp_1; // ch1_temp_1 = ch0_temp_0 - ch1_temp_0 + ch2_temp_0 - ch3_temp_0 // Q16.10
-logic signed [25:0] ch2_temp_1; // ch2_temp_1 = ch0_temp_0 + ch1_temp_0 - ch2_temp_0 - ch3_temp_0 // Q16.10
-logic signed [25:0] ch3_temp_1; // ch3_temp_1 = ch0_temp_0 - ch1_temp_0 - ch2_temp_0 + ch3_temp_0 // Q16.10
-logic signed [15:0] ch0_temp_2; // ch0_temp_2 = (ch0_temp_1 + 26'sd512) >>> 10 // Q16.0
-logic signed [15:0] ch1_temp_2; // ch1_temp_2 = (ch1_temp_1 + 26'sd512) >>> 10 // Q16.0
-logic signed [15:0] ch2_temp_2; // ch2_temp_2 = (ch2_temp_1 + 26'sd512) >>> 10 // Q16.0
-logic signed [15:0] ch3_temp_2; // ch3_temp_2 = (ch3_temp_1 + 26'sd512) >>> 10 // Q16.0
+logic signed [23:0] ch0_temp_0; // ch0_temp_0 = gain * ch0_delay // Q16.8
+logic signed [23:0] ch1_temp_0; // ch1_temp_0 = gain * ch1_delay // Q16.8
+logic signed [23:0] ch2_temp_0; // ch2_temp_0 = gain * ch2_delay // Q16.8
+logic signed [23:0] ch3_temp_0; // ch3_temp_0 = gain * ch3_delay // Q16.8
+logic signed [25:0] ch0_temp_1; // ch0_temp_1 = ch0_temp_0 + ch1_temp_0 + ch2_temp_0 + ch3_temp_0 // Q17.9
+logic signed [25:0] ch1_temp_1; // ch1_temp_1 = ch0_temp_0 - ch1_temp_0 + ch2_temp_0 - ch3_temp_0 // Q17.9
+logic signed [25:0] ch2_temp_1; // ch2_temp_1 = ch0_temp_0 + ch1_temp_0 - ch2_temp_0 - ch3_temp_0 // Q17.9
+logic signed [25:0] ch3_temp_1; // ch3_temp_1 = ch0_temp_0 - ch1_temp_0 - ch2_temp_0 + ch3_temp_0 // Q17.9
+logic signed [15:0] ch0_temp_2; // ch0_temp_2 = (ch0_temp_1 + 26'sd256) >>> 9 // Q16.0
+logic signed [15:0] ch1_temp_2; // ch1_temp_2 = (ch1_temp_1 + 26'sd256) >>> 9 // Q16.0
+logic signed [15:0] ch2_temp_2; // ch2_temp_2 = (ch2_temp_1 + 26'sd256) >>> 9 // Q16.0
+logic signed [15:0] ch3_temp_2; // ch3_temp_2 = (ch3_temp_1 + 26'sd256) >>> 9 // Q16.0
 logic signed [15:0] ch0_curr; // ch0_curr = in_0 + ch0_temp_2 // Q16.0
 logic signed [15:0] ch1_curr; // ch1_curr = in_1 + ch1_temp_2 // Q16.0
 logic signed [15:0] ch2_curr; // ch2_curr = in_2 + ch2_temp_2 // Q16.0
@@ -67,10 +67,10 @@ assign ch0_temp_1 = ch0_temp_0 + ch1_temp_0 + ch2_temp_0 + ch3_temp_0;
 assign ch1_temp_1 = ch0_temp_0 - ch1_temp_0 + ch2_temp_0 - ch3_temp_0;
 assign ch2_temp_1 = ch0_temp_0 + ch1_temp_0 - ch2_temp_0 - ch3_temp_0;
 assign ch3_temp_1 = ch0_temp_0 - ch1_temp_0 - ch2_temp_0 + ch3_temp_0;
-assign ch0_temp_2 = (ch0_temp_1 + 26'sd512) >>> 10;
-assign ch1_temp_2 = (ch1_temp_1 + 26'sd512) >>> 10;
-assign ch2_temp_2 = (ch2_temp_1 + 26'sd512) >>> 10;
-assign ch3_temp_2 = (ch3_temp_1 + 26'sd512) >>> 10;
+assign ch0_temp_2 = (ch0_temp_1 + 26'sd256) >>> 9;
+assign ch1_temp_2 = (ch1_temp_1 + 26'sd256) >>> 9;
+assign ch2_temp_2 = (ch2_temp_1 + 26'sd256) >>> 9;
+assign ch3_temp_2 = (ch3_temp_1 + 26'sd256) >>> 9;
 assign ch0_curr = in_0 + ch0_temp_2;
 assign ch1_curr = in_1 + ch1_temp_2;
 assign ch2_curr = in_2 + ch2_temp_2;
