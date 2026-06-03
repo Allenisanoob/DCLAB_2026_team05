@@ -1,11 +1,11 @@
 module Schroeder_Allpass #(
     parameter integer delay_sample = 2304,
-    parameter signed [7:0] gain = 8'sd64 // Q1.7 (-1 ~ 1)
 )(
     input clk,
     input rst,
     input in_valid,
     input signed [15:0] in,
+    input signed [7:0] gain, // Q1.7
     output reg out_valid,
     output signed reg [15:0] out
 );
