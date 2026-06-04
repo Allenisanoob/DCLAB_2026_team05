@@ -16,11 +16,13 @@ module overdrive (
     logic signed [32:0] y_norm_full;
     logic signed [15:0] overdrive_out;
 
+    logic signed [15:0] i_data_r;
+
     // ==========================================
     // 實例化 (Instantiation) 子模組
     // ==========================================
     tanh u_tanh (
-        .i_data (i_data),
+        .i_data (i_data_r),
         .i_gain (i_gain),
         .o_data (tanh_unnorm)
     );
@@ -38,7 +40,7 @@ module overdrive (
         y_norm_full = 33'sd0; // 預設未正規化的結果為 0 (使用 33 bits 以防止溢位)
         if (i_gain <= 8'd4) begin
             // 當 gain 為 4 時 bypass 原始音訊
-            overdrive_out = i_data; 
+            overdrive_out = i_data_r; 
         end else begin
             // 1. Make-up Gain 正規化乘法: Q1.15 (有號) * Q7.9 (無號) = Q8.24 (有號)
             y_norm_full = tanh_unnorm * $signed({1'b0, inv_tanh_val});
@@ -70,6 +72,7 @@ module overdrive (
             o_en <= i_en;
             if (i_en) begin
                 o_data <= overdrive_out;
+                i_data_r <= i_data;
             end
         end
     end

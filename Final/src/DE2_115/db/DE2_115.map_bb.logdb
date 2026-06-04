@@ -1,1 +1,3 @@
 v1
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|fuzz:Fuzz|lpm_mult:Mult1|mult_adt:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|overdrive:OverDrive|tanh:u_tanh|lpm_mult:Mult1|mult_66t:auto_generated|mac_out2,

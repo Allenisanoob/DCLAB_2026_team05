@@ -110,7 +110,7 @@ module DSP (
 
     // Final Volume Control
     logic [6:0] i_volume_control; // 0 - Muted, 127 - Full Volume
-    assign i_volume_control = 7'd90; // Full volume for now, can be controlled by the user interface later
+    assign i_volume_control = 7'd127; // Full volume for now, can be controlled by the user interface later
     Volume final_volume (
         .i_prev_valid       (processed_valid),
         .i_data             (processed_data),
@@ -206,7 +206,7 @@ module DSP (
     logic [7:0]  de_feedback; // Feedback ratio (0 to 127, where 128 is 100%)
     logic [7:0]  de_mix;      // Mix ratio      (0 to 127, where 128 is 100%)
     assign de_time = 16'd24000;         // 0.5s
-    assign de_feedback = 8'd0110_0000;  // x0.375
+    assign de_feedback = 8'd0001_1000;  // x0.375
     assign de_mix = 8'd0110_0000;       // x0.375
     Delay_Effect #(.BASE_ADDR(20'h00000)) Delay_Effect(
         .i_clk          (i_clk),
@@ -244,25 +244,25 @@ module DSP (
                 processed_valid = fuzz_valid;
             end
 
-            6'b000100: begin
-                processed_data  = dist_data;
-                processed_valid = dist_valid;
-            end
+            // 6'b000100: begin
+            //     processed_data  = dist_data;
+            //     processed_valid = dist_valid;
+            // end
 
-            6'b001000: begin
-                processed_data  = reverb_data;
-                processed_valid = reverb_valid;
-            end
+            // 6'b001000: begin
+            //     processed_data  = reverb_data;
+            //     processed_valid = reverb_valid;
+            // end
 
-            6'b010000: begin
-                processed_data  = ng_data;
-                processed_valid = ng_valid;
-            end
+            // 6'b010000: begin
+            //     processed_data  = ng_data;
+            //     processed_valid = ng_valid;
+            // end
 
-            6'b100000: begin
-                processed_data  = de_data;
-                processed_valid = de_valid;
-            end
+            // 6'b100000: begin
+            //     processed_data  = de_data;
+            //     processed_valid = de_valid;
+            // end
 
             default: begin
                 processed_data  = original_data;
