@@ -17,21 +17,25 @@ module Player (
     logic        daclrck_prev_r;
     logic        lrc_edge;
 
+    logic        o_B2P_request_l_, o_B2P_request_r_;
+
     assign o_DAC_DAT   = o_DAC_DAT_r[15];
     assign lrc_edge    = (i_DAC_LRCK != daclrck_prev_r);
+    assign o_B2P_request_l = o_B2P_request_l_;
+    assign o_B2P_request_r = o_B2P_request_r_;
 
     always_comb begin
         state_w         = state_r;
         counter_w       = counter_r;
         o_DAC_DAT_w     = o_DAC_DAT_r;
         is_init_w       = is_init_r;
-        o_B2P_request_l = 1'b0; 
-        o_B2P_request_r = 1'b0; 
+        o_B2P_request_l_ = 1'b0; 
+        o_B2P_request_r_ = 1'b0; 
 
         case(state_r)
             IDLE: begin
-                if (is_init_r && !i_DAC_LRCK) o_B2P_request_l = 1'b1;
-                else if(is_init_r && i_DAC_LRCK) o_B2P_request_r = 1'b1;
+                if (is_init_r && !i_DAC_LRCK) o_B2P_request_l_ = 1'b1;
+                else if(is_init_r && i_DAC_LRCK) o_B2P_request_r_ = 1'b1;
                 is_init_w       = 1'b0;
                 if (lrc_edge) begin
                     state_w = SEND;
@@ -42,8 +46,8 @@ module Player (
             SEND: begin
                 if (counter_r == 15) begin 
                     state_w = IDLE;
-                    if (i_DAC_LRCK) o_B2P_request_l = 1'b1;
-                    else o_B2P_request_r = 1'b1;
+                    if (i_DAC_LRCK) o_B2P_request_l_ = 1'b1;
+                    else o_B2P_request_r_ = 1'b1;
                 end
                 counter_w = counter_r + 1;
                 o_DAC_DAT_w = o_DAC_DAT_r << 1;

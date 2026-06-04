@@ -32,7 +32,9 @@ module Top (
 	output [17:0] o_ledr,
 
 	// For Debugging
-	output [3:0] o_sw_count
+	output [3:0] o_l_cnt,
+	output [3:0] o_r_cnt
+
 
 	// LCD (optional display)
 	// input        i_clk_800k,
@@ -72,10 +74,10 @@ module Top (
 	assign o_SRAM_UB_N = 1'b0;
 
 	// Show volume in log scale on LEDG
-	assign current_volume = (raw_data[15]) ? -raw_data : raw_data;
+	// assign current_volume = (raw_data[15]) ? -raw_data : raw_data;
 	// assign current_volume = (buf_data_l[15]) ? -buf_data_l : buf_data_l;
 	// assign current_volume = (buf_data_r[15]) ? -buf_data_r : buf_data_r;
-	// assign current_volume = (out_data[15]) ? -out_data : out_data;
+	assign current_volume = (out_data[15]) ? -out_data : out_data;
 
 	assign o_ledg[0] = (current_volume > 16'h0080);
 	assign o_ledg[1] = (current_volume > 16'h0100);
@@ -181,6 +183,7 @@ module Top (
 	);
 
 	// Buffer
+	logic [3:0] l_cnt_10000, r_cnt_10000;
 	Buffer buffer (
 		.i_clk(i_clk),
 		.i_rst(i_rst_n),
@@ -189,7 +192,10 @@ module Top (
 		.i_D2B_valid(D2B_valid),
 		.i_B2P_request_l(B2P_request_l),
 		.i_B2P_request_r(B2P_request_r),
-		.o_data(out_data)
+		.o_data(out_data),
+
+		.o_l_cnt(o_l_cnt),
+		.o_r_cnt(o_r_cnt)
 	);
 
 	// Player
@@ -272,26 +278,26 @@ module Top (
 		end
 	end
 
-	// Switch Debugging
-	logic [3:0] sw_count_w, sw_count_r;
-	logic sw_on;
-	assign o_sw_count = sw_count_r;
-	assign sw_on = (i_sw[0] || i_sw[1] || i_sw[2] || i_sw[3] || i_sw[4] || i_sw[5]);
+	// // Switch Debugging
+	// logic [3:0] sw_count_w, sw_count_r;
+	// logic sw_on;
+	// assign o_sw_count = sw_count_r;
+	// assign sw_on = (i_sw[0] || i_sw[1] || i_sw[2] || i_sw[3] || i_sw[4] || i_sw[5]);
 
-	always_comb begin
-		if (sw_on) begin
-			sw_count_w = sw_count_r + 1;
-		end else begin
-			sw_count_w = 0;
-		end
-	end
+	// always_comb begin
+	// 	if (sw_on) begin
+	// 		sw_count_w = sw_count_r + 1;
+	// 	end else begin
+	// 		sw_count_w = 0;
+	// 	end
+	// end
 
-	always_ff @(posedge i_clk or negedge i_rst_n) begin
-		if (!i_rst_n) begin
-			sw_count_r <= 0;
-		end else begin
-			sw_count_r <= sw_count_w;
-		end
-	end
+	// always_ff @(posedge i_clk or negedge i_rst_n) begin
+	// 	if (!i_rst_n) begin
+	// 		sw_count_r <= 0;
+	// 	end else begin
+	// 		sw_count_r <= sw_count_w;
+	// 	end
+	// end
 
 endmodule

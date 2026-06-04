@@ -205,7 +205,8 @@ Top top0(
 	.o_ledr(LEDR), // [17:0]
 
 	// For Debugging
-	.o_sw_count(sw_count) // [3:0]
+	.o_l_cnt(l_cnt_10000),
+	.o_r_cnt(r_cnt_10000)
 
 	// LCD (optional display)
 	// .i_clk_800k(CLK_800K),
@@ -217,20 +218,50 @@ Top top0(
 	// .o_LCD_BLON(LCD_BLON),
 );
 
-logic [3:0] sw_count;
-SevenHexDecoder seven_dec(
-	.i_hex(sw_count),	// [3:0]
-	.o_seven(HEX0) 		// [6:0]
+// logic [3:0] sw_count;
+// SevenHexDecoder seven_dec(
+// 	.i_hex(sw_count),	// [3:0]
+// 	.o_seven(HEX0) 		// [6:0]
+// );
+
+logic [3:0] l_cnt_10000, r_cnt_10000;
+logic [3:0] l_cnt_0, l_cnt_1, r_cnt_0, r_cnt_1;
+
+assign l_cnt_0 = l_cnt_10000 % 10;
+assign l_cnt_1 = (l_cnt_10000 > 9) ? 3'd1 : 3'd0;
+assign r_cnt_0 = r_cnt_10000 % 10;
+assign r_cnt_1 = (r_cnt_10000 > 9) ? 3'd1 : 3'd0;
+
+SevenHexDecoder seven_dec4(
+	.i_hex(l_cnt_0),	// [3:0]
+	.o_seven(HEX4) 		// [6:0]
 );
 
+SevenHexDecoder seven_dec5(
+	.i_hex(l_cnt_1),	// [3:0]
+	.o_seven(HEX5) 
+);
+
+SevenHexDecoder seven_dec6(
+	.i_hex(r_cnt_0),	// [3:0]
+	.o_seven(HEX6) 
+);
+
+SevenHexDecoder seven_dec7(
+	.i_hex(r_cnt_1),	// [3:0]
+	.o_seven(HEX7) 
+);
+
+
+
 // comment those are use for display
-// assign HEX0 = '1;
+assign HEX0 = '1;
 assign HEX1 = '1;
 assign HEX2 = '1;
 assign HEX3 = '1;
-assign HEX4 = '1;
-assign HEX5 = '1;
-assign HEX6 = '1;
-assign HEX7 = '1;
+// assign HEX4 = '1;
+// assign HEX5 = '1;
+// assign HEX6 = '1;
+// assign HEX7 = '1;
 
 endmodule

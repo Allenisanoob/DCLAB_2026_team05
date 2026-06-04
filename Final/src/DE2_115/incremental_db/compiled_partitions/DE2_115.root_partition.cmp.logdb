@@ -1,2 +1,4 @@
 v1
-PORT_SWAPPING,PORT_SWAPPING_FINISHED,Top:top0|DSP:dsp|fuzz:Fuzz|lpm_mult:Mult1|mult_adt:auto_generated|mac_mult1,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult0|mult_86t:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult1|mult_p4t:auto_generated|mac_out2,
+PORT_SWAPPING,PORT_SWAPPING_FINISHED,Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult0|mult_86t:auto_generated|mac_mult1,

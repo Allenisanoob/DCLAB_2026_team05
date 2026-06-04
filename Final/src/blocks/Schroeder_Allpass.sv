@@ -6,9 +6,9 @@ module Schroeder_Allpass #(
     input rst,
     input in_valid,
     input signed [15:0] in,
-    input signed [7:0] gain, // Q1.7
-    output reg out_valid,
-    output signed reg [15:0] out
+    // input signed [7:0] gain, // Q1.7
+    output out_valid,
+    output signed [15:0] out
 );
 
 logic [15:0] v_buffer [0:delay_sample - 1];
@@ -22,6 +22,12 @@ logic signed [15:0] v_curr; // v_curr = in - temp_2 // Q15.0
 logic signed [23:0] temp_3; // temp_3 = gain * v_curr // Q17.7
 logic signed [15:0] temp_4; // temp_4 = (temp_3 + 24'sd64) >>> 7 // Q16.0
 logic signed [15:0] out_curr; // out_curr = temp_4 + v_delay // Q15.0
+
+logic out_valid_;
+logic signed [15:0] out_;
+
+assign out_valid = out_valid_;
+assign out = out_;
 
 assign v_delay = is_loop ? temp_0 : 16'sd0;
 assign temp_1 = gain * v_delay;
@@ -43,10 +49,10 @@ always_ff @(posedge clk or negedge rst) begin
             ptr <= ptr + 1;
         end
         v_buffer[ptr] <= v_curr;
-        out <= out_curr;
-        out_valid <= 1'b1;
+        out_ <= out_curr;
+        out_valid_ <= 1'b1;
     end else if (out_valid) begin
-        out_valid <= 1'b0;
+        out_valid_ <= 1'b0;
         temp_0 <= v_buffer[ptr];
     end
 end

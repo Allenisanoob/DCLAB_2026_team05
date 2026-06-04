@@ -120,56 +120,65 @@ module DSP (
     );
 
 
-    // Overdrive, Fuzz, Distortion
-    logic [7:0] i_gain; 
-    assign i_gain = 8'd100;
-    overdrive OverDrive(
-        .i_clk  (i_clk),
-        .i_rst  (i_rst),
-        .i_data (original_data),
-        .i_gain (i_gain),
-        .i_en   (od_en),
-        .o_data (od_data),
-        .o_en   (od_valid)
-    );
+    // // Overdrive, Fuzz, Distortion
+    // logic [7:0] i_gain; 
+    // assign i_gain = 8'd100;
+    // overdrive OverDrive(
+    //     .i_clk  (i_clk),
+    //     .i_rst  (i_rst),
+    //     .i_data (original_data),
+    //     .i_gain (i_gain),
+    //     .i_en   (od_en),
+    //     .o_data (od_data),
+    //     .o_en   (od_valid)
+    // );
 
-    fuzz Fuzz(
-        .i_clk  (i_clk),
-        .i_rst  (i_rst),
-        .i_data (original_data),
-        .i_gain (i_gain),
-        .i_en   (fuzz_en),
-        .o_data (fuzz_data),
-        .o_en   (fuzz_valid)
-    );
+    // fuzz Fuzz(
+    //     .i_clk  (i_clk),
+    //     .i_rst  (i_rst),
+    //     .i_data (original_data),
+    //     .i_gain (i_gain),
+    //     .i_en   (fuzz_en),
+    //     .o_data (fuzz_data),
+    //     .o_en   (fuzz_valid)
+    // );
 
-    distortion Distortion(
-        .i_clk  (i_clk),
-        .i_rst  (i_rst),
-        .i_data (original_data),
-        .i_gain (i_gain),
-        .i_en   (dist_en),
-        .o_data (dist_data),
-        .o_en   (dist_valid)
-    );
+    // distortion Distortion(
+    //     .i_clk  (i_clk),
+    //     .i_rst  (i_rst),
+    //     .i_data (original_data),
+    //     .i_gain (i_gain),
+    //     .i_en   (dist_en),
+    //     .o_data (dist_data),
+    //     .o_en   (dist_valid)
+    // );
 
-    // Reverb
-    logic [23:0] r; 
-    logic signed [15:0] i_cosw;
-    logic [7:0] w_rate;
-    assign r      = 24'd15099494; // about 0.999
-    assign i_cosw = 16'sd16384;   // about 1000 Hz
-    assign w_rate = 8'd128;       // 0.5
-    Reverb_basic Reverb(
-        .i_clk    (i_clk),
-        .i_rst    (i_rst),
-        .i_data   (original_data),
-        .r        (r),
-        .i_cosw   (i_cosw),
-        .w_rate   (w_rate),
-        .i_valid  (reverb_en),
-        .o_data   (reverb_data),
-        .o_valid  (reverb_valid)
+    // // Reverb
+    // logic [23:0] r; 
+    // logic signed [15:0] i_cosw;
+    // logic [7:0] w_rate;
+    // assign r      = 24'd15099494; // about 0.999
+    // assign i_cosw = 16'sd16384;   // about 1000 Hz
+    // assign w_rate = 8'd128;       // 0.5
+    // Reverb_basic Reverb(
+    //     .i_clk    (i_clk),
+    //     .i_rst    (i_rst),
+    //     .i_data   (original_data),
+    //     .r        (r),
+    //     .i_cosw   (i_cosw),
+    //     .w_rate   (w_rate),
+    //     .i_valid  (reverb_en),
+    //     .o_data   (reverb_data),
+    //     .o_valid  (reverb_valid)
+    // );
+
+    Reverb Reverb(
+        .clk(i_clk),
+        .rst(i_rst),
+        .in_valid(reverb_en),
+        .in(original_data),
+        .out_valid(reverb_valid),
+        .out(reverb_data)
     );
 
     // Noise Gate
@@ -185,8 +194,8 @@ module DSP (
     assign ng_hold = 16'd24000;    // 0.5s
     // assign ng_threshold_lo = 15'b00010_00000_00000;    // 1/16 max strength
     // assign ng_threshold_hi = 15'b00100_00000_00000;    // 2/16 max strength
-    assign ng_threshold_lo = 15'b11000_00000_00000;    //  6/8 max strength
-    assign ng_threshold_hi = 15'b11100_00000_00000;    //  7/8 max strength
+    assign ng_threshold_lo = 15'b10000_00000_00000;    //  4/8 max strength
+    assign ng_threshold_hi = 15'b11000_00000_00000;    //  6/8 max strength
     Noise_Gate Noise_Gate(
         .i_clk          (i_clk),
         .i_rst          (i_rst),
@@ -234,35 +243,35 @@ module DSP (
         processed_valid = original_valid;
 
         case (i_fx_sw_r[5:0])
-            6'b000001: begin
-                processed_data  = od_data;
-                processed_valid = od_valid;
-            end
+            // 6'b000001: begin
+            //     processed_data  = od_data;
+            //     processed_valid = od_valid;
+            // end
 
-            6'b000010: begin
-                processed_data  = fuzz_data;
-                processed_valid = fuzz_valid;
-            end
+            // 6'b000010: begin
+            //     processed_data  = fuzz_data;
+            //     processed_valid = fuzz_valid;
+            // end
 
             // 6'b000100: begin
             //     processed_data  = dist_data;
             //     processed_valid = dist_valid;
             // end
 
-            // 6'b001000: begin
-            //     processed_data  = reverb_data;
-            //     processed_valid = reverb_valid;
-            // end
+            6'b001000: begin
+                processed_data  = reverb_data;
+                processed_valid = reverb_valid;
+            end
 
-            // 6'b010000: begin
-            //     processed_data  = ng_data;
-            //     processed_valid = ng_valid;
-            // end
+            6'b010000: begin
+                processed_data  = ng_data;
+                processed_valid = ng_valid;
+            end
 
-            // 6'b100000: begin
-            //     processed_data  = de_data;
-            //     processed_valid = de_valid;
-            // end
+            6'b100000: begin
+                processed_data  = de_data;
+                processed_valid = de_valid;
+            end
 
             default: begin
                 processed_data  = original_data;
