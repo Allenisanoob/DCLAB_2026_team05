@@ -120,10 +120,10 @@ module DSP (
     );
 
 
-    // // Overdrive, Fuzz, Distortion
+    // Overdrive, Fuzz, Distortion
     // logic [7:0] i_gain; 
     // assign i_gain = 8'd100;
-    // overdrive OverDrive(
+    // Overdrive Overdrive(
     //     .i_clk  (i_clk),
     //     .i_rst  (i_rst),
     //     .i_data (original_data),
