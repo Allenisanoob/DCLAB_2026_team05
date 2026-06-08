@@ -1,13 +1,13 @@
 //if (i_gain <= 8'd4) begin
 //    o_data = i_data;  No information for i_gain <= 8'd4 in this LUT
+`timescale 1ns/1ps
 
 
 
 
-
-module inv_tanh (
+module recip_tanh (
     input  logic [7:0]  i_gain,            // Q2.6 unsigned
-    output logic [15:0] o_inv_tanh_val     // Q7.9 unsigned
+    output logic [15:0] o_recip_tanh_val     // Q7.9 unsigned
 );
 
     logic [6:0] lut_idx;
@@ -286,30 +286,30 @@ module inv_tanh (
 
     always_comb begin
         interp_val      = 18'sd0;
-        o_inv_tanh_val = 16'd0;
+        o_recip_tanh_val = 16'd0;
 
         if (i_gain <= 8'd4) begin
             // Dummy output. The caller should bypass for this gain range.
-            o_inv_tanh_val = 16'd0;
+            o_recip_tanh_val = 16'd0;
         end else begin
             interp_val = $signed({1'b0, base_val})
                        + (frac_bit ? $signed(slope_val) : 18'sd0);
 
             if (interp_val < 18'sd0) begin
-                o_inv_tanh_val = 16'd0;
+                o_recip_tanh_val = 16'd0;
             end else if (interp_val > 18'sd65535) begin
-                o_inv_tanh_val = 16'hFFFF;
+                o_recip_tanh_val = 16'hFFFF;
             end else begin
-                o_inv_tanh_val = interp_val[15:0];
+                o_recip_tanh_val = interp_val[15:0];
             end
         end
     end
 
 endmodule
-// inv_tanh_lut_128_pruned.sv
+// recip_tanh_lut_128_pruned.sv
 // Standalone pruned 1/tanh(gain) LUT.
 // Input : i_gain is unsigned Q2.6, gain = i_gain / 64.
-// Output: o_inv_tanh_val is unsigned Q7.9, value ~= 1/tanh(gain).
+// Output: o_recip_tanh_val is unsigned Q7.9, value ~= 1/tanh(gain).
 //
 // Assumption:
 //   The caller bypasses the effect when i_gain <= 8'd4, so this LUT returns

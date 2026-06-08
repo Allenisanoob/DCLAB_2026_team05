@@ -13,7 +13,7 @@ module distortion (
     localparam signed [31:0] CLIP_MIN = -32'sd29491;
 
     logic signed [15:0] tanh_unnorm;
-    logic        [15:0] inv_tanh_val;
+    logic        [15:0] recip_tanh_val;
     
     logic signed [32:0] y_norm_full;   // 16-bit * 17-bit = 33-bit
     logic signed [31:0] y_1x;
@@ -26,9 +26,9 @@ module distortion (
         .o_data (tanh_unnorm)
     );
 
-    inv_tanh u_inv_tanh (
+    recip_tanh u_recip_tanh (
         .i_gain         (i_gain),
-        .o_inv_tanh_val (inv_tanh_val)
+        .o_recip_tanh_val (recip_tanh_val)
     );
 
     always_comb begin
@@ -43,7 +43,7 @@ module distortion (
         end else begin
             // 1. Normalize:
             // Q1.15 * Q7.9 = Q8.24
-            y_norm_full = tanh_unnorm * $signed({1'b0, inv_tanh_val});
+            y_norm_full = tanh_unnorm * $signed({1'b0, recip_tanh_val});
 
             // 2. Q8.24 -> Q8.15 / Q1.15 scale
             // rounding by adding 2^(9-1) = 256, then arithmetic shift right by 9

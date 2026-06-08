@@ -1,4 +1,4 @@
-// `timescale 1ns/1ps
+ `timescale 1ns/1ps
 
 module tanh (
     input  logic signed [15:0] i_data,   // 原始音訊 Q1.15 signed
