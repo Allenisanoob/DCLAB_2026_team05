@@ -33,7 +33,8 @@ module Top (
 
 	// For Debugging
 	output [3:0] o_l_cnt,
-	output [3:0] o_r_cnt
+	output [3:0] o_r_cnt,
+	output [3:0] o_simul_cnt
 
 
 	// LCD (optional display)
@@ -183,7 +184,6 @@ module Top (
 	);
 
 	// Buffer
-	logic [3:0] l_cnt_10000, r_cnt_10000;
 	Buffer buffer (
 		.i_clk(i_clk),
 		.i_rst(i_rst_n),
@@ -195,7 +195,8 @@ module Top (
 		.o_data(out_data),
 
 		.o_l_cnt(o_l_cnt),
-		.o_r_cnt(o_r_cnt)
+		.o_r_cnt(o_r_cnt),
+		.o_simul_cnt(o_simul_cnt)
 	);
 
 	// Player
@@ -1170,6 +1171,133 @@ module fuzz (
     end
 
 endmodule
+module Reverb_basic(
+    input                i_clk,
+    input                i_rst,
+    input                i_valid,
+    input         [23:0] r, // Q0.24
+    input signed  [15:0] i_cosw, // Q1.15
+    input         [7:0]  w_rate, // Q0.8
+    input signed  [15:0] i_data, // Q16.0
+    output               o_valid,
+    output signed [15:0] o_data // Q16.0
+);
+
+    logic        [23:0] r_r, r_w; // Q0.24
+    logic signed [15:0] i_cosw_r, i_cosw_w; // Q1.15
+    logic        [7:0]  w_rate_r, w_rate_w; // Q0.8
+    logic signed [15:0] i_data_r, i_data_w; // Q16.0
+    logic               state_r, state_w;
+    logic               o_valid_r, o_valid_w;
+    logic signed [15:0] o_data_r, o_data_w; // Q16.0
+    logic signed [15:0] x1_r, x1_w, y1_r, y1_w, y2_r, y2_w; // Q16.0
+
+    localparam IDLE = 1'b0, CALC = 1'b1;
+
+    assign o_valid = o_valid_r;
+    assign o_data  = o_data_r;
+
+    // y1_w = i_data_r + r_r  * i_cosw_r * (2 * y1_r - x1_r) - r_r * r_r * y2_r
+    // o_data_w = i_data_r + w_rate_r * (r_r  * i_cosw_r * (2 * y1_r - x1_r) - r_r * r_r * y2_r)
+
+    logic signed [40:0] A; // Q2.39
+    logic        [47:0] B; // Q0.48
+    logic signed [17:0] C; // Q18.0
+    logic signed [58:0] D; // Q20.39
+    logic signed [64:0] E; // Q17.48
+    logic signed [68:0] F; // Q21.48
+    logic signed [77:0] G; // Q22.56
+    logic signed [20:0] H; // Q21.0
+    logic signed [21:0] I; // Q22.0
+    logic signed [21:0] J; // Q22.0
+    logic signed [22:0] K; // Q23.0
+
+    always_comb begin
+        r_w       = r_r;
+        i_cosw_w  = i_cosw_r;
+        w_rate_w  = w_rate_r;
+        i_data_w  = i_data_r;
+        state_w   = state_r;
+        o_valid_w = o_valid_r;
+        o_data_w  = o_data_r;
+        x1_w      = x1_r;
+        y1_w      = y1_r;
+        y2_w      = y2_r;
+        A = $signed({1'b0, r_r}) * i_cosw_r; // Q2.39
+        B = r_r * r_r; // Q0.48
+        C = $signed({y1_r[15], y1_r, 1'b0}) - $signed({x1_r[15], x1_r}); // Q18.0
+        D = A * C; // Q20.39
+        E = $signed({1'b0, B}) * y2_r; // Q17.48
+        F = $signed({D[58], D, 9'd0}) - $signed({E[64], E}); // Q21.48
+        G = $signed({1'b0, w_rate_r}) * F; // Q22.56
+        // H = $signed(F[68:48]) + $signed({20'd0, F[47]}); // Q21.0
+		  H = $signed(F[68:48]); // Q21.0
+        // I = $signed(G[77:56]) + $signed({21'd0, G[55]}); // Q22.0
+		  I = $signed(G[77:56]); // Q22.0
+        J = $signed({H[20], H}) + $signed({i_data_r[15], i_data_r}); // Q22.0
+        K = $signed({I[21], I}) + $signed({i_data_r[15], i_data_r}); // Q23.0
+        case (state_r)
+            IDLE: begin
+                if (i_valid) begin
+                    r_w      = r;
+                    i_cosw_w = i_cosw;
+                    w_rate_w = w_rate;
+                    i_data_w = i_data;
+                    state_w  = CALC;
+                end
+                o_valid_w = 1'b0;
+                // o_data_w  = 16'sd0;
+            end
+            CALC: begin
+                state_w   = IDLE;
+                o_valid_w = 1'd1;
+                if (K > 23'sd32767) begin
+                    o_data_w = 16'sd32767;
+                end else if (K < -23'sd32768) begin
+                    o_data_w = -16'sd32768;
+                end else begin
+                    o_data_w = $signed(K[15:0]);
+                end
+                x1_w = i_data_r;
+                if (J > 22'sd32767) begin
+                    y1_w = 16'sd32767;
+                end else if (J < -22'sd32768) begin
+                    y1_w = -16'sd32768;
+                end else begin
+                    y1_w = $signed(J[15:0]);
+                end
+                y2_w = y1_r;
+            end
+        endcase
+    end
+
+    always_ff @(posedge i_clk or negedge i_rst) begin
+        if (!i_rst) begin
+            r_r       <= 24'd0;
+            i_cosw_r  <= 16'd0;
+            w_rate_r  <= 8'd0;
+            i_data_r  <= 16'sd0;
+            state_r   <= IDLE;
+            o_valid_r <= 1'd0;
+            o_data_r  <= 16'sd0;
+            x1_r      <= 16'sd0;
+            y1_r      <= 16'sd0;
+            y2_r      <= 16'sd0;
+        end else begin
+            r_r       <= r_w;
+            i_cosw_r  <= i_cosw_w;
+            w_rate_r  <= w_rate_w;
+            i_data_r  <= i_data_w;
+            state_r   <= state_w;
+            o_valid_r <= o_valid_w;
+            o_data_r  <= o_data_w;
+            x1_r      <= x1_w;
+            y1_r      <= y1_w;
+            y2_r      <= y2_w;
+        end
+    end
+
+endmodule
 module Delay_Effect #(
     parameter [19:0] BASE_ADDR = 20'h00000 // Starting address of the 64K ring buffer
 )(
@@ -1339,7 +1467,7 @@ module distortion (
     localparam signed [31:0] CLIP_MIN = -32'sd29491;
 
     logic signed [15:0] tanh_unnorm;
-    logic        [15:0] inv_tanh_val;
+    logic        [15:0] recip_tanh_val;
     
     logic signed [32:0] y_norm_full;   // 16-bit * 17-bit = 33-bit
     logic signed [31:0] y_1x;
@@ -1352,9 +1480,9 @@ module distortion (
         .o_data (tanh_unnorm)
     );
 
-    inv_tanh u_inv_tanh (
+    recip_tanh u_recip_tanh (
         .i_gain         (i_gain),
-        .o_inv_tanh_val (inv_tanh_val)
+        .o_recip_tanh_val (recip_tanh_val)
     );
 
     always_comb begin
@@ -1369,7 +1497,7 @@ module distortion (
         end else begin
             // 1. Normalize:
             // Q1.15 * Q7.9 = Q8.24
-            y_norm_full = tanh_unnorm * $signed({1'b0, inv_tanh_val});
+            y_norm_full = tanh_unnorm * $signed({1'b0, recip_tanh_val});
 
             // 2. Q8.24 -> Q8.15 / Q1.15 scale
             // rounding by adding 2^(9-1) = 256, then arithmetic shift right by 9
@@ -1560,17 +1688,14 @@ module FDN_4ch #(
     parameter integer delay_sample_1 = 1787,
     parameter integer delay_sample_2 = 2131,
     parameter integer delay_sample_3 = 2531,
-    parameter [7:0] gain = 8'd128 // Q0.8
+    parameter signed [7:0] gain = 8'sd64 // Q1.7
 )(
     input clk,
     input rst,
     input in_valid,
-    input signed [15:0] in_0,
-    input signed [15:0] in_1,
-    input signed [15:0] in_2,
-    input signed [15:0] in_3,
+    input signed [15:0] in,
     output reg out_valid,
-    output signed reg [15:0] out
+    output reg signed [15:0] out
 );
 
 logic signed [15:0] ch0_buffer [0:delay_sample_0 - 1];
@@ -1593,48 +1718,61 @@ logic signed [15:0] ch0_delay; // ch0_delay = is_loop_0 ? ch0_read : 16'sd0
 logic signed [15:0] ch1_delay; // ch1_delay = is_loop_1 ? ch1_read : 16'sd0
 logic signed [15:0] ch2_delay; // ch2_delay = is_loop_2 ? ch2_read : 16'sd0
 logic signed [15:0] ch3_delay; // ch3_delay = is_loop_3 ? ch3_read : 16'sd0
-logic signed [23:0] ch0_temp_0; // ch0_temp_0 = gain * ch0_delay // Q16.8
-logic signed [23:0] ch1_temp_0; // ch1_temp_0 = gain * ch1_delay // Q16.8
-logic signed [23:0] ch2_temp_0; // ch2_temp_0 = gain * ch2_delay // Q16.8
-logic signed [23:0] ch3_temp_0; // ch3_temp_0 = gain * ch3_delay // Q16.8
+logic signed [17:0] ch0_temp_0; // ch0_temp_0 = gain * ch0_delay // Q16.8
+logic signed [17:0] ch1_temp_0; // ch1_temp_0 = gain * ch1_delay // Q16.8
+logic signed [17:0] ch2_temp_0; // ch2_temp_0 = gain * ch2_delay // Q16.8
+logic signed [17:0] ch3_temp_0; // ch3_temp_0 = gain * ch3_delay // Q16.8
 logic signed [25:0] ch0_temp_1; // ch0_temp_1 = ch0_temp_0 + ch1_temp_0 + ch2_temp_0 + ch3_temp_0 // Q17.9
 logic signed [25:0] ch1_temp_1; // ch1_temp_1 = ch0_temp_0 - ch1_temp_0 + ch2_temp_0 - ch3_temp_0 // Q17.9
 logic signed [25:0] ch2_temp_1; // ch2_temp_1 = ch0_temp_0 + ch1_temp_0 - ch2_temp_0 - ch3_temp_0 // Q17.9
 logic signed [25:0] ch3_temp_1; // ch3_temp_1 = ch0_temp_0 - ch1_temp_0 - ch2_temp_0 + ch3_temp_0 // Q17.9
-logic signed [15:0] ch0_temp_2; // ch0_temp_2 = (ch0_temp_1 + 26'sd256) >>> 9 // Q16.0
-logic signed [15:0] ch1_temp_2; // ch1_temp_2 = (ch1_temp_1 + 26'sd256) >>> 9 // Q16.0
-logic signed [15:0] ch2_temp_2; // ch2_temp_2 = (ch2_temp_1 + 26'sd256) >>> 9 // Q16.0
-logic signed [15:0] ch3_temp_2; // ch3_temp_2 = (ch3_temp_1 + 26'sd256) >>> 9 // Q16.0
-logic signed [15:0] ch0_curr; // ch0_curr = in_0 + ch0_temp_2 // Q16.0
-logic signed [15:0] ch1_curr; // ch1_curr = in_1 + ch1_temp_2 // Q16.0
-logic signed [15:0] ch2_curr; // ch2_curr = in_2 + ch2_temp_2 // Q16.0
-logic signed [15:0] ch3_curr; // ch3_curr = in_3 + ch3_temp_2 // Q16.0
-logic signed [17:0] out_temp_0; // out_temp_0 = ch0_delay + ch1_delay + ch2_delay + ch3_delay // Q18.0
-logic signed [15:0] out_temp_1; // out_temp_1 = out_temp_0 >>> 2 // Q16.0
+logic signed [17:0] ch0_temp_2; // ch0_temp_2 = (ch0_temp_1 + 26'sd256) >>> 9 // Q17.0
+logic signed [17:0] ch1_temp_2; // ch1_temp_2 = (ch1_temp_1 + 26'sd256) >>> 9 // Q17.0
+logic signed [17:0] ch2_temp_2; // ch2_temp_2 = (ch2_temp_1 + 26'sd256) >>> 9 // Q17.0
+logic signed [17:0] ch3_temp_2; // ch3_temp_2 = (ch3_temp_1 + 26'sd256) >>> 9 // Q17.0
+logic signed [18:0] ch0_curr_temp; // ch0_curr_temp = in_0 + ch0_temp_2 // Q18.0
+logic signed [18:0] ch1_curr_temp; // ch1_curr_temp = in_1 + ch1_temp_2 // Q18.0
+logic signed [18:0] ch2_curr_temp; // ch2_curr_temp = in_2 + ch2_temp_2 // Q18.0
+logic signed [18:0] ch3_curr_temp; // ch3_curr_temp = in_3 + ch3_temp_2 // Q18.0
+logic signed [15:0] ch0_curr; // ch0_curr = saturate(ch0_curr_temp) // Q16.0
+logic signed [15:0] ch1_curr; // ch1_curr = saturate(ch1_curr_temp) // Q16.0
+logic signed [15:0] ch2_curr; // ch2_curr = saturate(ch2_curr_temp) // Q16.0
+logic signed [15:0] ch3_curr; // ch3_curr = saturate(ch3_curr_temp) // Q16.0
+logic signed [15:0] out_temp; // out_temp = ch0_temp_0 >>> 2 // Q16.0
 
 assign ch0_delay = is_loop_0 ? ch0_read : 16'sd0;
 assign ch1_delay = is_loop_1 ? ch1_read : 16'sd0;
 assign ch2_delay = is_loop_2 ? ch2_read : 16'sd0;
 assign ch3_delay = is_loop_3 ? ch3_read : 16'sd0;
-assign ch0_temp_0 = gain * ch0_delay;
-assign ch1_temp_0 = gain * ch1_delay;
-assign ch2_temp_0 = gain * ch2_delay;
-assign ch3_temp_0 = gain * ch3_delay;
-assign ch0_temp_1 = ch0_temp_0 + ch1_temp_0 + ch2_temp_0 + ch3_temp_0;
-assign ch1_temp_1 = ch0_temp_0 - ch1_temp_0 + ch2_temp_0 - ch3_temp_0;
-assign ch2_temp_1 = ch0_temp_0 + ch1_temp_0 - ch2_temp_0 - ch3_temp_0;
-assign ch3_temp_1 = ch0_temp_0 - ch1_temp_0 - ch2_temp_0 + ch3_temp_0;
-assign ch0_temp_2 = (ch0_temp_1 + 26'sd256) >>> 9;
-assign ch1_temp_2 = (ch1_temp_1 + 26'sd256) >>> 9;
-assign ch2_temp_2 = (ch2_temp_1 + 26'sd256) >>> 9;
-assign ch3_temp_2 = (ch3_temp_1 + 26'sd256) >>> 9;
-assign ch0_curr = in_0 + ch0_temp_2;
-assign ch1_curr = in_1 + ch1_temp_2;
-assign ch2_curr = in_2 + ch2_temp_2;
-assign ch3_curr = in_3 + ch3_temp_2;
-assign out_temp_0 = ch0_delay + ch1_delay + ch2_delay + ch3_delay;
-assign out_temp_1 = out_temp_0 >>> 2;
-
+assign ch0_temp_0 = ch0_delay + ch1_delay + ch2_delay + ch3_delay;
+assign ch1_temp_0 = ch0_delay - ch1_delay + ch2_delay - ch3_delay;
+assign ch2_temp_0 = ch0_delay + ch1_delay - ch2_delay - ch3_delay;
+assign ch3_temp_0 = ch0_delay - ch1_delay - ch2_delay + ch3_delay;
+assign ch0_temp_1 = gain * ch0_temp_0;
+assign ch1_temp_1 = gain * ch1_temp_0;
+assign ch2_temp_1 = gain * ch2_temp_0;
+assign ch3_temp_1 = gain * ch3_temp_0;
+assign ch0_temp_2 = (ch0_temp_1 + 26'sd128) >>> 8;
+assign ch1_temp_2 = (ch1_temp_1 + 26'sd128) >>> 8;
+assign ch2_temp_2 = (ch2_temp_1 + 26'sd128) >>> 8;
+assign ch3_temp_2 = (ch3_temp_1 + 26'sd128) >>> 8;
+assign ch0_curr_temp = in + ch0_temp_2;
+assign ch1_curr_temp = in + ch1_temp_2;
+assign ch2_curr_temp = in + ch2_temp_2;
+assign ch3_curr_temp = in + ch3_temp_2;
+assign ch0_curr = (ch0_curr_temp > 19'sd32767) ? 19'sd32767 :
+                  (ch0_curr_temp < -19'sd32768) ? -19'sd32768 :
+                  ch0_curr_temp[15:0];
+assign ch1_curr = (ch1_curr_temp > 19'sd32767) ? 19'sd32767 :
+                  (ch1_curr_temp < -19'sd32768) ? -19'sd32768 :
+                  ch1_curr_temp[15:0];
+assign ch2_curr = (ch2_curr_temp > 19'sd32767) ? 19'sd32767 :
+                  (ch2_curr_temp < -19'sd32768) ? -19'sd32768 :
+                  ch2_curr_temp[15:0];
+assign ch3_curr = (ch3_curr_temp > 19'sd32767) ? 19'sd32767 :
+                  (ch3_curr_temp < -19'sd32768) ? -19'sd32768 :
+                  ch3_curr_temp[15:0];                  
+assign out_temp = ch0_temp_0 >>> 2;
 always_ff @(posedge clk or negedge rst) begin
     if (!rst) begin
         ptr_0 <= 0;
@@ -1675,7 +1813,7 @@ always_ff @(posedge clk or negedge rst) begin
         ch2_buffer[ptr_2] <= ch2_curr;
         ch3_buffer[ptr_3] <= ch3_curr;
         out_valid <= 1'b1;
-        out <= out_temp_1;
+        out <= out_temp;
     end else if (out_valid) begin
         out_valid <= 0;
         ch0_read <= ch0_buffer[ptr_0];
@@ -1799,16 +1937,298 @@ module fuzz (
     end
 
 endmodule
+module Noise_Gate (
+    input  i_clk,
+    input  i_rst,
+
+    input  i_prev_valid,
+    input  signed [15:0] i_data,
+
+    input  [7:0] i_rise_rate,      // in bits
+    input  [7:0] i_decay_rate,     // in bits
+    input  [15:0] i_hold,          // in samples
+    input  [14:0] i_threshold_lo,  // unsigned Q0.15
+    input  [14:0] i_threshold_hi,  // unsigned Q0.15
+
+    output o_next_valid,
+    output signed [15:0] o_data
+);
+    // Sample Rate Matching
+    localparam S_IDLE    = 1'b0;
+    localparam S_CALC    = 1'b1;
+
+    // FSM States
+    localparam S_NORMAL  = 2'b00;
+    localparam S_HOLD    = 2'b01;
+    localparam S_DECAY   = 2'b10;
+    localparam S_RECOVER = 2'b11;
+
+    // Input Data
+    logic signed [15:0] i_data_w, i_data_r;
+
+    // Output Data
+    logic o_next_valid_w, o_next_valid_r;
+    logic signed [15:0] o_data_w, o_data_r;
+
+    assign o_data = o_data_r;
+    assign o_next_valid = o_next_valid_r;
+
+    // Misc. signals
+    logic proc_state_w, proc_state_r;
+    logic [1:0] state_w, state_r;
+    logic [15:0] counter_w, counter_r;
+    logic signed [15:0] current_gain_w, current_gain_r;    //Q1.15
+
+    // Rate / target_gain control
+    logic [7:0] rate;
+    logic signed [15:0] target_gain;
+
+    assign rate = (state_r == S_RECOVER) ? i_rise_rate :
+                  (state_r == S_DECAY) ? i_decay_rate : '1;
+
+    assign target_gain = (state_r == S_DECAY) ? 16'sd0 : 16'sd32767; // 1.0 in Q1.15 is 32767
+
+    // Observed signals
+    logic [14:0] current_volume;
+    logic below_low, above_high;
+    
+    logic signed [15:0] abs_data;
+    // Safely calculate absolute value using the registered data to prevent async glitches
+    assign abs_data = i_data_r[15] ? -$signed(i_data_r) : i_data_r;
+    // Cap to 32767 so -32768 doesn't overflow to 0
+    assign current_volume = (abs_data[15]) ? 15'd32767 : abs_data[14:0];
+
+    assign below_low  = (current_volume < i_threshold_lo);
+    assign above_high = (current_volume > i_threshold_hi);
+
+    // Output Data scaling
+    logic signed [31:0] mult_result;
+    assign mult_result = i_data_r * current_gain_r;
+
+    // Use 32-bit math for gain difference to prevent 16-bit overflow during multiplication
+    logic signed [31:0] diff_mult;
+    assign diff_mult = (32'(target_gain) - 32'(current_gain_r)) * $signed({1'b0, rate});
+
+    always_comb begin
+        i_data_w = i_data_r;
+        o_data_w = o_data_r;
+
+        proc_state_w = proc_state_r;
+        state_w = state_r;
+        counter_w = counter_r;
+        current_gain_w = current_gain_r;
+        o_next_valid_w = 1'b0;
+
+        case (proc_state_r)
+            S_IDLE: begin
+                if (i_prev_valid) begin
+                    i_data_w = i_data;
+                    proc_state_w = S_CALC;
+                end
+            end
+            S_CALC: begin
+                proc_state_w = S_IDLE;
+                o_next_valid_w = 1'b1;
+                o_data_w = mult_result >>> 15; // Shift right by 15 to adjust for Q1.15 gain format
+
+                // Multiply difference by rate (0 ~ 255) first, then shift right arithmetically by 8 (devide by 256)
+                current_gain_w = current_gain_r + (diff_mult >>> 8);
+            
+                case (state_r)
+                    S_NORMAL: begin
+                        if (below_low) begin
+                            state_w = S_HOLD;
+                            counter_w = '0;
+                        end
+                    end
+                    S_HOLD: begin
+                        counter_w = counter_r + 1;
+                        if (above_high) begin
+                            state_w = S_NORMAL;
+                            counter_w = '0;
+                        end
+                        else if (counter_w >= i_hold) begin
+                            state_w = S_DECAY;
+                            counter_w = '0;
+                        end
+                    end
+                    S_DECAY: begin
+                        if (above_high) begin
+                            state_w = S_RECOVER;
+                        end
+                    end
+                    S_RECOVER: begin
+                        counter_w = counter_r + 1;
+                        if (counter_w >= i_hold) begin
+                            state_w = S_NORMAL;
+                            counter_w = '0;
+                        end
+                    end
+                endcase
+            end
+        endcase
+    end
+
+    
+    always_ff @(posedge i_clk or negedge i_rst) begin
+        if (!i_rst) begin
+            i_data_r       <= 16'sd0;
+            o_data_r       <= 16'sd0;
+            o_next_valid_r <= 1'b0;
+            proc_state_r   <= S_IDLE;
+            state_r        <= S_NORMAL;
+            counter_r      <= 16'd0;
+            current_gain_r <= 16'sd32767;
+        end else begin
+            i_data_r       <= i_data_w;
+            o_data_r       <= o_data_w;
+            o_next_valid_r <= o_next_valid_w;
+            proc_state_r   <= proc_state_w;
+            state_r        <= state_w;
+            counter_r      <= counter_w;
+            current_gain_r <= current_gain_w;
+        end
+    end
+
+endmodule
+`timescale 1ns/1ps
+module Overdrive (
+    input                      i_clk,
+    input                      i_rst,      // active-low reset
+    input        signed [15:0] i_data,     // Q1.15 (Signed)
+    input               [7:0]  i_gain,     // Q2.6 (Unsigned)
+    input                      i_en,
+    output       logic signed [15:0] o_data,    // Q1.15 (Signed)
+    output       logic         o_en
+);
+
+    // ==========================================
+    // Stage 0: input register
+    // ==========================================
+    logic signed [15:0] i_data_r;
+    logic        [7:0]  i_gain_r;
+    logic               i_en_r;
+
+    // ==========================================
+    // Submodule raw outputs
+    // ==========================================
+    logic signed [15:0] tanh_unnorm_w;
+    logic        [15:0] recip_tanh_val_w;
+
+    // ==========================================
+    // Stage 1: pipeline registers after tanh / recip_tanh
+    // ==========================================
+    logic signed [15:0] tanh_unnorm_r;
+    logic        [15:0] recip_tanh_val_r;
+    logic signed [15:0] i_data_r2;
+    logic        [7:0]  i_gain_r2;
+    logic               i_en_r2;
+
+    // ==========================================
+    // Normalization signals
+    // ==========================================
+    logic signed [32:0] y_norm_full;
+    logic signed [15:0] Overdrive_out;
+
+    // ==========================================
+    // Submodule instantiation
+    // ==========================================
+    tanh u_tanh (
+        .i_data (i_data_r),
+        .i_gain (i_gain_r),
+        .o_data (tanh_unnorm_w)
+    );
+
+    recip_tanh u_recip_tanh (
+        .i_gain         (i_gain_r),
+        .o_recip_tanh_val (recip_tanh_val_w)
+    );
+
+    // ==========================================
+    // Pipeline registers
+    // ==========================================
+    always_ff @(posedge i_clk or negedge i_rst) begin
+        if (!i_rst) begin
+            i_data_r       <= 16'sd0;
+            i_gain_r       <= 8'd0;
+            i_en_r         <= 1'b0;
+
+            tanh_unnorm_r  <= 16'sd0;
+            recip_tanh_val_r <= 16'd0;
+            i_data_r2      <= 16'sd0;
+            i_gain_r2      <= 8'd0;
+            i_en_r2        <= 1'b0;
+        end else begin
+            // Stage 0: capture input sample/gain/valid
+            i_data_r <= i_data;
+            i_gain_r <= i_gain;
+            i_en_r   <= i_en;
+
+            // Stage 1: register outputs from tanh and recip_tanh
+            // Also delay data/gain/en by the same one cycle for alignment.
+            tanh_unnorm_r  <= tanh_unnorm_w;
+            recip_tanh_val_r <= recip_tanh_val_w;
+            i_data_r2      <= i_data_r;
+            i_gain_r2      <= i_gain_r;
+            i_en_r2        <= i_en_r;
+        end
+    end
+
+    // ==========================================
+    // Combinational logic: normalization + saturation
+    // Uses pipelined tanh_unnorm_r / recip_tanh_val_r.
+    // ==========================================
+    always_comb begin
+        Overdrive_out = 16'sd0;
+        y_norm_full   = 33'sd0;
+
+        if (i_gain_r2 <= 8'd4) begin
+            // bypass path must use the data delayed to the same stage
+            Overdrive_out = i_data_r2;
+        end else begin
+            // Q1.15 signed * Q8.9 signed = Q9.24 signed
+            y_norm_full = tanh_unnorm_r * $signed({1'b0, recip_tanh_val_r});
+
+            // Q9.24 -> Q1.15: round, shift right by 9, then saturate
+            if (y_norm_full > 33'sd16776447) begin
+                Overdrive_out = 16'sd32767;
+            end else if (y_norm_full < -33'sd16777216) begin
+                Overdrive_out = -16'sd32768;
+            end else begin
+                if (y_norm_full >= 0)
+                    Overdrive_out = (y_norm_full + 33'sd256) >>> 9;
+                else
+                    Overdrive_out = (y_norm_full - 33'sd256) >>> 9;
+            end
+        end
+    end
+
+    // ==========================================
+    // Output register
+    // ==========================================
+    always_ff @(posedge i_clk or negedge i_rst) begin
+        if (!i_rst) begin
+            o_data <= 16'sd0;
+            o_en   <= 1'b0;
+        end else begin
+            o_en <= i_en_r2;
+            if (i_en_r2) begin
+                o_data <= Overdrive_out;
+            end
+        end
+    end
+
+endmodule
 //if (i_gain <= 8'd4) begin
 //    o_data = i_data;  No information for i_gain <= 8'd4 in this LUT
+`timescale 1ns/1ps
 
 
 
 
-
-module inv_tanh (
+module recip_tanh (
     input  logic [7:0]  i_gain,            // Q2.6 unsigned
-    output logic [15:0] o_inv_tanh_val     // Q7.9 unsigned
+    output logic [15:0] o_recip_tanh_val     // Q7.9 unsigned
 );
 
     logic [6:0] lut_idx;
@@ -2087,30 +2507,30 @@ module inv_tanh (
 
     always_comb begin
         interp_val      = 18'sd0;
-        o_inv_tanh_val = 16'd0;
+        o_recip_tanh_val = 16'd0;
 
         if (i_gain <= 8'd4) begin
             // Dummy output. The caller should bypass for this gain range.
-            o_inv_tanh_val = 16'd0;
+            o_recip_tanh_val = 16'd0;
         end else begin
             interp_val = $signed({1'b0, base_val})
                        + (frac_bit ? $signed(slope_val) : 18'sd0);
 
             if (interp_val < 18'sd0) begin
-                o_inv_tanh_val = 16'd0;
+                o_recip_tanh_val = 16'd0;
             end else if (interp_val > 18'sd65535) begin
-                o_inv_tanh_val = 16'hFFFF;
+                o_recip_tanh_val = 16'hFFFF;
             end else begin
-                o_inv_tanh_val = interp_val[15:0];
+                o_recip_tanh_val = interp_val[15:0];
             end
         end
     end
 
 endmodule
-// inv_tanh_lut_128_pruned.sv
+// recip_tanh_lut_128_pruned.sv
 // Standalone pruned 1/tanh(gain) LUT.
 // Input : i_gain is unsigned Q2.6, gain = i_gain / 64.
-// Output: o_inv_tanh_val is unsigned Q7.9, value ~= 1/tanh(gain).
+// Output: o_recip_tanh_val is unsigned Q7.9, value ~= 1/tanh(gain).
 //
 // Assumption:
 //   The caller bypasses the effect when i_gain <= 8'd4, so this LUT returns
@@ -2124,367 +2544,6 @@ endmodule
 //
 // Important:
 //   lut_idx = 2 is kept because i_gain = 5 maps to lut_idx = 2, frac_bit = 1.
-module Noise_Gate (
-    input  i_clk,
-    input  i_rst,
-
-    input  i_prev_valid,
-    input  signed [15:0] i_data,
-
-    input  [7:0] i_rise_rate,      // in bits
-    input  [7:0] i_decay_rate,     // in bits
-    input  [15:0] i_hold,          // in samples
-    input  [14:0] i_threshold_lo,  // unsigned Q0.15
-    input  [14:0] i_threshold_hi,  // unsigned Q0.15
-
-    output o_next_valid,
-    output signed [15:0] o_data
-);
-    // Sample Rate Matching
-    localparam S_IDLE    = 1'b0;
-    localparam S_CALC    = 1'b1;
-
-    // FSM States
-    localparam S_NORMAL  = 2'b00;
-    localparam S_HOLD    = 2'b01;
-    localparam S_DECAY   = 2'b10;
-    localparam S_RECOVER = 2'b11;
-
-    // Input Data
-    logic signed [15:0] i_data_w, i_data_r;
-
-    // Output Data
-    logic o_next_valid_w, o_next_valid_r;
-    logic signed [15:0] o_data_w, o_data_r;
-
-    assign o_data = o_data_r;
-    assign o_next_valid = o_next_valid_r;
-
-    // Misc. signals
-    logic proc_state_w, proc_state_r;
-    logic [1:0] state_w, state_r;
-    logic [15:0] counter_w, counter_r;
-    logic signed [15:0] current_gain_w, current_gain_r;    //Q1.15
-
-    // Rate / target_gain control
-    logic [7:0] rate;
-    logic signed [15:0] target_gain;
-
-    assign rate = (state_r == S_RECOVER) ? i_rise_rate :
-                  (state_r == S_DECAY) ? i_decay_rate : '1;
-
-    assign target_gain = (state_r == S_DECAY) ? 16'sd0 : 16'sd32767; // 1.0 in Q1.15 is 32767
-
-    // Observed signals
-    logic [14:0] current_volume;
-    logic below_low, above_high;
-    
-    logic signed [15:0] abs_data;
-    // Safely calculate absolute value using the registered data to prevent async glitches
-    assign abs_data = i_data_r[15] ? -$signed(i_data_r) : i_data_r;
-    // Cap to 32767 so -32768 doesn't overflow to 0
-    assign current_volume = (abs_data[15]) ? 15'd32767 : abs_data[14:0];
-
-    assign below_low  = (current_volume < i_threshold_lo);
-    assign above_high = (current_volume > i_threshold_hi);
-
-    // Output Data scaling
-    logic signed [31:0] mult_result;
-    assign mult_result = i_data_r * current_gain_r;
-
-    // Use 32-bit math for gain difference to prevent 16-bit overflow during multiplication
-    logic signed [31:0] diff_mult;
-    assign diff_mult = (32'(target_gain) - 32'(current_gain_r)) * $signed({1'b0, rate});
-
-    always_comb begin
-        i_data_w = i_data_r;
-        o_data_w = o_data_r;
-
-        proc_state_w = proc_state_r;
-        state_w = state_r;
-        counter_w = counter_r;
-        current_gain_w = current_gain_r;
-        o_next_valid_w = 1'b0;
-
-        case (proc_state_r)
-            S_IDLE: begin
-                if (i_prev_valid) begin
-                    i_data_w = i_data;
-                    proc_state_w = S_CALC;
-                end
-            end
-            S_CALC: begin
-                proc_state_w = S_IDLE;
-                o_next_valid_w = 1'b1;
-                o_data_w = mult_result >>> 15; // Shift right by 15 to adjust for Q1.15 gain format
-
-                // Multiply difference by rate (0 ~ 255) first, then shift right arithmetically by 8 (devide by 256)
-                current_gain_w = current_gain_r + (diff_mult >>> 8);
-            
-                case (state_r)
-                    S_NORMAL: begin
-                        if (below_low) begin
-                            state_w = S_HOLD;
-                            counter_w = '0;
-                        end
-                    end
-                    S_HOLD: begin
-                        counter_w = counter_r + 1;
-                        if (above_high) begin
-                            state_w = S_NORMAL;
-                            counter_w = '0;
-                        end
-                        else if (counter_w >= i_hold) begin
-                            state_w = S_DECAY;
-                            counter_w = '0;
-                        end
-                    end
-                    S_DECAY: begin
-                        if (above_high) begin
-                            state_w = S_RECOVER;
-                        end
-                    end
-                    S_RECOVER: begin
-                        counter_w = counter_r + 1;
-                        if (counter_w >= i_hold) begin
-                            state_w = S_NORMAL;
-                            counter_w = '0;
-                        end
-                    end
-                endcase
-            end
-        endcase
-    end
-
-    
-    always_ff @(posedge i_clk or negedge i_rst) begin
-        if (!i_rst) begin
-            i_data_r       <= 16'sd0;
-            o_data_r       <= 16'sd0;
-            o_next_valid_r <= 1'b0;
-            proc_state_r   <= S_IDLE;
-            state_r        <= S_NORMAL;
-            counter_r      <= 16'd0;
-            current_gain_r <= 16'sd32767;
-        end else begin
-            i_data_r       <= i_data_w;
-            o_data_r       <= o_data_w;
-            o_next_valid_r <= o_next_valid_w;
-            proc_state_r   <= proc_state_w;
-            state_r        <= state_w;
-            counter_r      <= counter_w;
-            current_gain_r <= current_gain_w;
-        end
-    end
-
-endmodule
-module overdrive (
-    input                      i_clk,
-    input                      i_rst,      // 同步或非同步高電位重置
-    input        signed [15:0] i_data,     // Q1.15 (Signed)
-    input               [7:0]  i_gain,     // Q2.6 (Unsigned)
-    input                      i_en,
-    output       logic signed [15:0] o_data,    // Q1.15 (Signed)
-    output       logic         o_en
-);
-
-    // ==========================================
-    // 內部連線訊號宣告
-    // ==========================================
-    logic signed [15:0] tanh_unnorm;
-    logic        [15:0] inv_tanh_val;
-    logic signed [32:0] y_norm_full;
-    logic signed [15:0] overdrive_out;
-
-    logic signed [15:0] i_data_r;
-
-    // ==========================================
-    // 實例化 (Instantiation) 子模組
-    // ==========================================
-    tanh u_tanh (
-        .i_data (i_data_r),
-        .i_gain (i_gain),
-        .o_data (tanh_unnorm)
-    );
-
-    inv_tanh u_inv_tanh (
-        .i_gain         (i_gain),
-        .o_inv_tanh_val (inv_tanh_val)
-    );
-
-    // ==========================================
-    // 組合邏輯：正規化與飽和保護
-    // ==========================================
-    always_comb begin
-        overdrive_out = 16'sd0; // 預設輸出為 0
-        y_norm_full = 33'sd0; // 預設未正規化的結果為 0 (使用 33 bits 以防止溢位)
-        if (i_gain <= 8'd4) begin
-            // 當 gain 為 4 時 bypass 原始音訊
-            overdrive_out = i_data_r; 
-        end else begin
-            // 1. Make-up Gain 正規化乘法: Q1.15 (有號) * Q7.9 (無號) = Q8.24 (有號)
-            y_norm_full = tanh_unnorm * $signed({1'b0, inv_tanh_val});
-
-            // 2. 將 Q8.24 轉回 Q1.15：加上 256 = 2^8 進行 rounding，然後 arithmetic right shift 9 bits
-            // 並加入 saturation，避免超過 Q1.15 範圍造成 wrap-around / pop sound
-            if (y_norm_full > 33'sd16776447) begin             // 32767 << 9, max Q1.15 in Q8.24 scale
-                overdrive_out = 16'sd32767;
-            end else if (y_norm_full < -33'sd16777216) begin   // -32768 << 9, min Q1.15 in Q8.24 scale
-                        overdrive_out = -16'sd32768;
-            end else begin
-                        if (y_norm_full >= 0)
-                            overdrive_out = (y_norm_full + 33'sd256) >>> 9;
-                        else
-                            overdrive_out = (y_norm_full - 33'sd256) >>> 9;
-                        
-                        end
-        end
-    end
-
-    // ==========================================
-    // 輸出時序邏輯 (Register)
-    // ==========================================
-    always_ff @(posedge i_clk or negedge i_rst) begin
-        if (!i_rst) begin
-            o_data <= 16'sd0;
-            o_en   <= 1'b0;
-        end else begin
-            o_en <= i_en;
-            if (i_en) begin
-                o_data <= overdrive_out;
-                i_data_r <= i_data;
-            end
-        end
-    end
-
-endmodule
-module Reverb_basic(
-    input                i_clk,
-    input                i_rst,
-    input                i_valid,
-    input         [23:0] r, // Q0.24
-    input signed  [15:0] i_cosw, // Q1.15
-    input         [7:0]  w_rate, // Q0.8
-    input signed  [15:0] i_data, // Q16.0
-    output               o_valid,
-    output signed [15:0] o_data // Q16.0
-);
-
-    logic        [23:0] r_r, r_w; // Q0.24
-    logic signed [15:0] i_cosw_r, i_cosw_w; // Q1.15
-    logic        [7:0]  w_rate_r, w_rate_w; // Q0.8
-    logic signed [15:0] i_data_r, i_data_w; // Q16.0
-    logic               state_r, state_w;
-    logic               o_valid_r, o_valid_w;
-    logic signed [15:0] o_data_r, o_data_w; // Q16.0
-    logic signed [15:0] x1_r, x1_w, y1_r, y1_w, y2_r, y2_w; // Q16.0
-
-    localparam IDLE = 1'b0, CALC = 1'b1;
-
-    assign o_valid = o_valid_r;
-    assign o_data  = o_data_r;
-
-    // y1_w = i_data_r + r_r  * i_cosw_r * (2 * y1_r - x1_r) - r_r * r_r * y2_r
-    // o_data_w = i_data_r + w_rate_r * (r_r  * i_cosw_r * (2 * y1_r - x1_r) - r_r * r_r * y2_r)
-
-    logic signed [40:0] A; // Q2.39
-    logic        [47:0] B; // Q0.48
-    logic signed [17:0] C; // Q18.0
-    logic signed [58:0] D; // Q20.39
-    logic signed [64:0] E; // Q17.48
-    logic signed [68:0] F; // Q21.48
-    logic signed [77:0] G; // Q22.56
-    logic signed [20:0] H; // Q21.0
-    logic signed [21:0] I; // Q22.0
-    logic signed [21:0] J; // Q22.0
-    logic signed [22:0] K; // Q23.0
-
-    always_comb begin
-        r_w       = r_r;
-        i_cosw_w  = i_cosw_r;
-        w_rate_w  = w_rate_r;
-        i_data_w  = i_data_r;
-        state_w   = state_r;
-        o_valid_w = o_valid_r;
-        o_data_w  = o_data_r;
-        x1_w      = x1_r;
-        y1_w      = y1_r;
-        y2_w      = y2_r;
-        A = $signed({1'b0, r_r}) * i_cosw_r; // Q2.39
-        B = r_r * r_r; // Q0.48
-        C = $signed({y1_r[15], y1_r, 1'b0}) - $signed({x1_r[15], x1_r}); // Q18.0
-        D = A * C; // Q20.39
-        E = $signed({1'b0, B}) * y2_r; // Q17.48
-        F = $signed({D[58], D, 9'd0}) - $signed({E[64], E}); // Q21.48
-        G = $signed({1'b0, w_rate_r}) * F; // Q22.56
-        // H = $signed(F[68:48]) + $signed({20'd0, F[47]}); // Q21.0
-		  H = $signed(F[68:48]); // Q21.0
-        // I = $signed(G[77:56]) + $signed({21'd0, G[55]}); // Q22.0
-		  I = $signed(G[77:56]); // Q22.0
-        J = $signed({H[20], H}) + $signed({i_data_r[15], i_data_r}); // Q22.0
-        K = $signed({I[21], I}) + $signed({i_data_r[15], i_data_r}); // Q23.0
-        case (state_r)
-            IDLE: begin
-                if (i_valid) begin
-                    r_w      = r;
-                    i_cosw_w = i_cosw;
-                    w_rate_w = w_rate;
-                    i_data_w = i_data;
-                    state_w  = CALC;
-                end
-                o_valid_w = 1'b0;
-                // o_data_w  = 16'sd0;
-            end
-            CALC: begin
-                state_w   = IDLE;
-                o_valid_w = 1'd1;
-                if (K > 23'sd32767) begin
-                    o_data_w = 16'sd32767;
-                end else if (K < -23'sd32768) begin
-                    o_data_w = -16'sd32768;
-                end else begin
-                    o_data_w = $signed(K[15:0]);
-                end
-                x1_w = i_data_r;
-                if (J > 22'sd32767) begin
-                    y1_w = 16'sd32767;
-                end else if (J < -22'sd32768) begin
-                    y1_w = -16'sd32768;
-                end else begin
-                    y1_w = $signed(J[15:0]);
-                end
-                y2_w = y1_r;
-            end
-        endcase
-    end
-
-    always_ff @(posedge i_clk or negedge i_rst) begin
-        if (!i_rst) begin
-            r_r       <= 24'd0;
-            i_cosw_r  <= 16'd0;
-            w_rate_r  <= 8'd0;
-            i_data_r  <= 16'sd0;
-            state_r   <= IDLE;
-            o_valid_r <= 1'd0;
-            o_data_r  <= 16'sd0;
-            x1_r      <= 16'sd0;
-            y1_r      <= 16'sd0;
-            y2_r      <= 16'sd0;
-        end else begin
-            r_r       <= r_w;
-            i_cosw_r  <= i_cosw_w;
-            w_rate_r  <= w_rate_w;
-            i_data_r  <= i_data_w;
-            state_r   <= state_w;
-            o_valid_r <= o_valid_w;
-            o_data_r  <= o_data_w;
-            x1_r      <= x1_w;
-            y1_r      <= y1_w;
-            y2_r      <= y2_w;
-        end
-    end
-
-endmodule
 module Reverb #(
     parameter integer ap_delay_sample_0 = 1423,
     parameter integer ap_delay_sample_1 = 1787,
@@ -2495,17 +2554,17 @@ module Reverb #(
     parameter integer fdn_delay_sample_1 = 1787,
     parameter integer fdn_delay_sample_2 = 2131,
     parameter integer fdn_delay_sample_3 = 2531,
-    parameter signed [7:0] ap_gain_0 = 8'sd96, // Q1.7
-    parameter signed [7:0] ap_gain_1 = 8'sd96, // Q1.7
-    parameter signed [7:0] ap_gain_2 = 8'sd96, // Q1.7
-    parameter signed [7:0] ap_gain_3 = 8'sd96, // Q1.7
-    parameter signed [7:0] ap_gain_4 = 8'sd96, // Q1.7
-    parameter [7:0] fdn_gain = 8'd128 // Q0.9
+    parameter signed [7:0] fdn_gain = 8'sd96 // Q1.7
 )(
     input clk,
     input rst,
     input in_valid,
     input signed [15:0] in,
+    input signed [7:0] ap_gain_0,
+    input signed [7:0] ap_gain_1,
+    input signed [7:0] ap_gain_2,
+    input signed [7:0] ap_gain_3,
+    input signed [7:0] ap_gain_4,
     output out_valid,
     output signed [15:0] out
 );
@@ -2522,87 +2581,101 @@ logic signed [15:0] out_ap_3;
 logic signed [15:0] out_ap_4;
 
 Schroeder_Allpass #(
-    .delay_sample(ap_delay_sample_0),
-    .gain(ap_gain_0)
+    .delay_sample(ap_delay_sample_0)
 ) allpass_0 (
     .clk(clk),
     .rst(rst),
     .in_valid(in_valid),
     .in(in),
+    .gain(ap_gain_0),
     .out_valid(in_valid_0),
     .out(out_ap_0)
 );
 
 Schroeder_Allpass #(
-    .delay_sample(ap_delay_sample_1),
-    .gain(ap_gain_1)
+    .delay_sample(ap_delay_sample_1)
 ) allpass_1 (
     .clk(clk),
     .rst(rst),
     .in_valid(in_valid_0),
     .in(out_ap_0),
+    .gain(ap_gain_1),
     .out_valid(in_valid_1),
     .out(out_ap_1)
 );
 
 Schroeder_Allpass #(
-    .delay_sample(ap_delay_sample_2),
-    .gain(ap_gain_2)
+    .delay_sample(ap_delay_sample_2)
 ) allpass_2 (
     .clk(clk),
     .rst(rst),
     .in_valid(in_valid_1),
     .in(out_ap_1),
+    .gain(ap_gain_2),
     .out_valid(in_valid_2),
     .out(out_ap_2)
 );
 
 Schroeder_Allpass #(
-    .delay_sample(ap_delay_sample_3),
-    .gain(ap_gain_3)
+    .delay_sample(ap_delay_sample_3)
 ) allpass_3 (
     .clk(clk),
     .rst(rst),
     .in_valid(in_valid_2),
     .in(out_ap_2),
+    .gain(ap_gain_3),
     .out_valid(in_valid_3),
     .out(out_ap_3)
 );
 
 Schroeder_Allpass #(
-    .delay_sample(ap_delay_sample_4),
-    .gain(ap_gain_4)
+    .delay_sample(ap_delay_sample_4)
 ) allpass_4 (
     .clk(clk),
     .rst(rst),
     .in_valid(in_valid_3),
     .in(out_ap_3),
+    .gain(ap_gain_4),
     .out_valid(in_valid_4),
     .out(out_ap_4)
 );
 
-FDN_4ch #(
-    .delay_sample_0(fdn_delay_sample_0),
-    .delay_sample_1(fdn_delay_sample_1),
-    .delay_sample_2(fdn_delay_sample_2),
-    .delay_sample_3(fdn_delay_sample_3),
-    .gain(fdn_gain)
-) fdn (
-    .clk(clk),
-    .rst(rst),
-    .in_valid(in_valid_4),
-    .in_0(out_ap_4),
-    .in_1(out_ap_4),
-    .in_2(out_ap_4),
-    .in_3(out_ap_4),
-    .out_valid(out_valid),
-    .out(out)
-);
+    FDN_4ch #(
+        .delay_sample_0(fdn_delay_sample_0),
+        .delay_sample_1(fdn_delay_sample_1),
+        .delay_sample_2(fdn_delay_sample_2),
+        .delay_sample_3(fdn_delay_sample_3),
+        .gain(fdn_gain)
+    ) fdn (
+        .clk(clk),
+        .rst(rst),
+        .in_valid(in_valid_4),
+        .in(out_ap_4),
+        .out_valid(out_valid),
+        .out(out)
+    );
+
+    // FDN_4ch #(
+    //     .delay_sample_0(fdn_delay_sample_0),
+    //     .delay_sample_1(fdn_delay_sample_1),
+    //     .delay_sample_2(fdn_delay_sample_2),
+    //     .delay_sample_3(fdn_delay_sample_3),
+    //     .gain(fdn_gain)
+    // ) fdn (
+    //     .clk(clk),
+    //     .rst(rst),
+    //     .in_valid(in_valid),
+    //     .in(in),
+    //     .out_valid(out_valid),
+    //     .out(out)
+    // );
+
+    // assign out = out_ap_4;
+    // assign out_valid = in_valid_4;
 
 endmodule
 module Schroeder_Allpass #(
-    parameter integer delay_sample = 2304,
-    parameter signed [7:0] gain = 8'sd64 // Q1.7 (-1 ~ 1)
+    parameter integer delay_sample = 2304
 )(
     input clk,
     input rst,
@@ -2610,34 +2683,50 @@ module Schroeder_Allpass #(
     input signed [15:0] in,
     input signed [7:0] gain, // Q1.7
     output reg out_valid,
-    output signed reg [15:0] out
+    output reg signed [15:0] out
 );
+
+logic signed [7:0] gain_r;
+logic out_valid_pipe;
 
 logic [15:0] v_buffer [0:delay_sample - 1];
 logic [$clog2(delay_sample) - 1:0] ptr;
 logic is_loop;
-logic signed [15:0] temp_0; // temp_0 = v_buffer[ptr] // Q15.0
-logic signed [15:0] v_delay;
+logic signed [15:0] temp_0; // temp_0 = v_buffer[ptr] // Q16.0
+logic signed [15:0] v_delay; // Q16.0
 logic signed [23:0] temp_1; // temp_1 = gain * v_delay // Q17.7
-logic signed [16:0] temp_2; // temp_2 = (temp_1 + 24'sd64) >>> 7 // Q16.0
-logic signed [15:0] v_curr; // v_curr = in - temp_2 // Q15.0
+logic signed [16:0] temp_2; // temp_2 = (temp_1 + 24'sd64) >>> 7 // Q17.0
+logic signed [17:0] v_curr_temp; // v_curr_temp = in - temp_2 // Q18.0
+logic signed [15:0] v_curr; // v_curr = saturate(v_curr_temp) // Q16.0
+logic signed [15:0] v_curr_pipe;
 logic signed [23:0] temp_3; // temp_3 = gain * v_curr // Q17.7
-logic signed [15:0] temp_4; // temp_4 = (temp_3 + 24'sd64) >>> 7 // Q16.0
-logic signed [15:0] out_curr; // out_curr = temp_4 + v_delay // Q15.0
+logic signed [16:0] temp_4; // temp_4 = (temp_3 + 24'sd64) >>> 7 // Q17.0
+logic signed [17:0] out_curr_temp; // out_curr_temp = temp_4 + v_delay // Q18.0
+logic signed [15:0] out_curr; // out_curr = saturate(out_curr_temp) // Q16.0
 
 assign v_delay = is_loop ? temp_0 : 16'sd0;
-assign temp_1 = gain * v_delay;
+assign temp_1 = gain_r * v_delay;
 assign temp_2 = (temp_1 + 24'sd64) >>> 7;
-assign v_curr = in - temp_2;
-assign temp_3 = gain * v_curr;
+assign v_curr_temp = in - temp_2;
+assign v_curr = (v_curr_temp > 18'sd32767) ? 18'sd32767 :
+                (v_curr_temp < -18'sd32768) ? -18'sd32768 :
+                v_curr_temp[15:0];
+assign temp_3 = gain_r * v_curr_pipe;
 assign temp_4 = (temp_3 + 24'sd64) >>> 7;
-assign out_curr = temp_4 + v_delay;
+assign out_curr_temp = temp_4 + v_delay;
+assign out_curr = (out_curr_temp > 18'sd32767) ? 18'sd32767 :
+                  (out_curr_temp < -18'sd32768) ? -18'sd32768 :
+                  out_curr_temp[15:0];
 
 always_ff @(posedge clk or negedge rst) begin
     if (!rst) begin
         ptr <= 0;
         is_loop <= 0;
+        gain_r <= 0;
+        out_valid_pipe <= 1'b0;
+        v_curr_pipe <= 16'sd0;
     end else if (in_valid) begin
+        gain_r <= gain;
         if (ptr == delay_sample - 1) begin
             ptr <= 0;
             is_loop <= 1;
@@ -2645,16 +2734,119 @@ always_ff @(posedge clk or negedge rst) begin
             ptr <= ptr + 1;
         end
         v_buffer[ptr] <= v_curr;
+        v_curr_pipe <= v_curr;
+        out_valid_pipe <= 1'b1;
+    end else if (out_valid_pipe) begin
         out <= out_curr;
         out_valid <= 1'b1;
+        out_valid_pipe <= 1'b0;
     end else if (out_valid) begin
+        gain_r <= gain;
         out_valid <= 1'b0;
         temp_0 <= v_buffer[ptr];
+    end else begin
+        gain_r <= gain;
     end
 end
 
 endmodule
-// `timescale 1ns/1ps
+`timescale 1ns/1ps
+
+// =========================================================================
+// Module: lut_h_tanh_div_v
+// Description:
+//   計算 h(v) = tanh(v)/v 的硬體查表模組。
+//   採用 128-entry 的 Base + Delta 架構，搭配 8-bit 線性插值。
+//
+// Latency: 1 cycle 
+//   - 輸入 (i_abs_v) 在 Cycle N
+//   - 輸出 (o_g) 在 Cycle N+1 組合邏輯算出
+// =========================================================================
+
+module lut_h_tanh_div_v (
+    input  logic               i_clk,
+    input  logic               i_rst,
+    input  logic        [14:0] i_abs_v,  // 輸入：Unsigned Q4.11 (0 ~ 15.999，最大值 32767)
+    input  logic               i_en,     // 輸入：Valid / Enable
+    output logic signed [15:0] o_g,      // 輸出：Signed Q1.15 (0 ~ 1.0)
+    output logic               o_en      // 輸出：對齊好的 Enable
+);
+
+    // ==========================================
+    // 1. 分拆 Input Address (15 bits 對半切)
+    // ==========================================
+    logic [6:0] lut_idx;  // 高 7 位元：用作 ROM 的 Address (0 ~ 127)
+    logic [7:0] lut_frac; // 低 8 位元：用作兩點之間的比例尺 Fraction (0 ~ 255)
+    
+    assign lut_idx  = i_abs_v[14:8]; 
+    assign lut_frac = i_abs_v[7:0];
+
+    // ==========================================
+    // 2. ROM 宣告與初始化
+    // ==========================================
+    // 128 筆 32-bit 資料
+    //   - [31:16] : 基準點 Base (Signed Q1.15)
+    //   - [15:0]  : 差值 Delta = Y_next - Base (Signed Q1.15)
+    (* rom_style = "block" *) // 提示合成工具使用 BRAM / ROM 資源
+    logic [31:0] rom_data [0:127]; 
+
+    initial begin
+        // 合成工具會尋找這個 hex 檔案來燒錄初始值
+        $readmemh("lut_base_delta.hex", rom_data);
+    end
+
+    // ==========================================
+    // 3. Pipeline Register: 讀取 ROM (Delay 1 Cycle)
+    // ==========================================
+    logic signed [15:0] base_r;
+    logic signed [15:0] delta_r;
+    logic        [7:0]  frac_r;
+    logic               en_r;
+
+    always_ff @(posedge i_clk or negedge i_rst) begin
+        if (!i_rst) begin
+            base_r  <= 16'sd0;
+            delta_r <= 16'sd0;
+            frac_r  <= 8'd0;
+            en_r    <= 1'b0;
+        end else begin
+            // 讀取位址上的 32-bit 數據，並拆分成 Base 與 Delta
+            base_r  <= rom_data[lut_idx][31:16];
+            delta_r <= rom_data[lut_idx][15:0];
+            
+            // 同時將 Fraction 與 Enable 延遲 1 Cycle
+            frac_r  <= lut_frac;
+            en_r    <= i_en;
+        end
+    end
+
+    // ==========================================
+    // 4. Combinational Logic: 線性插值 (Linear Interpolation)
+    // ==========================================
+    // 數學公式: y = Base + (Delta * Fraction) / 256
+    
+    logic signed [24:0] delta_scaled; 
+    logic signed [15:0] g_out_w;
+
+    always_comb begin
+        // 乘法：Signed 16-bit (Delta) * Unsigned 8-bit (Fraction) = Signed 25-bit
+        // 注意：必須擴展 Fraction 為有號正數，才能安全相乘
+        delta_scaled = delta_r * $signed({1'b0, frac_r});
+        
+        // 插值計算：
+        // 加上 25'sd128 是為了做四捨五入 (Rounding to nearest) -> 256 的一半是 128
+        // >>> 8 是除以 256
+        g_out_w = base_r + ((delta_scaled + 25'sd128) >>> 8);
+    end
+
+    // ==========================================
+    // 5. Output Assignment
+    // ==========================================
+    assign o_g  = g_out_w;
+    assign o_en = en_r;
+
+endmodule
+ `timescale 1ns/1ps
 
 module tanh (
     input  logic signed [15:0] i_data,   // 原始音訊 Q1.15 signed
@@ -2983,6 +3175,390 @@ module tanh (
     end
 
 endmodule
+`timescale 1ns/1ps
+module Overdrive (
+    input                      i_clk,
+    input                      i_rst,      // active-low reset
+    input        signed [15:0] i_data,     // Q1.15 (Signed)
+    input               [7:0]  i_gain,     // Q2.6 (Unsigned)
+    input        signed [15:0] i_L,        // Q1.15 (Signed, 正數) - 新增的天花板 L
+    input                      i_en,
+    output       logic signed [15:0] o_data,    // Q1.15 (Signed)
+    output       logic         o_en
+);
+
+    // ==========================================
+    // Stage 0: Input Registers
+    // ==========================================
+    logic signed [15:0] i_data_r;
+    logic        [7:0]  i_gain_r;
+    logic signed [15:0] i_L_r;
+    logic               i_en_r;
+
+    // ==========================================
+    // Stage 1: x & v calculations
+    // ==========================================
+    logic signed [31:0] x_full;
+    logic signed [31:0] x_q15_w;
+    logic signed [31:0] x_r1;
+
+    logic signed [31:0] v_full;
+    logic signed [15:0] v_q115_w;
+    logic signed [15:0] v_r1;
+    logic               en_r1;
+
+    // ==========================================
+    // Tanh Submodule Output
+    // ==========================================
+    logic signed [15:0] tanh_w;
+
+    // ==========================================
+    // Stage 2: g (gain) calculation
+    // ==========================================
+    logic signed [31:0] g_full;
+    logic signed [15:0] g_q115_w;
+    logic signed [15:0] g_r2;
+    logic signed [31:0] x_r2;
+    logic               en_r2;
+
+    // ==========================================
+    // Stage 3: LPF & Output formatting
+    // ==========================================
+    logic signed [15:0] g_smoothed;
+    logic signed [47:0] o_full; 
+    logic signed [47:0] o_shifted;
+    logic signed [15:0] o_data_w;
+
+    // ==========================================
+    // Submodule instantiation
+    // ==========================================
+    // 傳入 v = (x/L)，獲得 tanh(v)
+    tanh u_tanh (
+        .i_data (v_r1),
+        .i_gain (8'd64),  // i_gain 固定為 1.0 (Q2.6 的 64)，因為增益已經在外部乘過了
+        .o_data (tanh_w)
+    );
+
+    // 註：因為直接計算出衰減增益 g，不需要原本的 u_recip_tanh 了，已移除以節省資源。
+
+    // ==========================================
+    // Pipeline Registers
+    // ==========================================
+    always_ff @(posedge i_clk or negedge i_rst) begin
+        if (!i_rst) begin
+            i_data_r <= 16'sd0;
+            i_gain_r <= 8'd0;
+            i_L_r    <= 16'sd0;
+            i_en_r   <= 1'b0;
+
+            x_r1     <= 32'sd0;
+            v_r1     <= 16'sd0;
+            en_r1    <= 1'b0;
+
+            x_r2     <= 32'sd0;
+            g_r2     <= 16'sd0;
+            en_r2    <= 1'b0;
+
+            o_data   <= 16'sd0;
+            o_en     <= 1'b0;
+        end else begin
+            // Stage 0: Latch Inputs
+            i_data_r <= i_data;
+            i_gain_r <= i_gain;
+            i_L_r    <= i_L;
+            i_en_r   <= i_en;
+
+            // Stage 1: Store x and v
+            x_r1  <= x_q15_w;
+            v_r1  <= v_q115_w;
+            en_r1 <= i_en_r;
+
+            // Stage 2: Store dynamic gain g and propagate x
+            x_r2  <= x_r1;
+            g_r2  <= g_q115_w;
+            en_r2 <= en_r1;
+
+            // Stage 3: Output
+            o_en <= en_r2;
+            if (en_r2) begin
+                o_data <= o_data_w;
+            end
+        end
+    end
+
+    // ==========================================
+    // Combinational Logic Block
+    // ==========================================
+    always_comb begin
+        // ---------------------------------
+        // Stage 1: x = i_data * i_gain
+        // ---------------------------------
+        // Q1.15 * Q2.6 = Q3.21 -> 右移 6 轉為 Q17.15 (用 32-bit 保存大動態範圍)
+        x_full  = i_data_r * $signed({1'b0, i_gain_r});
+        x_q15_w = x_full >>> 6;
+
+        // ---------------------------------
+        // Stage 1: v = x / L
+        // ---------------------------------
+        if (i_L_r <= 16'sd0) begin
+            v_full = 32'sd0; // 防止除以零
+        end else begin
+            v_full = (x_q15_w <<< 15) / i_L_r; // 注意：這裡使用行為級除法 '/'
+        end
+
+        // 飽和保護至 Q1.15
+        if (v_full > 32'sd32767)       v_q115_w = 16'sd32767;
+        else if (v_full < -32'sd32768) v_q115_w = -16'sd32768;
+        else                           v_q115_w = v_full[15:0];
+
+        // ---------------------------------
+        // Stage 2: g = tanh(v) / v
+        // ---------------------------------
+        if (v_r1 >= -16'sd5 && v_r1 <= 16'sd5) begin
+            // 等同於 C++ 中的 if(abs(v) < 1e-5f) g = 1.0f;
+            g_q115_w = 16'sd32767; 
+        end else begin
+            g_full = (tanh_w <<< 15) / v_r1; // 注意：這裡使用行為級除法 '/'
+
+            // g 是衰減係數，正常應介於 0~1.0 之間
+            if (g_full > 32'sd32767)       g_q115_w = 16'sd32767;
+            else if (g_full < -32'sd32768) g_q115_w = -16'sd32768;
+            else                           g_q115_w = g_full[15:0];
+        end
+
+        // ---------------------------------
+        // Stage 3: Lowpass Filter (LPF) 插槽
+        // ---------------------------------
+        // ★★★ 文章後半段的精華 ★★★
+        // 在這裡你可以對管線化的 g_r2 加上一階低通濾波器
+        // 範例概念：g_smoothed = (g_r2 * alpha) + (g_prev * (1-alpha))
+        
+        g_smoothed = g_r2; // 目前先 Bypass，直接使用算出來的 g
+
+        // ---------------------------------
+        // Stage 3: o_data = x * g_smoothed
+        // ---------------------------------
+        // Q17.15 * Q1.15 = Q18.30
+        o_full = x_r2 * g_smoothed;
+
+        // 轉回 Q1.15 (加上 1<<14 做四捨五入)
+        if (o_full >= 0) o_full = o_full + 48'sd16384;
+        else             o_full = o_full - 48'sd16384;
+
+        o_shifted = o_full >>> 15;
+
+        // 最終飽和保護
+        if (o_shifted > 48'sd32767)       o_data_w = 16'sd32767;
+        else if (o_shifted < -48'sd32768) o_data_w = -16'sd32768;
+        else                              o_data_w = o_shifted[15:0];
+    end
+
+endmodule
+`timescale 1ns/1ps
+
+// =========================================================================
+// Module: Overdrive_opt
+// Description:
+//   這是一個基於 Signalsmith Audio "Warm Distortion" 演算法的破音效果器模組。
+//   為了達到平滑的真空管破音音色，並避免數位硬切 (Hard-clipping) 產生的刺耳雜訊，
+//   本模組將傳統的 Waveshaper 公式拆解為「增益訊號 (g)」並乘回原訊號。
+//
+// Algorithm:
+//   1. x = i_data * i_gain        (輸入前級放大)
+//   2. v = x * i_recip_L          (將除法 L 改為乘上 1/L，計算撞擊天花板的比例)
+//   3. g = tanh(v)/v              (透過查表計算動態衰減增益)
+//   4. y = x * g                  (套用增益，得最終溫暖破音輸出)
+//
+// Pipeline Architecture (4-Stage):
+//   - Stage 0: 鎖存輸入訊號 (Latch Inputs)
+//   - Stage 1: 計算 x 與 v，並對 v 進行捨入與對稱絕對值處理
+//   - Stage 2: 查表 (LUT) 執行，硬體延遲 1 Cycle
+//   - Stage 3: 將 x 與查表得到的 g 相乘，並捨入/飽和回 Q1.15 輸出
+// =========================================================================
+
+module Overdrive_opt (
+    input                      i_clk,
+    input                      i_rst,
+    input        signed [15:0] i_data,     // 輸入音訊：Signed Q1.15 (範圍 -1.0 ~ 0.999)
+    input               [7:0]  i_gain,     // 破音推力：Unsigned Q2.6 (範圍 0 ~ 3.98)
+    input               [15:0] i_recip_L,  // 倒數天花板：Unsigned Q8.8 (由外部 MCU 算好 1/L 傳入)
+    input                      i_en,       // 輸入有效訊號 (Valid)
+    output       logic signed [15:0] o_data, // 輸出音訊：Signed Q1.15
+    output       logic         o_en        // 輸出有效訊號 (與 o_data 對齊)
+);
+
+    // ==========================================
+    // Stage 0: 鎖存輸入 (Latch Inputs)
+    // ==========================================
+    logic signed [15:0] i_data_r;
+    logic        [7:0]  i_gain_r;
+    logic               [15:0] i_recip_L_r;
+    logic               i_en_r1;
+    logic               i_en_r2;
+
+    // ==========================================
+    // Pipeline Data Registers (跨 Stage 傳遞的資料)
+    // ==========================================
+    // x 需要保留極大的動態範圍，以防止過早截斷導致硬破音 (Hard-clipping)
+    logic signed [31:0] x_r2, x_r3;        // 放大後的輸入：Signed Q17.15
+    logic        [15:0] abs_v_r2;          // 撞擊比例的絕對值：Unsigned Q5.11
+
+    // ==========================================
+    // LUT Instantiation (h(v) = tanh(v)/v)
+    // 假設這是一個 1-cycle latency 的 Base+Delta 插值 ROM
+    // ==========================================
+    // 必須明確宣告為 signed，否則後續 Stage 3 乘法會把 x_r3 也誤判為 unsigned
+    logic signed [15:0] lut_g_out_w;       // 查表輸出的增益 g：Signed Q1.15
+    logic               lut_en_out_w;      // 查表模組吐出的 Enable 訊號 (已 Delay 1 cycle)
+    
+    lut_h_tanh_div_v u_lut_h (
+        .i_clk   (i_clk),
+        .i_rst   (i_rst),
+        // 只傳遞低 15 bits 給 LUT (因為絕對值最大被我們鎖死在 32767)
+        .i_abs_v (abs_v_r2[14:0]),         // Input: Unsigned Q4.11
+        .i_en    (i_en_r2),                // Input Enable (Stage 2)
+        .o_g     (lut_g_out_w),            // Output: Signed Q1.15 (Stage 3)
+        .o_en    (lut_en_out_w)            // Output Enable (Stage 3)
+    );
+
+    // ==========================================
+    // Symmetric Rounding Function (對稱捨入函數)
+    // 解決標準 Arithmetic Shift (>>>) 對負數偏向負無限大的 DC Offset 問題。
+    // ==========================================
+    // 寬度加大到 64-bit，這是為了包容 49-bit 的 v_full，避免呼叫時被截斷正負號反轉
+    function automatic logic signed [63:0] sym_round(
+        input logic signed [63:0] val,         // 原始高精度數值
+        input logic signed [63:0] half_lsb,    // 用於四捨五入的 0.5 (Half LSB)
+        input int shift_bits                   // 需要右移的小數位數
+    );
+        logic signed [63:0] abs_val, rounded_abs;
+        begin
+            if (val >= 0) begin
+                sym_round = (val + half_lsb) >>> shift_bits;
+            end else begin
+                abs_val = -val;
+                rounded_abs = (abs_val + half_lsb) >>> shift_bits;
+                sym_round = -rounded_abs;
+            end
+        end
+    endfunction
+
+    // ==========================================
+    // Pipeline Registers 控制區塊
+    // ==========================================
+    always_ff @(posedge i_clk or negedge i_rst) begin
+        if (!i_rst) begin
+            // Reset logic
+            i_data_r    <= 16'sd0;
+            i_gain_r    <= 8'd0;
+            i_recip_L_r <= 16'd0;
+            i_en_r1     <= 1'b0; 
+            i_en_r2     <= 1'b0; 
+            
+            x_r2        <= 32'sd0; 
+            x_r3        <= 32'sd0;
+            abs_v_r2    <= 16'd0;
+            
+            o_data      <= 16'sd0;
+            o_en        <= 1'b0;
+        end else begin
+            // ----------------------------------
+            // Stage 0 -> Stage 1: 鎖存外部輸入
+            // ----------------------------------
+            i_data_r    <= i_data;
+            i_gain_r    <= i_gain;
+            i_recip_L_r <= i_recip_L;
+            i_en_r1     <= i_en;
+
+            // ----------------------------------
+            // Stage 1 -> Stage 2: 儲存算好的 x 與 v
+            // ----------------------------------
+            x_r2        <= x_q15_w;
+            abs_v_r2    <= abs_v_q511_w;
+            i_en_r2     <= i_en_r1;
+
+            // ----------------------------------
+            // Stage 2 -> Stage 3: x 繼續跟著 Pipeline 走
+            // (註: g 與 en 已經交由 LUT 內部做 1 Cycle delay)
+            // ----------------------------------
+            x_r3        <= x_r2;
+
+            // ----------------------------------
+            // Stage 3 -> Output: 最終輸出
+            // ----------------------------------
+            // 接住 LUT 吐出來的 Valid 訊號，若有效則更新輸出
+            if (lut_en_out_w) begin
+                o_data <= o_data_w;
+            end
+            o_en <= lut_en_out_w;
+        end
+    end
+
+    // ==========================================
+    // Combinational Logic 運算區塊
+    // ==========================================
+    
+    // --- Stage 1: 計算 x 與 v ---
+    logic signed [31:0] x_mult;
+    logic signed [31:0] x_q15_w;
+    logic signed [48:0] v_full;
+    logic signed [48:0] v_rounded;
+    logic        [15:0] abs_v_q511_w;
+
+    always_comb begin
+        // 1. 計算 x = i_data * i_gain
+        // 格式對應：Q1.15 * UQ2.6 = Q3.21 -> 右移 6 位 -> Q17.15 (利用 32-bit 保留大動態)
+        // 擴展 {1'b0, i_gain_r} 是為了確保 Verilog 將 i_gain 當作正的有號數參與 signed 乘法
+        x_mult = i_data_r * $signed({1'b0, i_gain_r});
+        x_q15_w = x_mult >>> 6; 
+
+        // 2. 計算 v = x * (1/L)
+        // 格式對應：Q17.15 * UQ8.8 = Signed Q26.23 (總共需要 49 bits)
+        v_full = x_q15_w * $signed({1'b0, i_recip_L_r});
+
+        // 3. 將 v 捨入至 Q5.11 格式 (Shift right by 12)
+        // Half LSB = 2^11 = 2048
+        // sym_round 參數會被自動擴展成 64-bit 進行安全運算
+        v_rounded = sym_round(v_full, 49'sd2048, 12);
+
+        // 4. 飽和保護 (Saturate) 並取絕對值 (Absolute)
+        // 目標：鎖定在 Signed Q5.11 範圍內 [-16.0, 15.999]
+        //  必須鎖定在正負 32767，確保絕對值轉換後完美符合 [14:0] 15 bits 的空間，防止變為 0
+        if (v_rounded > 49'sd32767) begin
+            abs_v_q511_w = 16'd32767;
+        end else if (v_rounded < -49'sd32767) begin
+            abs_v_q511_w = 16'd32767; 
+        end else begin
+            // 轉為絕對值，準備在 Stage 2 餵給 LUT 查表
+            abs_v_q511_w = (v_rounded < 0) ? -v_rounded[15:0] : v_rounded[15:0];
+        end
+    end
+
+    // --- Stage 3: 計算 y = x * g ---
+    logic signed [47:0] o_full;
+    logic signed [47:0] o_rounded;
+    logic signed [15:0] o_data_w;
+
+    always_comb begin
+        // 1. 執行相乘 y = x * g
+        // 格式對應：Q17.15 * Signed Q1.15 = Signed Q19.30 (48 bits)
+        // 因 lut_g_out_w 已修正為 signed，此處為安全的有號數乘法
+        o_full = x_r3 * lut_g_out_w;
+
+        // 2. 捨入回最終輸出格式 Q1.15 (Shift right by 15)
+        // Half LSB = 2^14 = 16384
+        o_rounded = sym_round(o_full, 48'sd16384, 15);
+
+        // 3. 最終飽和保護 (防止極端推波情況下溢出 Q1.15)
+        if (o_rounded > 48'sd32767)       
+            o_data_w = 16'sd32767;
+        else if (o_rounded < -48'sd32768) 
+            o_data_w = -16'sd32768;
+        else                              
+            o_data_w = o_rounded[15:0];
+    end
+
+endmodule
 module DE2_115 (
 	input CLOCK_50,
 	input CLOCK2_50,
@@ -3158,7 +3734,7 @@ Debounce deb2(
 
 Top top0(
 	.i_rst_n(KEY[3]),
-	.i_clk(CLOCK_50),
+	.i_clk(AUD_BCLK),
 	.i_key_0(key0down),
 	.i_key_1(key1down),
 	.i_key_2(key2down),
@@ -3190,8 +3766,9 @@ Top top0(
 	.o_ledr(LEDR), // [17:0]
 
 	// For Debugging
-	.o_l_cnt(l_cnt_10000),
-	.o_r_cnt(r_cnt_10000)
+	.o_l_cnt(l_cnt_48000),
+	.o_r_cnt(r_cnt_48000),
+	.o_simul_cnt(simul_cnt),
 
 	// LCD (optional display)
 	// .i_clk_800k(CLK_800K),
@@ -3209,13 +3786,16 @@ Top top0(
 // 	.o_seven(HEX0) 		// [6:0]
 // );
 
-logic [3:0] l_cnt_10000, r_cnt_10000;
-logic [3:0] l_cnt_0, l_cnt_1, r_cnt_0, r_cnt_1;
+logic [3:0] l_cnt_48000, r_cnt_48000, simul_cnt;
+logic [3:0] l_cnt_0, l_cnt_1, r_cnt_0, r_cnt_1, simul_0, simul_1;
 
-assign l_cnt_0 = l_cnt_10000 % 10;
-assign l_cnt_1 = (l_cnt_10000 > 9) ? 3'd1 : 3'd0;
-assign r_cnt_0 = r_cnt_10000 % 10;
-assign r_cnt_1 = (r_cnt_10000 > 9) ? 3'd1 : 3'd0;
+assign l_cnt_0 = l_cnt_48000 % 10;
+assign l_cnt_1 = (l_cnt_48000 > 9) ? 3'd1 : 3'd0;
+assign r_cnt_0 = r_cnt_48000 % 10;
+assign r_cnt_1 = (r_cnt_48000 > 9) ? 3'd1 : 3'd0;
+assign simul_0 = simul_cnt % 10;
+assign simul_1 = (simul_cnt > 9) ? 3'd1 : 3'd0;
+
 
 SevenHexDecoder seven_dec4(
 	.i_hex(l_cnt_0),	// [3:0]
@@ -3237,11 +3817,20 @@ SevenHexDecoder seven_dec7(
 	.o_seven(HEX7) 
 );
 
+SevenHexDecoder seven_dec0(
+	.i_hex(simul_0),	// [3:0]
+	.o_seven(HEX0) 		// [6:0]
+);
+
+SevenHexDecoder seven_dec1(
+	.i_hex(simul_1),	// [3:0]
+	.o_seven(HEX1) 		// [6:0]
+);
 
 
 // comment those are use for display
-assign HEX0 = '1;
-assign HEX1 = '1;
+// assign HEX0 = '1;
+// assign HEX1 = '1;
 assign HEX2 = '1;
 assign HEX3 = '1;
 // assign HEX4 = '1;
@@ -3546,7 +4135,8 @@ module Buffer(
     output [15:0] o_data,
 
     output [3:0]  o_l_cnt,
-    output [3:0]  o_r_cnt
+    output [3:0]  o_r_cnt,
+    output [3:0]  o_simul_cnt
 );
     logic [15:0] buf_data_l [0:15];
     logic [15:0] buf_data_r [0:15];
@@ -3561,11 +4151,12 @@ module Buffer(
     logic write_en, read_l_en, read_r_en;
     
     logic [15:0] req_l_cnt, req_r_cnt;
-    logic [3:0]  req_l_tick_cnt, req_r_tick_cnt;
+    logic [3:0]  req_l_tick_cnt, req_r_tick_cnt, req_simul_cnt;
 
     assign o_data = out_data;
     assign o_l_cnt = req_l_tick_cnt;
     assign o_r_cnt = req_r_tick_cnt;
+    assign o_simul_cnt = req_simul_cnt;
     
     always_ff @(posedge i_clk or negedge i_rst) begin
         if (!i_rst) begin
@@ -3596,6 +4187,7 @@ module Buffer(
             req_r_cnt   <= 0;
             req_l_tick_cnt <= 0;
             req_r_tick_cnt <= 0;
+            req_simul_cnt <= 0;
         end else begin
             if (write_en) begin
                 buf_data_l[buf_ptr_w] <= i_buf_data_l;
@@ -3623,6 +4215,10 @@ module Buffer(
                 end else begin
                     req_r_cnt <= req_r_cnt + 1;
                 end
+            end
+
+            if (read_l_en && read_r_en) begin
+                req_simul_cnt <= req_simul_cnt + 1;
             end
             
             fifo_cnt_l <= fifo_cnt_l + write_en - read_l_en;
@@ -3710,7 +4306,9 @@ endmodule
 //     input         i_D2B_valid,
 //     input         i_B2P_request_l,
 //     input         i_B2P_request_r,
-//     output [15:0] o_data
+//     output [15:0] o_data,
+//     output [3:0]  o_l_cnt,
+//     output [3:0]  o_r_cnt
 // );
 //     logic [15:0] buf_data_l [0:15];
 //     logic [15:0] buf_data_r [0:15];
@@ -3720,8 +4318,13 @@ endmodule
 //     logic        is_read_l, is_read_r;
     
 //     logic write_en, read_l_en, read_r_en;
+    
+//     logic [15:0] req_l_cnt, req_r_cnt;
+//     logic [3:0]  req_l_tick_cnt, req_r_tick_cnt;
 
 //     assign o_data = out_data;
+//     assign o_l_cnt = req_l_tick_cnt;
+//     assign o_r_cnt = req_r_tick_cnt;
     
 //     assign write_en  = i_D2B_valid && (fifo_cnt_l < 16) && (fifo_cnt_r < 16);
 //     assign read_l_en = i_B2P_request_l && (fifo_cnt_l > 0) && !is_read_l;
@@ -3737,6 +4340,10 @@ endmodule
 //             out_data    <= 0;
 //             is_read_l   <= 0;
 //             is_read_r   <= 0;
+//             req_l_cnt   <= 0;
+//             req_r_cnt   <= 0;
+//             req_l_tick_cnt <= 0;
+//             req_r_tick_cnt <= 0;
 //         end else begin
 //             if (!i_B2P_request_l) is_read_l <= 0;
 //             if (!i_B2P_request_r) is_read_r <= 0;
@@ -3751,10 +4358,22 @@ endmodule
 //                 out_data    <= buf_data_l[buf_ptr_r_l];
 //                 buf_ptr_r_l <= buf_ptr_r_l + 1;
 //                 is_read_l   <= 1;
+//                 if (req_l_cnt == 16'd47999) begin
+//                     req_l_cnt <= 0;
+//                     req_l_tick_cnt <= req_l_tick_cnt + 1;
+//                 end else begin
+//                     req_l_cnt <= req_l_cnt + 1;
+//                 end
 //             end else if (read_r_en) begin
 //                 out_data    <= buf_data_r[buf_ptr_r_r];
 //                 buf_ptr_r_r <= buf_ptr_r_r + 1;
 //                 is_read_r   <= 1;
+//                 if (req_r_cnt == 16'd47999) begin
+//                     req_r_cnt <= 0;
+//                     req_r_tick_cnt <= req_r_tick_cnt + 1;
+//                 end else begin
+//                     req_r_cnt <= req_r_cnt + 1;
+//                 end
 //             end
             
 //             fifo_cnt_l <= fifo_cnt_l + write_en - read_l_en;
@@ -3884,10 +4503,10 @@ module DSP (
     );
 
 
-    // // Overdrive, Fuzz, Distortion
+    // Overdrive, Fuzz, Distortion
     // logic [7:0] i_gain; 
     // assign i_gain = 8'd100;
-    // overdrive OverDrive(
+    // Overdrive Overdrive(
     //     .i_clk  (i_clk),
     //     .i_rst  (i_rst),
     //     .i_data (original_data),
@@ -3917,23 +4536,45 @@ module DSP (
     //     .o_en   (dist_valid)
     // );
 
+    // // Reverb
+    // logic [23:0] r; 
+    // logic signed [15:0] i_cosw;
+    // logic [7:0] w_rate;
+    // assign r      = 24'd15099494; // about 0.999
+    // assign i_cosw = 16'sd16384;   // about 1000 Hz
+    // assign w_rate = 8'd128;       // 0.5
+    // Reverb_basic Reverb(
+    //     .i_clk    (i_clk),
+    //     .i_rst    (i_rst),
+    //     .i_data   (original_data),
+    //     .r        (r),
+    //     .i_cosw   (i_cosw),
+    //     .w_rate   (w_rate),
+    //     .i_valid  (reverb_en),
+    //     .o_data   (reverb_data),
+    //     .o_valid  (reverb_valid)
+    // );
+
     // Reverb
-    logic [23:0] r; 
-    logic signed [15:0] i_cosw;
-    logic [7:0] w_rate;
-    assign r      = 24'd15099494; // about 0.999
-    assign i_cosw = 16'sd16384;   // about 1000 Hz
-    assign w_rate = 8'd128;       // 0.5
-    Reverb_basic Reverb(
-        .i_clk    (i_clk),
-        .i_rst    (i_rst),
-        .i_data   (original_data),
-        .r        (r),
-        .i_cosw   (i_cosw),
-        .w_rate   (w_rate),
-        .i_valid  (reverb_en),
-        .o_data   (reverb_data),
-        .o_valid  (reverb_valid)
+    logic signed [7:0] ap_gain_0, ap_gain_1, ap_gain_2, ap_gain_3, ap_gain_4;
+    assign ap_gain_0 = 8'sd64;
+    assign ap_gain_1 = 8'sd64;
+    assign ap_gain_2 = 8'sd64;
+    assign ap_gain_3 = 8'sd64;
+    assign ap_gain_4 = 8'sd64;
+
+    Reverb Reverb(
+        .clk(i_clk),
+        .rst(i_rst),
+        .in_valid(reverb_en),
+        .in(original_data),
+        .ap_gain_0(ap_gain_0),
+        .ap_gain_1(ap_gain_1),
+        .ap_gain_2(ap_gain_2),
+        .ap_gain_3(ap_gain_3),
+        .ap_gain_4(ap_gain_4),
+        .out_valid(reverb_valid),
+        .out(reverb_data)
     );
 
     // Noise Gate
@@ -4064,11 +4705,13 @@ module Player (
     logic        lrc_edge;
 
     logic        o_B2P_request_l_, o_B2P_request_r_;
+    logic [15:0] data_reg_r, data_reg_w;
 
     assign o_DAC_DAT   = o_DAC_DAT_r[15];
     assign lrc_edge    = (i_DAC_LRCK != daclrck_prev_r);
     assign o_B2P_request_l = o_B2P_request_l_;
     assign o_B2P_request_r = o_B2P_request_r_;
+    assign data_reg_w = i_out_data;
 
     always_comb begin
         state_w         = state_r;
@@ -4085,7 +4728,7 @@ module Player (
                 is_init_w       = 1'b0;
                 if (lrc_edge) begin
                     state_w = SEND;
-                    o_DAC_DAT_w = i_out_data;
+                    o_DAC_DAT_w = data_reg_r;
                 end
                 counter_w = 4'd0;
             end
@@ -4108,12 +4751,14 @@ module Player (
             counter_r      <= 4'd0;
             o_DAC_DAT_r    <= 16'd0;
             daclrck_prev_r <= i_DAC_LRCK;
+            data_reg_r     <= 16'd0;
         end else begin
             state_r        <= state_w;
             is_init_r      <= is_init_w;
             counter_r      <= counter_w;
             o_DAC_DAT_r    <= o_DAC_DAT_w;
             daclrck_prev_r <= i_DAC_LRCK;
+            data_reg_r     <= data_reg_w;
         end
     end
 endmodule

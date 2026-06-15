@@ -8,17 +8,17 @@ module Reverb #(
     parameter integer fdn_delay_sample_1 = 1787,
     parameter integer fdn_delay_sample_2 = 2131,
     parameter integer fdn_delay_sample_3 = 2531,
-    parameter [7:0] fdn_gain = 8'd128 // Q0.9
+    parameter signed [7:0] fdn_gain = 8'sd80 // Q1.7
 )(
     input clk,
     input rst,
     input in_valid,
     input signed [15:0] in,
-    input signed [7:0] ap_gain_0;
-    input signed [7:0] ap_gain_1;
-    input signed [7:0] ap_gain_2;
-    input signed [7:0] ap_gain_3;
-    input signed [7:0] ap_gain_4;
+    input signed [7:0] ap_gain_0,
+    input signed [7:0] ap_gain_1,
+    input signed [7:0] ap_gain_2,
+    input signed [7:0] ap_gain_3,
+    input signed [7:0] ap_gain_4,
     output out_valid,
     output signed [15:0] out
 );
@@ -35,7 +35,7 @@ logic signed [15:0] out_ap_3;
 logic signed [15:0] out_ap_4;
 
 Schroeder_Allpass #(
-    .delay_sample(ap_delay_sample_0),
+    .delay_sample(ap_delay_sample_0)
 ) allpass_0 (
     .clk(clk),
     .rst(rst),
@@ -47,7 +47,7 @@ Schroeder_Allpass #(
 );
 
 Schroeder_Allpass #(
-    .delay_sample(ap_delay_sample_1),
+    .delay_sample(ap_delay_sample_1)
 ) allpass_1 (
     .clk(clk),
     .rst(rst),
@@ -59,7 +59,7 @@ Schroeder_Allpass #(
 );
 
 Schroeder_Allpass #(
-    .delay_sample(ap_delay_sample_2),
+    .delay_sample(ap_delay_sample_2)
 ) allpass_2 (
     .clk(clk),
     .rst(rst),
@@ -71,7 +71,7 @@ Schroeder_Allpass #(
 );
 
 Schroeder_Allpass #(
-    .delay_sample(ap_delay_sample_3),
+    .delay_sample(ap_delay_sample_3)
 ) allpass_3 (
     .clk(clk),
     .rst(rst),
@@ -83,7 +83,7 @@ Schroeder_Allpass #(
 );
 
 Schroeder_Allpass #(
-    .delay_sample(ap_delay_sample_4),
+    .delay_sample(ap_delay_sample_4)
 ) allpass_4 (
     .clk(clk),
     .rst(rst),
@@ -94,22 +94,37 @@ Schroeder_Allpass #(
     .out(out_ap_4)
 );
 
-FDN_4ch #(
-    .delay_sample_0(fdn_delay_sample_0),
-    .delay_sample_1(fdn_delay_sample_1),
-    .delay_sample_2(fdn_delay_sample_2),
-    .delay_sample_3(fdn_delay_sample_3),
-    .gain(fdn_gain)
-) fdn (
-    .clk(clk),
-    .rst(rst),
-    .in_valid(in_valid_4),
-    .in_0(out_ap_4),
-    .in_1(out_ap_4),
-    .in_2(out_ap_4),
-    .in_3(out_ap_4),
-    .out_valid(out_valid),
-    .out(out)
-);
+    FDN_4ch #(
+        .delay_sample_0(fdn_delay_sample_0),
+        .delay_sample_1(fdn_delay_sample_1),
+        .delay_sample_2(fdn_delay_sample_2),
+        .delay_sample_3(fdn_delay_sample_3),
+        .gain(fdn_gain)
+    ) fdn (
+        .clk(clk),
+        .rst(rst),
+        .in_valid(in_valid_4),
+        .in(out_ap_4),
+        .out_valid(out_valid),
+        .out(out)
+    );
+
+    // FDN_4ch #(
+    //     .delay_sample_0(fdn_delay_sample_0),
+    //     .delay_sample_1(fdn_delay_sample_1),
+    //     .delay_sample_2(fdn_delay_sample_2),
+    //     .delay_sample_3(fdn_delay_sample_3),
+    //     .gain(fdn_gain)
+    // ) fdn (
+    //     .clk(clk),
+    //     .rst(rst),
+    //     .in_valid(in_valid),
+    //     .in(in),
+    //     .out_valid(out_valid),
+    //     .out(out)
+    // );
+
+    // assign out = out_ap_4;
+    // assign out_valid = in_valid_4;
 
 endmodule

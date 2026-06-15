@@ -33,7 +33,8 @@ module Top (
 
 	// For Debugging
 	output [3:0] o_l_cnt,
-	output [3:0] o_r_cnt
+	output [3:0] o_r_cnt,
+	output [3:0] o_simul_cnt
 
 
 	// LCD (optional display)
@@ -183,7 +184,6 @@ module Top (
 	);
 
 	// Buffer
-	logic [3:0] l_cnt_10000, r_cnt_10000;
 	Buffer buffer (
 		.i_clk(i_clk),
 		.i_rst(i_rst_n),
@@ -195,7 +195,8 @@ module Top (
 		.o_data(out_data),
 
 		.o_l_cnt(o_l_cnt),
-		.o_r_cnt(o_r_cnt)
+		.o_r_cnt(o_r_cnt),
+		.o_simul_cnt(o_simul_cnt)
 	);
 
 	// Player

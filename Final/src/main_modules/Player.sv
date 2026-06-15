@@ -18,11 +18,13 @@ module Player (
     logic        lrc_edge;
 
     logic        o_B2P_request_l_, o_B2P_request_r_;
+    logic [15:0] data_reg_r, data_reg_w;
 
     assign o_DAC_DAT   = o_DAC_DAT_r[15];
     assign lrc_edge    = (i_DAC_LRCK != daclrck_prev_r);
     assign o_B2P_request_l = o_B2P_request_l_;
     assign o_B2P_request_r = o_B2P_request_r_;
+    assign data_reg_w = i_out_data;
 
     always_comb begin
         state_w         = state_r;
@@ -39,7 +41,7 @@ module Player (
                 is_init_w       = 1'b0;
                 if (lrc_edge) begin
                     state_w = SEND;
-                    o_DAC_DAT_w = i_out_data;
+                    o_DAC_DAT_w = data_reg_r;
                 end
                 counter_w = 4'd0;
             end
@@ -62,12 +64,14 @@ module Player (
             counter_r      <= 4'd0;
             o_DAC_DAT_r    <= 16'd0;
             daclrck_prev_r <= i_DAC_LRCK;
+            data_reg_r     <= 16'd0;
         end else begin
             state_r        <= state_w;
             is_init_r      <= is_init_w;
             counter_r      <= counter_w;
             o_DAC_DAT_r    <= o_DAC_DAT_w;
             daclrck_prev_r <= i_DAC_LRCK;
+            data_reg_r     <= data_reg_w;
         end
     end
 endmodule

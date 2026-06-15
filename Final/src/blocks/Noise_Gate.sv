@@ -70,6 +70,8 @@ module Noise_Gate (
     logic signed [31:0] diff_mult;
     assign diff_mult = (32'(target_gain) - 32'(current_gain_r)) * $signed({1'b0, rate});
 
+    logic [7:0] cntr_counter;
+
     always_comb begin
         i_data_w = i_data_r;
         o_data_w = o_data_r;
@@ -93,7 +95,7 @@ module Noise_Gate (
                 o_data_w = mult_result >>> 15; // Shift right by 15 to adjust for Q1.15 gain format
 
                 // Multiply difference by rate (0 ~ 255) first, then shift right arithmetically by 8 (devide by 256)
-                current_gain_w = current_gain_r + (diff_mult >>> 8);
+                current_gain_w = (cntr_counter == 0) ? current_gain_r + (diff_mult >>> 8): current_gain_r;
             
                 case (state_r)
                     S_NORMAL: begin
@@ -140,6 +142,7 @@ module Noise_Gate (
             state_r        <= S_NORMAL;
             counter_r      <= 16'd0;
             current_gain_r <= 16'sd32767;
+            cntr_counter   <= 0;
         end else begin
             i_data_r       <= i_data_w;
             o_data_r       <= o_data_w;
@@ -148,6 +151,9 @@ module Noise_Gate (
             state_r        <= state_w;
             counter_r      <= counter_w;
             current_gain_r <= current_gain_w;
+            if (proc_state_r == S_CALC) begin
+                cntr_counter   <= cntr_counter + 1;
+            end
         end
     end
 

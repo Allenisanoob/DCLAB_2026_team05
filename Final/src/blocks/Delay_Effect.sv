@@ -8,8 +8,8 @@ module Delay_Effect #(
     input  signed [15:0] i_data,
 
     input  [15:0] i_time,    // Delay duration in samples
-    input  [7:0] i_feedback, // Feedback ratio (0 to 127, where 128 is 100%)
-    input  [7:0] i_mix,      // Mix ratio      (0 to 127, where 128 is 100%)
+    input  [7:0] i_feedback, // Feedback ratio (0 to 255, where 256 is 100%)
+    input  [7:0] i_mix,      // Mix ratio      (0 to 255, where 256 is 100%)
 
     output logic o_next_valid,
     output logic signed [15:0] o_data,
@@ -48,8 +48,8 @@ module Delay_Effect #(
     logic signed [31:0] fb_temp;
     logic signed [31:0] mix_temp; 
 
-    assign feedback_val = (32'(delayed_data_r) * $signed({1'b0, i_feedback})) >>> 7;
-    assign mix_val      = (32'(delayed_data_r) * $signed({1'b0, i_mix})) >>> 7;
+    assign feedback_val = (32'(delayed_data_r) * $signed({1'b0, i_feedback})) >>> 8;
+    assign mix_val      = (32'(delayed_data_r) * $signed({1'b0, i_mix})) >>> 8;
     assign fb_temp      = 32'(i_data_r) + feedback_val;
     assign mix_temp     = 32'(i_data_r) + mix_val;
 

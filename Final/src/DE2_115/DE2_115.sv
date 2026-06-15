@@ -173,7 +173,7 @@ Debounce deb2(
 
 Top top0(
 	.i_rst_n(KEY[3]),
-	.i_clk(CLOCK_50),
+	.i_clk(CLK_12M),
 	.i_key_0(key0down),
 	.i_key_1(key1down),
 	.i_key_2(key2down),
@@ -205,8 +205,9 @@ Top top0(
 	.o_ledr(LEDR), // [17:0]
 
 	// For Debugging
-	.o_l_cnt(l_cnt_10000),
-	.o_r_cnt(r_cnt_10000)
+	.o_l_cnt(l_cnt_48000),
+	.o_r_cnt(r_cnt_48000),
+	.o_simul_cnt(simul_cnt),
 
 	// LCD (optional display)
 	// .i_clk_800k(CLK_800K),
@@ -224,13 +225,16 @@ Top top0(
 // 	.o_seven(HEX0) 		// [6:0]
 // );
 
-logic [3:0] l_cnt_10000, r_cnt_10000;
-logic [3:0] l_cnt_0, l_cnt_1, r_cnt_0, r_cnt_1;
+logic [3:0] l_cnt_48000, r_cnt_48000, simul_cnt;
+logic [3:0] l_cnt_0, l_cnt_1, r_cnt_0, r_cnt_1, simul_0, simul_1;
 
-assign l_cnt_0 = l_cnt_10000 % 10;
-assign l_cnt_1 = (l_cnt_10000 > 9) ? 3'd1 : 3'd0;
-assign r_cnt_0 = r_cnt_10000 % 10;
-assign r_cnt_1 = (r_cnt_10000 > 9) ? 3'd1 : 3'd0;
+assign l_cnt_0 = l_cnt_48000 % 10;
+assign l_cnt_1 = (l_cnt_48000 > 9) ? 3'd1 : 3'd0;
+assign r_cnt_0 = r_cnt_48000 % 10;
+assign r_cnt_1 = (r_cnt_48000 > 9) ? 3'd1 : 3'd0;
+assign simul_0 = simul_cnt % 10;
+assign simul_1 = (simul_cnt > 9) ? 3'd1 : 3'd0;
+
 
 SevenHexDecoder seven_dec4(
 	.i_hex(l_cnt_0),	// [3:0]
@@ -252,11 +256,20 @@ SevenHexDecoder seven_dec7(
 	.o_seven(HEX7) 
 );
 
+SevenHexDecoder seven_dec0(
+	.i_hex(simul_0),	// [3:0]
+	.o_seven(HEX0) 		// [6:0]
+);
+
+SevenHexDecoder seven_dec1(
+	.i_hex(simul_1),	// [3:0]
+	.o_seven(HEX1) 		// [6:0]
+);
 
 
 // comment those are use for display
-assign HEX0 = '1;
-assign HEX1 = '1;
+// assign HEX0 = '1;
+// assign HEX1 = '1;
 assign HEX2 = '1;
 assign HEX3 = '1;
 // assign HEX4 = '1;

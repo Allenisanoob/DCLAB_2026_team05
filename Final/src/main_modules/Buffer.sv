@@ -9,7 +9,8 @@ module Buffer(
     output [15:0] o_data,
 
     output [3:0]  o_l_cnt,
-    output [3:0]  o_r_cnt
+    output [3:0]  o_r_cnt,
+    output [3:0]  o_simul_cnt
 );
     logic [15:0] buf_data_l [0:15];
     logic [15:0] buf_data_r [0:15];
@@ -24,11 +25,12 @@ module Buffer(
     logic write_en, read_l_en, read_r_en;
     
     logic [15:0] req_l_cnt, req_r_cnt;
-    logic [3:0]  req_l_tick_cnt, req_r_tick_cnt;
+    logic [3:0]  req_l_tick_cnt, req_r_tick_cnt, req_simul_cnt;
 
     assign o_data = out_data;
     assign o_l_cnt = req_l_tick_cnt;
     assign o_r_cnt = req_r_tick_cnt;
+    assign o_simul_cnt = req_simul_cnt;
     
     always_ff @(posedge i_clk or negedge i_rst) begin
         if (!i_rst) begin
@@ -59,6 +61,7 @@ module Buffer(
             req_r_cnt   <= 0;
             req_l_tick_cnt <= 0;
             req_r_tick_cnt <= 0;
+            req_simul_cnt <= 0;
         end else begin
             if (write_en) begin
                 buf_data_l[buf_ptr_w] <= i_buf_data_l;
@@ -86,6 +89,10 @@ module Buffer(
                 end else begin
                     req_r_cnt <= req_r_cnt + 1;
                 end
+            end
+
+            if (read_l_en && read_r_en) begin
+                req_simul_cnt <= req_simul_cnt + 1;
             end
             
             fifo_cnt_l <= fifo_cnt_l + write_en - read_l_en;
