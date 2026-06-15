@@ -3,7 +3,7 @@ module FDN_4ch #(
     parameter integer delay_sample_1 = 1787,
     parameter integer delay_sample_2 = 2131,
     parameter integer delay_sample_3 = 2531,
-    parameter [7:0] gain = 8'd128 // Q0.8
+    parameter signed [7:0] gain = 8'sd64 // Q1.7
 )(
     input clk,
     input rst,
