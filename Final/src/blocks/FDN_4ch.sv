@@ -53,7 +53,7 @@ logic signed [15:0] ch0_curr; // ch0_curr = saturate(ch0_curr_temp) // Q16.0
 logic signed [15:0] ch1_curr; // ch1_curr = saturate(ch1_curr_temp) // Q16.0
 logic signed [15:0] ch2_curr; // ch2_curr = saturate(ch2_curr_temp) // Q16.0
 logic signed [15:0] ch3_curr; // ch3_curr = saturate(ch3_curr_temp) // Q16.0
-logic signed [17:0] out_temp; // out_temp = ch0_temp_0 >>> 2 // Q16.0
+logic signed [15:0] out_temp; // out_temp = ch0_temp_0 >>> 2 // Q16.0
 
 assign ch0_delay = is_loop_0 ? ch0_read : 16'sd0;
 assign ch1_delay = is_loop_1 ? ch1_read : 16'sd0;
