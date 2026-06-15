@@ -1,24 +1,33 @@
 module Flanger #(
-    parameter integer delay_upper_bound = 1152
+    parameter integer delay_upper_bound = 1152,
     parameter integer delay_lower_bound = 768
 )(
     input clk,
     input rst,
     input in_valid,
     input signed [15:0] in,
+    input [6:0] inc, // Q4.3
     input signed [7:0] gain, // Q1.7
     input signed [7:0] w_rate, // Q1.7
     output reg out_valid,
     output reg signed [15:0] out
 );
 
+localparam [$clog2(delay_upper_bound) - 1:0] delay_base = (delay_upper_bound + delay_lower_bound) / 2;
+localparam [$clog2(delay_upper_bound) - 1:0] delay_amp  = (delay_upper_bound - delay_lower_bound) / 2;
+
 logic out_valid_pipe;
 logic signed [15:0] in_r;
+logic        [6:0]  inc_r;
+logic        [18:0] cos_input_temp; // Q16.3
+logic signed [15:0] cos_output; // Q1.15
 logic signed [7:0] gain_r; // Q1.7
 logic signed [7:0] w_rate_r; // Q1.7
 logic [15:0] data_buffer [0:delay_upper_bound - 1];
 logic [$clog2(delay_upper_bound) - 1:0] w_ptr;
 logic [$clog2(delay_upper_bound) - 1:0] r_ptr;
+logic signed [$clog2(delay_upper_bound) + 15 : 0] delay_skew;
+logic signed [$clog2(delay_upper_bound) + 1 : 0] delay_cnt_temp;
 logic [$clog2(delay_upper_bound) - 1:0] delay_cnt;
 logic is_loop;
 logic is_write;
@@ -35,7 +44,10 @@ logic signed [23:0] temp_4; // temp_4 = w_rate * data_curr_pipe // Q17.7
 logic signed [24:0] temp_5; // temp_5 = temp_3 + temp_4 // Q18.7
 logic signed [17:0] out_curr; // out_curr = (temp_5 + 25'sd64) >>> 7 // Q18.0
 
-assign delay_cnt = (delay_upper_bound + delay_lower_bound) >> 1;
+cosine cosine_0 (.f(cos_input_temp[18:3]), .cos_2pif(cos_output));
+assign delay_skew = $signed({1'b0, delay_amp}) * cos_output;
+assign delay_cnt_temp = $signed({1'b0, delay_base}) + (delay_skew >>> 15);
+assign delay_cnt = delay_cnt_temp[$clog2(delay_upper_bound) - 1:0];
 assign r_ptr = (w_ptr >= delay_cnt) ? (w_ptr - delay_cnt) : (w_ptr + delay_upper_bound - delay_cnt);
 assign is_write = is_loop || (w_ptr >= delay_cnt);
 assign data_delay = is_write ? temp_0 : 16'sd0;
@@ -54,14 +66,19 @@ assign out_curr = (temp_5 + 25'sd64) >>> 7;
 always_ff @(posedge clk or negedge rst) begin
     if (!rst) begin
         w_ptr <= 0;
+        inc_r <= 0;
+        cos_input_temp <= 0;
         gain_r <= 0;
         w_rate_r <= 0;
         data_curr_pipe <= 0;
         out_valid_pipe <= 0;
+        is_loop <= 0;
     end else begin
+        inc_r <= inc;
         gain_r <= gain;
         w_rate_r <= w_rate;
         if (in_valid) begin
+            cos_input_temp <= cos_input_temp + inc_r;
             if (w_ptr == delay_upper_bound - 1) begin
                 w_ptr <= 0;
                 is_loop <= 1;
