@@ -54,7 +54,6 @@ assign out_curr = (temp_5 + 25'sd64) >>> 7;
 always_ff @(posedge clk or negedge rst) begin
     if (!rst) begin
         w_ptr <= 0;
-        r_ptr <= 0;
         gain_r <= 0;
         w_rate_r <= 0;
         data_curr_pipe <= 0;
