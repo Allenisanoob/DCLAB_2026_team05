@@ -25,13 +25,13 @@ logic signed [17:0] out_curr_temp; // out_curr_temp = temp_4 + v_delay // Q18.0
 logic signed [15:0] out_curr; // out_curr = saturate(out_curr_temp) // Q16.0
 
 assign v_delay = is_loop ? temp_0 : 16'sd0;
-assign temp_1 = gain * v_delay;
+assign temp_1 = gain_r * v_delay;
 assign temp_2 = (temp_1 + 24'sd64) >>> 7;
 assign v_curr_temp = in - temp_2;
 assign v_curr = (v_curr_temp > 18'sd32767) ? 18'sd32767 :
                 (v_curr_temp < -18'sd32768) ? -18'sd32768 :
                 v_curr_temp[15:0];
-assign temp_3 = gain * v_curr;
+assign temp_3 = gain_r * v_curr;
 assign temp_4 = (temp_3 + 24'sd64) >>> 7;
 assign out_curr_temp = temp_4 + v_delay;
 assign out_curr = (out_curr_temp > 18'sd32767) ? 18'sd32767 :
@@ -42,7 +42,9 @@ always_ff @(posedge clk or negedge rst) begin
     if (!rst) begin
         ptr <= 0;
         is_loop <= 0;
+        gain_r <= 0;
     end else if (in_valid) begin
+        gain_r <= gain;
         if (ptr == delay_sample - 1) begin
             ptr <= 0;
             is_loop <= 1;
@@ -53,8 +55,11 @@ always_ff @(posedge clk or negedge rst) begin
         out <= out_curr;
         out_valid <= 1'b1;
     end else if (out_valid) begin
+        gain_r <= gain;
         out_valid <= 1'b0;
         temp_0 <= v_buffer[ptr];
+    end else begin
+        gain_r <= gain;
     end
 end
 
