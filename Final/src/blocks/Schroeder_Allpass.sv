@@ -10,6 +10,8 @@ module Schroeder_Allpass #(
     output reg signed [15:0] out
 );
 
+logic signed [7:0] gain_r;
+
 logic [15:0] v_buffer [0:delay_sample - 1];
 logic [$clog2(delay_sample) - 1:0] ptr;
 logic is_loop;
