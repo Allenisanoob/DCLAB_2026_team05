@@ -12,8 +12,8 @@ module FDN_4ch #(
     input signed [15:0] in_1,
     input signed [15:0] in_2,
     input signed [15:0] in_3,
-    output out_valid,
-    output signed [15:0] out
+    output reg out_valid,
+    output signed reg [15:0] out
 );
 
 logic signed [15:0] ch0_buffer [0:delay_sample_0 - 1];
@@ -44,22 +44,20 @@ logic signed [25:0] ch0_temp_1; // ch0_temp_1 = ch0_temp_0 + ch1_temp_0 + ch2_te
 logic signed [25:0] ch1_temp_1; // ch1_temp_1 = ch0_temp_0 - ch1_temp_0 + ch2_temp_0 - ch3_temp_0 // Q17.9
 logic signed [25:0] ch2_temp_1; // ch2_temp_1 = ch0_temp_0 + ch1_temp_0 - ch2_temp_0 - ch3_temp_0 // Q17.9
 logic signed [25:0] ch3_temp_1; // ch3_temp_1 = ch0_temp_0 - ch1_temp_0 - ch2_temp_0 + ch3_temp_0 // Q17.9
-logic signed [15:0] ch0_temp_2; // ch0_temp_2 = (ch0_temp_1 + 26'sd256) >>> 9 // Q16.0
-logic signed [15:0] ch1_temp_2; // ch1_temp_2 = (ch1_temp_1 + 26'sd256) >>> 9 // Q16.0
-logic signed [15:0] ch2_temp_2; // ch2_temp_2 = (ch2_temp_1 + 26'sd256) >>> 9 // Q16.0
-logic signed [15:0] ch3_temp_2; // ch3_temp_2 = (ch3_temp_1 + 26'sd256) >>> 9 // Q16.0
-logic signed [15:0] ch0_curr; // ch0_curr = in_0 + ch0_temp_2 // Q16.0
-logic signed [15:0] ch1_curr; // ch1_curr = in_1 + ch1_temp_2 // Q16.0
-logic signed [15:0] ch2_curr; // ch2_curr = in_2 + ch2_temp_2 // Q16.0
-logic signed [15:0] ch3_curr; // ch3_curr = in_3 + ch3_temp_2 // Q16.0
+logic signed [16:0] ch0_temp_2; // ch0_temp_2 = (ch0_temp_1 + 26'sd256) >>> 9 // Q17.0
+logic signed [16:0] ch1_temp_2; // ch1_temp_2 = (ch1_temp_1 + 26'sd256) >>> 9 // Q17.0
+logic signed [16:0] ch2_temp_2; // ch2_temp_2 = (ch2_temp_1 + 26'sd256) >>> 9 // Q17.0
+logic signed [16:0] ch3_temp_2; // ch3_temp_2 = (ch3_temp_1 + 26'sd256) >>> 9 // Q17.0
+logic signed [17:0] ch0_curr_temp; // ch0_curr_temp = in_0 + ch0_temp_2 // Q18.0
+logic signed [17:0] ch1_curr_temp; // ch1_curr_temp = in_1 + ch1_temp_2 // Q18.0
+logic signed [17:0] ch2_curr_temp; // ch2_curr_temp = in_2 + ch2_temp_2 // Q18.0
+logic signed [17:0] ch3_curr_temp; // ch3_curr_temp = in_3 + ch3_temp_2 // Q18.0
+logic signed [15:0] ch0_curr; // ch0_curr = saturate(ch0_curr_temp) // Q16.0
+logic signed [15:0] ch1_curr; // ch1_curr = saturate(ch1_curr_temp) // Q16.0
+logic signed [15:0] ch2_curr; // ch2_curr = saturate(ch2_curr_temp) // Q16.0
+logic signed [15:0] ch3_curr; // ch3_curr = saturate(ch3_curr_temp) // Q16.0
 logic signed [17:0] out_temp_0; // out_temp_0 = ch0_delay + ch1_delay + ch2_delay + ch3_delay // Q18.0
 logic signed [15:0] out_temp_1; // out_temp_1 = out_temp_0 >>> 2 // Q16.0
-
-logic out_valid_;
-logic signed [15:0] out_;
-
-assign out_valid = out_valid_;
-assign out = out_;
 
 assign ch0_delay = is_loop_0 ? ch0_read : 16'sd0;
 assign ch1_delay = is_loop_1 ? ch1_read : 16'sd0;
@@ -77,10 +75,22 @@ assign ch0_temp_2 = (ch0_temp_1 + 26'sd256) >>> 9;
 assign ch1_temp_2 = (ch1_temp_1 + 26'sd256) >>> 9;
 assign ch2_temp_2 = (ch2_temp_1 + 26'sd256) >>> 9;
 assign ch3_temp_2 = (ch3_temp_1 + 26'sd256) >>> 9;
-assign ch0_curr = in_0 + ch0_temp_2;
-assign ch1_curr = in_1 + ch1_temp_2;
-assign ch2_curr = in_2 + ch2_temp_2;
-assign ch3_curr = in_3 + ch3_temp_2;
+assign ch0_curr_temp = in_0 + ch0_temp_2;
+assign ch1_curr_temp = in_1 + ch1_temp_2;
+assign ch2_curr_temp = in_2 + ch2_temp_2;
+assign ch3_curr_temp = in_3 + ch3_temp_2;
+assign ch0_curr = (ch0_curr_temp > 18'sd32767) ? 18'sd32767 :
+                  (ch0_curr_temp < -18'sd32768) ? -18'sd32768 :
+                  ch0_curr_temp[15:0];
+assign ch1_curr = (ch1_curr_temp > 18'sd32767) ? 18'sd32767 :
+                  (ch1_curr_temp < -18'sd32768) ? -18'sd32768 :
+                  ch1_curr_temp[15:0];
+assign ch2_curr = (ch2_curr_temp > 18'sd32767) ? 18'sd32767 :
+                  (ch2_curr_temp < -18'sd32768) ? -18'sd32768 :
+                  ch2_curr_temp[15:0];
+assign ch3_curr = (ch3_curr_temp > 18'sd32767) ? 18'sd32767 :
+                  (ch3_curr_temp < -18'sd32768) ? -18'sd32768 :
+                  ch3_curr_temp[15:0];                  
 assign out_temp_0 = ch0_delay + ch1_delay + ch2_delay + ch3_delay;
 assign out_temp_1 = out_temp_0 >>> 2;
 
@@ -123,10 +133,10 @@ always_ff @(posedge clk or negedge rst) begin
         ch1_buffer[ptr_1] <= ch1_curr;
         ch2_buffer[ptr_2] <= ch2_curr;
         ch3_buffer[ptr_3] <= ch3_curr;
-        out_valid_ <= 1'b1;
-        out_ <= out_temp_1;
+        out_valid <= 1'b1;
+        out <= out_temp_1;
     end else if (out_valid) begin
-        out_valid_ <= 0;
+        out_valid <= 0;
         ch0_read <= ch0_buffer[ptr_0];
         ch1_read <= ch1_buffer[ptr_1];
         ch2_read <= ch2_buffer[ptr_2];
