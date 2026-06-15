@@ -41,14 +41,14 @@ logic signed [25:0] ch0_temp_1; // ch0_temp_1 = ch0_temp_0 + ch1_temp_0 + ch2_te
 logic signed [25:0] ch1_temp_1; // ch1_temp_1 = ch0_temp_0 - ch1_temp_0 + ch2_temp_0 - ch3_temp_0 // Q17.9
 logic signed [25:0] ch2_temp_1; // ch2_temp_1 = ch0_temp_0 + ch1_temp_0 - ch2_temp_0 - ch3_temp_0 // Q17.9
 logic signed [25:0] ch3_temp_1; // ch3_temp_1 = ch0_temp_0 - ch1_temp_0 - ch2_temp_0 + ch3_temp_0 // Q17.9
-logic signed [16:0] ch0_temp_2; // ch0_temp_2 = (ch0_temp_1 + 26'sd256) >>> 9 // Q17.0
-logic signed [16:0] ch1_temp_2; // ch1_temp_2 = (ch1_temp_1 + 26'sd256) >>> 9 // Q17.0
-logic signed [16:0] ch2_temp_2; // ch2_temp_2 = (ch2_temp_1 + 26'sd256) >>> 9 // Q17.0
-logic signed [16:0] ch3_temp_2; // ch3_temp_2 = (ch3_temp_1 + 26'sd256) >>> 9 // Q17.0
-logic signed [17:0] ch0_curr_temp; // ch0_curr_temp = in_0 + ch0_temp_2 // Q18.0
-logic signed [17:0] ch1_curr_temp; // ch1_curr_temp = in_1 + ch1_temp_2 // Q18.0
-logic signed [17:0] ch2_curr_temp; // ch2_curr_temp = in_2 + ch2_temp_2 // Q18.0
-logic signed [17:0] ch3_curr_temp; // ch3_curr_temp = in_3 + ch3_temp_2 // Q18.0
+logic signed [17:0] ch0_temp_2; // ch0_temp_2 = (ch0_temp_1 + 26'sd256) >>> 9 // Q17.0
+logic signed [17:0] ch1_temp_2; // ch1_temp_2 = (ch1_temp_1 + 26'sd256) >>> 9 // Q17.0
+logic signed [17:0] ch2_temp_2; // ch2_temp_2 = (ch2_temp_1 + 26'sd256) >>> 9 // Q17.0
+logic signed [17:0] ch3_temp_2; // ch3_temp_2 = (ch3_temp_1 + 26'sd256) >>> 9 // Q17.0
+logic signed [18:0] ch0_curr_temp; // ch0_curr_temp = in_0 + ch0_temp_2 // Q18.0
+logic signed [18:0] ch1_curr_temp; // ch1_curr_temp = in_1 + ch1_temp_2 // Q18.0
+logic signed [18:0] ch2_curr_temp; // ch2_curr_temp = in_2 + ch2_temp_2 // Q18.0
+logic signed [18:0] ch3_curr_temp; // ch3_curr_temp = in_3 + ch3_temp_2 // Q18.0
 logic signed [15:0] ch0_curr; // ch0_curr = saturate(ch0_curr_temp) // Q16.0
 logic signed [15:0] ch1_curr; // ch1_curr = saturate(ch1_curr_temp) // Q16.0
 logic signed [15:0] ch2_curr; // ch2_curr = saturate(ch2_curr_temp) // Q16.0
@@ -67,25 +67,25 @@ assign ch0_temp_1 = gain * ch0_temp_0;
 assign ch1_temp_1 = gain * ch1_temp_0;
 assign ch2_temp_1 = gain * ch2_temp_0;
 assign ch3_temp_1 = gain * ch3_temp_0;
-assign ch0_temp_2 = (ch0_temp_1 + 26'sd256) >>> 9;
-assign ch1_temp_2 = (ch1_temp_1 + 26'sd256) >>> 9;
-assign ch2_temp_2 = (ch2_temp_1 + 26'sd256) >>> 9;
-assign ch3_temp_2 = (ch3_temp_1 + 26'sd256) >>> 9;
+assign ch0_temp_2 = (ch0_temp_1 + 26'sd128) >>> 8;
+assign ch1_temp_2 = (ch1_temp_1 + 26'sd128) >>> 8;
+assign ch2_temp_2 = (ch2_temp_1 + 26'sd128) >>> 8;
+assign ch3_temp_2 = (ch3_temp_1 + 26'sd128) >>> 8;
 assign ch0_curr_temp = in + ch0_temp_2;
 assign ch1_curr_temp = in + ch1_temp_2;
 assign ch2_curr_temp = in + ch2_temp_2;
 assign ch3_curr_temp = in + ch3_temp_2;
-assign ch0_curr = (ch0_curr_temp > 18'sd32767) ? 18'sd32767 :
-                  (ch0_curr_temp < -18'sd32768) ? -18'sd32768 :
+assign ch0_curr = (ch0_curr_temp > 19'sd32767) ? 19'sd32767 :
+                  (ch0_curr_temp < -19'sd32768) ? -19'sd32768 :
                   ch0_curr_temp[15:0];
-assign ch1_curr = (ch1_curr_temp > 18'sd32767) ? 18'sd32767 :
-                  (ch1_curr_temp < -18'sd32768) ? -18'sd32768 :
+assign ch1_curr = (ch1_curr_temp > 19'sd32767) ? 19'sd32767 :
+                  (ch1_curr_temp < -19'sd32768) ? -19'sd32768 :
                   ch1_curr_temp[15:0];
-assign ch2_curr = (ch2_curr_temp > 18'sd32767) ? 18'sd32767 :
-                  (ch2_curr_temp < -18'sd32768) ? -18'sd32768 :
+assign ch2_curr = (ch2_curr_temp > 19'sd32767) ? 19'sd32767 :
+                  (ch2_curr_temp < -19'sd32768) ? -19'sd32768 :
                   ch2_curr_temp[15:0];
-assign ch3_curr = (ch3_curr_temp > 18'sd32767) ? 18'sd32767 :
-                  (ch3_curr_temp < -18'sd32768) ? -18'sd32768 :
+assign ch3_curr = (ch3_curr_temp > 19'sd32767) ? 19'sd32767 :
+                  (ch3_curr_temp < -19'sd32768) ? -19'sd32768 :
                   ch3_curr_temp[15:0];                  
 assign out_temp = ch0_temp_0 >>> 2;
 always_ff @(posedge clk or negedge rst) begin
