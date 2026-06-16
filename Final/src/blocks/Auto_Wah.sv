@@ -1,4 +1,4 @@
-module Flanger #(
+module Auto_Wah #(
     parameter integer delay_upper_bound = 1024
 )(
     input clk,
@@ -6,8 +6,8 @@ module Flanger #(
     input in_valid,
     input signed [15:0] in,
     input [6:0] inc, // Q4.3
-    input [$clog2(delay_upper_bound) - 1:0] delay_base;
-    input [$clog2(delay_upper_bound) - 1:0] delay_amp;
+    input [$clog2(delay_upper_bound) - 1:0] delay_base,
+    input [$clog2(delay_upper_bound) - 1:0] delay_amp,
     input signed [7:0] gain, // Q1.7
     input signed [7:0] w_rate, // Q1.7
     output reg out_valid,
@@ -87,8 +87,12 @@ assign out_curr = (temp_5 + 25'sd64) >>> 7;
 
 always_ff @(posedge clk or negedge rst) begin
     if (!rst) env_out <= 16'sd0;
-    if (abs_in > env_out) env_out <= env_out >>> 1 + abs_in >>> 1;
-    else env_out <= env_out - {6'd0, env_out[15:6]};
+    else begin
+        if (in_valid) begin
+            if (abs_in >= env_out) env_out <= env_out >>> 1 + abs_in >>> 1;
+            else env_out <= env_out - {6'd0, env_out[15:6]};
+        end
+    end
 end
 
 always_ff @(posedge clk or negedge rst) begin

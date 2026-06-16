@@ -44,11 +44,13 @@ module DSP (
     output [15:0] o_B3_w_data,
     output        o_B3_write_req,
 
-    input         i_sram_ready    // SRAM scheduler is not full
+    input         i_sram_ready,    // SRAM scheduler is not full
+    output [15:0] o_dsp_ledr
 );  
 
     logic [17:0] i_fx_sw_w, i_fx_sw_r;
     assign i_fx_sw_w = i_fx_sw;
+    assign o_dsp_ledr = i_fx_sw_r[15:0];
 
     logic signed [15:0] original_data, final_data;
     logic original_valid, final_valid;
@@ -66,6 +68,9 @@ module DSP (
     logic signed [15:0] ng_data;
     logic signed [15:0] de_data;
     logic signed [15:0] fg_data;
+    logic signed [15:0] ch_data;
+    logic signed [15:0] aw_data;
+    
 
     logic od_valid,     od_en;
     logic fuzz_valid,   fuzz_en;
@@ -74,14 +79,22 @@ module DSP (
     logic ng_valid,     ng_en;
     logic de_valid,     de_en;
     logic fg_valid,     fg_en;
+    logic ch_valid,     ch_en;
+    logic aw_valid,     aw_en;
 
 
-    assign od_en     = (i_fx_sw_r[5:0] == 6'b000001) ? original_valid : 1'b0;
-    assign fuzz_en   = (i_fx_sw_r[5:0] == 6'b000010) ? original_valid : 1'b0;
-    assign dist_en   = (i_fx_sw_r[5:0] == 6'b000100) ? original_valid : 1'b0;
-    assign reverb_en = (i_fx_sw_r[5:0] == 6'b001000) ? original_valid : 1'b0;
-    assign ng_en     = (i_fx_sw_r[5:0] == 6'b010000) ? original_valid : 1'b0;
-    assign de_en     = (i_fx_sw_r[5:0] == 6'b100000) ? original_valid : 1'b0;
+    assign od_en     = (i_fx_sw_r[8:0] == 9'b0_0000_0001) ? original_valid : 1'b0;
+    assign fuzz_en   = (i_fx_sw_r[8:0] == 9'b0_0000_0010) ? original_valid : 1'b0;
+    assign dist_en   = (i_fx_sw_r[8:0] == 9'b0_0000_0100) ? original_valid : 1'b0;
+    assign reverb_en = (i_fx_sw_r[8:0] == 9'b0_0000_1000) ? original_valid : 1'b0;
+    assign ng_en     = (i_fx_sw_r[8:0] == 9'b0_0001_0000) ? original_valid : 1'b0;
+    assign de_en     = (i_fx_sw_r[8:0] == 9'b0_0010_0000) ? original_valid : 1'b0;
+    assign fg_en     = (i_fx_sw_r[8:0] == 9'b0_0100_0000) ? original_valid : 1'b0;
+    assign ch_en     = (i_fx_sw_r[8:0] == 9'b0_1000_0000) ? original_valid : 1'b0;
+    assign aw_en     = (i_fx_sw_r[8:0] == 9'b1_0000_0000) ? original_valid : 1'b0;
+
+
+
     /* -------------------------------------------------------------
     |               For Testing Independent Modules                |
     ------------------------------------------------------------- */
@@ -124,51 +137,52 @@ module DSP (
 
 
     // Overdrive, Fuzz, Distortion
-    // logic [7:0] i_gain; 
-    // assign i_gain = 8'd100;
-    // Overdrive Overdrive(
-    //     .i_clk  (i_clk),
-    //     .i_rst  (i_rst),
-    //     .i_data (original_data),
-    //     .i_gain (i_gain),
-    //     .i_en   (od_en),
-    //     .o_data (od_data),
-    //     .o_en   (od_valid)
-    // );
-
-    fuzz Fuzz(
+    logic [7:0] i_gain; 
+    assign i_gain = 8'd250;
+    Overdrive Overdrive(
         .i_clk  (i_clk),
         .i_rst  (i_rst),
         .i_data (original_data),
         .i_gain (i_gain),
-        .i_en   (fuzz_en),
-        .o_data (fuzz_data),
-        .o_en   (fuzz_valid)
+        .i_en   (od_en),
+        .o_data (od_data),
+        .o_en   (od_valid)
     );
 
-    // distortion Distortion(
+    // fuzz Fuzz(
     //     .i_clk  (i_clk),
     //     .i_rst  (i_rst),
     //     .i_data (original_data),
     //     .i_gain (i_gain),
-    //     .i_en   (dist_en),
-    //     .o_data (dist_data),
-    //     .o_en   (dist_valid)
+    //     .i_en   (fuzz_en),
+    //     .o_data (fuzz_data),
+    //     .o_en   (fuzz_valid)
     // );
+
+    distortion Distortion(
+        .i_clk  (i_clk),
+        .i_rst  (i_rst),
+        .i_data (original_data),
+        .i_gain (i_gain),
+        .i_en   (dist_en),
+        .o_data (dist_data),
+        .o_en   (dist_valid)
+    );
 
     // Reverb
     logic signed [7:0] ap_gain_0, ap_gain_1, ap_gain_2, ap_gain_3, ap_gain_4;
-    assign ap_gain_0 = 8'sd48;
-    assign ap_gain_1 = 8'sd48;
-    assign ap_gain_2 = 8'sd48;
-    assign ap_gain_3 = 8'sd48;
-    assign ap_gain_4 = 8'sd48;
+    assign ap_gain_0 = 8'sd24;
+    assign ap_gain_1 = 8'sd24;
+    assign ap_gain_2 = 8'sd24;
+    assign ap_gain_3 = 8'sd24;
+    assign ap_gain_4 = 8'sd24;
 
     Reverb Reverb(
         .clk(i_clk),
         .rst(i_rst),
         .in_valid(reverb_en),
         .in(original_data),
+        .w_rate(8'sd32),
         .ap_gain_0(ap_gain_0),
         .ap_gain_1(ap_gain_1),
         .ap_gain_2(ap_gain_2),
@@ -191,8 +205,8 @@ module DSP (
     assign ng_hold = 16'd24000;    // 0.5s
     // assign ng_threshold_lo = 15'b00010_00000_00000;    // 1/16 max strength
     // assign ng_threshold_hi = 15'b00100_00000_00000;    // 2/16 max strength
-    assign ng_threshold_lo = 15'b10000_00000_00000;    //  4/8 max strength
-    assign ng_threshold_hi = 15'b11000_00000_00000;    //  6/8 max strength
+    assign ng_threshold_lo = 15'b00000_10000_00000;    //  4/8 max strength
+    assign ng_threshold_hi = 15'b00001_00000_00000;    //  6/8 max strength
     Noise_Gate Noise_Gate(
         .i_clk          (i_clk),
         .i_rst          (i_rst),
@@ -211,10 +225,10 @@ module DSP (
     logic [15:0] de_time;     // Delay duration in samples
     logic [7:0]  de_feedback; // Feedback ratio (0 to 127, where 128 is 100%)
     logic [7:0]  de_mix;      // Mix ratio      (0 to 127, where 128 is 100%)
-    assign de_time = 16'd24000;         // 0.5s
-    assign de_feedback = 8'b0000_0011;  // x0.1875
-    assign de_mix = 8'b0110_0000;       // x0.375
-    Delay_Effect #(.BASE_ADDR(20'h00000)) Delay_Effect(
+    assign de_time = 16'd12000;         // 0.5s
+    assign de_feedback = 8'b0100_0000;  // x(1/4)
+    assign de_mix = 8'b0010_0000;       // x(1/8)
+    Delay_Effect Delay_Effect(
         .i_clk          (i_clk),
         .i_rst          (i_rst),
         .i_prev_valid   (de_en),
@@ -223,29 +237,59 @@ module DSP (
         .i_feedback     (de_feedback),
         .i_mix          (de_mix),
         .o_next_valid   (de_valid),
-        .o_data         (de_data),
-        // SRAM connection
-        .o_SRAM_r_addr  (o_B0_r_addr),
-        .i_SRAM_r_data  (i_B0_r_data),
-        .o_read_req     (o_B0_read_req),
-        .i_read_valid   (i_B0_read_valid),
-        .o_SRAM_w_addr  (o_B0_w_addr),
-        .o_SRAM_w_data  (o_B0_w_data),
-        .o_write_req    (o_B0_write_req)
+        .o_data         (de_data)
     );
 
     // Flanger
     Flanger Flanger(
         .clk(i_clk),
         .rst(i_rst),
-        .in_valid(original_valid),
+        .in_valid(fg_en),
         .in(original_data),
-        .inc(7'b0001000),
+        .inc(7'b0000010),
+
+        .delay_base(10'd512),
+        .delay_amp(10'd128),
+
         .gain(8'sd64),
-        .w_rate(8'sd96),
+        .w_rate(8'sd64),
 
         .out_valid(fg_valid),
         .out(fg_data)
+    );
+
+    // Chorus
+    Chorus Chorus(
+        .clk(i_clk),
+        .rst(i_rst),
+        .in_valid(ch_en),
+        .in(original_data),
+
+        .delay_base(12'd512),
+        .delay_amp(12'd128),
+
+        .inc(7'b0000010),
+        .w_rate(8'sd64),
+
+        .out_valid(ch_valid),
+        .out(ch_data)
+    );
+
+    // Auto-Wah
+    Auto_Wah Auto_Wah(
+        .clk(i_clk),
+        .rst(i_rst),
+        .in_valid(aw_en),
+        .in(original_data),
+
+        .delay_base(12'd512),
+        .delay_amp(12'd128),
+
+        .inc(7'b0000010),
+        .w_rate(8'sd64),
+
+        .out_valid(aw_valid),
+        .out(aw_data)
     );
   
 
@@ -253,40 +297,50 @@ module DSP (
         processed_data  = original_data;
         processed_valid = original_valid;
 
-        case (i_fx_sw_r[6:0])
-            // 7'b0000001: begin
-            //     processed_data  = od_data;
-            //     processed_valid = od_valid;
-            // end
-
-            7'b0000010: begin
-                processed_data  = fuzz_data;
-                processed_valid = fuzz_valid;
+        case (i_fx_sw_r[8:0])
+            9'b0_0000_0001: begin
+                processed_data  = od_data;
+                processed_valid = od_valid;
             end
 
-            // 7'b0000100: begin
-            //     processed_data  = dist_data;
-            //     processed_valid = dist_valid;
+            // 8'b0_0000_0010: begin
+            //     processed_data  = fuzz_data;
+            //     processed_valid = fuzz_valid;
             // end
 
-            7'b0001000: begin
+            9'b0_0000_0100: begin
+                processed_data  = dist_data;
+                processed_valid = dist_valid;
+            end
+
+            9'b0_0000_1000: begin
                 processed_data  = reverb_data;
                 processed_valid = reverb_valid;
             end
 
-            7'b0010000: begin
+            9'b0_0001_0000: begin
                 processed_data  = ng_data;
                 processed_valid = ng_valid;
             end
 
-            7'b0100000: begin
+            9'b0_0010_0000: begin
                 processed_data  = de_data;
                 processed_valid = de_valid;
             end
 
-            7'b1000000: begin
+            9'b0_0100_0000: begin
                 processed_data  = fg_data;
                 processed_valid = fg_valid;
+            end
+
+            9'b0_1000_0000: begin
+                processed_data  = ch_data;
+                processed_valid = ch_valid;
+            end
+
+            9'b1_0000_0000: begin
+                processed_data  = aw_data;
+                processed_valid = aw_valid;
             end
 
             default: begin

@@ -1074,6 +1074,12 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE stp2.stp
+set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/tanh_new.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/distortion_no_recip.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/Auto_Wah.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/overdrive_no_recip.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/recip_tanh.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/Chorus.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/Flanger.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../archived/Reverb_basic.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/Schroeder_Allpass.sv
@@ -1082,11 +1088,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/Reverb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/Noise_Gate.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/Delay_Effect.sv
 set_global_assignment -name SYSTEMVERILOG_FILE DE2_115.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/tanh.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/overdrive.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/inv_tanh.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/fuzz.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/distortion.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../Digital_EFX_Processer.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/WM8731_init.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/SRAM_Scheduler.sv

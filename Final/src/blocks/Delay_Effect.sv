@@ -1,6 +1,4 @@
-module Delay_Effect #(
-    parameter [19:0] BASE_ADDR = 20'h00000 // Starting address of the 64K ring buffer
-)(
+module Delay_Effect (
     input  i_clk,
     input  i_rst,
 
@@ -12,18 +10,7 @@ module Delay_Effect #(
     input  [7:0] i_mix,      // Mix ratio      (0 to 255, where 256 is 100%)
 
     output logic o_next_valid,
-    output logic signed [15:0] o_data,
-
-    // SRAM read
-    output logic [19:0] o_SRAM_r_addr,
-    input  signed [15:0] i_SRAM_r_data,
-    output logic o_read_req,
-    input  i_read_valid,
-    
-    // SRAM write
-    output logic [19:0] o_SRAM_w_addr,
-    output logic signed [15:0] o_SRAM_w_data,
-    output logic o_write_req
+    output logic signed [15:0] o_data
 );
 
     // FSM States
@@ -41,7 +28,7 @@ module Delay_Effect #(
     logic signed [15:0] fb_data_r, fb_data_w;
     logic next_valid_r, next_valid_w;
     logic first_pass_r, first_pass_w;
-    
+
     // Moved out of always_comb to prevent inferred latches!
     logic signed [31:0] feedback_val;
     logic signed [31:0] mix_val;
@@ -56,9 +43,22 @@ module Delay_Effect #(
     assign o_next_valid = next_valid_r;
     assign o_data = o_data_r;
 
-    // Circular buffer: read address is simply the current pointer minus the delay time, offset by BASE_ADDR
-    assign o_SRAM_r_addr = BASE_ADDR + {4'h0, 16'(ptr_r - i_time)}; 
-    assign o_SRAM_w_addr = BASE_ADDR + {4'h0, ptr_r};
+    // On-board M9K block RAM inference
+    (* ramstyle = "M9K" *) logic signed [15:0] delay_ram [0:65535];
+    logic [15:0] r_addr;
+    logic [15:0] w_addr;
+    logic signed [15:0] r_data;
+    logic we;
+
+    assign r_addr = ptr_r - i_time;
+    assign w_addr = ptr_r;
+
+    always_ff @(posedge i_clk) begin
+        r_data <= delay_ram[r_addr];
+        if (we) begin
+            delay_ram[w_addr] <= fb_data_r;
+        end
+    end
 
     always_comb begin
         state_w        = state_r;
@@ -69,10 +69,7 @@ module Delay_Effect #(
         fb_data_w      = fb_data_r;
         next_valid_w   = 1'b0; // Default to 0 pulse
         first_pass_w   = first_pass_r;
-
-        o_read_req  = 1'b0;
-        o_write_req = 1'b0;
-        o_SRAM_w_data = fb_data_r; // Write the feedback mix back into the loop
+        we             = 1'b0;
 
         case (state_r)
             S_IDLE: begin
@@ -82,20 +79,18 @@ module Delay_Effect #(
                 end
             end
             S_READ_REQ: begin
-                o_read_req = 1'b1;
+                // Give RAM 1 cycle to read
                 state_w = S_WAIT_READ;
             end
             S_WAIT_READ: begin
-                if (i_read_valid) begin
-                    // If i_time is 0, ignore the delay.
-                    // If on the first pass and ptr hasn't reached the delay time yet, output 0 to prevent SRAM garbage.
-                    if (i_time == 16'd0 || (first_pass_r && ptr_r < i_time)) begin
-                        delayed_data_w = 16'sd0;
-                    end else begin
-                        delayed_data_w = i_SRAM_r_data;
-                    end
-                    state_w = S_CALC;
+                // If i_time is 0, ignore the delay.
+                // If on the first pass and ptr hasn't reached the delay time yet, output 0 to prevent RAM garbage.
+                if (i_time == 16'd0 || (first_pass_r && ptr_r < i_time)) begin
+                    delayed_data_w = 16'sd0;
+                end else begin
+                    delayed_data_w = r_data;
                 end
+                state_w = S_CALC;
             end
             S_CALC: begin
                 // Saturation logic to prevent clipping/overflow pops for output
@@ -118,7 +113,7 @@ module Delay_Effect #(
                 state_w = S_WRITE;
             end
             S_WRITE: begin
-                o_write_req = 1'b1;
+                we = 1'b1;
                 next_valid_w = 1'b1;
                 if (ptr_r == 16'hFFFF) begin
                     first_pass_w = 1'b0; // First full buffer write is complete

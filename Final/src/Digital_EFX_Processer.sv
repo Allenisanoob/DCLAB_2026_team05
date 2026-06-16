@@ -91,14 +91,11 @@ module Top (
 	assign o_ledg[8] = 1'b0;
 
 	// Show the current state on LEDR
-	assign o_ledr[0] = (state_r == S_SETUP);
-	assign o_ledr[1] = (state_r == S_MENU);
+	assign o_ledr[17] = (state_r == S_SETUP);
+	assign o_ledr[16] = (state_r == S_MENU);
 
-	assign o_ledr[17] = R2D_valid; // Indicate recording
-	assign o_ledr[16] = D2B_valid; // Indicate processing
-	assign o_ledr[15] = (B2P_request_l || B2P_request_r); // Indicate playing
-
-	assign o_ledr[14:2] = 13'b0;
+	logic [15:0] dsp_ledr;
+	assign o_ledr[15:0] = dsp_ledr;
 
 
 
@@ -179,8 +176,8 @@ module Top (
 		.o_B3_w_data(B3_w_data),
 		.o_B3_write_req(B3_write_req),
 
-		.i_sram_ready(sram_ready)
-		
+		.i_sram_ready(sram_ready),
+		.o_dsp_ledr(dsp_ledr)
 	);
 
 	// Buffer

@@ -6,8 +6,8 @@ module Flanger #(
     input in_valid,
     input signed [15:0] in,
     input [6:0] inc, // Q4.3
-    input [$clog2(delay_upper_bound) - 1:0] delay_base;
-    input [$clog2(delay_upper_bound) - 1:0] delay_amp;
+    input [$clog2(delay_upper_bound) - 1:0] delay_base,
+    input [$clog2(delay_upper_bound) - 1:0] delay_amp,
     input signed [7:0] gain, // Q1.7
     input signed [7:0] w_rate, // Q1.7
     output reg out_valid,
