@@ -1,25 +1,28 @@
 module Chorus #(
-    parameter integer delay_upper_bound = 2160,
-    parameter integer delay_lower_bound = 720
+    parameter integer delay_upper_bound = 4096
 )(
     input clk,
     input rst,
     input in_valid,
     input signed [15:0] in,
     input [6:0] inc, // Q4.3
+    input [$clog2(delay_upper_bound) - 1:0] delay_base,
+    input [$clog2(delay_upper_bound) - 1:0] delay_amp,
 //    input signed [7:0] gain, // Q1.7
     input signed [7:0] w_rate, // Q1.7
     output reg out_valid,
     output reg signed [15:0] out
 );
 
-localparam [$clog2(delay_upper_bound) - 1:0] delay_base = (delay_upper_bound + delay_lower_bound) / 2;
-localparam [$clog2(delay_upper_bound) - 1:0] delay_amp  = (delay_upper_bound - delay_lower_bound) / 2;
+// localparam [$clog2(delay_upper_bound) - 1:0] delay_base = (delay_upper_bound + delay_lower_bound) / 2;
+// localparam [$clog2(delay_upper_bound) - 1:0] delay_amp  = (delay_upper_bound - delay_lower_bound) / 2;
 
 logic out_valid_mae_pipe;
 logic out_valid_ato_pipe;
 logic signed [15:0] in_r;
 logic        [6:0]  inc_r;
+logic        [$clog2(delay_upper_bound) - 1:0] delay_base_r;
+logic        [$clog2(delay_upper_bound) - 1:0] delay_amp_r;
 logic        [18:0] cos_input_temp; // Q16.3
 logic signed [15:0] cos_output; // Q1.15
 // logic signed [7:0] gain_r; // Q1.7
@@ -56,7 +59,7 @@ assign delay_skew_I = delay_skew >>> 15;
 assign delay_skew_F = delay_skew[14:0];
 assign delay_skew_F_neg = 16'h8000 - delay_skew_F;
 assign delay_cnt_I = $signed({1'b0, delay_base}) + delay_skew_I;
-assign r_ptr = (w_ptr >= delay_cnt_I) ? (w_ptr - delay_cnt_I) : (w_ptr + delay_upper_bound - delay_cnt_I);
+assign r_ptr = (w_ptr >= delay_cnt_I) ? (w_ptr - delay_cnt_I) : (w_ptr + delay_base_r + delay_amp_r - delay_cnt_I);
 assign is_write_1 = is_loop || (w_ptr >= delay_cnt_I + 1);
 assign is_write_2 = is_loop || (w_ptr >= delay_cnt_I);
 assign data_delay_temp_1 = is_write_1 ? data_temp_1 : 16'sd0;
@@ -82,6 +85,8 @@ always_ff @(posedge clk or negedge rst) begin
     if (!rst) begin
         w_ptr <= 0;
         inc_r <= 0;
+        delay_base_r <= 0;
+        delay_amp_r <= 0;
         cos_input_temp <= 0;
 //         gain_r <= 0;
         w_rate_r <= 0;
@@ -93,11 +98,13 @@ always_ff @(posedge clk or negedge rst) begin
         data_delay_pipe <= 0;
     end else begin
         inc_r <= inc;
+        delay_base_r <= delay_base;
+        delay_amp_r <= delay_amp;
 //         gain_r <= gain;
         w_rate_r <= w_rate;
         if (in_valid) begin
             cos_input_temp <= cos_input_temp + inc_r;
-            if (w_ptr == delay_upper_bound - 1) begin
+            if (w_ptr == delay_base_r + delay_amp_r - 1) begin
                 w_ptr <= 0;
                 is_loop <= 1;
             end else begin
@@ -113,7 +120,7 @@ always_ff @(posedge clk or negedge rst) begin
         end else if (out_valid) begin
             out_valid <= 1'b0;
             if (r_ptr != 0) data_temp_1 <= data_buffer[r_ptr - 1];
-            else data_temp_1 <= data_buffer[delay_upper_bound - 1];
+            else data_temp_1 <= data_buffer[delay_base_r + delay_amp_r - 1];
             data_temp_2 <= data_buffer[r_ptr];
             delay_skew_F_pipe <= delay_skew_F;
             delay_skew_F_neg_pipe <= delay_skew_F_neg;
