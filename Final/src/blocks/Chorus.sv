@@ -1,13 +1,13 @@
-module Flanger #(
-    parameter integer delay_upper_bound = 960,
-    parameter integer delay_lower_bound = 240
+module Chorus #(
+    parameter integer delay_upper_bound = 2160,
+    parameter integer delay_lower_bound = 720
 )(
     input clk,
     input rst,
     input in_valid,
     input signed [15:0] in,
     input [6:0] inc, // Q4.3
-    input signed [7:0] gain, // Q1.7
+//    input signed [7:0] gain, // Q1.7
     input signed [7:0] w_rate, // Q1.7
     output reg out_valid,
     output reg signed [15:0] out
@@ -22,7 +22,7 @@ logic signed [15:0] in_r;
 logic        [6:0]  inc_r;
 logic        [18:0] cos_input_temp; // Q16.3
 logic signed [15:0] cos_output; // Q1.15
-logic signed [7:0] gain_r; // Q1.7
+// logic signed [7:0] gain_r; // Q1.7
 logic signed [7:0] w_rate_r; // Q1.7
 logic [15:0] data_buffer [0:delay_upper_bound - 1];
 logic [$clog2(delay_upper_bound) - 1:0] w_ptr;
@@ -40,10 +40,10 @@ logic signed [31:0] data_delay_temp_3, data_delay_temp_4;
 logic signed [32:0] data_delay_temp_5;
 logic signed [17:0] data_delay_temp_6;
 logic signed [15:0] data_delay, data_delay_pipe;
-logic signed [23:0] temp_1; // temp_1 = gain_r * data_delay // Q17.7
-logic signed [16:0] temp_2; // temp_2 = (temp_1 + 24'sd64) >>> 7 // Q17.0
-logic signed [17:0] data_curr_temp; // data_curr_temp = in + temp_2 // Q18.0
-logic signed [15:0] data_curr; // data_curr = saturate(data_curr_temp) // Q16.0
+// logic signed [23:0] temp_1; // temp_1 = gain_r * data_delay // Q17.7
+// logic signed [16:0] temp_2; // temp_2 = (temp_1 + 24'sd64) >>> 7 // Q17.0
+// logic signed [17:0] data_curr_temp; // data_curr_temp = in + temp_2 // Q18.0
+// logic signed [15:0] data_curr; // data_curr = saturate(data_curr_temp) // Q16.0
 logic signed [7:0]  d_rate; // d_rate = 8'sd127 - w_rate; // Q1.7
 logic signed [23:0] temp_3; // temp_3 = d_rate * in // 17.7
 logic signed [23:0] temp_4; // temp_4 = w_rate * data_delay_pipe // Q17.7
@@ -66,12 +66,12 @@ assign data_delay_temp_4 = $signed({1'b0, delay_skew_F_neg_pipe}) * data_delay_t
 assign data_delay_temp_5 = data_delay_temp_3 + data_delay_temp_4;
 assign data_delay_temp_6 = (data_delay_temp_5 + 33'sd16384) >>> 15;
 assign data_delay = data_delay_temp_6[15:0];
-assign temp_1 = gain_r * data_delay_pipe;
-assign temp_2 = (temp_1 + 24'sd64) >>> 7;
-assign data_curr_temp = in + temp_2;
-assign data_curr = (data_curr_temp > 18'sd32767) ? 18'sd32767 :
-                   (data_curr_temp < -18'sd32768) ? -18'sd32768 :
-                   data_curr_temp[15:0];
+// assign temp_1 = gain_r * data_delay_pipe;
+// assign temp_2 = (temp_1 + 24'sd64) >>> 7;
+// assign data_curr_temp = in + temp_2;
+// assign data_curr = (data_curr_temp > 18'sd32767) ? 18'sd32767 :
+//                    (data_curr_temp < -18'sd32768) ? -18'sd32768 :
+//                    data_curr_temp[15:0];
 assign d_rate = 8'sd127 - w_rate_r;
 assign temp_3 = d_rate * in_r;
 assign temp_4 = w_rate_r * data_delay_pipe;
@@ -83,7 +83,7 @@ always_ff @(posedge clk or negedge rst) begin
         w_ptr <= 0;
         inc_r <= 0;
         cos_input_temp <= 0;
-        gain_r <= 0;
+//         gain_r <= 0;
         w_rate_r <= 0;
         out_valid_mae_pipe <= 0;
         out_valid_ato_pipe <= 0;
@@ -93,7 +93,7 @@ always_ff @(posedge clk or negedge rst) begin
         data_delay_pipe <= 0;
     end else begin
         inc_r <= inc;
-        gain_r <= gain;
+//         gain_r <= gain;
         w_rate_r <= w_rate;
         if (in_valid) begin
             cos_input_temp <= cos_input_temp + inc_r;
@@ -104,7 +104,7 @@ always_ff @(posedge clk or negedge rst) begin
                 w_ptr <= w_ptr + 1;
             end
             in_r <= in;
-            data_buffer[w_ptr] <= data_curr;
+            data_buffer[w_ptr] <= in;
             out_valid_mae_pipe <= 1'b1;
         end else if (out_valid_mae_pipe) begin
             out <= out_curr[15:0];
