@@ -1,10 +1,6 @@
 //if (i_gain <= 8'd4) begin
 //    o_data = i_data;  No information for i_gain <= 8'd4 in this LUT
 `timescale 1ns/1ps
-
-
-
-
 module recip_tanh (
     input  logic [7:0]  i_gain,            // Q2.6 unsigned
     output logic [15:0] o_recip_tanh_val     // Q7.9 unsigned
