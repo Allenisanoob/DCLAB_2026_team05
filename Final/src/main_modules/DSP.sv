@@ -136,34 +136,41 @@ module DSP (
     );
 
 
-    // Overdrive, Fuzz, Distortion
-    logic [9:0] i_gain; 
-    assign i_gain = 10'd500;
+    // Overdrive
+    logic [9:0] i_gain_overdrive; 
+    assign i_gain_overdrive = 10'd500;
     Overdrive Overdrive(
         .i_clk  (i_clk),
         .i_rst  (i_rst),
         .i_data (original_data),
-        .i_gain (i_gain),
+        .i_gain (i_gain_overdrive),
         .i_en   (od_en),
         .o_data (od_data),
         .o_en   (od_valid)
     );
 
-    // fuzz Fuzz(
-    //     .i_clk  (i_clk),
-    //     .i_rst  (i_rst),
-    //     .i_data (original_data),
-    //     .i_gain (i_gain),
-    //     .i_en   (fuzz_en),
-    //     .o_data (fuzz_data),
-    //     .o_en   (fuzz_valid)
-    // );
+    // Fuzz
+    logic [7:0] i_gain_fuzz; 
+    assign i_gain_fuzz = 8'd250;
+    fuzz Fuzz(
+        .i_clk  (i_clk),
+        .i_rst  (i_rst),
+        .i_data (original_data),
+        .i_gain (i_gain_fuzz),
+        .i_en   (fuzz_en),
+        .o_data (fuzz_data),
+        .o_en   (fuzz_valid)
+    );
 
+    //Distortion
+    logic [7:0] i_gain_distortion; 
+    assign i_gain_distorton = 8'd250;
+    
     distortion Distortion(
         .i_clk  (i_clk),
         .i_rst  (i_rst),
         .i_data (original_data),
-        .i_gain (i_gain),
+        .i_gain (i_gain_distortion),
         .i_en   (dist_en),
         .o_data (dist_data),
         .o_en   (dist_valid)
