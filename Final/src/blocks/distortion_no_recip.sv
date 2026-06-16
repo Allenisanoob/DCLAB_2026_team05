@@ -109,7 +109,7 @@ module distortion (
         end else begin
             o_en <= i_en_r2;
             if (i_en_r2) begin
-                o_data <= dist_out;
+                o_data <= dist_out >>> 1;
             end
         end
     end
