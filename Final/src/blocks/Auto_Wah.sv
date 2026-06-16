@@ -21,6 +21,7 @@ logic out_valid_mae_pipe;
 logic out_valid_ato_pipe;
 logic signed [15:0] abs_in;
 logic signed [15:0] env_out;
+logic signed [15:0] gain_env_out;
 logic signed [15:0] in_r;
 logic        [6:0]  inc_r;
 logic        [18:0] cos_input_temp; // Q16.3
@@ -58,7 +59,8 @@ logic signed [17:0] out_curr; // out_curr = (temp_5 + 25'sd64) >>> 7 // Q18.0
 // cosine cosine_0 (.f(cos_input_temp[18:3]), .cos_2pif(cos_output));
 // assign delay_skew = $signed({1'b0, delay_amp}) * cos_output;
 assign abs_in = in[15] ? -in : in;
-assign delay_skew = $signed({1'b0, delay_amp}) * env_out;
+assign gain_env_out = (!(env_out[15] || env_out[14] || env_out[13])) ? env_out << 2 : (!env_out[15]) ? 16'sd32767 : 16'sd0;
+assign delay_skew = $signed({1'b0, delay_amp}) * gain_env_out;
 assign delay_skew_I = delay_skew >>> 15;
 assign delay_skew_F = delay_skew[14:0];
 assign delay_skew_F_neg = 16'h8000 - delay_skew_F;
@@ -89,7 +91,7 @@ always_ff @(posedge clk or negedge rst) begin
     if (!rst) env_out <= 16'sd0;
     else begin
         if (in_valid) begin
-            if (abs_in >= env_out) env_out <= env_out >>> 1 + abs_in >>> 1;
+            if (abs_in >= env_out) env_out <= env_out >>> 2 + abs_in - abs_in >>> 2;
             else env_out <= env_out - {6'd0, env_out[15:6]};
         end
     end
