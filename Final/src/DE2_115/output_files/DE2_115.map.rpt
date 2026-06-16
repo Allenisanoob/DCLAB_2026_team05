@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_115
-Wed Jun 17 01:00:53 2026
+Wed Jun 17 01:46:20 2026
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -96,61 +96,60 @@ Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
  88. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult0
  89. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Flanger:Flanger|lpm_mult:Mult4
  90. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Flanger:Flanger|lpm_mult:Mult5
- 91. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult0
- 92. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult1
- 93. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult0
- 94. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult0
- 95. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult1
- 96. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult3
- 97. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult4
- 98. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult4
- 99. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult5
-100. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|lpm_mult:Mult0
-101. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|lpm_mult:Mult0
-102. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|lpm_mult:Mult0
-103. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|lpm_mult:Mult0
-104. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|lpm_mult:Mult0
-105. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult1
-106. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult1
-107. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Flanger:Flanger|cosine:cosine_0|lpm_mult:Mult0
-108. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Chorus:Chorus|cosine:cosine_0|lpm_mult:Mult0
-109. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Flanger:Flanger|lpm_mult:Mult1
-110. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Flanger:Flanger|lpm_mult:Mult2
-111. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult1
-112. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult2
-113. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult1
-114. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult2
-115. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|lpm_mult:Mult1
-116. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|lpm_mult:Mult1
-117. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|lpm_mult:Mult1
-118. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|lpm_mult:Mult1
-119. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|lpm_mult:Mult1
-120. altsyncram Parameter Settings by Entity Instance
-121. lpm_mult Parameter Settings by Entity Instance
-122. Port Connectivity Checks: "SevenHexDecoder:seven_dec1"
-123. Port Connectivity Checks: "SevenHexDecoder:seven_dec7"
-124. Port Connectivity Checks: "SevenHexDecoder:seven_dec5"
-125. Port Connectivity Checks: "Top:top0|DSP:dsp|Auto_Wah:Auto_Wah"
-126. Port Connectivity Checks: "Top:top0|DSP:dsp|Chorus:Chorus"
-127. Port Connectivity Checks: "Top:top0|DSP:dsp|Flanger:Flanger"
-128. Port Connectivity Checks: "Top:top0|DSP:dsp|Delay_Effect:Delay_Effect"
-129. Port Connectivity Checks: "Top:top0|DSP:dsp|Noise_Gate:Noise_Gate"
-130. Port Connectivity Checks: "Top:top0|DSP:dsp|Reverb:Reverb"
-131. Port Connectivity Checks: "Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh"
-132. Port Connectivity Checks: "Top:top0|DSP:dsp|distortion:Distortion"
-133. Port Connectivity Checks: "Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh"
-134. Port Connectivity Checks: "Top:top0|DSP:dsp|Volume:final_volume"
-135. Port Connectivity Checks: "Debounce:deb2"
-136. Port Connectivity Checks: "Debounce:deb1"
-137. Port Connectivity Checks: "Debounce:deb0"
-138. Port Connectivity Checks: "final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
-139. Port Connectivity Checks: "final_qsys:pll0|altera_reset_controller:rst_controller"
-140. Port Connectivity Checks: "final_qsys:pll0|final_qsys_altpll_0:altpll_0|final_qsys_altpll_0_altpll_kpa2:sd1"
-141. Port Connectivity Checks: "final_qsys:pll0|final_qsys_altpll_0:altpll_0"
-142. Post-Synthesis Netlist Statistics for Top Partition
-143. Elapsed Time Per Partition
-144. Analysis & Synthesis Messages
-145. Analysis & Synthesis Suppressed Messages
+ 91. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult1
+ 92. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult0
+ 93. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult0
+ 94. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult1
+ 95. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult3
+ 96. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult4
+ 97. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult4
+ 98. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult5
+ 99. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|lpm_mult:Mult0
+100. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|lpm_mult:Mult0
+101. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|lpm_mult:Mult0
+102. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|lpm_mult:Mult0
+103. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|lpm_mult:Mult0
+104. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult1
+105. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Flanger:Flanger|cosine:cosine_0|lpm_mult:Mult0
+106. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Chorus:Chorus|cosine:cosine_0|lpm_mult:Mult0
+107. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Flanger:Flanger|lpm_mult:Mult1
+108. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Flanger:Flanger|lpm_mult:Mult2
+109. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult1
+110. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult2
+111. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult1
+112. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult2
+113. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|lpm_mult:Mult1
+114. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|lpm_mult:Mult1
+115. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|lpm_mult:Mult1
+116. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|lpm_mult:Mult1
+117. Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|lpm_mult:Mult1
+118. altsyncram Parameter Settings by Entity Instance
+119. lpm_mult Parameter Settings by Entity Instance
+120. Port Connectivity Checks: "SevenHexDecoder:seven_dec1"
+121. Port Connectivity Checks: "SevenHexDecoder:seven_dec7"
+122. Port Connectivity Checks: "SevenHexDecoder:seven_dec5"
+123. Port Connectivity Checks: "Top:top0|DSP:dsp|Auto_Wah:Auto_Wah"
+124. Port Connectivity Checks: "Top:top0|DSP:dsp|Chorus:Chorus"
+125. Port Connectivity Checks: "Top:top0|DSP:dsp|Flanger:Flanger"
+126. Port Connectivity Checks: "Top:top0|DSP:dsp|Delay_Effect:Delay_Effect"
+127. Port Connectivity Checks: "Top:top0|DSP:dsp|Noise_Gate:Noise_Gate"
+128. Port Connectivity Checks: "Top:top0|DSP:dsp|Reverb:Reverb"
+129. Port Connectivity Checks: "Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh"
+130. Port Connectivity Checks: "Top:top0|DSP:dsp|fuzz:Fuzz"
+131. Port Connectivity Checks: "Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh"
+132. Port Connectivity Checks: "Top:top0|DSP:dsp|Overdrive:Overdrive"
+133. Port Connectivity Checks: "Top:top0|DSP:dsp|Volume:final_volume"
+134. Port Connectivity Checks: "Debounce:deb2"
+135. Port Connectivity Checks: "Debounce:deb1"
+136. Port Connectivity Checks: "Debounce:deb0"
+137. Port Connectivity Checks: "final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
+138. Port Connectivity Checks: "final_qsys:pll0|altera_reset_controller:rst_controller"
+139. Port Connectivity Checks: "final_qsys:pll0|final_qsys_altpll_0:altpll_0|final_qsys_altpll_0_altpll_kpa2:sd1"
+140. Port Connectivity Checks: "final_qsys:pll0|final_qsys_altpll_0:altpll_0"
+141. Post-Synthesis Netlist Statistics for Top Partition
+142. Elapsed Time Per Partition
+143. Analysis & Synthesis Messages
+144. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -177,19 +176,19 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Jun 17 01:00:53 2026       ;
+; Analysis & Synthesis Status        ; Successful - Wed Jun 17 01:46:19 2026       ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                     ;
 ; Top-level Entity Name              ; DE2_115                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 5,368                                       ;
-;     Total combinational functions  ; 4,642                                       ;
-;     Dedicated logic registers      ; 1,832                                       ;
-; Total registers                    ; 1832                                        ;
+; Total logic elements               ; 5,006                                       ;
+;     Total combinational functions  ; 4,265                                       ;
+;     Dedicated logic registers      ; 1,817                                       ;
+; Total registers                    ; 1817                                        ;
 ; Total pins                         ; 480                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 1,409,136                                   ;
-; Embedded Multiplier 9-bit elements ; 66                                          ;
+; Embedded Multiplier 9-bit elements ; 62                                          ;
 ; Total PLLs                         ; 1                                           ;
 +------------------------------------+---------------------------------------------+
 
@@ -316,6 +315,7 @@ agreement for further details.
 ; ../blocks/Noise_Gate.sv                                ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/Noise_Gate.sv                                           ;            ;
 ; ../blocks/Delay_Effect.sv                              ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/Delay_Effect.sv                                         ;            ;
 ; DE2_115.sv                                             ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/DE2_115.sv                                             ;            ;
+; ../blocks/fuzz.sv                                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/fuzz.sv                                                 ;            ;
 ; ../Digital_EFX_Processer.sv                            ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/Digital_EFX_Processer.sv                                       ;            ;
 ; ../main_modules/WM8731_init.sv                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/main_modules/WM8731_init.sv                                    ;            ;
 ; ../main_modules/SRAM_Scheduler.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/main_modules/SRAM_Scheduler.sv                                 ;            ;
@@ -365,7 +365,6 @@ agreement for further details.
 ; altshift.inc                                           ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altshift.inc                                                       ;            ;
 ; db/mult_86t.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_86t.tdf                                        ;            ;
 ; db/mult_m4t.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_m4t.tdf                                        ;            ;
-; db/mult_o4t.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_o4t.tdf                                        ;            ;
 ; db/mult_j4t.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_j4t.tdf                                        ;            ;
 ; db/mult_06t.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_06t.tdf                                        ;            ;
 ; db/mult_p4t.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_p4t.tdf                                        ;            ;
@@ -381,34 +380,34 @@ agreement for further details.
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                             ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 5,368                                                                                             ;
+; Estimated Total logic elements              ; 5,006                                                                                             ;
 ;                                             ;                                                                                                   ;
-; Total combinational functions               ; 4642                                                                                              ;
+; Total combinational functions               ; 4265                                                                                              ;
 ; Logic element usage by number of LUT inputs ;                                                                                                   ;
-;     -- 4 input functions                    ; 1611                                                                                              ;
-;     -- 3 input functions                    ; 1743                                                                                              ;
-;     -- <=2 input functions                  ; 1288                                                                                              ;
+;     -- 4 input functions                    ; 1334                                                                                              ;
+;     -- 3 input functions                    ; 1670                                                                                              ;
+;     -- <=2 input functions                  ; 1261                                                                                              ;
 ;                                             ;                                                                                                   ;
 ; Logic elements by mode                      ;                                                                                                   ;
-;     -- normal mode                          ; 2826                                                                                              ;
-;     -- arithmetic mode                      ; 1816                                                                                              ;
+;     -- normal mode                          ; 2502                                                                                              ;
+;     -- arithmetic mode                      ; 1763                                                                                              ;
 ;                                             ;                                                                                                   ;
-; Total registers                             ; 1832                                                                                              ;
-;     -- Dedicated logic registers            ; 1832                                                                                              ;
+; Total registers                             ; 1817                                                                                              ;
+;     -- Dedicated logic registers            ; 1817                                                                                              ;
 ;     -- I/O registers                        ; 0                                                                                                 ;
 ;                                             ;                                                                                                   ;
 ; I/O pins                                    ; 480                                                                                               ;
 ; Total memory bits                           ; 1409136                                                                                           ;
 ;                                             ;                                                                                                   ;
-; Embedded Multiplier 9-bit elements          ; 66                                                                                                ;
+; Embedded Multiplier 9-bit elements          ; 62                                                                                                ;
 ;                                             ;                                                                                                   ;
 ; Total PLLs                                  ; 1                                                                                                 ;
 ;     -- PLLs                                 ; 1                                                                                                 ;
 ;                                             ;                                                                                                   ;
 ; Maximum fan-out node                        ; final_qsys:pll0|final_qsys_altpll_0:altpll_0|final_qsys_altpll_0_altpll_kpa2:sd1|wire_pll7_clk[0] ;
-; Maximum fan-out                             ; 2156                                                                                              ;
-; Total fan-out                               ; 31237                                                                                             ;
-; Average fan-out                             ; 3.89                                                                                              ;
+; Maximum fan-out                             ; 2141                                                                                              ;
+; Total fan-out                               ; 29755                                                                                             ;
+; Average fan-out                             ; 3.90                                                                                              ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
 
 
@@ -417,19 +416,19 @@ agreement for further details.
 +----------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                         ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                              ; Library Name ;
 +----------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |DE2_115                                           ; 4642 (3)          ; 1832 (0)     ; 1409136     ; 66           ; 2       ; 32        ; 480  ; 0            ; |DE2_115                                                                                                                         ; work         ;
+; |DE2_115                                           ; 4265 (3)          ; 1817 (0)     ; 1409136     ; 62           ; 2       ; 30        ; 480  ; 0            ; |DE2_115                                                                                                                         ; work         ;
 ;    |Debounce:deb0|                                 ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb0                                                                                                           ; work         ;
 ;    |SevenHexDecoder:seven_dec0|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|SevenHexDecoder:seven_dec0                                                                                              ; work         ;
 ;    |SevenHexDecoder:seven_dec4|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|SevenHexDecoder:seven_dec4                                                                                              ; work         ;
 ;    |SevenHexDecoder:seven_dec6|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|SevenHexDecoder:seven_dec6                                                                                              ; work         ;
-;    |Top:top0|                                      ; 4591 (47)         ; 1827 (1)     ; 1409136     ; 66           ; 2       ; 32        ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                ; work         ;
+;    |Top:top0|                                      ; 4214 (47)         ; 1812 (1)     ; 1409136     ; 62           ; 2       ; 30        ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                ; work         ;
 ;       |Buffer:buffer|                              ; 179 (179)         ; 170 (170)    ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer                                                                                                  ; work         ;
 ;          |altsyncram:buf_data_l_rtl_0|             ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0                                                                      ; work         ;
 ;             |altsyncram_rbi1:auto_generated|       ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0|altsyncram_rbi1:auto_generated                                       ; work         ;
 ;          |altsyncram:buf_data_r_rtl_0|             ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0                                                                      ; work         ;
 ;             |altsyncram_rbi1:auto_generated|       ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0|altsyncram_rbi1:auto_generated                                       ; work         ;
-;       |DSP:dsp|                                    ; 4235 (139)        ; 1581 (16)    ; 1408624     ; 66           ; 2       ; 32        ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp                                                                                                        ; work         ;
-;          |Auto_Wah:Auto_Wah|                       ; 301 (301)         ; 93 (93)      ; 32768       ; 8            ; 0       ; 4         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah                                                                                      ; work         ;
+;       |DSP:dsp|                                    ; 3858 (123)        ; 1566 (16)    ; 1408624     ; 62           ; 2       ; 30        ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp                                                                                                        ; work         ;
+;          |Auto_Wah:Auto_Wah|                       ; 304 (304)         ; 93 (93)      ; 32768       ; 8            ; 0       ; 4         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah                                                                                      ; work         ;
 ;             |altsyncram:data_buffer_rtl_0|         ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|altsyncram:data_buffer_rtl_0                                                         ; work         ;
 ;                |altsyncram_42e1:auto_generated|    ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|altsyncram:data_buffer_rtl_0|altsyncram_42e1:auto_generated                          ; work         ;
 ;             |altsyncram:data_buffer_rtl_1|         ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|altsyncram:data_buffer_rtl_1                                                         ; work         ;
@@ -442,7 +441,7 @@ agreement for further details.
 ;                |mult_m4t:auto_generated|           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult4|mult_m4t:auto_generated                                               ; work         ;
 ;             |lpm_mult:Mult5|                       ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult5                                                                       ; work         ;
 ;                |mult_m4t:auto_generated|           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult5|mult_m4t:auto_generated                                               ; work         ;
-;          |Chorus:Chorus|                           ; 553 (255)         ; 98 (98)      ; 131072      ; 11           ; 1       ; 5         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Chorus:Chorus                                                                                          ; work         ;
+;          |Chorus:Chorus|                           ; 552 (254)         ; 98 (98)      ; 131072      ; 11           ; 1       ; 5         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Chorus:Chorus                                                                                          ; work         ;
 ;             |altsyncram:data_buffer_rtl_0|         ; 0 (0)             ; 0 (0)        ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Chorus:Chorus|altsyncram:data_buffer_rtl_0                                                             ; work         ;
 ;                |altsyncram_03e1:auto_generated|    ; 0 (0)             ; 0 (0)        ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Chorus:Chorus|altsyncram:data_buffer_rtl_0|altsyncram_03e1:auto_generated                              ; work         ;
 ;             |altsyncram:data_buffer_rtl_1|         ; 0 (0)             ; 0 (0)        ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Chorus:Chorus|altsyncram:data_buffer_rtl_1                                                             ; work         ;
@@ -459,11 +458,11 @@ agreement for further details.
 ;             |lpm_mult:Mult4|                       ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult4                                                                           ; work         ;
 ;                |mult_m4t:auto_generated|           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult4|mult_m4t:auto_generated                                                   ; work         ;
 ;          |Data_Catcher:raw_data_catcher|           ; 1 (1)             ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Data_Catcher:raw_data_catcher                                                                          ; work         ;
-;          |Delay_Effect:Delay_Effect|               ; 195 (188)         ; 86 (83)      ; 917504      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect                                                                              ; work         ;
+;          |Delay_Effect:Delay_Effect|               ; 194 (187)         ; 86 (83)      ; 917504      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect                                                                              ; work         ;
 ;             |altsyncram:delay_ram_rtl_0|           ; 7 (0)             ; 3 (0)        ; 917504      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|altsyncram:delay_ram_rtl_0                                                   ; work         ;
 ;                |altsyncram_n5j1:auto_generated|    ; 7 (0)             ; 3 (3)        ; 917504      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|altsyncram:delay_ram_rtl_0|altsyncram_n5j1:auto_generated                    ; work         ;
 ;                   |decode_rsa:decode2|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|altsyncram:delay_ram_rtl_0|altsyncram_n5j1:auto_generated|decode_rsa:decode2 ; work         ;
-;          |Flanger:Flanger|                         ; 583 (285)         ; 96 (96)      ; 32768       ; 11           ; 1       ; 5         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger                                                                                        ; work         ;
+;          |Flanger:Flanger|                         ; 582 (284)         ; 96 (96)      ; 32768       ; 11           ; 1       ; 5         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger                                                                                        ; work         ;
 ;             |altsyncram:data_buffer_rtl_0|         ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|altsyncram:data_buffer_rtl_0                                                           ; work         ;
 ;                |altsyncram_42e1:auto_generated|    ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|altsyncram:data_buffer_rtl_0|altsyncram_42e1:auto_generated                            ; work         ;
 ;             |altsyncram:data_buffer_rtl_1|         ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|altsyncram:data_buffer_rtl_1                                                           ; work         ;
@@ -484,8 +483,8 @@ agreement for further details.
 ;                |mult_86t:auto_generated|           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult0|mult_86t:auto_generated                                           ; work         ;
 ;             |lpm_mult:Mult1|                       ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult1                                                                   ; work         ;
 ;                |mult_p4t:auto_generated|           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult1|mult_p4t:auto_generated                                           ; work         ;
-;          |Overdrive:Overdrive|                     ; 355 (31)          ; 36 (36)      ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive                                                                                    ; work         ;
-;             |tanh:u_tanh|                          ; 324 (324)         ; 0 (0)        ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh                                                                        ; work         ;
+;          |Overdrive:Overdrive|                     ; 357 (31)          ; 35 (35)      ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive                                                                                    ; work         ;
+;             |tanh:u_tanh|                          ; 326 (326)         ; 0 (0)        ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh                                                                        ; work         ;
 ;                |lpm_mult:Mult0|                    ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult0                                                         ; work         ;
 ;                   |mult_06t:auto_generated|        ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult0|mult_06t:auto_generated                                 ; work         ;
 ;                |lpm_mult:Mult1|                    ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult1                                                         ; work         ;
@@ -539,12 +538,7 @@ agreement for further details.
 ;                |mult_j4t:auto_generated|           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult0|mult_j4t:auto_generated                                                   ; work         ;
 ;             |lpm_mult:Mult1|                       ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult1                                                                           ; work         ;
 ;                |mult_m4t:auto_generated|           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult1|mult_m4t:auto_generated                                                   ; work         ;
-;          |distortion:Distortion|                   ; 363 (42)          ; 65 (65)      ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion                                                                                  ; work         ;
-;             |tanh:u_tanh|                          ; 321 (321)         ; 0 (0)        ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh                                                                      ; work         ;
-;                |lpm_mult:Mult0|                    ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult0                                                       ; work         ;
-;                   |mult_o4t:auto_generated|        ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult0|mult_o4t:auto_generated                               ; work         ;
-;                |lpm_mult:Mult1|                    ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult1                                                       ; work         ;
-;                   |mult_66t:auto_generated|        ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult1|mult_66t:auto_generated                               ; work         ;
+;          |distortion:Distortion|                   ; 0 (0)             ; 51 (51)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion                                                                                  ; work         ;
 ;       |Player:player|                              ; 29 (29)           ; 39 (39)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Player:player                                                                                                  ; work         ;
 ;       |Recorder:recorder|                          ; 51 (51)           ; 23 (23)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Recorder:recorder                                                                                              ; work         ;
 ;       |WM8731_init:wm8731_init|                    ; 50 (50)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|WM8731_init:wm8731_init                                                                                        ; work         ;
@@ -599,10 +593,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Statistic                             ; Number Used ;
 +---------------------------------------+-------------+
 ; Simple Multipliers (9-bit)            ; 2           ;
-; Simple Multipliers (18-bit)           ; 32          ;
+; Simple Multipliers (18-bit)           ; 30          ;
 ; Embedded Multiplier Blocks            ; --          ;
-; Embedded Multiplier 9-bit elements    ; 66          ;
-; Signed Embedded Multipliers           ; 30          ;
+; Embedded Multiplier 9-bit elements    ; 62          ;
+; Signed Embedded Multipliers           ; 28          ;
 ; Unsigned Embedded Multipliers         ; 4           ;
 ; Mixed Sign Embedded Multipliers       ; 0           ;
 ; Variable Sign Embedded Multipliers    ; 0           ;
@@ -703,8 +697,8 @@ Encoding Type:  One-Hot
 ; Top:top0|DSP:dsp|Flanger:Flanger|gain_r[0..5,7]                                                                                            ; Stuck at GND due to stuck port data_in                                           ;
 ; Top:top0|DSP:dsp|Flanger:Flanger|w_rate_r[0..5,7]                                                                                          ; Stuck at GND due to stuck port data_in                                           ;
 ; Top:top0|DSP:dsp|Reverb:Reverb|w_rate_r[0..4,6,7]                                                                                          ; Stuck at GND due to stuck port data_in                                           ;
-; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r[0,1,3]                                                                                     ; Stuck at GND due to stuck port data_in                                           ;
-; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r2[0,1,3]                                                                                    ; Stuck at GND due to stuck port data_in                                           ;
+; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r[0..7]                                                                                      ; Stuck at GND due to stuck port data_in                                           ;
+; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r2[0..7]                                                                                     ; Stuck at GND due to stuck port data_in                                           ;
 ; Top:top0|DSP:dsp|Overdrive:Overdrive|i_gain_r[0,1,3,9]                                                                                     ; Stuck at GND due to stuck port data_in                                           ;
 ; Top:top0|DSP:dsp|Overdrive:Overdrive|i_gain_r2[0,1,3,9]                                                                                    ; Stuck at GND due to stuck port data_in                                           ;
 ; final_qsys:pll0|final_qsys_altpll_0:altpll_0|prev_reset                                                                                    ; Stuck at GND due to stuck port data_in                                           ;
@@ -750,7 +744,7 @@ Encoding Type:  One-Hot
 ; Top:top0|DSP:dsp|Overdrive:Overdrive|i_data_r2[3]                                                                                          ; Merged with Top:top0|DSP:dsp|distortion:Distortion|i_data_r2[3]                  ;
 ; Top:top0|DSP:dsp|Overdrive:Overdrive|i_data_r2[2]                                                                                          ; Merged with Top:top0|DSP:dsp|distortion:Distortion|i_data_r2[2]                  ;
 ; Top:top0|DSP:dsp|Overdrive:Overdrive|i_data_r2[1]                                                                                          ; Merged with Top:top0|DSP:dsp|distortion:Distortion|i_data_r2[1]                  ;
-; Top:top0|DSP:dsp|distortion:Distortion|o_data[14]                                                                                          ; Merged with Top:top0|DSP:dsp|distortion:Distortion|o_data[15]                    ;
+; Top:top0|DSP:dsp|Overdrive:Overdrive|i_data_r2[0]                                                                                          ; Merged with Top:top0|DSP:dsp|distortion:Distortion|i_data_r2[0]                  ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|buf_ptr_f[1]                                                                                        ; Lost fanout                                                                      ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][10]                                                                                   ; Merged with Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][0]              ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][11]                                                                                   ; Merged with Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][0]              ;
@@ -1344,7 +1338,6 @@ Encoding Type:  One-Hot
 ; Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[9][8]                                                                                    ; Merged with Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][0]              ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[9][9]                                                                                    ; Merged with Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][0]              ;
 ; Top:top0|DSP:dsp|Overdrive:Overdrive|i_gain_r2[4..8]                                                                                       ; Merged with Top:top0|DSP:dsp|Overdrive:Overdrive|i_gain_r2[2]                    ;
-; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r2[2,4..7]                                                                                   ; Merged with Top:top0|DSP:dsp|Overdrive:Overdrive|i_gain_r2[2]                    ;
 ; Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|delay_base_r[9]                                                                                         ; Merged with Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|delay_amp_r[7]                    ;
 ; Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|w_rate_r[6]                                                                                             ; Merged with Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|delay_amp_r[7]                    ;
 ; Top:top0|DSP:dsp|Chorus:Chorus|delay_amp_r[7]                                                                                              ; Merged with Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|delay_amp_r[7]                    ;
@@ -1358,7 +1351,6 @@ Encoding Type:  One-Hot
 ; Top:top0|DSP:dsp|Flanger:Flanger|w_rate_r[6]                                                                                               ; Merged with Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|delay_amp_r[7]                    ;
 ; Top:top0|DSP:dsp|Overdrive:Overdrive|i_gain_r[2,4..8]                                                                                      ; Merged with Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|delay_amp_r[7]                    ;
 ; Top:top0|DSP:dsp|Reverb:Reverb|w_rate_r[5]                                                                                                 ; Merged with Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|delay_amp_r[7]                    ;
-; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r[2,4..7]                                                                                    ; Merged with Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|delay_amp_r[7]                    ;
 ; Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|gain_r[1,2,5..7]                                                                ; Merged with Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|gain_r[0] ;
 ; Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|gain_r[4]                                                                       ; Merged with Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|gain_r[3] ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|req_buffer[0][0]                                                                                    ; Stuck at GND due to stuck port data_in                                           ;
@@ -1404,6 +1396,7 @@ Encoding Type:  One-Hot
 ; Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|delayed_data_r[0]                                                                               ; Lost fanout                                                                      ;
 ; Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|r_data[0]                                                                                       ; Lost fanout                                                                      ;
 ; Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|fb_data_r[0,1]                                                                                  ; Lost fanout                                                                      ;
+; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[0..15]                                                                                ; Lost fanout                                                                      ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|buf_ptr_i[0..3]                                                                                     ; Lost fanout                                                                      ;
 ; Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|counter_r[15]                                                                                       ; Stuck at GND due to stuck port data_in                                           ;
 ; Top:top0|state_r~5                                                                                                                         ; Lost fanout                                                                      ;
@@ -1423,7 +1416,7 @@ Encoding Type:  One-Hot
 ; Top:top0|SRAM_Scheduler:sram_scheduler|state_r.IDLE                                                                                        ; Lost fanout                                                                      ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|counter_r[0..2]                                                                                     ; Lost fanout                                                                      ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|state_r.PROC_R                                                                                      ; Lost fanout                                                                      ;
-; Total Number of Removed Registers = 906                                                                                                    ;                                                                                  ;
+; Total Number of Removed Registers = 922                                                                                                    ;                                                                                  ;
 +--------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
 
 
@@ -1487,6 +1480,22 @@ Encoding Type:  One-Hot
 ;                                                              ;                           ; Top:top0|DSP:dsp|Flanger:Flanger|delay_skew_F_neg_pipe[5],                                                                                 ;
 ;                                                              ;                           ; Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|counter_r[15],                                                                                      ;
 ;                                                              ;                           ; Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|delay_skew_F_neg_pipe[8]                                                                                ;
+; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r[7]           ; Stuck at GND              ; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r2[7],                                                                                       ;
+;                                                              ; due to stuck port data_in ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[14],                                                                                  ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[13],                                                                                  ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[12],                                                                                  ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[11],                                                                                  ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[10],                                                                                  ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[9],                                                                                   ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[8],                                                                                   ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[7],                                                                                   ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[6],                                                                                   ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[5],                                                                                   ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[4],                                                                                   ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[3],                                                                                   ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[2],                                                                                   ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[1],                                                                                   ;
+;                                                              ;                           ; Top:top0|DSP:dsp|distortion:Distortion|tanh_unnorm_r[0]                                                                                    ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|buf_ptr_i[3]          ; Lost Fanouts              ; Top:top0|SRAM_Scheduler:sram_scheduler|buf_ptr_i[2],                                                                                       ;
 ;                                                              ;                           ; Top:top0|SRAM_Scheduler:sram_scheduler|buf_ptr_i[1],                                                                                       ;
 ;                                                              ;                           ; Top:top0|SRAM_Scheduler:sram_scheduler|buf_ptr_i[0],                                                                                       ;
@@ -1504,7 +1513,15 @@ Encoding Type:  One-Hot
 ;                                                              ;                           ; Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|fb_data_r[0]                                                                                    ;
 ; Top:top0|SRAM_Scheduler:sram_scheduler|buf_ptr_f[3]          ; Lost Fanouts              ; Top:top0|SRAM_Scheduler:sram_scheduler|buf_ptr_f[1],                                                                                       ;
 ;                                                              ;                           ; Top:top0|SRAM_Scheduler:sram_scheduler|counter_r[2]                                                                                        ;
+; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r[6]           ; Stuck at GND              ; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r2[6]                                                                                        ;
+;                                                              ; due to stuck port data_in ;                                                                                                                                            ;
+; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r[5]           ; Stuck at GND              ; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r2[5]                                                                                        ;
+;                                                              ; due to stuck port data_in ;                                                                                                                                            ;
+; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r[4]           ; Stuck at GND              ; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r2[4]                                                                                        ;
+;                                                              ; due to stuck port data_in ;                                                                                                                                            ;
 ; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r[3]           ; Stuck at GND              ; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r2[3]                                                                                        ;
+;                                                              ; due to stuck port data_in ;                                                                                                                                            ;
+; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r[2]           ; Stuck at GND              ; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r2[2]                                                                                        ;
 ;                                                              ; due to stuck port data_in ;                                                                                                                                            ;
 ; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r[1]           ; Stuck at GND              ; Top:top0|DSP:dsp|distortion:Distortion|i_gain_r2[1]                                                                                        ;
 ;                                                              ; due to stuck port data_in ;                                                                                                                                            ;
@@ -1527,12 +1544,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1832  ;
+; Total registers                              ; 1817  ;
 ; Number of registers using Synchronous Clear  ; 47    ;
-; Number of registers using Synchronous Load   ; 206   ;
-; Number of registers using Asynchronous Clear ; 992   ;
+; Number of registers using Synchronous Load   ; 175   ;
+; Number of registers using Asynchronous Clear ; 977   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 1306  ;
+; Number of registers using Clock Enable       ; 1307  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -2002,51 +2019,48 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |DE2_115|Top:top0|Player:player|o_DAC_DAT_r[13]                                ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |DE2_115|Top:top0|SRAM_Scheduler:sram_scheduler|counter_r[1]                   ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |DE2_115|Top:top0|Player:player|o_DAC_DAT_r[9]                                 ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |DE2_115|Top:top0|SRAM_Scheduler:sram_scheduler|counter_r[2]                   ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |DE2_115|Top:top0|Recorder:recorder|counter_r[1]                               ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|o_data_r[15]               ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|out[1]     ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|fb_data_r[6]               ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|out[2]     ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|out[5]     ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|out[5]     ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|out[2]     ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch1_read[8]                ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch0_read[13]               ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch2_read[4]                ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch3_read[3]                ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|temp_0[6]  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|temp_0[14] ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|temp_0[8]  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|temp_0[0]  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|temp_0[4]  ;
-; 4:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|o_data[12]                     ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|state_r[2]                           ;
-; 9:1                ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|bit_cnt_r[2]                         ;
-; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|command_cnt_r[0]                     ;
-; 7:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|Buffer:buffer|out_data[6]                                    ;
-; 6:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|counter_r[5]                   ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|o_data_r[14]               ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|out[9]     ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|fb_data_r[14]              ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|out[9]     ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|out[3]     ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|out[10]    ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|out[6]     ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch1_read[4]                ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch0_read[15]               ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch2_read[14]               ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch3_read[4]                ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|temp_0[11] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|temp_0[8]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|temp_0[1]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|temp_0[3]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|temp_0[9]  ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|state_r[1]                           ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|bit_cnt_r[3]                         ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|command_cnt_r[3]                     ;
+; 7:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|Buffer:buffer|out_data[9]                                    ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|counter_r[15]                  ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|Recorder:recorder|Selector1                                  ;
 ; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|current_volume[14]             ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch1_curr[13]               ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch0_curr[12]               ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch2_curr[9]                ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch3_curr[1]                ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|data_curr[8]                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|v_curr[14] ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|v_curr[11] ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|v_curr[9]  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|v_curr[12] ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|v_curr[13] ;
-; 3:1                ; 21 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|frac_q0_16[3]        ;
-; 3:1                ; 21 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|frac_q0_16[14]     ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|state_w.S_MENU                                               ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch1_curr[4]                ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch0_curr[2]                ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch2_curr[15]               ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch3_curr[7]                ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|data_curr[15]                        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|v_curr[2]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|v_curr[1]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|v_curr[11] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|v_curr[6]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|v_curr[4]  ;
+; 3:1                ; 21 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lut_idx[6]           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|state_w.S_SETUP                                              ;
 ; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|SRAM_Scheduler:sram_scheduler|Selector5                      ;
-; 512:1              ; 15 bits   ; 5115 LEs      ; 90 LEs               ; 5025 LEs               ; No         ; |DE2_115|Top:top0|DSP:dsp|Selector5                                            ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|state_w.S_HOLD                 ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|state_w.S_NORMAL               ;
-; 264:1              ; 2 bits    ; 352 LEs       ; 12 LEs               ; 340 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|Selector0                                            ;
+; 512:1              ; 17 bits   ; 5797 LEs      ; 102 LEs              ; 5695 LEs               ; No         ; |DE2_115|Top:top0|DSP:dsp|Selector13                                           ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|state_w.S_RECOVER              ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|state_w.S_DECAY                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
 
 
@@ -3834,41 +3848,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult0 ;
-+------------------------------------------------+--------------+----------------------------------------------------+
-; Parameter Name                                 ; Value        ; Type                                               ;
-+------------------------------------------------+--------------+----------------------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                                         ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                                       ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                                       ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                                     ;
-; LPM_WIDTHA                                     ; 16           ; Untyped                                            ;
-; LPM_WIDTHB                                     ; 9            ; Untyped                                            ;
-; LPM_WIDTHP                                     ; 25           ; Untyped                                            ;
-; LPM_WIDTHR                                     ; 25           ; Untyped                                            ;
-; LPM_WIDTHS                                     ; 1            ; Untyped                                            ;
-; LPM_REPRESENTATION                             ; SIGNED       ; Untyped                                            ;
-; LPM_PIPELINE                                   ; 0            ; Untyped                                            ;
-; LATENCY                                        ; 0            ; Untyped                                            ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                                            ;
-; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                                            ;
-; USE_EAB                                        ; OFF          ; Untyped                                            ;
-; MAXIMIZE_SPEED                                 ; 5            ; Untyped                                            ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                                            ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped                                            ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K                                ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                                            ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                                            ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                                            ;
-; CBXI_PARAMETER                                 ; mult_o4t     ; Untyped                                            ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                                            ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                                            ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                                            ;
-+------------------------------------------------+--------------+----------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
 +------------------------------------------------------------------------------------------------+
 ; Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult1 ;
 +------------------------------------------------+--------------+--------------------------------+
@@ -4321,41 +4300,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                                                    ;
 ; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                                                    ;
 +------------------------------------------------+--------------+------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult1 ;
-+------------------------------------------------+--------------+----------------------------------------------------+
-; Parameter Name                                 ; Value        ; Type                                               ;
-+------------------------------------------------+--------------+----------------------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                                         ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                                       ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                                       ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                                     ;
-; LPM_WIDTHA                                     ; 17           ; Untyped                                            ;
-; LPM_WIDTHB                                     ; 12           ; Untyped                                            ;
-; LPM_WIDTHP                                     ; 29           ; Untyped                                            ;
-; LPM_WIDTHR                                     ; 29           ; Untyped                                            ;
-; LPM_WIDTHS                                     ; 1            ; Untyped                                            ;
-; LPM_REPRESENTATION                             ; SIGNED       ; Untyped                                            ;
-; LPM_PIPELINE                                   ; 0            ; Untyped                                            ;
-; LATENCY                                        ; 0            ; Untyped                                            ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                                            ;
-; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                                            ;
-; USE_EAB                                        ; OFF          ; Untyped                                            ;
-; MAXIMIZE_SPEED                                 ; 5            ; Untyped                                            ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                                            ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped                                            ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K                                ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                                            ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                                            ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                                            ;
-; CBXI_PARAMETER                                 ; mult_66t     ; Untyped                                            ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                                            ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                                            ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                                            ;
-+------------------------------------------------+--------------+----------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -5061,7 +5005,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------------+---------------------------------------------------------------------------+
 ; Name                                  ; Value                                                                     ;
 +---------------------------------------+---------------------------------------------------------------------------+
-; Number of entity instances            ; 32                                                                        ;
+; Number of entity instances            ; 30                                                                        ;
 ; Entity Instance                       ; Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult0                     ;
 ;     -- LPM_WIDTHA                     ; 16                                                                        ;
 ;     -- LPM_WIDTHB                     ; 16                                                                        ;
@@ -5088,17 +5032,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- LPM_WIDTHA                     ; 8                                                                         ;
 ;     -- LPM_WIDTHB                     ; 16                                                                        ;
 ;     -- LPM_WIDTHP                     ; 24                                                                        ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                                                    ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                                        ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                                        ;
-;     -- USE_EAB                        ; OFF                                                                       ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                                      ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                                        ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                                        ;
-; Entity Instance                       ; Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult0         ;
-;     -- LPM_WIDTHA                     ; 16                                                                        ;
-;     -- LPM_WIDTHB                     ; 9                                                                         ;
-;     -- LPM_WIDTHP                     ; 25                                                                        ;
 ;     -- LPM_REPRESENTATION             ; SIGNED                                                                    ;
 ;     -- INPUT_A_IS_CONSTANT            ; NO                                                                        ;
 ;     -- INPUT_B_IS_CONSTANT            ; NO                                                                        ;
@@ -5242,17 +5175,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- LPM_WIDTHA                     ; 6                                                                         ;
 ;     -- LPM_WIDTHB                     ; 16                                                                        ;
 ;     -- LPM_WIDTHP                     ; 22                                                                        ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                                                    ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                                        ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                                        ;
-;     -- USE_EAB                        ; OFF                                                                       ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                                      ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                                        ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                                        ;
-; Entity Instance                       ; Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult1         ;
-;     -- LPM_WIDTHA                     ; 17                                                                        ;
-;     -- LPM_WIDTHB                     ; 12                                                                        ;
-;     -- LPM_WIDTHP                     ; 29                                                                        ;
 ;     -- LPM_REPRESENTATION             ; SIGNED                                                                    ;
 ;     -- INPUT_A_IS_CONSTANT            ; NO                                                                        ;
 ;     -- INPUT_B_IS_CONSTANT            ; NO                                                                        ;
@@ -5592,13 +5514,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Top:top0|DSP:dsp|distortion:Distortion"                                                                                                                                            ;
-+--------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port   ; Type  ; Severity ; Details                                                                                                                                                                           ;
-+--------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; i_gain ; Input ; Warning  ; Input port expression (10 bits) is wider than the input port (8 bits) it drives.  The 2 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-+--------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Top:top0|DSP:dsp|fuzz:Fuzz"                                                                 ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; i_gain[7..3] ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; i_gain[2]    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; i_gain[1]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; i_gain[0]    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; o_data       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; o_en         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------+
@@ -5608,6 +5535,19 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
 ; o_data[0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------+
+; Port Connectivity Checks: "Top:top0|DSP:dsp|Overdrive:Overdrive" ;
++--------------+-------+----------+--------------------------------+
+; Port         ; Type  ; Severity ; Details                        ;
++--------------+-------+----------+--------------------------------+
+; i_gain[8..4] ; Input ; Info     ; Stuck at VCC                   ;
+; i_gain[1..0] ; Input ; Info     ; Stuck at GND                   ;
+; i_gain[9]    ; Input ; Info     ; Stuck at GND                   ;
+; i_gain[3]    ; Input ; Info     ; Stuck at GND                   ;
+; i_gain[2]    ; Input ; Info     ; Stuck at VCC                   ;
++--------------+-------+----------+--------------------------------+
 
 
 +------------------------------------------------------------------+
@@ -5730,34 +5670,34 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 480                         ;
-; cycloneiii_ff         ; 1832                        ;
+; cycloneiii_ff         ; 1817                        ;
 ;     CLR               ; 180                         ;
 ;     CLR SCLR          ; 5                           ;
-;     CLR SLD           ; 31                          ;
+;     CLR SLD           ; 15                          ;
 ;     ENA               ; 386                         ;
-;     ENA CLR           ; 703                         ;
+;     ENA CLR           ; 719                         ;
 ;     ENA CLR SCLR      ; 42                          ;
-;     ENA CLR SLD       ; 31                          ;
+;     ENA CLR SLD       ; 16                          ;
 ;     ENA SLD           ; 144                         ;
 ;     plain             ; 310                         ;
 ; cycloneiii_io_obuf    ; 141                         ;
-; cycloneiii_lcell_comb ; 4649                        ;
-;     arith             ; 1816                        ;
-;         2 data inputs ; 824                         ;
-;         3 data inputs ; 992                         ;
-;     normal            ; 2833                        ;
+; cycloneiii_lcell_comb ; 4272                        ;
+;     arith             ; 1763                        ;
+;         2 data inputs ; 801                         ;
+;         3 data inputs ; 962                         ;
+;     normal            ; 2509                        ;
 ;         0 data inputs ; 18                          ;
-;         1 data inputs ; 87                          ;
-;         2 data inputs ; 366                         ;
-;         3 data inputs ; 751                         ;
-;         4 data inputs ; 1611                        ;
-; cycloneiii_mac_mult   ; 34                          ;
-; cycloneiii_mac_out    ; 34                          ;
+;         1 data inputs ; 85                          ;
+;         2 data inputs ; 364                         ;
+;         3 data inputs ; 708                         ;
+;         4 data inputs ; 1334                        ;
+; cycloneiii_mac_mult   ; 32                          ;
+; cycloneiii_mac_out    ; 32                          ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 384                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 23.30                       ;
-; Average LUT depth     ; 5.98                        ;
+; Average LUT depth     ; 5.78                        ;
 +-----------------------+-----------------------------+
 
 
@@ -5766,7 +5706,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:19     ;
+; Top            ; 00:00:17     ;
 +----------------+--------------+
 
 
@@ -5776,7 +5716,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
-    Info: Processing started: Wed Jun 17 01:00:16 2026
+    Info: Processing started: Wed Jun 17 01:45:44 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/tanh_new.sv
@@ -5848,6 +5788,7 @@ Info (12021): Found 3 design units, including 3 entities, in source file /users/
     Info (12023): Found entity 2: Data_Catcher
     Info (12023): Found entity 3: cosine
 Warning (10236): Verilog HDL Implicit Net warning at WM8731_init.sv(52): created implicit net for "dbg"
+Warning (10236): Verilog HDL Implicit Net warning at DSP.sv(167): created implicit net for "i_gain_distorton"
 Info (12127): Elaborating entity "DE2_115" for the top level hierarchy
 Warning (10230): Verilog HDL assignment warning at DE2_115.sv(231): truncated value with size 32 to match size of target (4)
 Warning (10230): Verilog HDL assignment warning at DE2_115.sv(233): truncated value with size 32 to match size of target (4)
@@ -5927,8 +5868,9 @@ Warning (10230): Verilog HDL assignment warning at WM8731_init.sv(127): truncate
 Info (12128): Elaborating entity "Recorder" for hierarchy "Top:top0|Recorder:recorder"
 Warning (10230): Verilog HDL assignment warning at Recorder.sv(40): truncated value with size 32 to match size of target (5)
 Info (12128): Elaborating entity "DSP" for hierarchy "Top:top0|DSP:dsp"
-Warning (10036): Verilog HDL or VHDL warning at DSP.sv(76): object "fuzz_en" assigned a value but never read
-Info (10264): Verilog HDL Case Statement information at DSP.sv(300): all case item expressions in this case statement are onehot
+Warning (10036): Verilog HDL or VHDL warning at DSP.sv(167): object "i_gain_distorton" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at DSP.sv(167): truncated value with size 8 to match size of target (1)
+Info (10264): Verilog HDL Case Statement information at DSP.sv(307): all case item expressions in this case statement are onehot
 Warning (10034): Output port "o_B0_r_addr" at DSP.sv(15) has no driver
 Warning (10034): Output port "o_B0_w_addr" at DSP.sv(19) has no driver
 Warning (10034): Output port "o_B0_w_data" at DSP.sv(20) has no driver
@@ -5955,6 +5897,7 @@ Warning (10230): Verilog HDL assignment warning at DSP_lib.sv(13): truncated val
 Info (12128): Elaborating entity "Overdrive" for hierarchy "Top:top0|DSP:dsp|Overdrive:Overdrive"
 Info (12128): Elaborating entity "tanh" for hierarchy "Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh"
 Warning (10230): Verilog HDL assignment warning at tanh_new.sv(315): truncated value with size 32 to match size of target (17)
+Info (12128): Elaborating entity "fuzz" for hierarchy "Top:top0|DSP:dsp|fuzz:Fuzz"
 Info (12128): Elaborating entity "distortion" for hierarchy "Top:top0|DSP:dsp|distortion:Distortion"
 Info (12128): Elaborating entity "Reverb" for hierarchy "Top:top0|DSP:dsp|Reverb:Reverb"
 Warning (10230): Verilog HDL assignment warning at Reverb.sv(47): truncated value with size 25 to match size of target (18)
@@ -6075,11 +6018,9 @@ Warning (276020): Inferred RAM node "Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Al
 Warning (276020): Inferred RAM node "Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|v_buffer_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
 Warning (276020): Inferred RAM node "Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|v_buffer_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
 Warning (276020): Inferred RAM node "Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|v_buffer_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
-Info (276014): Found 8 instances of uninferred RAM logic
+Info (276014): Found 6 instances of uninferred RAM logic
     Info (276007): RAM logic "Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|Ram0" is uninferred due to asynchronous read logic
     Info (276007): RAM logic "Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|Ram1" is uninferred due to asynchronous read logic
-    Info (276007): RAM logic "Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|Ram0" is uninferred due to asynchronous read logic
-    Info (276007): RAM logic "Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|Ram1" is uninferred due to asynchronous read logic
     Info (276007): RAM logic "Top:top0|DSP:dsp|Flanger:Flanger|cosine:cosine_0|Ram0" is uninferred due to asynchronous read logic
     Info (276007): RAM logic "Top:top0|DSP:dsp|Flanger:Flanger|cosine:cosine_0|Ram1" is uninferred due to asynchronous read logic
     Info (276007): RAM logic "Top:top0|DSP:dsp|Chorus:Chorus|cosine:cosine_0|Ram0" is uninferred due to asynchronous read logic
@@ -6368,14 +6309,13 @@ Info (19000): Inferred 18 megafunctions from design logic
         Info (286033): Parameter INDATA_ACLR_A set to NONE
         Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
         Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
-Info (278001): Inferred 35 megafunctions from design logic
+Info (278001): Inferred 33 megafunctions from design logic
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod2"
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0"
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|Mult0"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Flanger:Flanger|Mult4"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Flanger:Flanger|Mult5"
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|Mult0"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Reverb:Reverb|Mult1"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Reverb:Reverb|Mult0"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|Mult0"
@@ -6389,7 +6329,6 @@ Info (278001): Inferred 35 megafunctions from design logic
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|Mult0"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|Mult0"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|Mult0"
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|Mult1"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|Mult1"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Flanger:Flanger|cosine:cosine_0|Mult0"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Top:top0|DSP:dsp|Chorus:Chorus|cosine:cosine_0|Mult0"
@@ -6631,19 +6570,6 @@ Info (12133): Instantiated megafunction "Top:top0|DSP:dsp|Flanger:Flanger|lpm_mu
     Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
     Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Info (12130): Elaborated megafunction instantiation "Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult0"
-Info (12133): Instantiated megafunction "Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult0" with the following parameter:
-    Info (12134): Parameter "LPM_WIDTHA" = "16"
-    Info (12134): Parameter "LPM_WIDTHB" = "9"
-    Info (12134): Parameter "LPM_WIDTHP" = "25"
-    Info (12134): Parameter "LPM_WIDTHR" = "25"
-    Info (12134): Parameter "LPM_WIDTHS" = "1"
-    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
-    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Info (12021): Found 1 design units, including 1 entities, in source file db/mult_o4t.tdf
-    Info (12023): Found entity 1: mult_o4t
 Info (12130): Elaborated megafunction instantiation "Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult1"
 Info (12133): Instantiated megafunction "Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult1" with the following parameter:
     Info (12134): Parameter "LPM_WIDTHA" = "8"
@@ -6718,8 +6644,8 @@ Info (12133): Instantiated megafunction "Top:top0|DSP:dsp|Reverb:Reverb|Schroede
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/mult_h4t.tdf
     Info (12023): Found entity 1: mult_h4t
-Info (12130): Elaborated megafunction instantiation "Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult1"
-Info (12133): Instantiated megafunction "Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult1" with the following parameter:
+Info (12130): Elaborated megafunction instantiation "Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult1"
+Info (12133): Instantiated megafunction "Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult1" with the following parameter:
     Info (12134): Parameter "LPM_WIDTHA" = "17"
     Info (12134): Parameter "LPM_WIDTHB" = "12"
     Info (12134): Parameter "LPM_WIDTHP" = "29"
@@ -6779,7 +6705,7 @@ Info (12133): Instantiated megafunction "Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_
     Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
     Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Warning (12241): 6 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13014): Ignored 52 buffer(s)
     Info (13019): Ignored 52 SOFT buffer(s)
 Warning (13039): The following bidirectional pins have no drivers
@@ -7105,7 +7031,7 @@ Warning (332009): The launch and latch times for the relationship between source
 Warning (332009): The launch and latch times for the relationship between source clock: AUD_BCLK and destination clock: pll0|altpll_0|sd1|pll7|clk[1] are outside of the legal time range. The relationship difference is correct, however the launch time is set to 0.
 Warning (332009): The launch and latch times for the relationship between source clock: pll0|altpll_0|sd1|pll7|clk[1] and destination clock: AUD_BCLK are outside of the legal time range. The relationship difference is correct, however the launch time is set to 0.
 Warning (332009): The launch and latch times for the relationship between source clock: AUD_BCLK and destination clock: pll0|altpll_0|sd1|pll7|clk[1] are outside of the legal time range. The relationship difference is correct, however the launch time is set to 0.
-Info (17049): 33 registers lost all their fanouts during netlist optimizations.
+Info (17049): 49 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/output_files/DE2_115.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
@@ -7181,19 +7107,19 @@ Warning (21074): Design contains 71 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[14]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[15]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[16]"
-Info (21057): Implemented 6628 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 6262 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 91 input pins
     Info (21059): Implemented 248 output pins
     Info (21060): Implemented 141 bidirectional pins
-    Info (21061): Implemented 5697 logic cells
+    Info (21061): Implemented 5335 logic cells
     Info (21064): Implemented 384 RAM segments
     Info (21065): Implemented 1 PLLs
-    Info (21062): Implemented 66 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 589 warnings
-    Info: Peak virtual memory: 4986 megabytes
-    Info: Processing ended: Wed Jun 17 01:00:53 2026
-    Info: Elapsed time: 00:00:37
-    Info: Total CPU time (on all processors): 00:00:43
+    Info (21062): Implemented 62 DSP elements
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 591 warnings
+    Info: Peak virtual memory: 4991 megabytes
+    Info: Processing ended: Wed Jun 17 01:46:20 2026
+    Info: Elapsed time: 00:00:36
+    Info: Total CPU time (on all processors): 00:00:44
 
 
 +------------------------------------------+

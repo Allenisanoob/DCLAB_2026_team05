@@ -310,10 +310,10 @@ module DSP (
                 processed_valid = od_valid;
             end
 
-            // 8'b0_0000_0010: begin
-            //     processed_data  = fuzz_data;
-            //     processed_valid = fuzz_valid;
-            // end
+            9'b0_0000_0010: begin
+                processed_data  = fuzz_data;
+                processed_valid = fuzz_valid;
+            end
 
             9'b0_0000_0100: begin
                 processed_data  = dist_data;

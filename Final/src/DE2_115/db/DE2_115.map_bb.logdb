@@ -8,8 +8,6 @@ DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:
 DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult4|mult_m4t:auto_generated|mac_out2,
 DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult4|mult_m4t:auto_generated|mac_out2,
 DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|lpm_mult:Mult5|mult_m4t:auto_generated|mac_out2,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult0|mult_o4t:auto_generated|mac_out2,
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|lpm_mult:Mult1|mult_66t:auto_generated|mac_out2,
 DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult0|mult_06t:auto_generated|mac_out2,
 DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult1|mult_66t:auto_generated|mac_out2,
 DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,Top:top0|DSP:dsp|Flanger:Flanger|lpm_mult:Mult1|mult_86t:auto_generated|mac_out2,
