@@ -212,8 +212,8 @@ module DSP (
     logic [7:0]  de_feedback; // Feedback ratio (0 to 127, where 128 is 100%)
     logic [7:0]  de_mix;      // Mix ratio      (0 to 127, where 128 is 100%)
     assign de_time = 16'd24000;         // 0.5s
-    assign de_feedback = 8'd0000_0011;  // x0.1875
-    assign de_mix = 8'd0110_0000;       // x0.375
+    assign de_feedback = 8'b0000_0011;  // x0.1875
+    assign de_mix = 8'b0110_0000;       // x0.375
     Delay_Effect #(.BASE_ADDR(20'h00000)) Delay_Effect(
         .i_clk          (i_clk),
         .i_rst          (i_rst),
