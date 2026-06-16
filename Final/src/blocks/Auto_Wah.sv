@@ -59,7 +59,7 @@ logic signed [17:0] out_curr; // out_curr = (temp_5 + 25'sd64) >>> 7 // Q18.0
 // cosine cosine_0 (.f(cos_input_temp[18:3]), .cos_2pif(cos_output));
 // assign delay_skew = $signed({1'b0, delay_amp}) * cos_output;
 assign abs_in = in[15] ? -in : in;
-assign gain_env_out = (!(env_out[15] || env_out[14] || env_out[13])) ? env_out << 2 : (!env_out[15]) ? 16'sd32767 : 16'sd0;
+assign gain_env_out = (!(env_out[15] || env_out[14] || env_out[13])) ? {env_out[13:0], 2'b0} : (!env_out[15]) ? 16'sd32767 : 16'sd0;
 assign delay_skew = $signed({1'b0, delay_amp}) * gain_env_out;
 assign delay_skew_I = delay_skew >>> 15;
 assign delay_skew_F = delay_skew[14:0];
