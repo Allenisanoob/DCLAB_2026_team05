@@ -3,7 +3,7 @@ module Overdrive (
     input                      i_clk,
     input                      i_rst,      // active-low reset
     input        signed [15:0] i_data,     // Q1.15 (Signed)
-    input               [7:0]  i_gain,     // Q2.6 (Unsigned)
+    input               [9:0]  i_gain,     // Q4.6 (Unsigned)
     input                      i_en,
     output       logic signed [15:0] o_data,    // Q1.15 (Signed)
     output       logic         o_en
@@ -13,7 +13,7 @@ module Overdrive (
     // Stage 0: input register
     // ==========================================
     logic signed [15:0] i_data_r;
-    logic        [7:0]  i_gain_r;
+    logic        [9:0]  i_gain_r;
     logic               i_en_r;
 
     // ==========================================
@@ -26,7 +26,7 @@ module Overdrive (
     // ==========================================
     logic signed [15:0] tanh_unnorm_r;
     logic signed [15:0] i_data_r2;
-    logic        [7:0]  i_gain_r2;
+    logic        [9:0]  i_gain_r2;
     logic               i_en_r2;
 
     // ==========================================
@@ -51,12 +51,12 @@ module Overdrive (
     always_ff @(posedge i_clk or negedge i_rst) begin
         if (!i_rst) begin
             i_data_r      <= 16'sd0;
-            i_gain_r      <= 8'd0;
+            i_gain_r      <= 10'd0;
             i_en_r        <= 1'b0;
 
             tanh_unnorm_r <= 16'sd0;
             i_data_r2     <= 16'sd0;
-            i_gain_r2     <= 8'd0;
+            i_gain_r2     <= 10'd0;
             i_en_r2       <= 1'b0;
         end else begin
             // Stage 0: capture input sample/gain/valid
@@ -78,13 +78,13 @@ module Overdrive (
     // Uses pipelined tanh_unnorm_r.
     // ==========================================
     always_comb begin
-        if (i_gain_r2 <= 8'd4) begin
+        if (i_gain_r2 <= 10'd4) begin
             // Bypass path must use the data delayed to the same stage.
             overdrive_out = i_data_r2;
         end else begin
             // No recip_tanh normalization:
             // directly use tanh output, already Q1.15 signed.
-            overdrive_out = tanh_unnorm_r;
+            overdrive_out = tanh_unnorm_r >>> 1;
         end
     end
 
