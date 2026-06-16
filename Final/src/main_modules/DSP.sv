@@ -137,8 +137,8 @@ module DSP (
 
 
     // Overdrive, Fuzz, Distortion
-    logic [7:0] i_gain; 
-    assign i_gain = 8'd250;
+    logic [9:0] i_gain; 
+    assign i_gain = 10'd500;
     Overdrive Overdrive(
         .i_clk  (i_clk),
         .i_rst  (i_rst),
