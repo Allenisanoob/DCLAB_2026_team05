@@ -1,0 +1,62 @@
+Info: Starting: Create simulation model
+Info: qsys-generate C:\Mac\Home\Documents\My_Final_\src\DE2_115\FFT_615\FFT_615.qsys --simulation=VERILOG --output-directory=C:\Mac\Home\Documents\My_Final_\src\DE2_115\FFT_615\FFT_615\simulation --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading FFT_615/FFT_615.qsys
+Progress: Reading input file
+Progress: Adding fft_ii_0 [altera_fft_ii 15.0]
+Progress: Parameterizing module fft_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: FFT_615: Generating FFT_615 "FFT_615" for SIM_VERILOG
+Info: fft_ii_0: Created simgen file at: C:/Users/chenyi/AppData/Local/Temp/alt0619_5224373348870258315.dir/0001_fft_ii_0_gen/FFT_615_fft_ii_0.vo
+Info: fft_ii_0: "FFT_615" instantiated altera_fft_ii "fft_ii_0"
+Info: FFT_615: Done "FFT_615" with 2 modules, 8 files
+Info: ip-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=C:\Mac\Home\Documents\My_Final_\src\DE2_115\FFT_615\FFT_615\FFT_615.spd --output-directory=C:/Mac/Home/Documents/My_Final_/src/DE2_115/FFT_615/FFT_615/simulation/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=C:\Mac\Home\Documents\My_Final_\src\DE2_115\FFT_615\FFT_615\FFT_615.spd --output-directory=C:/Mac/Home/Documents/My_Final_/src/DE2_115/FFT_615/FFT_615/simulation/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in C:/Mac/Home/Documents/My_Final_/src/DE2_115/FFT_615/FFT_615/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for VCS simulator in C:/Mac/Home/Documents/My_Final_/src/DE2_115/FFT_615/FFT_615/simulation/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in C:/Mac/Home/Documents/My_Final_/src/DE2_115/FFT_615/FFT_615/simulation/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in C:/Mac/Home/Documents/My_Final_/src/DE2_115/FFT_615/FFT_615/simulation/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: 	1 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERA simulator in C:/Mac/Home/Documents/My_Final_/src/DE2_115/FFT_615/FFT_615/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Mac\Home\Documents\My_Final_\src\DE2_115\FFT_615\FFT_615.qsys --block-symbol-file --output-directory=C:\Mac\Home\Documents\My_Final_\src\DE2_115\FFT_615\FFT_615 --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading FFT_615/FFT_615.qsys
+Progress: Reading input file
+Progress: Adding fft_ii_0 [altera_fft_ii 15.0]
+Progress: Parameterizing module fft_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Mac\Home\Documents\My_Final_\src\DE2_115\FFT_615\FFT_615.qsys --synthesis=VERILOG --output-directory=C:\Mac\Home\Documents\My_Final_\src\DE2_115\FFT_615\FFT_615\synthesis --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading FFT_615/FFT_615.qsys
+Progress: Reading input file
+Progress: Adding fft_ii_0 [altera_fft_ii 15.0]
+Progress: Parameterizing module fft_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: FFT_615: Generating FFT_615 "FFT_615" for QUARTUS_SYNTH
+Info: fft_ii_0: "FFT_615" instantiated altera_fft_ii "fft_ii_0"
+Info: FFT_615: Done "FFT_615" with 2 modules, 106 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
