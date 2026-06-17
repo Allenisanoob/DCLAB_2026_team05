@@ -149,6 +149,18 @@ final_qsys pll0( // generate with qsys, please follow lab2 tutorials
 	// .altpll_800k_clk(CLK_800K)
 );
 
+UART_qsys UART_qsys(
+		
+	.avmwrapper_sv_0_conduit_end_command(),   // avmwrapper_sv_0_conduit_end.command
+	.avmwrapper_sv_0_conduit_end_valid_out(), //                            .valid_out
+	.clk_clk(CLOCK_50),                               //                         clk.clk
+	.reset_reset_n(KEY[3]),                         //                       reset.reset_n
+	.uart_0_external_connection_rxd(UART_RXD),        //  uart_0_external_connection.rxd
+	.uart_0_external_connection_txd(UART_TXD)         //                            .txd
+);
+
+
+
 // you can decide key down settings on your own, below is just an example
 Debounce deb0(
 	.i_in(KEY[0]), // Record/Pause
@@ -276,5 +288,10 @@ assign HEX3 = '1;
 // assign HEX5 = '1;
 // assign HEX6 = '1;
 // assign HEX7 = '1;
+
+
+
+
+
 
 endmodule
