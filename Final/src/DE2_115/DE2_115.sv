@@ -179,14 +179,14 @@ Top top0(
 	.i_key_2(key2down),
 	.i_sw(SW[17:0]),
 
-	// SRAM
-	.o_SRAM_ADDR(SRAM_ADDR), // [19:0]
-	.io_SRAM_DQ(SRAM_DQ), // [15:0]
-	.o_SRAM_WE_N(SRAM_WE_N),
-	.o_SRAM_CE_N(SRAM_CE_N),
-	.o_SRAM_OE_N(SRAM_OE_N),
-	.o_SRAM_LB_N(SRAM_LB_N),
-	.o_SRAM_UB_N(SRAM_UB_N),
+	// // SRAM
+	// .o_SRAM_ADDR(SRAM_ADDR), // [19:0]
+	// .io_SRAM_DQ(SRAM_DQ), // [15:0]
+	// .o_SRAM_WE_N(SRAM_WE_N),
+	// .o_SRAM_CE_N(SRAM_CE_N),
+	// .o_SRAM_OE_N(SRAM_OE_N),
+	// .o_SRAM_LB_N(SRAM_LB_N),
+	// .o_SRAM_UB_N(SRAM_UB_N),
 	
 	// I2C
 	.i_clk_100k(CLK_100K),

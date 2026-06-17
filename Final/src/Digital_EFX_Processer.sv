@@ -6,14 +6,14 @@ module Top (
 	input i_key_2,
 	input [17:0] i_sw,
 	
-	// SRAM
-	output [19:0] o_SRAM_ADDR,
-	inout  [15:0] io_SRAM_DQ,
-	output        o_SRAM_WE_N,
-	output        o_SRAM_CE_N,
-	output        o_SRAM_OE_N,
-	output        o_SRAM_LB_N,
-	output        o_SRAM_UB_N,
+	// // SRAM
+	// output [19:0] o_SRAM_ADDR,
+	// inout  [15:0] io_SRAM_DQ,
+	// output        o_SRAM_WE_N,
+	// output        o_SRAM_CE_N,
+	// output        o_SRAM_OE_N,
+	// output        o_SRAM_LB_N,
+	// output        o_SRAM_UB_N,
 	
 	// I2C
 	input  i_clk_100k,
@@ -59,20 +59,20 @@ module Top (
 	logic R2D_valid, D2B_valid, B2P_request_l, B2P_request_r;
 	logic signed [15:0] raw_data, buf_data_l, buf_data_r, out_data;
 
-	// SRAM connections
-	logic [19:0] sram_addr;
-	logic signed [15:0] sram_r_data, sram_w_data;
-	logic sram_we_n;
+	// // SRAM connections
+	// logic [19:0] sram_addr;
+	// logic signed [15:0] sram_r_data, sram_w_data;
+	// logic sram_we_n;
 
-	assign o_SRAM_ADDR = sram_addr;
-	assign io_SRAM_DQ  = (!sram_we_n) ? sram_w_data : 16'bz;
-	assign sram_r_data = (!sram_we_n) ? 16'b0 : io_SRAM_DQ;
+	// assign o_SRAM_ADDR = sram_addr;
+	// assign io_SRAM_DQ  = (!sram_we_n) ? sram_w_data : 16'bz;
+	// assign sram_r_data = (!sram_we_n) ? 16'b0 : io_SRAM_DQ;
 
-	assign o_SRAM_WE_N = sram_we_n;
-	assign o_SRAM_CE_N = 1'b0;
-	assign o_SRAM_OE_N = 1'b0;
-	assign o_SRAM_LB_N = 1'b0;
-	assign o_SRAM_UB_N = 1'b0;
+	// assign o_SRAM_WE_N = sram_we_n;
+	// assign o_SRAM_CE_N = 1'b0;
+	// assign o_SRAM_OE_N = 1'b0;
+	// assign o_SRAM_LB_N = 1'b0;
+	// assign o_SRAM_UB_N = 1'b0;
 
 	// Show volume in log scale on LEDG
 	// assign current_volume = (raw_data[15]) ? -raw_data : raw_data;
@@ -126,12 +126,13 @@ module Top (
 		.o_R2D_valid(R2D_valid)
 	);
 
-	// DSP Chain
-	logic [19:0] B0_r_addr, B0_w_addr, B1_r_addr, B1_w_addr, B2_r_addr, B2_w_addr, B3_r_addr, B3_w_addr;
-	logic signed [15:0] B0_r_data, B0_w_data, B1_r_data, B1_w_data, B2_r_data, B2_w_data, B3_r_data, B3_w_data;
-	logic B0_read_req, B0_write_req, B1_read_req, B1_write_req, B2_read_req, B2_write_req, B3_read_req, B3_write_req;
-	logic B0_read_valid, B1_read_valid, B2_read_valid, B3_read_valid;
+	// // SRAM Connections
+	// logic [19:0] B0_r_addr, B0_w_addr, B1_r_addr, B1_w_addr, B2_r_addr, B2_w_addr, B3_r_addr, B3_w_addr;
+	// logic signed [15:0] B0_r_data, B0_w_data, B1_r_data, B1_w_data, B2_r_data, B2_w_data, B3_r_data, B3_w_data;
+	// logic B0_read_req, B0_write_req, B1_read_req, B1_write_req, B2_read_req, B2_write_req, B3_read_req, B3_write_req;
+	// logic B0_read_valid, B1_read_valid, B2_read_valid, B3_read_valid;
 
+	// DSP Chain
 	DSP dsp (
 		// Main chain I/O
 		.i_rst(i_rst_n),
@@ -143,40 +144,40 @@ module Top (
 		.o_buf_data_r(buf_data_r),
 		.i_fx_sw(i_sw),
 
-		// SRAM I/O for 4 blocks (B0-B3)
-		.o_B0_r_addr(B0_r_addr),
-		.i_B0_r_data(B0_r_data),
-		.o_B0_read_req(B0_read_req),
-		.i_B0_read_valid(B0_read_valid),
-		.o_B0_w_addr(B0_w_addr),
-		.o_B0_w_data(B0_w_data),
-		.o_B0_write_req(B0_write_req),
+		// // SRAM I/O for 4 blocks (B0-B3)
+		// .o_B0_r_addr(B0_r_addr),
+		// .i_B0_r_data(B0_r_data),
+		// .o_B0_read_req(B0_read_req),
+		// .i_B0_read_valid(B0_read_valid),
+		// .o_B0_w_addr(B0_w_addr),
+		// .o_B0_w_data(B0_w_data),
+		// .o_B0_write_req(B0_write_req),
 
-		.o_B1_r_addr(B1_r_addr),
-		.i_B1_r_data(B1_r_data),
-		.o_B1_read_req(B1_read_req),
-		.i_B1_read_valid(B1_read_valid),
-		.o_B1_w_addr(B1_w_addr),
-		.o_B1_w_data(B1_w_data),
-		.o_B1_write_req(B1_write_req),
+		// .o_B1_r_addr(B1_r_addr),
+		// .i_B1_r_data(B1_r_data),
+		// .o_B1_read_req(B1_read_req),
+		// .i_B1_read_valid(B1_read_valid),
+		// .o_B1_w_addr(B1_w_addr),
+		// .o_B1_w_data(B1_w_data),
+		// .o_B1_write_req(B1_write_req),
 
-		.o_B2_r_addr(B2_r_addr),
-		.i_B2_r_data(B2_r_data),
-		.o_B2_read_req(B2_read_req),
-		.i_B2_read_valid(B2_read_valid),
-		.o_B2_w_addr(B2_w_addr),
-		.o_B2_w_data(B2_w_data),
-		.o_B2_write_req(B2_write_req),
+		// .o_B2_r_addr(B2_r_addr),
+		// .i_B2_r_data(B2_r_data),
+		// .o_B2_read_req(B2_read_req),
+		// .i_B2_read_valid(B2_read_valid),
+		// .o_B2_w_addr(B2_w_addr),
+		// .o_B2_w_data(B2_w_data),
+		// .o_B2_write_req(B2_write_req),
 
-		.o_B3_r_addr(B3_r_addr),
-		.i_B3_r_data(B3_r_data),
-		.o_B3_read_req(B3_read_req),
-		.i_B3_read_valid(B3_read_valid),
-		.o_B3_w_addr(B3_w_addr),
-		.o_B3_w_data(B3_w_data),
-		.o_B3_write_req(B3_write_req),
+		// .o_B3_r_addr(B3_r_addr),
+		// .i_B3_r_data(B3_r_data),
+		// .o_B3_read_req(B3_read_req),
+		// .i_B3_read_valid(B3_read_valid),
+		// .o_B3_w_addr(B3_w_addr),
+		// .o_B3_w_data(B3_w_data),
+		// .o_B3_write_req(B3_write_req),
 
-		.i_sram_ready(sram_ready),
+		// .i_sram_ready(sram_ready),
 		.o_dsp_ledr(dsp_ledr)
 	);
 
@@ -207,51 +208,51 @@ module Top (
 		.o_B2P_request_r(B2P_request_r)
 	);
 
-	// SRAM Scheduler
-	logic sram_ready;
-	SRAM_Scheduler sram_scheduler (
-		.i_clk(i_clk),
-		.i_rst(i_rst_n),
+	// // SRAM Scheduler
+	// logic sram_ready;
+	// SRAM_Scheduler sram_scheduler (
+	// 	.i_clk(i_clk),
+	// 	.i_rst(i_rst_n),
 
-		.i_B0_r_addr(B0_r_addr),
-		.o_B0_r_data(B0_r_data),
-		.i_B0_read_req(B0_read_req),
-		.o_B0_read_valid(B0_read_valid),
-		.i_B0_w_addr(B0_w_addr),
-		.i_B0_w_data(B0_w_data),
-		.i_B0_write_req(B0_write_req),
+	// 	.i_B0_r_addr(B0_r_addr),
+	// 	.o_B0_r_data(B0_r_data),
+	// 	.i_B0_read_req(B0_read_req),
+	// 	.o_B0_read_valid(B0_read_valid),
+	// 	.i_B0_w_addr(B0_w_addr),
+	// 	.i_B0_w_data(B0_w_data),
+	// 	.i_B0_write_req(B0_write_req),
 
-	 	.i_B1_r_addr(B1_r_addr),
-	 	.o_B1_r_data(B1_r_data),
-	 	.i_B1_read_req(B1_read_req),
-	 	.o_B1_read_valid(B1_read_valid),
-	 	.i_B1_w_addr(B1_w_addr),
-	 	.i_B1_w_data(B1_w_data),
-	 	.i_B1_write_req(B1_write_req),
+	//  	.i_B1_r_addr(B1_r_addr),
+	//  	.o_B1_r_data(B1_r_data),
+	//  	.i_B1_read_req(B1_read_req),
+	//  	.o_B1_read_valid(B1_read_valid),
+	//  	.i_B1_w_addr(B1_w_addr),
+	//  	.i_B1_w_data(B1_w_data),
+	//  	.i_B1_write_req(B1_write_req),
 
-	 	.i_B2_r_addr(B2_r_addr),
-	 	.o_B2_r_data(B2_r_data),
-	 	.i_B2_read_req(B2_read_req),
-	 	.o_B2_read_valid(B2_read_valid),
-	 	.i_B2_w_addr(B2_w_addr),
-	 	.i_B2_w_data(B2_w_data),
-	 	.i_B2_write_req(B2_write_req),
+	//  	.i_B2_r_addr(B2_r_addr),
+	//  	.o_B2_r_data(B2_r_data),
+	//  	.i_B2_read_req(B2_read_req),
+	//  	.o_B2_read_valid(B2_read_valid),
+	//  	.i_B2_w_addr(B2_w_addr),
+	//  	.i_B2_w_data(B2_w_data),
+	//  	.i_B2_write_req(B2_write_req),
 
-	 	.i_B3_r_addr(B3_r_addr),
-	 	.o_B3_r_data(B3_r_data),
-	 	.i_B3_read_req(B3_read_req),
-	 	.o_B3_read_valid(B3_read_valid),
-	 	.i_B3_w_addr(B3_w_addr),
-	 	.i_B3_w_data(B3_w_data),
-	 	.i_B3_write_req(B3_write_req),
+	//  	.i_B3_r_addr(B3_r_addr),
+	//  	.o_B3_r_data(B3_r_data),
+	//  	.i_B3_read_req(B3_read_req),
+	//  	.o_B3_read_valid(B3_read_valid),
+	//  	.i_B3_w_addr(B3_w_addr),
+	//  	.i_B3_w_data(B3_w_data),
+	//  	.i_B3_write_req(B3_write_req),
 
-	 	.i_sram_data(sram_r_data),
-	 	.o_sram_addr(sram_addr),
-	 	.o_sram_data(sram_w_data),
-	 	.o_sram_we_n(sram_we_n),
+	//  	.i_sram_data(sram_r_data),
+	//  	.o_sram_addr(sram_addr),
+	//  	.o_sram_data(sram_w_data),
+	//  	.o_sram_we_n(sram_we_n),
 
-	 	.o_ready(sram_ready) // scheduler is not full
-	);
+	//  	.o_ready(sram_ready) // scheduler is not full
+	// );
 
 	// Combinational logic
 	always_comb begin

@@ -1,0 +1,26 @@
+
+State Machine - |DE2_115|Top:top0|state_r
+Name state_r.S_MENU 
+state_r.S_SETUP 0 
+state_r.S_MENU 1 
+
+State Machine - |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|state_r
+Name state_r.S_CALC state_r.S_WAIT_READ state_r.S_READ_REQ state_r.S_IDLE state_r.S_WRITE 
+state_r.S_IDLE 0 0 0 0 0 
+state_r.S_READ_REQ 0 0 1 1 0 
+state_r.S_WAIT_READ 0 1 0 1 0 
+state_r.S_CALC 1 0 0 1 0 
+state_r.S_WRITE 0 0 0 1 1 
+
+State Machine - |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|state_r
+Name state_r.S_RECOVER state_r.S_DECAY state_r.S_HOLD state_r.S_NORMAL 
+state_r.S_NORMAL 0 0 0 0 
+state_r.S_HOLD 0 0 1 1 
+state_r.S_DECAY 0 1 0 1 
+state_r.S_RECOVER 1 0 0 1 
+
+State Machine - |DE2_115|Top:top0|Recorder:recorder|state_r
+Name state_r.IDLE state_r.RIGHT state_r.LEFT 
+state_r.IDLE 0 0 0 
+state_r.LEFT 1 0 1 
+state_r.RIGHT 1 1 0 
