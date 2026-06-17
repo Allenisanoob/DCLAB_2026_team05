@@ -19,6 +19,12 @@ state_r.S_HOLD 0 0 1 1
 state_r.S_DECAY 0 1 0 1 
 state_r.S_RECOVER 1 0 0 1 
 
+State Machine - |DE2_115|Top:top0|DSP:dsp|STFT:stft|cnt
+Name cnt.00 cnt.10 cnt.01 
+cnt.00 0 0 0 
+cnt.01 1 0 1 
+cnt.10 1 1 0 
+
 State Machine - |DE2_115|Top:top0|Recorder:recorder|state_r
 Name state_r.IDLE state_r.RIGHT state_r.LEFT 
 state_r.IDLE 0 0 0 

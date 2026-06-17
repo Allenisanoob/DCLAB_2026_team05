@@ -530,17 +530,17 @@ always_ff @(posedge clk or negedge rst) begin
                 temp_old_image <= 32'sd0;               
             end
             6'd1: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_E2;
                     temp_new_image <= in * new_sin_E2;
                     temp_old_real <= delay_data * old_cos_E2;
                     temp_old_image <= delay_data * old_sin_E2;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_E2 + temp_new_real - temp_old_real;
                     response_image <= response_image_E2 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_E2 <= leak_response_real;
                     response_image_E2 <= leak_response_image;
                     amp_sq_E2 <= amp_sq;
@@ -549,17 +549,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd2: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_F2;
                     temp_new_image <= in * new_sin_F2;
                     temp_old_real <= delay_data * old_cos_F2;
                     temp_old_image <= delay_data * old_sin_F2;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_F2 + temp_new_real - temp_old_real;
                     response_image <= response_image_F2 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_F2 <= leak_response_real;
                     response_image_F2 <= leak_response_image;
                     amp_sq_F2 <= amp_sq;
@@ -568,17 +568,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd3: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_Fs2;
                     temp_new_image <= in * new_sin_Fs2;
                     temp_old_real <= delay_data * old_cos_Fs2;
                     temp_old_image <= delay_data * old_sin_Fs2;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_Fs2 + temp_new_real - temp_old_real;
                     response_image <= response_image_Fs2 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_Fs2 <= leak_response_real;
                     response_image_Fs2 <= leak_response_image;
                     amp_sq_Fs2 <= amp_sq;
@@ -587,17 +587,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd4: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_G2;
                     temp_new_image <= in * new_sin_G2;
                     temp_old_real <= delay_data * old_cos_G2;
                     temp_old_image <= delay_data * old_sin_G2;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_G2 + temp_new_real - temp_old_real;
                     response_image <= response_image_G2 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_G2 <= leak_response_real;
                     response_image_G2 <= leak_response_image;
                     amp_sq_G2 <= amp_sq;
@@ -606,17 +606,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd5: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_Gs2;
                     temp_new_image <= in * new_sin_Gs2;
                     temp_old_real <= delay_data * old_cos_Gs2;
                     temp_old_image <= delay_data * old_sin_Gs2;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_Gs2 + temp_new_real - temp_old_real;
                     response_image <= response_image_Gs2 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_Gs2 <= leak_response_real;
                     response_image_Gs2 <= leak_response_image;
                     amp_sq_Gs2 <= amp_sq;
@@ -625,17 +625,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd6: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_A2;
                     temp_new_image <= in * new_sin_A2;
                     temp_old_real <= delay_data * old_cos_A2;
                     temp_old_image <= delay_data * old_sin_A2;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_A2 + temp_new_real - temp_old_real;
                     response_image <= response_image_A2 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_A2 <= leak_response_real;
                     response_image_A2 <= leak_response_image;
                     amp_sq_A2 <= amp_sq;
@@ -644,17 +644,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd7: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_As2;
                     temp_new_image <= in * new_sin_As2;
                     temp_old_real <= delay_data * old_cos_As2;
                     temp_old_image <= delay_data * old_sin_As2;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_As2 + temp_new_real - temp_old_real;
                     response_image <= response_image_As2 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_As2 <= leak_response_real;
                     response_image_As2 <= leak_response_image;
                     amp_sq_As2 <= amp_sq;
@@ -663,17 +663,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd8: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_B2;
                     temp_new_image <= in * new_sin_B2;
                     temp_old_real <= delay_data * old_cos_B2;
                     temp_old_image <= delay_data * old_sin_B2;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_B2 + temp_new_real - temp_old_real;
                     response_image <= response_image_B2 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_B2 <= leak_response_real;
                     response_image_B2 <= leak_response_image;
                     amp_sq_B2 <= amp_sq;
@@ -682,17 +682,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd9: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_C3;
                     temp_new_image <= in * new_sin_C3;
                     temp_old_real <= delay_data * old_cos_C3;
                     temp_old_image <= delay_data * old_sin_C3;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_C3 + temp_new_real - temp_old_real;
                     response_image <= response_image_C3 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_C3 <= leak_response_real;
                     response_image_C3 <= leak_response_image;
                     amp_sq_C3 <= amp_sq;
@@ -701,17 +701,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd10: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_Cs3;
                     temp_new_image <= in * new_sin_Cs3;
                     temp_old_real <= delay_data * old_cos_Cs3;
                     temp_old_image <= delay_data * old_sin_Cs3;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_Cs3 + temp_new_real - temp_old_real;
                     response_image <= response_image_Cs3 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_Cs3 <= leak_response_real;
                     response_image_Cs3 <= leak_response_image;
                     amp_sq_Cs3 <= amp_sq;
@@ -720,17 +720,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd11: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_D3;
                     temp_new_image <= in * new_sin_D3;
                     temp_old_real <= delay_data * old_cos_D3;
                     temp_old_image <= delay_data * old_sin_D3;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_D3 + temp_new_real - temp_old_real;
                     response_image <= response_image_D3 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_D3 <= leak_response_real;
                     response_image_D3 <= leak_response_image;
                     amp_sq_D3 <= amp_sq;
@@ -739,17 +739,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd12: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_Ds3;
                     temp_new_image <= in * new_sin_Ds3;
                     temp_old_real <= delay_data * old_cos_Ds3;
                     temp_old_image <= delay_data * old_sin_Ds3;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_Ds3 + temp_new_real - temp_old_real;
                     response_image <= response_image_Ds3 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_Ds3 <= leak_response_real;
                     response_image_Ds3 <= leak_response_image;
                     amp_sq_Ds3 <= amp_sq;
@@ -758,17 +758,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd13: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_E3;
                     temp_new_image <= in * new_sin_E3;
                     temp_old_real <= delay_data * old_cos_E3;
                     temp_old_image <= delay_data * old_sin_E3;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_E3 + temp_new_real - temp_old_real;
                     response_image <= response_image_E3 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_E3 <= leak_response_real;
                     response_image_E3 <= leak_response_image;
                     amp_sq_E3 <= amp_sq;
@@ -777,17 +777,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd14: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_F3;
                     temp_new_image <= in * new_sin_F3;
                     temp_old_real <= delay_data * old_cos_F3;
                     temp_old_image <= delay_data * old_sin_F3;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_F3 + temp_new_real - temp_old_real;
                     response_image <= response_image_F3 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_F3 <= leak_response_real;
                     response_image_F3 <= leak_response_image;
                     amp_sq_F3 <= amp_sq;
@@ -796,17 +796,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd15: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_Fs3;
                     temp_new_image <= in * new_sin_Fs3;
                     temp_old_real <= delay_data * old_cos_Fs3;
                     temp_old_image <= delay_data * old_sin_Fs3;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_Fs3 + temp_new_real - temp_old_real;
                     response_image <= response_image_Fs3 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_Fs3 <= leak_response_real;
                     response_image_Fs3 <= leak_response_image;
                     amp_sq_Fs3 <= amp_sq;
@@ -815,17 +815,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd16: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_G3;
                     temp_new_image <= in * new_sin_G3;
                     temp_old_real <= delay_data * old_cos_G3;
                     temp_old_image <= delay_data * old_sin_G3;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_G3 + temp_new_real - temp_old_real;
                     response_image <= response_image_G3 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_G3 <= leak_response_real;
                     response_image_G3 <= leak_response_image;
                     amp_sq_G3 <= amp_sq;
@@ -834,17 +834,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd17: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_Gs3;
                     temp_new_image <= in * new_sin_Gs3;
                     temp_old_real <= delay_data * old_cos_Gs3;
                     temp_old_image <= delay_data * old_sin_Gs3;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_Gs3 + temp_new_real - temp_old_real;
                     response_image <= response_image_Gs3 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_Gs3 <= leak_response_real;
                     response_image_Gs3 <= leak_response_image;
                     amp_sq_Gs3 <= amp_sq;
@@ -853,17 +853,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd18: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_A3;
                     temp_new_image <= in * new_sin_A3;
                     temp_old_real <= delay_data * old_cos_A3;
                     temp_old_image <= delay_data * old_sin_A3;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_A3 + temp_new_real - temp_old_real;
                     response_image <= response_image_A3 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_A3 <= leak_response_real;
                     response_image_A3 <= leak_response_image;
                     amp_sq_A3 <= amp_sq;
@@ -872,17 +872,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd19: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_As3;
                     temp_new_image <= in * new_sin_As3;
                     temp_old_real <= delay_data * old_cos_As3;
                     temp_old_image <= delay_data * old_sin_As3;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_As3 + temp_new_real - temp_old_real;
                     response_image <= response_image_As3 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_As3 <= leak_response_real;
                     response_image_As3 <= leak_response_image;
                     amp_sq_As3 <= amp_sq;
@@ -891,17 +891,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd20: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_B3;
                     temp_new_image <= in * new_sin_B3;
                     temp_old_real <= delay_data * old_cos_B3;
                     temp_old_image <= delay_data * old_sin_B3;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_B3 + temp_new_real - temp_old_real;
                     response_image <= response_image_B3 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_B3 <= leak_response_real;
                     response_image_B3 <= leak_response_image;
                     amp_sq_B3 <= amp_sq;
@@ -910,17 +910,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd21: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_C4;
                     temp_new_image <= in * new_sin_C4;
                     temp_old_real <= delay_data * old_cos_C4;
                     temp_old_image <= delay_data * old_sin_C4;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_C4 + temp_new_real - temp_old_real;
                     response_image <= response_image_C4 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_C4 <= leak_response_real;
                     response_image_C4 <= leak_response_image;
                     amp_sq_C4 <= amp_sq;
@@ -929,17 +929,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd22: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_Cs4;
                     temp_new_image <= in * new_sin_Cs4;
                     temp_old_real <= delay_data * old_cos_Cs4;
                     temp_old_image <= delay_data * old_sin_Cs4;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_Cs4 + temp_new_real - temp_old_real;
                     response_image <= response_image_Cs4 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_Cs4 <= leak_response_real;
                     response_image_Cs4 <= leak_response_image;
                     amp_sq_Cs4 <= amp_sq;
@@ -948,17 +948,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd23: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_D4;
                     temp_new_image <= in * new_sin_D4;
                     temp_old_real <= delay_data * old_cos_D4;
                     temp_old_image <= delay_data * old_sin_D4;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_D4 + temp_new_real - temp_old_real;
                     response_image <= response_image_D4 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_D4 <= leak_response_real;
                     response_image_D4 <= leak_response_image;
                     amp_sq_D4 <= amp_sq;
@@ -967,17 +967,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd24: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_Ds4;
                     temp_new_image <= in * new_sin_Ds4;
                     temp_old_real <= delay_data * old_cos_Ds4;
                     temp_old_image <= delay_data * old_sin_Ds4;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_Ds4 + temp_new_real - temp_old_real;
                     response_image <= response_image_Ds4 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_Ds4 <= leak_response_real;
                     response_image_Ds4 <= leak_response_image;
                     amp_sq_Ds4 <= amp_sq;
@@ -986,17 +986,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd25: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_E4;
                     temp_new_image <= in * new_sin_E4;
                     temp_old_real <= delay_data * old_cos_E4;
                     temp_old_image <= delay_data * old_sin_E4;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_E4 + temp_new_real - temp_old_real;
                     response_image <= response_image_E4 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_E4 <= leak_response_real;
                     response_image_E4 <= leak_response_image;
                     amp_sq_E4 <= amp_sq;
@@ -1005,17 +1005,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd26: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_F4;
                     temp_new_image <= in * new_sin_F4;
                     temp_old_real <= delay_data * old_cos_F4;
                     temp_old_image <= delay_data * old_sin_F4;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_F4 + temp_new_real - temp_old_real;
                     response_image <= response_image_F4 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_F4 <= leak_response_real;
                     response_image_F4 <= leak_response_image;
                     amp_sq_F4 <= amp_sq;
@@ -1024,17 +1024,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd27: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_Fs4;
                     temp_new_image <= in * new_sin_Fs4;
                     temp_old_real <= delay_data * old_cos_Fs4;
                     temp_old_image <= delay_data * old_sin_Fs4;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_Fs4 + temp_new_real - temp_old_real;
                     response_image <= response_image_Fs4 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_Fs4 <= leak_response_real;
                     response_image_Fs4 <= leak_response_image;
                     amp_sq_Fs4 <= amp_sq;
@@ -1043,17 +1043,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd28: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_G4;
                     temp_new_image <= in * new_sin_G4;
                     temp_old_real <= delay_data * old_cos_G4;
                     temp_old_image <= delay_data * old_sin_G4;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_G4 + temp_new_real - temp_old_real;
                     response_image <= response_image_G4 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_G4 <= leak_response_real;
                     response_image_G4 <= leak_response_image;
                     amp_sq_G4 <= amp_sq;
@@ -1062,17 +1062,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd29: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_Gs4;
                     temp_new_image <= in * new_sin_Gs4;
                     temp_old_real <= delay_data * old_cos_Gs4;
                     temp_old_image <= delay_data * old_sin_Gs4;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_Gs4 + temp_new_real - temp_old_real;
                     response_image <= response_image_Gs4 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_Gs4 <= leak_response_real;
                     response_image_Gs4 <= leak_response_image;
                     amp_sq_Gs4 <= amp_sq;
@@ -1081,17 +1081,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd30: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_A4;
                     temp_new_image <= in * new_sin_A4;
                     temp_old_real <= delay_data * old_cos_A4;
                     temp_old_image <= delay_data * old_sin_A4;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_A4 + temp_new_real - temp_old_real;
                     response_image <= response_image_A4 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_A4 <= leak_response_real;
                     response_image_A4 <= leak_response_image;
                     amp_sq_A4 <= amp_sq;
@@ -1100,17 +1100,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd31: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_As4;
                     temp_new_image <= in * new_sin_As4;
                     temp_old_real <= delay_data * old_cos_As4;
                     temp_old_image <= delay_data * old_sin_As4;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_As4 + temp_new_real - temp_old_real;
                     response_image <= response_image_As4 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_As4 <= leak_response_real;
                     response_image_As4 <= leak_response_image;
                     amp_sq_As4 <= amp_sq;
@@ -1119,17 +1119,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd32: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_B4;
                     temp_new_image <= in * new_sin_B4;
                     temp_old_real <= delay_data * old_cos_B4;
                     temp_old_image <= delay_data * old_sin_B4;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_B4 + temp_new_real - temp_old_real;
                     response_image <= response_image_B4 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_B4 <= leak_response_real;
                     response_image_B4 <= leak_response_image;
                     amp_sq_B4 <= amp_sq;
@@ -1138,17 +1138,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd33: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_C5;
                     temp_new_image <= in * new_sin_C5;
                     temp_old_real <= delay_data * old_cos_C5;
                     temp_old_image <= delay_data * old_sin_C5;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_C5 + temp_new_real - temp_old_real;
                     response_image <= response_image_C5 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_C5 <= leak_response_real;
                     response_image_C5 <= leak_response_image;
                     amp_sq_C5 <= amp_sq;
@@ -1157,17 +1157,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd34: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_Cs5;
                     temp_new_image <= in * new_sin_Cs5;
                     temp_old_real <= delay_data * old_cos_Cs5;
                     temp_old_image <= delay_data * old_sin_Cs5;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_Cs5 + temp_new_real - temp_old_real;
                     response_image <= response_image_Cs5 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_Cs5 <= leak_response_real;
                     response_image_Cs5 <= leak_response_image;
                     amp_sq_Cs5 <= amp_sq;
@@ -1176,17 +1176,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd35: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_D5;
                     temp_new_image <= in * new_sin_D5;
                     temp_old_real <= delay_data * old_cos_D5;
                     temp_old_image <= delay_data * old_sin_D5;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_D5 + temp_new_real - temp_old_real;
                     response_image <= response_image_D5 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_D5 <= leak_response_real;
                     response_image_D5 <= leak_response_image;
                     amp_sq_D5 <= amp_sq;
@@ -1195,17 +1195,17 @@ always_ff @(posedge clk or negedge rst) begin
                 end
             end
             6'd36: begin
-                if (cnt = 0) begin
+                if (cnt == 0) begin
                     temp_new_real <= in * new_cos_Ds5;
                     temp_new_image <= in * new_sin_Ds5;
                     temp_old_real <= delay_data * old_cos_Ds5;
                     temp_old_image <= delay_data * old_sin_Ds5;
                     cnt <= 1;
-                end else if (cnt = 1) begin
+                end else if (cnt == 1) begin
                     response_real <= response_real_Ds5 + temp_new_real - temp_old_real;
                     response_image <= response_image_Ds5 + temp_new_image - temp_old_image;
                     cnt <= 2;
-                end else if (cnt = 2) begin
+                end else if (cnt == 2) begin
                     response_real_Ds5 <= leak_response_real;
                     response_image_Ds5 <= leak_response_image;
                     amp_sq_Ds5 <= amp_sq;

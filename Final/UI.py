@@ -689,8 +689,7 @@ class UartManager(QtCore.QObject):
         
         self._write(bytes([0xA5, mid, pid, hi, lo, chk & 0xFF]),
                     f"[{module}.{key}={val}]")
-        
-    # []
+
 
     def send_chain(self, stages):
         ids = [MODULES[s]["id"] if s and s in MODULES else 0 for s in stages]

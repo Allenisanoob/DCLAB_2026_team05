@@ -53,7 +53,7 @@ logic [35:0] notes_r;
 assign notes = notes_r;
 
 always_ff @(posedge i_clk or negedge i_rst) begin
-    if (!rst) begin
+    if (!i_rst) begin
         top_1_amp <= 32'd0;
         top_2_amp <= 32'd0;
         top_3_amp <= 32'd0;
