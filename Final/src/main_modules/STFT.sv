@@ -45,45 +45,45 @@ module STFT (
 logic [5:0] state;
 logic [1:0] cnt;
 
-logic signed [45:0] response_real_E2, response_image_E2; // Q31.15
-logic signed [45:0] response_real_F2, response_image_F2; // Q31.15
-logic signed [45:0] response_real_Fs2, response_image_Fs2; // Q31.15
-logic signed [45:0] response_real_G2, response_image_G2; // Q31.15
-logic signed [45:0] response_real_Gs2, response_image_Gs2; // Q31.15
-logic signed [45:0] response_real_A2, response_image_A2; // Q31.15
-logic signed [45:0] response_real_As2, response_image_As2; // Q31.15
-logic signed [45:0] response_real_B2, response_image_B2; // Q31.15
-logic signed [45:0] response_real_C3, response_image_C3; // Q31.15
-logic signed [45:0] response_real_Cs3, response_image_Cs3; // Q31.15
-logic signed [45:0] response_real_D3, response_image_D3; // Q31.15
-logic signed [45:0] response_real_Ds3, response_image_Ds3; // Q31.15
-logic signed [45:0] response_real_E3, response_image_E3; // Q31.15
-logic signed [45:0] response_real_F3, response_image_F3; // Q31.15
-logic signed [45:0] response_real_Fs3, response_image_Fs3; // Q31.15
-logic signed [45:0] response_real_G3, response_image_G3; // Q31.15
-logic signed [45:0] response_real_Gs3, response_image_Gs3; // Q31.15
-logic signed [45:0] response_real_A3, response_image_A3; // Q31.15
-logic signed [45:0] response_real_As3, response_image_As3; // Q31.15
-logic signed [45:0] response_real_B3, response_image_B3; // Q31.15
-logic signed [45:0] response_real_C4, response_image_C4; // Q31.15
-logic signed [45:0] response_real_Cs4, response_image_Cs4; // Q31.15
-logic signed [45:0] response_real_D4, response_image_D4; // Q31.15
-logic signed [45:0] response_real_Ds4, response_image_Ds4; // Q31.15
-logic signed [45:0] response_real_E4, response_image_E4; // Q31.15
-logic signed [45:0] response_real_F4, response_image_F4; // Q31.15
-logic signed [45:0] response_real_Fs4, response_image_Fs4; // Q31.15
-logic signed [45:0] response_real_G4, response_image_G4; // Q31.15
-logic signed [45:0] response_real_Gs4, response_image_Gs4; // Q31.15
-logic signed [45:0] response_real_A4, response_image_A4; // Q31.15
-logic signed [45:0] response_real_As4, response_image_As4; // Q31.15
-logic signed [45:0] response_real_B4, response_image_B4; // Q31.15
-logic signed [45:0] response_real_C5, response_image_C5; // Q31.15
-logic signed [45:0] response_real_Cs5, response_image_Cs5; // Q31.15
-logic signed [45:0] response_real_D5, response_image_D5; // Q31.15
-logic signed [45:0] response_real_Ds5, response_image_Ds5; // Q31.15
+logic signed [47:0] response_real_E2, response_image_E2; // Q33.15
+logic signed [47:0] response_real_F2, response_image_F2; // Q33.15
+logic signed [47:0] response_real_Fs2, response_image_Fs2; // Q33.15
+logic signed [47:0] response_real_G2, response_image_G2; // Q33.15
+logic signed [47:0] response_real_Gs2, response_image_Gs2; // Q33.15
+logic signed [47:0] response_real_A2, response_image_A2; // Q33.15
+logic signed [47:0] response_real_As2, response_image_As2; // Q33.15
+logic signed [47:0] response_real_B2, response_image_B2; // Q33.15
+logic signed [47:0] response_real_C3, response_image_C3; // Q33.15
+logic signed [47:0] response_real_Cs3, response_image_Cs3; // Q33.15
+logic signed [47:0] response_real_D3, response_image_D3; // Q33.15
+logic signed [47:0] response_real_Ds3, response_image_Ds3; // Q33.15
+logic signed [47:0] response_real_E3, response_image_E3; // Q33.15
+logic signed [47:0] response_real_F3, response_image_F3; // Q33.15
+logic signed [47:0] response_real_Fs3, response_image_Fs3; // Q33.15
+logic signed [47:0] response_real_G3, response_image_G3; // Q33.15
+logic signed [47:0] response_real_Gs3, response_image_Gs3; // Q33.15
+logic signed [47:0] response_real_A3, response_image_A3; // Q33.15
+logic signed [47:0] response_real_As3, response_image_As3; // Q33.15
+logic signed [47:0] response_real_B3, response_image_B3; // Q33.15
+logic signed [47:0] response_real_C4, response_image_C4; // Q33.15
+logic signed [47:0] response_real_Cs4, response_image_Cs4; // Q33.15
+logic signed [47:0] response_real_D4, response_image_D4; // Q33.15
+logic signed [47:0] response_real_Ds4, response_image_Ds4; // Q33.15
+logic signed [47:0] response_real_E4, response_image_E4; // Q33.15
+logic signed [47:0] response_real_F4, response_image_F4; // Q33.15
+logic signed [47:0] response_real_Fs4, response_image_Fs4; // Q33.15
+logic signed [47:0] response_real_G4, response_image_G4; // Q33.15
+logic signed [47:0] response_real_Gs4, response_image_Gs4; // Q33.15
+logic signed [47:0] response_real_A4, response_image_A4; // Q33.15
+logic signed [47:0] response_real_As4, response_image_As4; // Q33.15
+logic signed [47:0] response_real_B4, response_image_B4; // Q33.15
+logic signed [47:0] response_real_C5, response_image_C5; // Q33.15
+logic signed [47:0] response_real_Cs5, response_image_Cs5; // Q33.15
+logic signed [47:0] response_real_D5, response_image_D5; // Q33.15
+logic signed [47:0] response_real_Ds5, response_image_Ds5; // Q33.15
 
-logic signed [15:0] data_buffer [0:9599]; // Q16.0
-logic [13:0] ptr;
+logic signed [15:0] data_buffer [0:38399]; // Q16.0
+logic [15:0] ptr;
 logic is_loop;
 logic read_data_valid;
 logic signed [15:0] temp_0; // temp_0 = data_buffer[ptr]
@@ -393,8 +393,8 @@ STFT_LUT stft_lut(
     .old_sin_Ds5(old_sin_Ds5)
 );
 
-logic signed [45:0] response_real, response_image; // Q31.15
-logic signed [45:0] leak_response_real, leak_response_image; // Q31.15
+logic signed [47:0] response_real, response_image; // Q33.15
+logic signed [47:0] leak_response_real, leak_response_image; // Q33.15
 logic signed [31:0] temp_new_real, temp_new_image, temp_old_real, temp_old_image; // Q17.15
 
 assign leak_response_real = response_real - (response_real >>> 12);
@@ -402,8 +402,8 @@ assign leak_response_image = response_image - (response_image >>> 12);
 
 logic signed [15:0] truncated_real, truncated_image;
 
-assign truncated_real  = leak_response_real[45:30];
-assign truncated_image = leak_response_image[45:30];
+assign truncated_real  = leak_response_real[47:32];
+assign truncated_image = leak_response_image[47:32];
 
 logic signed [31:0] amp_sq_real, amp_sq_image;
 
@@ -423,92 +423,92 @@ always_ff @(posedge clk or negedge rst) begin
         read_data_valid <= 0;
         out_valid <= 0;
 
-        response_real <= 46'sd0;
-        response_image <= 46'sd0;
+        response_real <= 48'sd0;
+        response_image <= 48'sd0;
         temp_new_real <= 32'sd0;
         temp_new_image <= 32'sd0;
         temp_old_real <= 32'sd0;
         temp_old_image <= 32'sd0;
 
-        response_real_E2 <= 46'sd0;
-        response_image_E2 <= 46'sd0;
-        response_real_F2 <= 46'sd0;
-        response_image_F2 <= 46'sd0;
-        response_real_Fs2 <= 46'sd0;
-        response_image_Fs2 <= 46'sd0;
-        response_real_G2 <= 46'sd0;
-        response_image_G2 <= 46'sd0;
-        response_real_Gs2 <= 46'sd0;
-        response_image_Gs2 <= 46'sd0;
-        response_real_A2 <= 46'sd0;
-        response_image_A2 <= 46'sd0;
-        response_real_As2 <= 46'sd0;
-        response_image_As2 <= 46'sd0;
-        response_real_B2 <= 46'sd0;
-        response_image_B2 <= 46'sd0;
-        response_real_C3 <= 46'sd0;
-        response_image_C3 <= 46'sd0;
-        response_real_Cs3 <= 46'sd0;
-        response_image_Cs3 <= 46'sd0;
-        response_real_D3 <= 46'sd0;
-        response_image_D3 <= 46'sd0;
-        response_real_Ds3 <= 46'sd0;
-        response_image_Ds3 <= 46'sd0;
-        response_real_E3 <= 46'sd0;
-        response_image_E3 <= 46'sd0;
-        response_real_F3 <= 46'sd0;
-        response_image_F3 <= 46'sd0;
-        response_real_Fs3 <= 46'sd0;
-        response_image_Fs3 <= 46'sd0;
-        response_real_G3 <= 46'sd0;
-        response_image_G3 <= 46'sd0;
-        response_real_Gs3 <= 46'sd0;
-        response_image_Gs3 <= 46'sd0;
-        response_real_A3 <= 46'sd0;
-        response_image_A3 <= 46'sd0;
-        response_real_As3 <= 46'sd0;
-        response_image_As3 <= 46'sd0;
-        response_real_B3 <= 46'sd0;
-        response_image_B3 <= 46'sd0;
-        response_real_C4 <= 46'sd0;
-        response_image_C4 <= 46'sd0;
-        response_real_Cs4 <= 46'sd0;
-        response_image_Cs4 <= 46'sd0;
-        response_real_D4 <= 46'sd0;
-        response_image_D4 <= 46'sd0;
-        response_real_Ds4 <= 46'sd0;
-        response_image_Ds4 <= 46'sd0;
-        response_real_E4 <= 46'sd0;
-        response_image_E4 <= 46'sd0;
-        response_real_F4 <= 46'sd0;
-        response_image_F4 <= 46'sd0;
-        response_real_Fs4 <= 46'sd0;
-        response_image_Fs4 <= 46'sd0;
-        response_real_G4 <= 46'sd0;
-        response_image_G4 <= 46'sd0;
-        response_real_Gs4 <= 46'sd0;
-        response_image_Gs4 <= 46'sd0;
-        response_real_A4 <= 46'sd0;
-        response_image_A4 <= 46'sd0;
-        response_real_As4 <= 46'sd0;
-        response_image_As4 <= 46'sd0;
-        response_real_B4 <= 46'sd0;
-        response_image_B4 <= 46'sd0;
-        response_real_C5 <= 46'sd0;
-        response_image_C5 <= 46'sd0;
-        response_real_Cs5 <= 46'sd0;
-        response_image_Cs5 <= 46'sd0;
-        response_real_D5 <= 46'sd0;
-        response_image_D5 <= 46'sd0;
-        response_real_Ds5 <= 46'sd0;
-        response_image_Ds5 <= 46'sd0;
+        response_real_E2 <= 48'sd0;
+        response_image_E2 <= 48'sd0;
+        response_real_F2 <= 48'sd0;
+        response_image_F2 <= 48'sd0;
+        response_real_Fs2 <= 48'sd0;
+        response_image_Fs2 <= 48'sd0;
+        response_real_G2 <= 48'sd0;
+        response_image_G2 <= 48'sd0;
+        response_real_Gs2 <= 48'sd0;
+        response_image_Gs2 <= 48'sd0;
+        response_real_A2 <= 48'sd0;
+        response_image_A2 <= 48'sd0;
+        response_real_As2 <= 48'sd0;
+        response_image_As2 <= 48'sd0;
+        response_real_B2 <= 48'sd0;
+        response_image_B2 <= 48'sd0;
+        response_real_C3 <= 48'sd0;
+        response_image_C3 <= 48'sd0;
+        response_real_Cs3 <= 48'sd0;
+        response_image_Cs3 <= 48'sd0;
+        response_real_D3 <= 48'sd0;
+        response_image_D3 <= 48'sd0;
+        response_real_Ds3 <= 48'sd0;
+        response_image_Ds3 <= 48'sd0;
+        response_real_E3 <= 48'sd0;
+        response_image_E3 <= 48'sd0;
+        response_real_F3 <= 48'sd0;
+        response_image_F3 <= 48'sd0;
+        response_real_Fs3 <= 48'sd0;
+        response_image_Fs3 <= 48'sd0;
+        response_real_G3 <= 48'sd0;
+        response_image_G3 <= 48'sd0;
+        response_real_Gs3 <= 48'sd0;
+        response_image_Gs3 <= 48'sd0;
+        response_real_A3 <= 48'sd0;
+        response_image_A3 <= 48'sd0;
+        response_real_As3 <= 48'sd0;
+        response_image_As3 <= 48'sd0;
+        response_real_B3 <= 48'sd0;
+        response_image_B3 <= 48'sd0;
+        response_real_C4 <= 48'sd0;
+        response_image_C4 <= 48'sd0;
+        response_real_Cs4 <= 48'sd0;
+        response_image_Cs4 <= 48'sd0;
+        response_real_D4 <= 48'sd0;
+        response_image_D4 <= 48'sd0;
+        response_real_Ds4 <= 48'sd0;
+        response_image_Ds4 <= 48'sd0;
+        response_real_E4 <= 48'sd0;
+        response_image_E4 <= 48'sd0;
+        response_real_F4 <= 48'sd0;
+        response_image_F4 <= 48'sd0;
+        response_real_Fs4 <= 48'sd0;
+        response_image_Fs4 <= 48'sd0;
+        response_real_G4 <= 48'sd0;
+        response_image_G4 <= 48'sd0;
+        response_real_Gs4 <= 48'sd0;
+        response_image_Gs4 <= 48'sd0;
+        response_real_A4 <= 48'sd0;
+        response_image_A4 <= 48'sd0;
+        response_real_As4 <= 48'sd0;
+        response_image_As4 <= 48'sd0;
+        response_real_B4 <= 48'sd0;
+        response_image_B4 <= 48'sd0;
+        response_real_C5 <= 48'sd0;
+        response_image_C5 <= 48'sd0;
+        response_real_Cs5 <= 48'sd0;
+        response_image_Cs5 <= 48'sd0;
+        response_real_D5 <= 48'sd0;
+        response_image_D5 <= 48'sd0;
+        response_real_Ds5 <= 48'sd0;
+        response_image_Ds5 <= 48'sd0;
     end else begin
         case (state)
             6'd0: begin
                 if (in_valid) begin
                     state <= state + 1;
                     cnt <= 0;
-                    if (ptr == 9599) begin
+                    if (ptr == 38399) begin
                         ptr <= 0;
                         is_loop <= 1;
                     end else begin
@@ -522,8 +522,8 @@ always_ff @(posedge clk or negedge rst) begin
                 end else if (out_valid) begin
                     out_valid <= 0;
                 end
-                response_real <= 46'sd0;
-                response_image <= 46'sd0;
+                response_real <= 48'sd0;
+                response_image <= 48'sd0;
                 temp_new_real <= 32'sd0;
                 temp_new_image <= 32'sd0;
                 temp_old_real <= 32'sd0;

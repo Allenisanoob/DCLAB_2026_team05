@@ -53,7 +53,7 @@ logic [35:0] notes_r;
 assign notes = notes_r;
 
 always_ff @(posedge i_clk or negedge i_rst) begin
-    if (!i_rst) begin
+    if (!rst) begin
         top_1_amp <= 32'd0;
         top_2_amp <= 32'd0;
         top_3_amp <= 32'd0;
@@ -145,16 +145,16 @@ always_ff @(posedge i_clk or negedge i_rst) begin
             end
         end else if (cnt == 37) begin
             cnt <= cnt + 1;
-            if (top_1_id != 0) notes_r[36 - top_1_id] <= 1;
+            if (top_1_id != 0 && top_1_amp > 32'h0000FFFF) notes_r[36 - top_1_id] <= 1;
         end else if (cnt == 38) begin
             cnt <= cnt + 1;
-            if (top_2_id != 0) notes_r[36 - top_2_id] <= 1;
+            if (top_2_id != 0 && top_2_amp > 32'h0000FFFF) notes_r[36 - top_2_id] <= 1;
         end else if (cnt == 39) begin
             cnt <= cnt + 1;
-            if (top_3_id != 0) notes_r[36 - top_3_id] <= 1;
+            if (top_3_id != 0 && top_3_amp > 32'h0000FFFF) notes_r[36 - top_3_id] <= 1;
         end else if (cnt == 40) begin
             cnt <= cnt + 1;
-            if (top_4_id != 0) notes_r[36 - top_4_id] <= 1;
+            if (top_4_id != 0 && top_4_amp > 32'h0000FFFF) notes_r[36 - top_4_id] <= 1;
         end else if (cnt == 41) begin
             cnt <= 0;
             o_valid <= 1'b1;
