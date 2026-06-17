@@ -3,6 +3,7 @@ module Overdrive (
     input                      i_clk,
     input                      i_rst,      // active-low reset
     input        signed [15:0] i_data,     // Q1.15 (Signed)
+    input               [15:0] i_L;        // Q0.16 (Unsigned)
     input               [9:0]  i_gain,     // Q4.6 (Unsigned)
     input                      i_en,
     output       logic signed [15:0] o_data,    // Q1.15 (Signed)
@@ -84,7 +85,7 @@ module Overdrive (
         end else begin
             // No recip_tanh normalization:
             // directly use tanh output, already Q1.15 signed.
-            overdrive_out = tanh_unnorm_r >>> 1;
+            overdrive_out = tanh_unnorm_r ;
         end
     end
 
