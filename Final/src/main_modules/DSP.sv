@@ -118,7 +118,7 @@ module DSP (
     ---------------------------------------------------------------- */
 
         // TODO: Implement the stager to pipeline the data through the DSP blocks
-        // Stager8 stager8 ();
+        // Stager stager ();
 
     /* ----------------------------------------------------------------
     |    Placeholder for now, should be replaced by the stager        |
@@ -205,13 +205,9 @@ module DSP (
     logic [15:0] ng_hold;          // in samples
     logic [14:0] ng_threshold_lo;  // unsigned Q0.15
     logic [14:0] ng_threshold_hi;  // unsigned Q0.15
-    // assign ng_rise_rate  = 16'b0000_0000_0000_1000;  // 1/8192
-    // assign ng_decay_rate = 16'b0000_0000_0000_0010;  // 1/32768
     assign ng_rise_rate  = 8'd5;    // about 4/256
     assign ng_decay_rate = 8'd2;    // about 1/256
     assign ng_hold = 16'd24000;    // 0.5s
-    // assign ng_threshold_lo = 15'b00010_00000_00000;    // 1/16 max strength
-    // assign ng_threshold_hi = 15'b00100_00000_00000;    // 2/16 max strength
     assign ng_threshold_lo = 15'b00000_10000_00000;    //  4/8 max strength
     assign ng_threshold_hi = 15'b00001_00000_00000;    //  6/8 max strength
     Noise_Gate Noise_Gate(
@@ -251,13 +247,13 @@ module DSP (
     Flanger Flanger(
         .clk(i_clk),
         .rst(i_rst),
+
         .in_valid(fg_en),
         .in(original_data),
-        .inc(7'b0000010),
 
+        .inc(7'b0000010),
         .delay_base(10'd512),
         .delay_amp(10'd128),
-
         .gain(8'sd64),
         .w_rate(8'sd64),
 
@@ -272,10 +268,9 @@ module DSP (
         .in_valid(ch_en),
         .in(original_data),
 
+        .inc(7'b0000010),
         .delay_base(12'd512),
         .delay_amp(12'd128),
-
-        .inc(7'b0000010),
         .w_rate(8'sd64),
 
         .out_valid(ch_valid),
@@ -289,10 +284,9 @@ module DSP (
         .in_valid(aw_en),
         .in(original_data),
 
+        .inc(7'b0000010),
         .delay_base(12'd512),
         .delay_amp(12'd128),
-
-        .inc(7'b0000010),
         .w_rate(8'sd64),
 
         .out_valid(aw_valid),
