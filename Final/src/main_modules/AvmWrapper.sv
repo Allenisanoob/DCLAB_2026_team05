@@ -1,253 +1,168 @@
 // =============================================================================
-// AvmWrapper.sv
+// AvmWrapper.sv  (RX-only 重構版)
 // -----------------------------------------------------------------------------
-// 這個模組只負責 Avalon-MM (RS232 IP) 的 memory-mapped I/O。
-// 它把「先查 STATUS、等 rrdy/trdy、再讀 RX / 寫 TX」的輪詢邏輯整個包在內部，
-// 對上層 (Packet.sv) 只暴露乾淨的 byte-stream ready/valid 介面。
+// 職責：
+//   作為 Avalon-MM Master，對下控制 Qsys 裡的 RS232 (UART) IP。
+//   連續輪詢 UART STATUS，每次讀 1 個 byte (avm_readdata[7:0])，
+//   在內部以 shift register 累積滿 32 bytes (256 bits) 後，
+//   把整包資料從 o_command[255:0] 輸出，並把 o_valid 拉高「1 個 clock cycle」。
 //
-//   收 byte (AvmWrapper -> Packet):  o_rx_data / o_rx_valid / i_rx_ready
-//   送 byte (Packet -> AvmWrapper):  i_tx_data / i_tx_valid / o_tx_ready
+// 對外介面 (Conduit 形式，直接拉到頂層 DE2_115.sv 再接 Param_Manager)：
+//   o_command[255:0] : 累積滿的一整包 256-bit 命令
+//   o_valid          : 1-cycle pulse，告知 o_command 這拍有效 (接收端無 ready)
 //
-// 介面語意 (標準 ready/valid，當 valid && ready 同拍成立即完成交握)：
-//   RX: AvmWrapper 讀到一個 byte 後，o_rx_valid=1 且 o_rx_data 穩定，維持到
-//       上層 i_rx_ready=1 為止。該拍兩者皆 1 即視為上層收下。
-//   TX: 上層 i_tx_valid=1 表示有一個 byte 要送；o_tx_ready=1 表示 AvmWrapper
-//       現在可以收下這個 byte 去寫 UART。該拍兩者皆 1 即視為 AvmWrapper 收下，
-//       之後 AvmWrapper 自行完成「查 trdy -> 寫 TX」，期間 o_tx_ready=0。
+// 位元拼裝順序：
+//   第一個收到的 byte 放在最高位 [255:248]，最後一個收到的放在 [7:0]。
+//   作法：每收到一個 byte 就把暫存器左移 8 位，新 byte 放進 [7:0]。
+//   收滿 32 個後，最先進來的那個 byte 自然被推到最高位，符合需求。
 //
-// 設計重點 (相對 lab2 Rsa256Wrapper 的修正)：
-//   1. 任何 polling 狀態在條件不成立時都會「回到 S_IDLE 重新仲裁」，不會把自己
-//      鎖死在某個 polling state，因此 TX 不會被 RX polling 餓死，可連續收發。
-//   2. o_tx_ready 是真正的 ready (「可收」)，不是 done pulse。
-//   3. RX deliver 不佔用 bus，且 TX 永遠能在下一次 S_IDLE 搶到優先權，不死鎖。
-//
-// MMIO 機制 (port、RX/TX/STATUS_BASE、avm_*_r/w、StartRead/StartWrite、
-// !avm_waitrequest 才動作) 沿用自 lab2 的 Rsa256Wrapper.sv。
+// 注意 (reset 極性)：
+//   本模組沿用 lab2 / Qsys 慣例，採 active-high reset (avm_rst)。
+//   Param_Manager.sv 採 active-low reset (i_rst, negedge)。
+//   在頂層連接時，Param_Manager 的 i_rst 必須接 ~avm_rst (反相)！
 // =============================================================================
 module AvmWrapper (
     // ---- Avalon-MM master interface (連到 Qsys 生成的 RS232 IP) ----
-    input         avm_rst,
+    input         avm_rst,          // active-high reset
     input         avm_clk,
     output  [4:0] avm_address,
     output        avm_read,
     input  [31:0] avm_readdata,
-    output        avm_write,
-    output [31:0] avm_writedata,
+    output        avm_write,        // 本模組不寫，恆為 0 (保留 port 以符合 Avalon master)
+    output [31:0] avm_writedata,    // 同上，恆為 0
     input         avm_waitrequest,
 
-    // ---- byte-stream interface to upper layer (Packet.sv) ----
-    // RX: 收到一個 byte 交給上層
-    output [7:0]  o_rx_data,
-    output        o_rx_valid,
-    input         i_rx_ready,
-    // TX: 上層丟一個 byte 給我送出去
-    input  [7:0]  i_tx_data,
-    input         i_tx_valid,
-    output        o_tx_ready
+    // ---- Conduit interface to upper layer (Param_Manager via DE2_115.sv) ----
+    output logic [255:0] o_command, // 累積滿的 256-bit 命令
+    output logic         o_valid    // 1-cycle valid pulse
 );
 
 // -----------------------------------------------------------------------------
-// MMIO 暫存器位址與狀態位元 (沿用 Rsa256Wrapper.sv)
+// MMIO 暫存器位址與狀態位元
+//   依規格：RX_BASE = 0, TX_BASE = 4, STATUS_BASE = 8 (byte address)
+//   STATUS_BASE 的 bit[7] 為 rrdy (RX ready，可讀)
 // -----------------------------------------------------------------------------
-localparam RX_BASE     = 0*4;
-localparam TX_BASE     = 1*4;
-localparam STATUS_BASE = 2*4;
-localparam TX_OK_BIT   = 6;   // trdy
-localparam RX_OK_BIT   = 7;   // rrdy
+localparam [4:0] RX_BASE     = 5'd0;
+localparam [4:0] TX_BASE     = 5'd4;   // 本模組不使用，僅保留定義
+localparam [4:0] STATUS_BASE = 5'd8;
+localparam       RX_OK_BIT   = 7;      // rrdy
+
+// 一整包要收的 byte 數 (256 bits / 8 = 32 bytes)
+localparam       TOTAL_BYTES = 32;
 
 // -----------------------------------------------------------------------------
-// 內部輪詢 FSM
-//   S_IDLE        : 仲裁點。TX 優先：i_tx_valid 時收下 byte 去送；否則去輪詢 RX
-//   S_RX_STATUS   : 讀 STATUS，檢查 rrdy；rrdy=0 -> 回 S_IDLE 重新仲裁
-//   S_RX_DATA     : rrdy=1，讀 RX_BASE 取得 byte
-//   S_RX_DELIVER  : 把 byte 用 valid/ready 交給上層 (不佔 bus)
-//   S_TX_STATUS   : 讀 STATUS，檢查 trdy；trdy=0 -> 繼續查 (TX 已承諾收下，需送完)
-//   S_TX_DATA     : trdy=1，寫 TX_BASE 送出 byte
+// 精簡 FSM
+//   S_POLL : 讀 STATUS，檢查 rrdy。rrdy=0 -> 繼續輪詢；rrdy=1 -> 去讀 RX
+//   S_READ : 讀 RX_BASE 取得 1 個 byte，shift 進暫存器、更新計數
+//            - 若這是第 32 個 byte -> 整包收齊，發 valid pulse，計數歸零回 S_POLL
+//            - 否則 -> 回 S_POLL 繼續輪詢下一個 byte
 // -----------------------------------------------------------------------------
-localparam S_IDLE       = 3'd0;
-localparam S_RX_STATUS  = 3'd1;
-localparam S_RX_DATA    = 3'd2;
-localparam S_RX_DELIVER = 3'd3;
-localparam S_TX_STATUS  = 3'd4;
-localparam S_TX_DATA    = 3'd5;
+localparam S_POLL = 1'd0;
+localparam S_READ = 1'd1;
 
-logic [2:0] state_r, state_w;
+logic        state_r, state_w;
 
-// bus 訊號暫存
+// bus 訊號暫存 (registered，避免組合迴路)
 logic [4:0]  avm_address_r, avm_address_w;
-logic        avm_read_r, avm_read_w, avm_write_r, avm_write_w;
-logic [31:0] avm_writedata_r, avm_writedata_w;
+logic        avm_read_r, avm_read_w;
 
-// byte-stream 暫存
-logic [7:0] rx_data_r, rx_data_w;   // 收進來的 byte
-logic       rx_valid_r, rx_valid_w; // 對上層的 valid (registered)
-logic [7:0] tx_data_r, tx_data_w;   // 抓住上層要送的 byte
+// 資料累積暫存
+logic [255:0] command_r, command_w;     // shift register
+logic [5:0]   byte_cnt_r, byte_cnt_w;    // 0..32，需可表示 32 故 6 bits
+logic         valid_r, valid_w;          // 對外 valid pulse (registered)
 
 // -----------------------------------------------------------------------------
 // 輸出 assign
 // -----------------------------------------------------------------------------
 assign avm_address   = avm_address_r;
 assign avm_read      = avm_read_r;
-assign avm_write     = avm_write_r;
-assign avm_writedata = avm_writedata_r;
+assign avm_write     = 1'b0;             // 純 RX，永不寫
+assign avm_writedata = 32'b0;
 
-assign o_rx_data  = rx_data_r;
-assign o_rx_valid = rx_valid_r;
-
-// o_tx_ready: 真正的 ready。只有在 S_IDLE、且沒有 RX byte 正等著交付時，
-// AvmWrapper 才可以收下一個新的 TX byte。組合輸出，與 i_tx_valid 同拍握手。
-assign o_tx_ready = (state_r == S_IDLE) && !rx_valid_r;
+assign o_command = command_r;
+assign o_valid   = valid_r;
 
 // -----------------------------------------------------------------------------
-// bus transaction helper
-// -----------------------------------------------------------------------------
-task StartRead;
-    input [4:0] addr;
-    begin
-        avm_read_w    = 1'b1;
-        avm_write_w   = 1'b0;
-        avm_address_w = addr;
-    end
-endtask
-task StartWrite;
-    input [4:0] addr;
-    begin
-        avm_read_w    = 1'b0;
-        avm_write_w   = 1'b1;
-        avm_address_w = addr;
-    end
-endtask
-task BusIdle;   // 不發起任何 bus 動作
-    begin
-        avm_read_w  = 1'b0;
-        avm_write_w = 1'b0;
-    end
-endtask
-
-// -----------------------------------------------------------------------------
-// 組合邏輯
+// 組合邏輯：next-state / next-value
 // -----------------------------------------------------------------------------
 always_comb begin
-    // 預設保持
-    state_w         = state_r;
-    avm_address_w   = avm_address_r;
-    avm_read_w      = avm_read_r;
-    avm_write_w     = avm_write_r;
-    avm_writedata_w = avm_writedata_r;
-    rx_data_w       = rx_data_r;
-    rx_valid_w      = rx_valid_r;     // valid 預設維持 (registered handshake)
-    tx_data_w       = tx_data_r;
+    // 預設保持現值
+    state_w       = state_r;
+    avm_address_w = avm_address_r;
+    avm_read_w    = avm_read_r;
+    command_w     = command_r;
+    byte_cnt_w    = byte_cnt_r;
+    valid_w       = 1'b0;        // valid 預設為 0，只有收滿那拍才拉高 -> 自動成為 1-cycle pulse
 
     case (state_r)
         // ---------------------------------------------------------------------
-        // 仲裁點：TX 優先 (i_tx_valid && o_tx_ready 同拍握手)，否則去輪詢 RX。
-        // o_tx_ready 在此狀態 = !rx_valid_r，故 rx 尚有 byte 未交付時不收 TX。
+        // 輪詢 STATUS：avm_waitrequest=High 時整個分支不動作，狀態機自然卡住等待
         // ---------------------------------------------------------------------
-        S_IDLE: begin
-            if (i_tx_valid && !rx_valid_r) begin
-                // 同拍收下上層的 byte
-                tx_data_w = i_tx_data;
-                StartRead(STATUS_BASE);     // 先去查 trdy
-                state_w = S_TX_STATUS;
-            end else if (i_rx_ready && !rx_valid_r) begin
-                // 上層允許收、且手上沒有未交付的 byte -> 去輪詢 RX
-                StartRead(STATUS_BASE);     // 先去查 rrdy
-                state_w = S_RX_STATUS;
-            end else begin
-                BusIdle();                  // 沒事，待在 IDLE
-            end
-        end
-
-        // ---------------------------------------------------------------------
-        // RX：查 STATUS -> 等 rrdy。rrdy=0 立刻回 S_IDLE 重新仲裁 (修問題一)
-        // ---------------------------------------------------------------------
-        S_RX_STATUS: begin
+        S_POLL: begin
+            avm_address_w = STATUS_BASE;
+            avm_read_w    = 1'b1;        // 持續對 STATUS 發 read
             if (!avm_waitrequest) begin
                 if (avm_readdata[RX_OK_BIT]) begin
-                    StartRead(RX_BASE);     // rrdy=1，下個 cycle 真正讀 byte
-                    state_w = S_RX_DATA;
-                end else begin
-                    BusIdle();              // 沒資料 -> 回仲裁，讓 TX 有機會
-                    state_w = S_IDLE;
+                    // rrdy=1：下一拍改去讀 RX_BASE
+                    avm_address_w = RX_BASE;
+                    avm_read_w    = 1'b1;
+                    state_w       = S_READ;
                 end
+                // rrdy=0：維持 S_POLL，下一拍再查一次 STATUS
             end
         end
 
-        S_RX_DATA: begin
+        // ---------------------------------------------------------------------
+        // 讀 RX：取得 1 個 byte，左移 8 位塞入 [7:0]，更新計數
+        // ---------------------------------------------------------------------
+        S_READ: begin
+            avm_address_w = RX_BASE;
+            avm_read_w    = 1'b1;
             if (!avm_waitrequest) begin
-                rx_data_w  = avm_readdata[7:0];
-                rx_valid_w = 1'b1;          // 舉起 valid，交給上層
-                BusIdle();
-                state_w = S_RX_DELIVER;
-            end
-        end
+                // shift in：先到的 byte 會被往高位推，最後到的留在 [7:0]
+                command_w  = {command_r[247:0], avm_readdata[7:0]};
+                byte_cnt_w = byte_cnt_r + 6'd1;
 
-        // ---------------------------------------------------------------------
-        // RX deliver：不佔 bus。維持 valid 直到上層 i_rx_ready 收下。
-        // 收下後回 S_IDLE，TX 可在下一拍立即被服務 (不死鎖)。
-        // ---------------------------------------------------------------------
-        S_RX_DELIVER: begin
-            BusIdle();
-            if (i_rx_ready) begin           // valid 已為 1，這拍 ready=1 即握手成立
-                rx_valid_w = 1'b0;
-                state_w = S_IDLE;
-            end
-        end
-
-        // ---------------------------------------------------------------------
-        // TX：已在 S_IDLE 承諾收下 byte，這裡負責送完。
-        // trdy=0 時繼續查 STATUS (不放棄，因為 byte 已收下，必須送出去)。
-        // ---------------------------------------------------------------------
-        S_TX_STATUS: begin
-            if (!avm_waitrequest) begin
-                if (avm_readdata[TX_OK_BIT]) begin
-                    avm_writedata_w = {24'b0, tx_data_r};
-                    StartWrite(TX_BASE);    // trdy=1，下個 cycle 寫 byte
-                    state_w = S_TX_DATA;
-                end else begin
-                    StartRead(STATUS_BASE); // 還沒好，繼續輪詢 trdy
+                if (byte_cnt_r + 6'd1 == TOTAL_BYTES) begin
+                    // 第 32 個 byte 收齊：這拍把整包鎖進 command_r，下一拍發 valid pulse
+                    valid_w    = 1'b1;          // 在時序段對齊 command_r 更新後輸出
+                    byte_cnt_w = 6'd0;          // 歸零，準備收下一包
                 end
-            end
-        end
 
-        S_TX_DATA: begin
-            if (!avm_waitrequest) begin
-                // 寫入完成。直接回 S_IDLE。
-                // (上層在 S_IDLE 握手那拍就已知道 byte 被收下，不需要 done pulse)
-                BusIdle();
-                state_w = S_IDLE;
+                // 不論是否收滿，都回 S_POLL 繼續輪詢
+                avm_address_w = STATUS_BASE;
+                avm_read_w    = 1'b1;
+                state_w       = S_POLL;
             end
+            // avm_waitrequest=High：維持 S_READ，read 持續拉著，等 slave 完成
         end
 
         default: begin
-            BusIdle();
-            state_w = S_IDLE;
+            state_w       = S_POLL;
+            avm_address_w = STATUS_BASE;
+            avm_read_w    = 1'b1;
         end
     endcase
 end
 
 // -----------------------------------------------------------------------------
-// 時序邏輯 (沿用 Rsa256Wrapper.sv 的 reset 初始化風格；active-high reset)
+// 時序邏輯 (active-high reset)
 // -----------------------------------------------------------------------------
 always_ff @(posedge avm_clk or posedge avm_rst) begin
     if (avm_rst) begin
-        state_r         <= S_IDLE;
-        avm_address_r   <= STATUS_BASE;
-        avm_read_r      <= 1'b0;
-        avm_write_r     <= 1'b0;
-        avm_writedata_r <= 32'b0;
-        rx_data_r       <= 8'b0;
-        rx_valid_r      <= 1'b0;
-        tx_data_r       <= 8'b0;
+        state_r       <= S_POLL;
+        avm_address_r <= STATUS_BASE;
+        avm_read_r    <= 1'b1;       // reset 後立刻開始輪詢 STATUS
+        command_r     <= 256'b0;
+        byte_cnt_r    <= 6'd0;
+        valid_r       <= 1'b0;
     end else begin
-        state_r         <= state_w;
-        avm_address_r   <= avm_address_w;
-        avm_read_r      <= avm_read_w;
-        avm_write_r     <= avm_write_w;
-        avm_writedata_r <= avm_writedata_w;
-        rx_data_r       <= rx_data_w;
-        rx_valid_r      <= rx_valid_w;
-        tx_data_r       <= tx_data_w;
+        state_r       <= state_w;
+        avm_address_r <= avm_address_w;
+        avm_read_r    <= avm_read_w;
+        command_r     <= command_w;
+        byte_cnt_r    <= byte_cnt_w;
+        valid_r       <= valid_w;    // valid_w 只在收滿那拍為 1 -> valid_r 為單拍 pulse
     end
 end
 
