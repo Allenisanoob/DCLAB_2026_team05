@@ -102,33 +102,86 @@ except Exception:
 # control: "knob" | "slider"
 # 5 參數模組(NoiseGate, Flanger)用倒ㄇ:3 滑桿 + 中間 2 旋鈕
 MODULES = {
-    "Reverb": {"id": 0x01, "params": [
-        ("ap_gain", "AP Gain", "knob", 0.5), ("wet_rate", "Wet", "slider", 0.4)]},
-    "Delay": {"id": 0x02, "params": [
-        ("delay_time", "Time", "knob", 0.4), ("delay_feedback", "Feedback", "slider", 0.3),
-        ("delay_mix", "Mix", "slider", 0.5)]},
-    "Flanger": {"id": 0x03, "five": True, "params": [
-        ("in", "In", "slider", 0.5), ("delay_base", "Base", "knob", 0.4),
-        ("delay_amp", "Amp", "knob", 0.4), ("gain", "Gain", "slider", 0.5),
-        ("wet_rate", "Wet", "slider", 0.5)]},
-    "Overdrive": {"id": 0x04, "params": [
-        ("i_gain", "Gain", "slider", 0.5), ("L", "Level", "knob", 0.5)]},
-    "Chorus": {"id": 0x05, "params": [
-        ("delay_base", "Base", "knob", 0.4), ("delay_amp", "Amp", "slider", 0.4),
-        ("in", "In", "slider", 0.5), ("wet_rate", "Wet", "slider", 0.5)]},
-    "Fuzz": {"id": 0x06, "params": [
-        ("i_gain", "Gain", "slider", 0.6), ("L", "Level", "knob", 0.5)]},
-    "Distortion": {"id": 0x07, "params": [
-        ("i_gain", "Gain", "slider", 0.6), ("L", "Level", "knob", 0.5)]},
-    "NoiseGate": {"id": 0x08, "five": True, "params": [
-        ("ng_rise_rate", "Rise", "slider", 0.4), ("ng_decay_rate", "Decay", "knob", 0.4),
-        ("ng_hold", "Hold", "knob", 0.4), ("ng_threshold_low", "Th.Lo", "slider", 0.3),
-        ("ng_threshold_high", "Th.Hi", "slider", 0.7)]},
-    "Auto_Wah": {"id": 0x09, "params": [
-        ("delay_base", "Base", "knob", 0.4), ("delay_amp", "Amp", "slider", 0.4),
-        ("in", "In", "slider", 0.5), ("wet_rate", "Wet", "slider", 0.5)]},
-    "Volume": {"id": 0x0A, "params": [
-        ("i_gain", "Master", "slider", 0.7)]},
+    "Overdrive": {"id": 0x01,
+        "params": [
+            ("i_gain", "Gain", "slider", 0.5, 1023),
+            ("L", "Level", "knob", 0.5, 65535)
+        ],
+        "current_values": [0.5, 0.5]
+    },
+    "Fuzz": {"id": 0x02,
+        "params": [
+            ("i_gain", "Gain", "slider", 0.6, 1023),
+            ("L", "Level", "knob", 0.5, 65535)
+        ],
+        "current_values": [0.6, 0.5]
+    },
+    "Distortion": {"id": 0x03,
+        "params": [
+            ("i_gain", "Gain", "slider", 0.6, 1023),
+            ("L", "Level", "knob", 0.5, 65535)
+        ],
+        "current_values": [0.6, 0.5]
+    },
+    "Reverb": {"id": 0x04,
+        "params": [
+            ("wet_rate", "Wet", "slider", 0.4, 255),
+            ("ap_gain", "AP Gain", "knob", 0.5, 255)
+        ],
+        "current_values": [0.4, 0.5]
+    },
+    "NoiseGate": {"id": 0x05, "five": True,
+        "params": [
+            ("ng_rise_rate", "Rise", "slider", 0.4, 255),
+            ("ng_decay_rate", "Decay", "knob", 0.4, 255),
+            ("ng_hold", "Hold", "knob", 0.4, 65535),
+            ("ng_threshold_low", "Th.Lo", "slider", 0.3, 32767),
+            ("ng_threshold_high", "Th.Hi", "slider", 0.7, 32767)
+        ],
+        "current_values": [0.4, 0.4, 0.4, 0.3, 0.7]
+    },
+    "Delay": {"id": 0x06,
+        "params": [
+            ("delay_time", "Time", "knob", 0.4, 65535),
+            ("delay_feedback", "Feedback", "slider", 0.3, 255),
+            ("delay_mix", "Mix", "slider", 0.5, 255)
+        ],
+        "current_values": [0.4, 0.3, 0.5]
+    },
+    "Flanger": {"id": 0x07, "five": True,
+        "params": [
+            ("inc", "Inc", "slider", 0.5, 127),
+            ("delay_base", "Base", "knob", 0.4, 1023),
+            ("delay_amp", "Amp", "knob", 0.4, 1023),
+            ("gain", "Gain", "slider", 0.5, 255),
+            ("wet_rate", "Wet", "slider", 0.5, 255)
+        ],
+        "current_values": [0.5, 0.4, 0.4, 0.5, 0.5]
+    },
+    "Chorus": {"id": 0x08,
+        "params": [
+            ("in", "Inc", "slider", 0.5, 127),
+            ("delay_base", "Base", "knob", 0.4, 4095),
+            ("delay_amp", "Amp", "slider", 0.4, 4095),
+            ("wet_rate", "Wet", "slider", 0.5, 255)
+        ],
+        "current_values": [0.5, 0.4, 0.4, 0.5]
+    },
+    "Auto_Wah": {"id": 0x09,
+        "params": [
+            ("in", "Inc", "slider", 0.5, 127),
+            ("delay_base", "Base", "knob", 0.4, 4095),
+            ("delay_amp", "Amp", "slider", 0.4, 4095),
+            ("wet_rate", "Wet", "slider", 0.5, 255)
+        ],
+        "current_values": [0.5, 0.4, 0.4, 0.5]
+    },
+    "Volume": {"id": 0x0B,
+        "params": [
+            ("i_gain", "Master", "slider", 0.7, 127)
+        ],
+        "current_values": [0.7]
+    },
 }
 
 # FX Panel 2x5 排列順序(Volume 放最後、做小)
@@ -530,7 +583,7 @@ class ModulePanel(QtWidgets.QFrame):
                 sz = "large"
             else:
                 sz = "large" if pr[2] == "knob" else "normal"
-            row.addWidget(self._make(*pr, size=sz), 0, Qt.AlignBottom | Qt.AlignHCenter)
+            row.addWidget(self._make(pr[0], pr[1], pr[2], pr[3], size=sz), 0, Qt.AlignBottom | Qt.AlignHCenter)
         row.addStretch(1)
         lay.addLayout(row)
         lay.addStretch(1)
@@ -546,8 +599,29 @@ class ModulePanel(QtWidgets.QFrame):
         row = QtWidgets.QHBoxLayout()
         row.setSpacing(10)
         row.addStretch(1)
-        row.addWidget(self._make(*slider_pr, size="large"), 0, Qt.AlignBottom | Qt.AlignHCenter)
-        row.addWidget(self._make(*knob_pr, size="large"), 0, Qt.AlignVCenter | Qt.AlignHCenter)
+        
+        # row.addWidget(self._make(*slider_pr, size="large"), 0, Qt.AlignBottom | Qt.AlignHCenter)
+        
+        # Unpack the 4 tuple items manually
+        p_id, p_title, p_type, p_default, p_scale = slider_pr
+
+        # Pass them explicitly to avoid positional collisions
+        # *Note: Check your _make() definition to ensure the 4th parameter is actually named 'default' (or adjust as needed)
+        widget = self._make(p_id, p_title, p_type, default=p_default, size="large")
+
+        row.addWidget(widget, 0, Qt.AlignBottom | Qt.AlignHCenter)
+        
+        # row.addWidget(self._make(*knob_pr, size="large"), 0, Qt.AlignVCenter | Qt.AlignHCenter)
+        
+        # Unpack the 4 tuple items manually
+        k_id, k_title, k_type, k_default, k_scale = knob_pr
+
+        # Pass them explicitly to avoid positional collisions
+        # *Note: Just like before, ensure 'default' matches your _make() parameter name
+        widget = self._make(k_id, k_title, k_type, default=k_default, size="large")
+
+        row.addWidget(widget, 0, Qt.AlignVCenter | Qt.AlignHCenter)
+
         row.addStretch(1)
         lay.addLayout(row)
         lay.addStretch(1)
@@ -558,11 +632,11 @@ class ModulePanel(QtWidgets.QFrame):
         grid.setContentsMargins(0, 0, 0, 0)
         grid.setHorizontalSpacing(6); grid.setVerticalSpacing(8)
         # 倒ㄇ:左右柱用 small 滑桿拉開、頂用 normal 滑桿、中欄兩旋鈕 normal
-        left  = self._make(*p[0], size="small")
-        knob1 = self._make(*p[1], size="normal")
-        knob2 = self._make(*p[2], size="normal")
-        top   = self._make(*p[3], size="normal")
-        right = self._make(*p[4], size="small")
+        left  = self._make(p[0][0], p[0][1], p[0][2], p[0][3], size="small")
+        knob1 = self._make(p[1][0], p[1][1], p[1][2], p[1][3], size="normal")
+        knob2 = self._make(p[2][0], p[2][1], p[2][2], p[2][3], size="normal")
+        top   = self._make(p[3][0], p[3][1], p[3][2], p[3][3], size="normal")
+        right = self._make(p[4][0], p[4][1], p[4][2], p[4][3], size="small")
         grid.addWidget(top,   0, 0, 1, 3, Qt.AlignHCenter)
         grid.addWidget(left,  1, 0, 2, 1, Qt.AlignBottom | Qt.AlignHCenter)
         grid.addWidget(knob1, 1, 1, Qt.AlignHCenter)
@@ -680,31 +754,93 @@ class UartManager(QtCore.QObject):
             except Exception as ex:
                 self.log.emit(f"TX fail: {ex}")
         self.log.emit(f"TX {tag}  {hexs}")
+        print(pkt)
 
-    def send_param(self, module, key, value):
-        mid = MODULES[module]["id"]; pid = PARAM_ID[(module, key)]
-        val = int(round(max(0.0, min(1.0, value)) * 1000))
-        hi, lo = (val >> 8) & 0xFF, val & 0xFF
-        chk = 0xA5 ^ mid ^ pid ^ hi ^ lo
+    # def send_param(self, module, key, value):
+    #     mid = MODULES[module]["id"]; pid = PARAM_ID[(module, key)]
+    #     val = int(round(max(0.0, min(1.0, value)) * 1000))
+    #     hi, lo = (val >> 8) & 0xFF, val & 0xFF
+    #     chk = 0xA5 ^ mid ^ pid ^ hi ^ lo
         
-        self._write(bytes([0xA5, mid, pid, hi, lo, chk & 0xFF]),
-                    f"[{module}.{key}={val}]")
+    #     self._write(bytes([0xA5, mid, pid, hi, lo, chk & 0xFF]),
+    #                 f"[{module}.{key}={val}]")
+        
+    def send_module_state(self, module_name, dummy):
+        # if not self.ser or not self.ser.is_open:
+        #     return
+            
+        module = MODULES.get(module_name)
+        if not module:
+            return
 
+        packet = bytearray(32)
+        packet[0] = module["id"] & 0xFF  # [255:248] Address
+        
+        # Grab the current float values (0.0 to 1.0)
+        params = module["params"]
+        current_floats = [p[3] for p in params]
+        
+        # You MUST scale these floats to your Verilog integers here!
+        # Example: scaled_ints = [int(f * 65535) for f in current_floats]
+        scaled_ints = self._scale_parameters(module_name, current_floats) 
 
-    def send_chain(self, stages):
+        # Pack into 16-bit chunks starting from the end [15:0], [31:16], etc.
+        for i, val in enumerate(scaled_ints):
+            idx_hi = 30 - (i * 2)
+            idx_lo = 31 - (i * 2)
+            packet[idx_hi] = (val >> 8) & 0xFF
+            packet[idx_lo] = val & 0xFF
+
+        self._write(packet, module_name)
+        print(1)
+        
+    def send_stager(self, stages):
+        # if not self.ser or not self.ser.is_open:
+        #     return
+        
         ids = [MODULES[s]["id"] if s and s in MODULES else 0 for s in stages]
-        chk = 0x5A
-        for i in ids:
-            chk ^= i
-        self._write(bytes([0x5A] + ids + [chk & 0xFF]), f"CHAIN {stages}")
+            
+        packet = bytearray(32)
+        packet[0] = 10  # ADDR_ST is 10 [255:248]
+        
+        # Map the 4 slots to [31:0]
+        packet[28] = ids[0] & 0xFF  # [31:24]
+        packet[29] = ids[1] & 0xFF  # [23:16]
+        packet[30] = ids[2] & 0xFF  # [15:8]
+        packet[31] = ids[3] & 0xFF  # [7:0]
+        
+        self._write(packet, "staging")
 
-    def send_preview(self, module_or_none):
+
+    # def send_chain(self, stages):
+    #     ids = [MODULES[s]["id"] if s and s in MODULES else 0 for s in stages]
+    #     chk = 0x5A
+    #     for i in ids:
+    #         chk ^= i
+    #     self._write(bytes([0x5A] + ids + [chk & 0xFF]), f"CHAIN {stages}")
+
+    def send_preview(self, module_name):
         """試聽哪顆。module_or_none=None 表示全部停止。
         封包格式 [0xC1][module_id][xor] 為暫定,待 FPGA 端定案後改這裡即可。"""
-        mid = MODULES[module_or_none]["id"] if module_or_none else 0x00
-        chk = 0xC1 ^ mid
-        self._write(bytes([0xC1, mid, chk & 0xFF]),
-                    f"PREVIEW {module_or_none or 'STOP'}")
+        # mid = MODULES[module_or_none]["id"] if module_or_none else 0x00
+        # chk = 0xC1 ^ mid
+        # self._write(bytes([0xC1, mid, chk & 0xFF]),
+        #             f"PREVIEW {module_or_none or 'STOP'}")
+        
+        if module_name == None:
+            combo = [None, None, None, None]
+            self.send_stager(combo)
+            return
+        else:
+            module = MODULES.get(module_name)
+            if not module:
+                print("preview failed")
+                print(module_name)
+                return
+            combo = [module_name, None, None, None]
+            self.send_stager(combo)
+            self.send_module_state(module_name, 0)
+
 
     # 接收
     def _read_loop(self):
@@ -743,6 +879,13 @@ class UartManager(QtCore.QObject):
                 del buf[:total]
             else:
                 del buf[0]
+                
+    def _scale_parameters(self, module_name, current_floats):
+        module = MODULES[module_name]
+        params = module["params"]
+        ranges = [p[4] for p in params]
+        return [int(f * r) for f, r in zip(current_floats, ranges)]
+        
 
     @staticmethod
     def _xor(pkt):
@@ -820,7 +963,7 @@ class FxPanelPage(QtWidgets.QWidget):
         lay.addStretch(1)
         for name, off in zip(names, pattern):
             pnl = ModulePanel(name, MODULES[name])
-            pnl.paramChanged.connect(self.uart.send_param)
+            pnl.paramChanged.connect(self.uart.send_module_state)
             pnl.previewToggled.connect(self._on_preview)
             self.panels[name] = pnl
             # 用上下 spacer 做 W 偏移
@@ -864,7 +1007,7 @@ class FxPanelPage(QtWidgets.QWidget):
         lay.addWidget(cap)
         # 全域音量滑桿,永遠可調;兩頁共用同一顆
         self.vol = VSlider("Master", MODULES["Volume"]["params"][0][3], horizontal=True)
-        self.vol.valueChanged.connect(lambda v: self.uart.send_param("Volume", "i_gain", v))
+        self.vol.valueChanged.connect(lambda v: self.uart.send_module_state("Volume", v))
         lay.addWidget(self.vol, 0, Qt.AlignHCenter)
         lay.addStretch(1)
         return box
@@ -1022,7 +1165,7 @@ class StagerPage(QtWidgets.QWidget):
             "QPushButton{background:#BE9E60;color:#0a0a0a;font-weight:bold;"
             "padding:10px 20px;border-radius:8px;letter-spacing:2px;}"
             "QPushButton:hover{background:#d4b574;}")
-        send.clicked.connect(lambda: self.uart.send_chain(self.current_chain()))
+        send.clicked.connect(lambda: self.uart.send_stager(self.current_chain()))
         root.addWidget(send, 0, Qt.AlignHCenter)
 
     def current_chain(self):
@@ -1071,10 +1214,10 @@ class StagerPage(QtWidgets.QWidget):
         host.addWidget(cont)
 
     def _mk(self, module, pr, size="normal"):
-        key, label, ctype, default = pr
+        key, label, ctype, default, scale = pr
         w = (Knob(label, default, size=size) if ctype == "knob"
              else VSlider(label, default, size=size))
-        w.valueChanged.connect(lambda v, m=module, k=key: self.uart.send_param(m, k, v))
+        w.valueChanged.connect(lambda v, m=module, k=key: self.uart.send_module_state(m, v))
         return w
 
 

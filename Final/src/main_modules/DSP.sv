@@ -222,7 +222,7 @@ module DSP (
         .notes(notes)
     );
 
-    logic o_dsp_ledr_r [14:0];
+    logic [14:0] o_dsp_ledr_r;
 
     always_ff @(posedge i_clk) begin
         if (find_4_in_36_valid) begin
@@ -244,9 +244,8 @@ module DSP (
         end
     end
 
-    assign o_dsp_ledr[12] = o_dsp_ledr_12_r;
-    assign o_dsp_ledr[13] = o_dsp_ledr_13_r;
-    assign o_dsp_ledr[14] = o_dsp_ledr_14_r;
+    assign o_dsp_ledr[14:0] = o_dsp_ledr_r;
+
 
     // Staging up to 4 modules
     logic [31:0] staging_control;
