@@ -1,6 +1,6 @@
  `timescale 1ns/1ps
 
-module tanh (
+module tanh_o (
     input  logic signed [15:0] i_data,   // 原始音訊 Q1.15 signed
     input  logic        [9:0]  i_gain,   // 放大倍率 Q4.6 unsigned
     output logic signed [15:0] o_data    // tanh 結果 Q1.15 signed

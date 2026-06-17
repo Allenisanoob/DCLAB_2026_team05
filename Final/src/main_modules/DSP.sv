@@ -215,9 +215,9 @@ module DSP (
         .i_rst          (i_rst),
         .i_prev_valid   (ng_en),
         .i_data         (original_data),
-        .i_rise_rate    (ng_rise_rate),
-        .i_decay_rate   (ng_decay_rate),
-        .i_hold         (ng_hold),
+        .i_rise_rate    (ng_rise_rate),                    //
+        .i_decay_rate   (ng_decay_rate),             //
+        .i_hold         (ng_hold),          //
         .i_threshold_lo (ng_threshold_lo),
         .i_threshold_hi (ng_threshold_hi),
         .o_next_valid   (ng_valid),
