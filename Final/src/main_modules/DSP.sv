@@ -7,6 +7,10 @@ module DSP (
 
     input  [17:0]  i_fx_sw,
 
+    // UART
+    input  [255:0] i_uart_command,
+    input          i_uart_valid,
+
     output        o_D2B_valid,
     output signed [15:0] o_buf_data_l,
     output signed [15:0] o_buf_data_r,
@@ -304,15 +308,15 @@ module DSP (
     );
 
     // Managing parameters for all modules
-    logic [255:0] param_command;
-    logic [7:0] test_addr;
-    assign param_command = {8'd10, 216'b0, 24'b0, test_addr};
+    // logic [255:0] param_command;
+    // logic [7:0] test_addr;
+    // assign param_command = {8'd10, 216'b0, 24'b0, test_addr};
     Param_Manager Param_Manager(
         .i_clk(i_clk),
         .i_rst(i_rst),
 
-        .i_command(param_command),
-        .i_valid(1'b1),
+        .i_command(i_uart_command),
+        .i_valid(i_uart_valid),
 
         // Overdrive
         .o_od_gain       (od_gain),
