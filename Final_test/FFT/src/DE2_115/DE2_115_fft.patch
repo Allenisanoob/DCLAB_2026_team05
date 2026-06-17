@@ -1,0 +1,91 @@
+--- /mnt/data/DE2_115(12).sv	2026-06-14 19:05:28.762399176 +0000
++++ /mnt/data/DE2_115_with_fft.sv	2026-06-14 19:06:55.996317956 +0000
+@@ -139,6 +139,34 @@
+ logic key0down, key1down, key2down, key3down;
+ logic CLK_12M, CLK_100K;
+ // logic CLK_800K;
++
++// -----------------------------------------------------------------------------
++// FFT audio analysis debug wires
++// These two signals must be driven from Top.sv.
++// Recommended source inside Top.sv:
++//   o_fft_audio_sample = Recorder/DSP input sample, signed 16-bit audio
++//   o_fft_audio_valid  = one-cycle valid pulse for that sample
++// -----------------------------------------------------------------------------
++(* keep = "true" *) logic signed [15:0] fft_audio_sample_w;
++(* keep = "true" *) logic                 fft_audio_valid_w;
++
++(* keep = "true" *) logic                 fft_sink_valid_w;
++(* keep = "true" *) logic                 fft_sink_ready_w;
++(* keep = "true" *) logic                 fft_sink_sop_w;
++(* keep = "true" *) logic                 fft_sink_eop_w;
++(* keep = "true" *) logic signed [15:0]   fft_sink_real_w;
++(* keep = "true" *) logic signed [15:0]   fft_sink_imag_w;
++(* keep = "true" *) logic [11:0]          fft_in_cnt_w;
++(* keep = "true" *) logic                 fft_input_drop_w;
++
++(* keep = "true" *) logic                 fft_bin_valid_w;
++(* keep = "true" *) logic                 fft_bin_sop_w;
++(* keep = "true" *) logic                 fft_bin_eop_w;
++(* keep = "true" *) logic [11:0]          fft_bin_idx_w;
++(* keep = "true" *) logic signed [31:0]   fft_real_w;
++(* keep = "true" *) logic signed [31:0]   fft_imag_w;
++(* keep = "true" *) logic [5:0]           fft_exp_w;
++(* keep = "true" *) logic [1:0]           fft_source_error_w;
+ assign AUD_XCK = CLK_12M;
+ 
+ final_qsys pll0( // generate with qsys, please follow lab2 tutorials
+@@ -206,7 +234,13 @@
+ 
+ 	// For Debugging
+ 	.o_l_cnt(l_cnt_10000),
+-	.o_r_cnt(r_cnt_10000)
++	.o_r_cnt(r_cnt_10000),
++
++	// FFT audio tap for SignalTap / analyzer debug.
++	// You must add these two output ports in Top.sv and drive them from
++	// your 16-bit audio sample stream and its valid signal.
++	.o_fft_audio_sample(fft_audio_sample_w),
++	.o_fft_audio_valid(fft_audio_valid_w)
+ 
+ 	// LCD (optional display)
+ 	// .i_clk_800k(CLK_800K),
+@@ -218,6 +252,38 @@
+ 	// .o_LCD_BLON(LCD_BLON),
+ );
+ 
++// -----------------------------------------------------------------------------
++// FFT wrapper for audio analysis debug
++// Clock choice: use CLOCK_50 because Top currently receives CLOCK_50 as i_clk.
++// If the exported sample/valid from Top.sv are in another clock domain, move this
++// wrapper to that same clock domain or add a proper CDC bridge.
++// -----------------------------------------------------------------------------
++FFT_audio_wrapper #(.FFT_N(4096), .CNT_W(12)) u_fft_audio_wrapper (
++	.i_clk          (CLOCK_50),
++	.i_rst_n        (KEY[3]),
++
++	.i_audio_sample (fft_audio_sample_w),
++	.i_audio_valid  (fft_audio_valid_w),
++
++	.o_sink_valid   (fft_sink_valid_w),
++	.o_sink_ready   (fft_sink_ready_w),
++	.o_sink_sop     (fft_sink_sop_w),
++	.o_sink_eop     (fft_sink_eop_w),
++	.o_sink_real    (fft_sink_real_w),
++	.o_sink_imag    (fft_sink_imag_w),
++	.o_in_cnt       (fft_in_cnt_w),
++	.o_input_drop   (fft_input_drop_w),
++
++	.o_bin_valid    (fft_bin_valid_w),
++	.o_bin_sop      (fft_bin_sop_w),
++	.o_bin_eop      (fft_bin_eop_w),
++	.o_bin_idx      (fft_bin_idx_w),
++	.o_fft_real     (fft_real_w),
++	.o_fft_imag     (fft_imag_w),
++	.o_fft_exp      (fft_exp_w),
++	.o_source_error (fft_source_error_w)
++);
++
+ // logic [3:0] sw_count;
+ // SevenHexDecoder seven_dec(
+ // 	.i_hex(sw_count),	// [3:0]

@@ -1,0 +1,524 @@
+Guitar FX Studio UART Packet Protocol
+======================================
+
+版本: v1.0
+用途: PyQt GUI <-> FPGA UART 通訊協定
+UART 建議設定: 115200 baud, 8 data bits, no parity, 1 stop bit (8N1)
+Byte order: big-endian
+Checksum: XOR of all previous bytes in the packet
+
+重要概念
+--------
+1. PyQt 不送字串 "Overdrive" 或 "Gain"。
+2. PyQt 送的是 binary packet。
+3. Byte 0 是 header / packet type，用來表示這包資料的種類。
+4. module_id 表示哪一個效果模組。
+5. param_id 表示該模組的哪一個參數。
+6. value 是 UI 端的 0.0~1.0 轉成 0~1000 的整數。
+7. FPGA 收到 0~1000 後，再自行 mapping 成真正的 fixed-point 參數。
+
+============================================================
+A. PC / PyQt -> FPGA
+============================================================
+
+A1. Parameter Packet：參數更新封包
+----------------------------------
+格式:
+
+    [0xA5][module_id][param_id][value_hi][value_lo][xor]
+
+總長度: 6 bytes
+
+Byte 定義:
+
+    Byte 0: 0xA5
+        Header，表示這是一包「參數更新」封包。
+
+    Byte 1: module_id
+        表示要控制哪一個效果模組。
+
+    Byte 2: param_id
+        表示要控制該模組的哪一個參數。
+
+    Byte 3: value_hi
+        value 的高 8 bits。
+
+    Byte 4: value_lo
+        value 的低 8 bits。
+
+    Byte 5: xor
+        XOR checksum。
+        xor = Byte0 ^ Byte1 ^ Byte2 ^ Byte3 ^ Byte4
+
+value 定義:
+
+    PyQt UI 內部值: 0.0 ~ 1.0
+    UART 傳送值:   0 ~ 1000
+
+    value = round(UI_value * 1000)
+
+    value_hi = (value >> 8) & 0xFF
+    value_lo = value & 0xFF
+
+範例 1：Overdrive Gain = 50%
+
+    module = Overdrive
+    key    = i_gain
+    UI_value = 0.5
+
+    module_id = 0x04
+    param_id  = 0
+    value     = round(0.5 * 1000) = 500 = 0x01F4
+    value_hi  = 0x01
+    value_lo  = 0xF4
+
+    xor = 0xA5 ^ 0x04 ^ 0x00 ^ 0x01 ^ 0xF4
+        = 0x54
+
+    UART packet:
+
+        A5 04 00 01 F4 54
+
+範例 2：Distortion Gain = 60%
+
+    module_id = 0x07
+    param_id  = 0
+    value     = 600 = 0x0258
+    value_hi  = 0x02
+    value_lo  = 0x58
+
+    xor = 0xA5 ^ 0x07 ^ 0x00 ^ 0x02 ^ 0x58
+        = 0xF8
+
+    UART packet:
+
+        A5 07 00 02 58 F8
+
+範例 3：Volume Master = 70%
+
+    module_id = 0x0A
+    param_id  = 0
+    value     = 700 = 0x02BC
+    value_hi  = 0x02
+    value_lo  = 0xBC
+
+    xor = 0xA5 ^ 0x0A ^ 0x00 ^ 0x02 ^ 0xBC
+        = 0x11
+
+    UART packet:
+
+        A5 0A 00 02 BC 11
+
+
+A2. Chain Packet：四段效果鏈設定封包
+------------------------------------
+格式:
+
+    [0x5A][stage1_id][stage2_id][stage3_id][stage4_id][xor]
+
+總長度: 6 bytes
+
+Byte 定義:
+
+    Byte 0: 0x5A
+        Header，表示這是一包「效果鏈設定」封包。
+
+    Byte 1: stage1_id
+        Stage 1 的 module_id。0x00 代表 None / bypass。
+
+    Byte 2: stage2_id
+        Stage 2 的 module_id。0x00 代表 None / bypass。
+
+    Byte 3: stage3_id
+        Stage 3 的 module_id。0x00 代表 None / bypass。
+
+    Byte 4: stage4_id
+        Stage 4 的 module_id。0x00 代表 None / bypass。
+
+    Byte 5: xor
+        xor = Byte0 ^ Byte1 ^ Byte2 ^ Byte3 ^ Byte4
+
+範例：Stage chain = Overdrive -> Distortion -> None -> Reverb
+
+    Stage 1 = Overdrive  = 0x04
+    Stage 2 = Distortion = 0x07
+    Stage 3 = None       = 0x00
+    Stage 4 = Reverb     = 0x01
+
+    xor = 0x5A ^ 0x04 ^ 0x07 ^ 0x00 ^ 0x01
+        = 0x58
+
+    UART packet:
+
+        5A 04 07 00 01 58
+
+
+A3. Preview Packet：單顆效果試聽封包
+------------------------------------
+目前格式暫定，FPGA 端定案後可以修改 PyQt 的 send_preview()。
+
+格式:
+
+    [0xC1][module_id][xor]
+
+總長度: 3 bytes
+
+Byte 定義:
+
+    Byte 0: 0xC1
+        Header，表示這是一包「preview / audition」封包。
+
+    Byte 1: module_id
+        要試聽的 module_id。
+        0x00 表示全部停止。
+
+    Byte 2: xor
+        xor = Byte0 ^ Byte1
+
+範例 1：試聽 Overdrive
+
+    module_id = 0x04
+    xor = 0xC1 ^ 0x04 = 0xC5
+
+    UART packet:
+
+        C1 04 C5
+
+範例 2：停止全部試聽
+
+    module_id = 0x00
+    xor = 0xC1 ^ 0x00 = 0xC1
+
+    UART packet:
+
+        C1 00 C1
+
+
+============================================================
+B. module_id 對照表
+============================================================
+
+    0x00  None / bypass / stop preview
+
+    0x01  Reverb
+    0x02  Delay
+    0x03  Flanger
+    0x04  Overdrive
+    0x05  Chorus
+    0x06  Fuzz
+    0x07  Distortion
+    0x08  NoiseGate
+    0x09  Auto_Wah
+    0x0A  Volume
+
+
+============================================================
+C. param_id 對照表
+============================================================
+
+規則:
+    param_id 是該 module 的 params list 順序。
+    第一個參數 = 0
+    第二個參數 = 1
+    第三個參數 = 2
+    以此類推。
+
+Reverb, module_id = 0x01
+    param_id 0: ap_gain
+    param_id 1: wet_rate
+
+Delay, module_id = 0x02
+    param_id 0: delay_time
+    param_id 1: delay_feedback
+    param_id 2: delay_mix
+
+Flanger, module_id = 0x03
+    param_id 0: in
+    param_id 1: delay_base
+    param_id 2: delay_amp
+    param_id 3: gain
+    param_id 4: wet_rate
+
+Overdrive, module_id = 0x04
+    param_id 0: i_gain
+    param_id 1: L
+
+Chorus, module_id = 0x05
+    param_id 0: delay_base
+    param_id 1: delay_amp
+    param_id 2: in
+    param_id 3: wet_rate
+
+Fuzz, module_id = 0x06
+    param_id 0: i_gain
+    param_id 1: L
+
+Distortion, module_id = 0x07
+    param_id 0: i_gain
+    param_id 1: L
+
+NoiseGate, module_id = 0x08
+    param_id 0: ng_rise_rate
+    param_id 1: ng_decay_rate
+    param_id 2: ng_hold
+    param_id 3: ng_threshold_low
+    param_id 4: ng_threshold_high
+
+Auto_Wah, module_id = 0x09
+    param_id 0: delay_base
+    param_id 1: delay_amp
+    param_id 2: in
+    param_id 3: wet_rate
+
+Volume, module_id = 0x0A
+    param_id 0: i_gain
+
+
+============================================================
+D. FPGA -> PC / PyQt
+============================================================
+
+D1. Note Packet：音高封包
+------------------------
+格式:
+
+    [0xB1][note_id][freq_hi][freq_lo][xor]
+
+總長度: 5 bytes
+
+Byte 定義:
+
+    Byte 0: 0xB1
+        Header，表示這是一包音高資料。
+
+    Byte 1: note_id
+        0 = C
+        1 = C#
+        2 = D
+        3 = D#
+        4 = E
+        5 = F
+        6 = F#
+        7 = G
+        8 = G#
+        9 = A
+        10 = A#
+        11 = B
+
+    Byte 2: freq_hi
+        frequency Hz 的高 8 bits。
+
+    Byte 3: freq_lo
+        frequency Hz 的低 8 bits。
+
+    Byte 4: xor
+        xor = Byte0 ^ Byte1 ^ Byte2 ^ Byte3
+
+範例：note = A, freq = 440 Hz
+
+    note_id = 9
+    freq = 440 = 0x01B8
+    freq_hi = 0x01
+    freq_lo = 0xB8
+
+    xor = 0xB1 ^ 0x09 ^ 0x01 ^ 0xB8
+        = 0x01
+
+    UART packet:
+
+        B1 09 01 B8 01
+
+
+D2. Chord Packet：和弦封包
+-------------------------
+格式:
+
+    [0xB2][root_id][quality][xor]
+
+總長度: 4 bytes
+
+Byte 定義:
+
+    Byte 0: 0xB2
+        Header，表示這是一包和弦資料。
+
+    Byte 1: root_id
+        0 = C
+        1 = C#
+        2 = D
+        3 = D#
+        4 = E
+        5 = F
+        6 = F#
+        7 = G
+        8 = G#
+        9 = A
+        10 = A#
+        11 = B
+
+    Byte 2: quality
+        0 = maj
+        1 = min
+        2 = dim
+        3 = aug
+        4 = 7
+
+    Byte 3: xor
+        xor = Byte0 ^ Byte1 ^ Byte2
+
+
+D3. Spectrum Packet：STFT 頻譜封包
+----------------------------------
+格式:
+
+    [0xB3][N][mag_0][mag_1]...[mag_(N-1)][xor]
+
+總長度:
+
+    2 + N + 1 bytes
+
+Byte 定義:
+
+    Byte 0: 0xB3
+        Header，表示這是一包頻譜資料。
+
+    Byte 1: N
+        頻譜 bin / band 數量。
+
+    Byte 2 ~ Byte (N+1):
+        mag_0 ~ mag_(N-1)
+        每個 magnitude 是 0~255。
+
+    Last byte: xor
+        xor = all previous bytes XOR
+
+建議:
+    UART 速度有限，不要直接把完整 4096-point FFT bins 全部送回 PC。
+    建議 FPGA 端先壓縮成 16 或 32 bands，再送給 PyQt。
+
+
+============================================================
+E. FPGA 端接收 Parameter Packet 的解碼邏輯
+============================================================
+
+收到 6 bytes 後:
+
+    header    = pkt[0]
+    module_id = pkt[1]
+    param_id  = pkt[2]
+    value     = {pkt[3], pkt[4]}
+    checksum  = pkt[5]
+
+檢查:
+
+    checksum_ok = (pkt[0] ^ pkt[1] ^ pkt[2] ^ pkt[3] ^ pkt[4]) == pkt[5]
+
+SystemVerilog decode example:
+
+    if (checksum_ok && header == 8'hA5) begin
+        case (module_id)
+            8'h04: begin // Overdrive
+                case (param_id)
+                    8'd0: overdrive_gain_value <= value; // 0~1000
+                    8'd1: overdrive_level_value <= value; // 0~1000
+                endcase
+            end
+
+            8'h06: begin // Fuzz
+                case (param_id)
+                    8'd0: fuzz_gain_value <= value;
+                    8'd1: fuzz_level_value <= value;
+                endcase
+            end
+
+            8'h07: begin // Distortion
+                case (param_id)
+                    8'd0: distortion_gain_value <= value;
+                    8'd1: distortion_level_value <= value;
+                endcase
+            end
+
+            8'h0A: begin // Volume
+                case (param_id)
+                    8'd0: master_volume_value <= value;
+                endcase
+            end
+        endcase
+    end
+
+
+============================================================
+F. FPGA 端 value mapping 建議
+============================================================
+
+PyQt 送來的 value 是 0~1000。
+FPGA 端要自己轉成真正的 DSP fixed-point 參數。
+
+例：Overdrive / Fuzz / Distortion 的 i_gain 若使用 Q2.6
+
+方案 1：0~1000 對應到 0.0~4.0
+
+    i_gain_q2_6 = value * 255 / 1000
+
+    UI 0%   -> 約 0.0
+    UI 50%  -> 約 2.0
+    UI 100% -> 約 4.0
+
+方案 2：0~1000 對應到 1.0~4.0，較像實際效果器
+
+    i_gain_q2_6 = 64 + value * (255 - 64) / 1000
+
+    UI 0%   -> 約 1.0
+    UI 50%  -> 約 2.5
+    UI 100% -> 約 4.0
+
+建議先使用方案 2，因為 Gain 拉到最低時仍保有基本音量，不會直接靜音。
+
+
+============================================================
+G. 最小測試流程
+============================================================
+
+Step 1:
+    先不接 DSP，只接 UART parser。
+    PyQt 調 Overdrive Gain = 50%。
+
+    預期收到:
+
+        A5 04 00 01 F4 54
+
+Step 2:
+    FPGA parser 解出:
+
+        header    = 0xA5
+        module_id = 0x04
+        param_id  = 0
+        value     = 500
+
+Step 3:
+    先把 module_id / param_id / value 接到 LED 或 HEX 顯示。
+
+Step 4:
+    確認解析正確後，再把 value mapping 到 overdrive i_gain。
+
+Step 5:
+    Parameter packet 成功後，再做 chain packet、preview packet、note/chord/spectrum 回傳。
+
+
+============================================================
+H. PyQt 對應函式
+============================================================
+
+Parameter packet:
+    UartManager.send_param(module, key, value)
+
+Chain packet:
+    UartManager.send_chain(stages)
+
+Preview packet:
+    UartManager.send_preview(module_or_none)
+
+所有實際 serial.write() 都經過:
+    UartManager._write(pkt, tag)
+
+如果沒有連接 serial port，PyQt 會把要送出的 packet 用 hex 印在 log 裡，可用來 debug。

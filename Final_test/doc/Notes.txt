@@ -1,0 +1,3 @@
+## Script for getting all project code into one file
+
+    DCLAB_2026_team05\Final>    Get-ChildItem -Path src -Recurse -Filter *.sv | Get-Content | Out-File all_project_code.txt

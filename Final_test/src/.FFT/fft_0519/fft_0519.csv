@@ -1,0 +1,24 @@
+# system info fft_0519 on 2026.05.19.22:33:20
+system_info:
+name,value
+DEVICE,EP4CE115F29C7
+DEVICE_FAMILY,Cyclone IV E
+GENERATION_ID,1779201173
+#
+#
+# Files generated for fft_0519 on 2026.05.19.22:33:20
+files:
+filepath,kind,attributes,module,is_top
+simulation/fft_0519.v,VERILOG,,fft_0519,true
+simulation/submodules/fft_0519_fft_ii_0_2n4096sin.hex,HEX,,fft_0519_fft_ii_0,false
+simulation/submodules/fft_0519_fft_ii_0_3n4096cos.hex,HEX,,fft_0519_fft_ii_0,false
+simulation/submodules/fft_0519_fft_ii_0_3n4096sin.hex,HEX,,fft_0519_fft_ii_0,false
+simulation/submodules/fft_0519_fft_ii_0_1n4096cos.hex,HEX,,fft_0519_fft_ii_0,false
+simulation/submodules/fft_0519_fft_ii_0_2n4096cos.hex,HEX,,fft_0519_fft_ii_0,false
+simulation/submodules/fft_0519_fft_ii_0_1n4096sin.hex,HEX,,fft_0519_fft_ii_0,false
+simulation/submodules/fft_0519_fft_ii_0.vo,VERILOG,,fft_0519_fft_ii_0,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+fft_0519.fft_ii_0,fft_0519_fft_ii_0

@@ -137,13 +137,16 @@ module DSP (
 
 
     // Overdrive
-    logic [9:0] i_gain_overdrive; 
+    logic [9:0] i_gain_overdrive;
     assign i_gain_overdrive = 10'd500;
+    logic [15:0] i_L_o; 
+    assign i_L_o = 16'd32768;
     Overdrive Overdrive(
         .i_clk  (i_clk),
         .i_rst  (i_rst),
         .i_data (original_data),
         .i_gain (i_gain_overdrive),
+        .i_L(i_L_o),
         .i_en   (od_en),
         .o_data (od_data),
         .o_en   (od_valid)
@@ -152,11 +155,14 @@ module DSP (
     // Fuzz
     logic [7:0] i_gain_fuzz; 
     assign i_gain_fuzz = 8'd250;
+    logic [15:0] i_L_f; 
+    assign i_L_f = 16'd32768;
     fuzz Fuzz(
         .i_clk  (i_clk),
         .i_rst  (i_rst),
         .i_data (original_data),
         .i_gain (i_gain_fuzz),
+        .i_L(i_L_f),
         .i_en   (fuzz_en),
         .o_data (fuzz_data),
         .o_en   (fuzz_valid)
@@ -165,11 +171,14 @@ module DSP (
     //Distortion
     logic [7:0] i_gain_distortion; 
     assign i_gain_distorton = 8'd250;
+    logic [15:0] i_L_d; 
+    assign i_L_d = 16'd32768;
     
     distortion Distortion(
         .i_clk  (i_clk),
         .i_rst  (i_rst),
         .i_data (original_data),
+        .i_L(i_L_d),
         .i_gain (i_gain_distortion),
         .i_en   (dist_en),
         .o_data (dist_data),

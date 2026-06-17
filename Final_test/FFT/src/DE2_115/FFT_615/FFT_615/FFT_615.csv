@@ -1,0 +1,24 @@
+# system info FFT_615 on 2026.06.15.18:24:18
+system_info:
+name,value
+DEVICE,EP4CE115F29C7
+DEVICE_FAMILY,Cyclone IV E
+GENERATION_ID,1781519005
+#
+#
+# Files generated for FFT_615 on 2026.06.15.18:24:18
+files:
+filepath,kind,attributes,module,is_top
+simulation/FFT_615.v,VERILOG,,FFT_615,true
+simulation/submodules/FFT_615_fft_ii_0_2n4096cos.hex,HEX,,FFT_615_fft_ii_0,false
+simulation/submodules/FFT_615_fft_ii_0_1n4096sin.hex,HEX,,FFT_615_fft_ii_0,false
+simulation/submodules/FFT_615_fft_ii_0_3n4096cos.hex,HEX,,FFT_615_fft_ii_0,false
+simulation/submodules/FFT_615_fft_ii_0_2n4096sin.hex,HEX,,FFT_615_fft_ii_0,false
+simulation/submodules/FFT_615_fft_ii_0_3n4096sin.hex,HEX,,FFT_615_fft_ii_0,false
+simulation/submodules/FFT_615_fft_ii_0_1n4096cos.hex,HEX,,FFT_615_fft_ii_0,false
+simulation/submodules/FFT_615_fft_ii_0.vo,VERILOG,,FFT_615_fft_ii_0,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+FFT_615.fft_ii_0,FFT_615_fft_ii_0

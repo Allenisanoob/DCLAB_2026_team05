@@ -122,7 +122,6 @@ endmodule
 //     input                      i_clk,
 //     input                      i_rst,      // active-low reset
 //     input        signed [15:0] i_data,     // Q1.15 (Signed)
-//     input               [15:0] i_L;        // Q0.16 (Unsigned)
 //     input               [9:0]  i_gain,     // Q4.6 (Unsigned)
 //     input                      i_en,
 //     output       logic signed [15:0] o_data,    // Q1.15 (Signed)
