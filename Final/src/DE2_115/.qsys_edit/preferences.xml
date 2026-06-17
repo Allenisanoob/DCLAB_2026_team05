@@ -3,11 +3,12 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="79" />
+   <connections preferredWidth="95" />
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
  <library
-   expandedCategories="Project,Library,Library/University Program,Library/Interface Protocols/Serial,Library/Interface Protocols,Library/University Program/Communications" />
- <window width="2906" height="1730" x="-13" y="-13" />
+   expandedCategories="Project,Library/University Program/Communications,Library/Interface Protocols/Serial,Library/Interface Protocols,Library,Library/University Program" />
+ <window width="1936" height="1048" x="-8" y="-8" />
+ <generation path="UART_qsys" />
 </preferences>

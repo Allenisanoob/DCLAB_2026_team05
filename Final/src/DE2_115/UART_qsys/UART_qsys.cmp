@@ -1,0 +1,14 @@
+	component UART_qsys is
+		port (
+			altpll_0_areset_conduit_export        : in  std_logic                      := 'X'; -- export
+			altpll_0_locked_conduit_export        : out std_logic;                             -- export
+			altpll_0_phasedone_conduit_export     : out std_logic;                             -- export
+			avmwrapper_sv_0_conduit_end_command   : out std_logic_vector(255 downto 0);        -- command
+			avmwrapper_sv_0_conduit_end_valid_out : out std_logic;                             -- valid_out
+			clk_clk                               : in  std_logic                      := 'X'; -- clk
+			reset_reset_n                         : in  std_logic                      := 'X'; -- reset_n
+			uart_0_external_connection_rxd        : in  std_logic                      := 'X'; -- rxd
+			uart_0_external_connection_txd        : out std_logic                              -- txd
+		);
+	end component UART_qsys;
+
