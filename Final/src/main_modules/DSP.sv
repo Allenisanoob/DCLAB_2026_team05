@@ -50,7 +50,7 @@ module DSP (
 
     logic [17:0] i_fx_sw_w, i_fx_sw_r;
     assign i_fx_sw_w = i_fx_sw;
-    assign o_dsp_ledr = i_fx_sw_r[15:0];
+    assign o_dsp_ledr[8:0] = i_fx_sw_r[8:0];
 
     logic signed [15:0] original_data, final_data;
     logic original_valid, final_valid;
@@ -92,6 +92,151 @@ module DSP (
         .o_next_valid(original_valid),
         .o_data(original_data)
     );
+
+    logic stft_valid;
+    logic [31:0] amp_sq_E2;
+    logic [31:0] amp_sq_F2;
+    logic [31:0] amp_sq_Fs2;
+    logic [31:0] amp_sq_G2;
+    logic [31:0] amp_sq_Gs2;
+    logic [31:0] amp_sq_A2;
+    logic [31:0] amp_sq_As2;
+    logic [31:0] amp_sq_B2;
+    logic [31:0] amp_sq_C3;
+    logic [31:0] amp_sq_Cs3;
+    logic [31:0] amp_sq_D3;
+    logic [31:0] amp_sq_Ds3;
+    logic [31:0] amp_sq_E3;
+    logic [31:0] amp_sq_F3;
+    logic [31:0] amp_sq_Fs3;
+    logic [31:0] amp_sq_G3;
+    logic [31:0] amp_sq_Gs3;
+    logic [31:0] amp_sq_A3;
+    logic [31:0] amp_sq_As3;
+    logic [31:0] amp_sq_B3;
+    logic [31:0] amp_sq_C4;
+    logic [31:0] amp_sq_Cs4;
+    logic [31:0] amp_sq_D4;
+    logic [31:0] amp_sq_Ds4;
+    logic [31:0] amp_sq_E4;
+    logic [31:0] amp_sq_F4;
+    logic [31:0] amp_sq_Fs4;
+    logic [31:0] amp_sq_G4;
+    logic [31:0] amp_sq_Gs4;
+    logic [31:0] amp_sq_A4;
+    logic [31:0] amp_sq_As4;
+    logic [31:0] amp_sq_B4;
+    logic [31:0] amp_sq_C5;
+    logic [31:0] amp_sq_Cs5;
+    logic [31:0] amp_sq_D5;
+    logic [31:0] amp_sq_Ds5;
+
+    STFT stft (
+        .clk(i_clk),
+        .rst(i_rst),
+        .in_valid(original_valid),
+        .in(original_data),
+        .out_valid(stft_valid),
+        .amp_sq_E2(amp_sq_E2),
+        .amp_sq_F2(amp_sq_F2),
+        .amp_sq_Fs2(amp_sq_Fs2),
+        .amp_sq_G2(amp_sq_G2),
+        .amp_sq_Gs2(amp_sq_Gs2),
+        .amp_sq_A2(amp_sq_A2),
+        .amp_sq_As2(amp_sq_As2),
+        .amp_sq_B2(amp_sq_B2),
+        .amp_sq_C3(amp_sq_C3),
+        .amp_sq_Cs3(amp_sq_Cs3),
+        .amp_sq_D3(amp_sq_D3),
+        .amp_sq_Ds3(amp_sq_Ds3),
+        .amp_sq_E3(amp_sq_E3),
+        .amp_sq_F3(amp_sq_F3),
+        .amp_sq_Fs3(amp_sq_Fs3),
+        .amp_sq_G3(amp_sq_G3),
+        .amp_sq_Gs3(amp_sq_Gs3),
+        .amp_sq_A3(amp_sq_A3),
+        .amp_sq_As3(amp_sq_As3),
+        .amp_sq_B3(amp_sq_B3),
+        .amp_sq_C4(amp_sq_C4),
+        .amp_sq_Cs4(amp_sq_Cs4),
+        .amp_sq_D4(amp_sq_D4),
+        .amp_sq_Ds4(amp_sq_Ds4),
+        .amp_sq_E4(amp_sq_E4),
+        .amp_sq_F4(amp_sq_F4),
+        .amp_sq_Fs4(amp_sq_Fs4),
+        .amp_sq_G4(amp_sq_G4),
+        .amp_sq_Gs4(amp_sq_Gs4),
+        .amp_sq_A4(amp_sq_A4),
+        .amp_sq_As4(amp_sq_As4),
+        .amp_sq_B4(amp_sq_B4),
+        .amp_sq_C5(amp_sq_C5),
+        .amp_sq_Cs5(amp_sq_Cs5),
+        .amp_sq_D5(amp_sq_D5),
+        .amp_sq_Ds5(amp_sq_Ds5)
+    );
+
+    logic find_4_in_36_valid;
+    logic [35:0] notes;
+
+    Find_4_in_36 find_4_in_36 (
+        .i_clk(i_clk),
+        .i_rst(i_rst),
+        .i_valid(stft_valid),
+        .amp_sq_E2(amp_sq_E2),
+        .amp_sq_F2(amp_sq_F2),
+        .amp_sq_Fs2(amp_sq_Fs2),
+        .amp_sq_G2(amp_sq_G2),
+        .amp_sq_Gs2(amp_sq_Gs2),
+        .amp_sq_A2(amp_sq_A2),
+        .amp_sq_As2(amp_sq_As2),
+        .amp_sq_B2(amp_sq_B2),
+        .amp_sq_C3(amp_sq_C3),
+        .amp_sq_Cs3(amp_sq_Cs3),
+        .amp_sq_D3(amp_sq_D3),
+        .amp_sq_Ds3(amp_sq_Ds3),
+        .amp_sq_E3(amp_sq_E3),
+        .amp_sq_F3(amp_sq_F3),
+        .amp_sq_Fs3(amp_sq_Fs3),
+        .amp_sq_G3(amp_sq_G3),
+        .amp_sq_Gs3(amp_sq_Gs3),
+        .amp_sq_A3(amp_sq_A3),
+        .amp_sq_As3(amp_sq_As3),
+        .amp_sq_B3(amp_sq_B3),
+        .amp_sq_C4(amp_sq_C4),
+        .amp_sq_Cs4(amp_sq_Cs4),
+        .amp_sq_D4(amp_sq_D4),
+        .amp_sq_Ds4(amp_sq_Ds4),
+        .amp_sq_E4(amp_sq_E4),
+        .amp_sq_F4(amp_sq_F4),
+        .amp_sq_Fs4(amp_sq_Fs4),
+        .amp_sq_G4(amp_sq_G4),
+        .amp_sq_Gs4(amp_sq_Gs4),
+        .amp_sq_A4(amp_sq_A4),
+        .amp_sq_As4(amp_sq_As4),
+        .amp_sq_B4(amp_sq_B4),
+        .amp_sq_C5(amp_sq_C5),
+        .amp_sq_Cs5(amp_sq_Cs5),
+        .amp_sq_D5(amp_sq_D5),
+        .amp_sq_Ds5(amp_sq_Ds5),
+        .o_valid(find_4_in_36_valid),
+        .notes(notes)
+    );
+
+    logic o_dsp_ledr_12_r;
+    logic o_dsp_ledr_13_r;
+    logic o_dsp_ledr_14_r;
+
+    always_ff @(posedge i_clk) begin
+        if (find_4_in_36_valid) begin
+            o_dsp_ledr_12_r <= (notes[0] || notes[1] || notes[2] || notes[3] || notes[4] || notes[5] || notes[6] || notes[7] || notes[8] || notes[9] || notes[10] || notes[11]);
+            o_dsp_ledr_13_r <= (notes[12] || notes[13] || notes[14] || notes[15] || notes[16] || notes[17] || notes[18] || notes[19] || notes[20] || notes[21] || notes[22] || notes[23]);
+            o_dsp_ledr_14_r <= (notes[24] || notes[25] || notes[26] || notes[27] || notes[28] || notes[29] || notes[30] || notes[31] || notes[32] || notes[33] || notes[34] || notes[35]);
+        end
+    end
+
+    assign o_dsp_ledr[12] = o_dsp_ledr_12_r;
+    assign o_dsp_ledr[13] = o_dsp_ledr_13_r;
+    assign o_dsp_ledr[14] = o_dsp_ledr_14_r;
 
     // Staging up to 4 modules
     logic [31:0] staging_control;
