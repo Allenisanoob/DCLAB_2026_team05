@@ -50,7 +50,7 @@ module DSP (
 
     logic [17:0] i_fx_sw_w, i_fx_sw_r;
     assign i_fx_sw_w = i_fx_sw;
-    assign o_dsp_ledr[8:0] = i_fx_sw_r[8:0];
+//    assign o_dsp_ledr[8:0] = i_fx_sw_r[8:0];
 
     logic signed [15:0] original_data, final_data;
     logic original_valid, final_valid;
@@ -222,15 +222,25 @@ module DSP (
         .notes(notes)
     );
 
-    logic o_dsp_ledr_12_r;
-    logic o_dsp_ledr_13_r;
-    logic o_dsp_ledr_14_r;
+    logic o_dsp_ledr_r [14:0];
 
     always_ff @(posedge i_clk) begin
         if (find_4_in_36_valid) begin
-            o_dsp_ledr_12_r <= (notes[0] || notes[1] || notes[2] || notes[3] || notes[4] || notes[5] || notes[6] || notes[7] || notes[8] || notes[9] || notes[10] || notes[11]);
-            o_dsp_ledr_13_r <= (notes[12] || notes[13] || notes[14] || notes[15] || notes[16] || notes[17] || notes[18] || notes[19] || notes[20] || notes[21] || notes[22] || notes[23]);
-            o_dsp_ledr_14_r <= (notes[24] || notes[25] || notes[26] || notes[27] || notes[28] || notes[29] || notes[30] || notes[31] || notes[32] || notes[33] || notes[34] || notes[35]);
+            o_dsp_ledr_r[0] <= notes[12];
+            o_dsp_ledr_r[1] <= notes[13];
+            o_dsp_ledr_r[2] <= notes[14];
+            o_dsp_ledr_r[3] <= notes[15];
+            o_dsp_ledr_r[4] <= notes[16];
+            o_dsp_ledr_r[5] <= notes[17];
+            o_dsp_ledr_r[6] <= notes[18];
+            o_dsp_ledr_r[7] <= notes[19];
+            o_dsp_ledr_r[8] <= notes[20];
+            o_dsp_ledr_r[9] <= notes[21];
+            o_dsp_ledr_r[10] <= notes[22];
+            o_dsp_ledr_r[11] <= notes[23];
+            o_dsp_ledr_r[12] <= (notes[0] || notes[1] || notes[2] || notes[3] || notes[4] || notes[5] || notes[6] || notes[7] || notes[8] || notes[9] || notes[10] || notes[11]);
+            o_dsp_ledr_r[13] <= (notes[12] || notes[13] || notes[14] || notes[15] || notes[16] || notes[17] || notes[18] || notes[19] || notes[20] || notes[21] || notes[22] || notes[23]);
+            o_dsp_ledr_r[14] <= (notes[24] || notes[25] || notes[26] || notes[27] || notes[28] || notes[29] || notes[30] || notes[31] || notes[32] || notes[33] || notes[34] || notes[35]);
         end
     end
 
