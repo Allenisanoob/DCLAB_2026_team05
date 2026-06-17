@@ -1,0 +1,16 @@
+# demo_script.txt
+# 每行: <fx> key=val key=val ...    (# 開頭為註解)
+# 用法: python fx_tester.py script --port COM5 --baud 115200 --file demo_script.txt
+#       python fx_tester.py script --file demo_script.txt --dry-run   (不送，只檢查)
+
+od gain=700 level=40000
+fz gain=1023 level=65535
+dt gain=300 level=20000
+rv w_rate=200 ap_gain=99
+ng rise_rate=10 decay_rate=2 hold=24000 thres_lo=512 thres_hi=1024
+de time=12000 feedback=64 mix=32
+fg inc=2 base=512 amp=128 gain=64 rate=64
+ch inc=5 base=4095 amp=4095 rate=200
+aw inc=1 base=256 amp=64 rate=80
+st staging=0xDEADBEEF
+vl volume=100

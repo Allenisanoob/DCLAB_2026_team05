@@ -149,6 +149,21 @@ final_qsys pll0( // generate with qsys, please follow lab2 tutorials
 	// .altpll_800k_clk(CLK_800K)
 );
 
+logic [255:0] uart_command;
+logic         uart_valid;
+
+UART_qsys UART_qsys(
+		
+	.avmwrapper_sv_0_conduit_end_command(uart_command),   // avmwrapper_sv_0_conduit_end.command
+	.avmwrapper_sv_0_conduit_end_valid_out(uart_valid), //                            .valid_out
+	.clk_clk(CLOCK_50),                               //                         clk.clk
+	.reset_reset_n(KEY[3]),                         //                       reset.reset_n
+	.uart_0_external_connection_rxd(UART_RXD),        //  uart_0_external_connection.rxd
+	.uart_0_external_connection_txd(UART_TXD)         //                            .txd
+);
+
+
+
 // you can decide key down settings on your own, below is just an example
 Debounce deb0(
 	.i_in(KEY[0]), // Record/Pause
@@ -178,6 +193,10 @@ Top top0(
 	.i_key_1(key1down),
 	.i_key_2(key2down),
 	.i_sw(SW[17:0]),
+
+	// UART
+	.i_uart_command(uart_command),
+    .i_uart_valid(uart_valid)
 
 	// // SRAM
 	// .o_SRAM_ADDR(SRAM_ADDR), // [19:0]
@@ -276,5 +295,10 @@ assign HEX3 = '1;
 // assign HEX5 = '1;
 // assign HEX6 = '1;
 // assign HEX7 = '1;
+
+
+
+
+
 
 endmodule
