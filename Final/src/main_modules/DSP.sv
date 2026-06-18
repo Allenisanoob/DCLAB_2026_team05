@@ -230,21 +230,18 @@ module DSP (
 
     always_ff @(posedge i_clk) begin
         if (find_4_in_36_valid) begin
-            o_dsp_ledr_r[0] <= notes[12];
-            o_dsp_ledr_r[1] <= notes[13];
-            o_dsp_ledr_r[2] <= notes[14];
-            o_dsp_ledr_r[3] <= notes[15];
-            o_dsp_ledr_r[4] <= notes[16];
-            o_dsp_ledr_r[5] <= notes[17];
-            o_dsp_ledr_r[6] <= notes[18];
-            o_dsp_ledr_r[7] <= notes[19];
-            o_dsp_ledr_r[8] <= notes[20];
-            o_dsp_ledr_r[9] <= notes[21];
-            o_dsp_ledr_r[10] <= notes[22];
-            o_dsp_ledr_r[11] <= notes[23];
-            o_dsp_ledr_r[12] <= (notes[0] || notes[1] || notes[2] || notes[3] || notes[4] || notes[5] || notes[6] || notes[7] || notes[8] || notes[9] || notes[10] || notes[11]);
-            o_dsp_ledr_r[13] <= (notes[12] || notes[13] || notes[14] || notes[15] || notes[16] || notes[17] || notes[18] || notes[19] || notes[20] || notes[21] || notes[22] || notes[23]);
-            o_dsp_ledr_r[14] <= (notes[24] || notes[25] || notes[26] || notes[27] || notes[28] || notes[29] || notes[30] || notes[31] || notes[32] || notes[33] || notes[34] || notes[35]);
+            o_dsp_ledr_r[0]  <= i_fx_sw_r[17] * notes[24] + i_fx_sw_r[16] * notes[12] + i_fx_sw_r[15] * notes[0] ;
+            o_dsp_ledr_r[1]  <= i_fx_sw_r[17] * notes[25] + i_fx_sw_r[16] * notes[13] + i_fx_sw_r[15] * notes[1] ;
+            o_dsp_ledr_r[2]  <= i_fx_sw_r[17] * notes[26] + i_fx_sw_r[16] * notes[14] + i_fx_sw_r[15] * notes[2] ;
+            o_dsp_ledr_r[3]  <= i_fx_sw_r[17] * notes[27] + i_fx_sw_r[16] * notes[15] + i_fx_sw_r[15] * notes[3] ;
+            o_dsp_ledr_r[4]  <= i_fx_sw_r[17] * notes[28] + i_fx_sw_r[16] * notes[16] + i_fx_sw_r[15] * notes[4] ;
+            o_dsp_ledr_r[5]  <= i_fx_sw_r[17] * notes[29] + i_fx_sw_r[16] * notes[17] + i_fx_sw_r[15] * notes[5] ;
+            o_dsp_ledr_r[6]  <= i_fx_sw_r[17] * notes[30] + i_fx_sw_r[16] * notes[18] + i_fx_sw_r[15] * notes[6] ;
+            o_dsp_ledr_r[7]  <= i_fx_sw_r[17] * notes[31] + i_fx_sw_r[16] * notes[19] + i_fx_sw_r[15] * notes[7] ;
+            o_dsp_ledr_r[8]  <= i_fx_sw_r[17] * notes[32] + i_fx_sw_r[16] * notes[20] + i_fx_sw_r[15] * notes[8] ;
+            o_dsp_ledr_r[9]  <= i_fx_sw_r[17] * notes[33] + i_fx_sw_r[16] * notes[21] + i_fx_sw_r[15] * notes[9] ;
+            o_dsp_ledr_r[10] <= i_fx_sw_r[17] * notes[34] + i_fx_sw_r[16] * notes[22] + i_fx_sw_r[15] * notes[10];
+            o_dsp_ledr_r[11] <= i_fx_sw_r[17] * notes[35] + i_fx_sw_r[16] * notes[23] + i_fx_sw_r[15] * notes[11];
         end
     end
 
