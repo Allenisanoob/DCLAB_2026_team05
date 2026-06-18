@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_115
-Thu Jun 18 13:05:06 2026
+Thu Jun 18 14:49:34 2026
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -364,13 +364,13 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 18 13:05:06 2026       ;
+; Analysis & Synthesis Status        ; Successful - Thu Jun 18 14:49:33 2026       ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                     ;
 ; Top-level Entity Name              ; DE2_115                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 31,936                                      ;
-;     Total combinational functions  ; 23,794                                      ;
+; Total logic elements               ; 31,957                                      ;
+;     Total combinational functions  ; 23,824                                      ;
 ;     Dedicated logic registers      ; 12,133                                      ;
 ; Total registers                    ; 12133                                       ;
 ; Total pins                         ; 480                                         ;
@@ -476,12 +476,12 @@ agreement for further details.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 12          ;
 ;                            ;             ;
-; Average used               ; 1.00        ;
+; Average used               ; 1.06        ;
 ; Maximum used               ; 8           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ; < 0.1%      ;
+;     Processors 2-8         ;   0.9%      ;
 ;     Processors 9-12        ;   0.0%      ;
 +----------------------------+-------------+
 
@@ -596,16 +596,16 @@ agreement for further details.
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                             ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 31,936                                                                                            ;
+; Estimated Total logic elements              ; 31,957                                                                                            ;
 ;                                             ;                                                                                                   ;
-; Total combinational functions               ; 23794                                                                                             ;
+; Total combinational functions               ; 23824                                                                                             ;
 ; Logic element usage by number of LUT inputs ;                                                                                                   ;
-;     -- 4 input functions                    ; 10941                                                                                             ;
-;     -- 3 input functions                    ; 8443                                                                                              ;
-;     -- <=2 input functions                  ; 4410                                                                                              ;
+;     -- 4 input functions                    ; 10965                                                                                             ;
+;     -- 3 input functions                    ; 8445                                                                                              ;
+;     -- <=2 input functions                  ; 4414                                                                                              ;
 ;                                             ;                                                                                                   ;
 ; Logic elements by mode                      ;                                                                                                   ;
-;     -- normal mode                          ; 15026                                                                                             ;
+;     -- normal mode                          ; 15056                                                                                             ;
 ;     -- arithmetic mode                      ; 8768                                                                                              ;
 ;                                             ;                                                                                                   ;
 ; Total registers                             ; 12133                                                                                             ;
@@ -622,7 +622,7 @@ agreement for further details.
 ;                                             ;                                                                                                   ;
 ; Maximum fan-out node                        ; final_qsys:pll0|final_qsys_altpll_0:altpll_0|final_qsys_altpll_0_altpll_kpa2:sd1|wire_pll7_clk[0] ;
 ; Maximum fan-out                             ; 12371                                                                                             ;
-; Total fan-out                               ; 138005                                                                                            ;
+; Total fan-out                               ; 138112                                                                                            ;
 ; Average fan-out                             ; 3.64                                                                                              ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
 
@@ -632,18 +632,18 @@ agreement for further details.
 +---------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                                            ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                   ; Library Name ;
 +---------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |DE2_115                                                                              ; 23794 (3)         ; 12133 (0)    ; 2154748     ; 394          ; 6       ; 194       ; 480  ; 0            ; |DE2_115                                                                                                                                              ; work         ;
+; |DE2_115                                                                              ; 23824 (3)         ; 12133 (0)    ; 2154748     ; 394          ; 6       ; 194       ; 480  ; 0            ; |DE2_115                                                                                                                                              ; work         ;
 ;    |Debounce:deb0|                                                                    ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb0                                                                                                                                ; work         ;
 ;    |SevenHexDecoder:seven_dec0|                                                       ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|SevenHexDecoder:seven_dec0                                                                                                                   ; work         ;
 ;    |SevenHexDecoder:seven_dec4|                                                       ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|SevenHexDecoder:seven_dec4                                                                                                                   ; work         ;
 ;    |SevenHexDecoder:seven_dec6|                                                       ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|SevenHexDecoder:seven_dec6                                                                                                                   ; work         ;
-;    |Top:top0|                                                                         ; 23661 (1)         ; 11946 (1)    ; 2154608     ; 394          ; 6       ; 194       ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                                     ; work         ;
+;    |Top:top0|                                                                         ; 23691 (1)         ; 11946 (1)    ; 2154608     ; 394          ; 6       ; 194       ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                                     ; work         ;
 ;       |Buffer:buffer|                                                                 ; 175 (175)         ; 170 (170)    ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer                                                                                                                       ; work         ;
 ;          |altsyncram:buf_data_l_rtl_0|                                                ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0                                                                                           ; work         ;
 ;             |altsyncram_rbi1:auto_generated|                                          ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0|altsyncram_rbi1:auto_generated                                                            ; work         ;
 ;          |altsyncram:buf_data_r_rtl_0|                                                ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0                                                                                           ; work         ;
 ;             |altsyncram_rbi1:auto_generated|                                          ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0|altsyncram_rbi1:auto_generated                                                            ; work         ;
-;       |DSP:dsp|                                                                       ; 23355 (12)        ; 11700 (15)   ; 2154096     ; 394          ; 6       ; 194       ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp                                                                                                                             ; work         ;
+;       |DSP:dsp|                                                                       ; 23385 (24)        ; 11700 (15)   ; 2154096     ; 394          ; 6       ; 194       ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp                                                                                                                             ; work         ;
 ;          |Auto_Wah:Auto_Wah|                                                          ; 398 (398)         ; 137 (137)    ; 32768       ; 10           ; 0       ; 5         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah                                                                                                           ; work         ;
 ;             |altsyncram:data_buffer_rtl_0|                                            ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|altsyncram:data_buffer_rtl_0                                                                              ; work         ;
 ;                |altsyncram_42e1:auto_generated|                                       ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|altsyncram:data_buffer_rtl_0|altsyncram_42e1:auto_generated                                               ; work         ;
@@ -678,7 +678,7 @@ agreement for further details.
 ;             |lpm_mult:Mult4|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult4                                                                                                ; work         ;
 ;                |mult_m4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult4|mult_m4t:auto_generated                                                                        ; work         ;
 ;          |Data_Catcher:raw_data_catcher|                                              ; 1 (1)             ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Data_Catcher:raw_data_catcher                                                                                               ; work         ;
-;          |Delay_Effect:Delay_Effect|                                                  ; 250 (243)         ; 90 (87)      ; 1048576     ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect                                                                                                   ; work         ;
+;          |Delay_Effect:Delay_Effect|                                                  ; 246 (239)         ; 90 (87)      ; 1048576     ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect                                                                                                   ; work         ;
 ;             |altsyncram:delay_ram_rtl_0|                                              ; 7 (0)             ; 3 (0)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|altsyncram:delay_ram_rtl_0                                                                        ; work         ;
 ;                |altsyncram_r5j1:auto_generated|                                       ; 7 (0)             ; 3 (3)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|altsyncram:delay_ram_rtl_0|altsyncram_r5j1:auto_generated                                         ; work         ;
 ;                   |decode_rsa:decode2|                                                ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|altsyncram:delay_ram_rtl_0|altsyncram_r5j1:auto_generated|decode_rsa:decode2                      ; work         ;
@@ -686,7 +686,7 @@ agreement for further details.
 ;                |mult_o4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|lpm_mult:Mult0|mult_o4t:auto_generated                                                            ; work         ;
 ;             |lpm_mult:Mult1|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|lpm_mult:Mult1                                                                                    ; work         ;
 ;                |mult_o4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|lpm_mult:Mult1|mult_o4t:auto_generated                                                            ; work         ;
-;          |Find_4_in_36:find_4_in_36|                                                  ; 2484 (2484)       ; 1347 (1347)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36                                                                                                   ; work         ;
+;          |Find_4_in_36:find_4_in_36|                                                  ; 2492 (2492)       ; 1347 (1347)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36                                                                                                   ; work         ;
 ;          |Flanger:Flanger|                                                            ; 674 (376)         ; 155 (155)    ; 32768       ; 15           ; 1       ; 7         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger                                                                                                             ; work         ;
 ;             |altsyncram:data_buffer_rtl_0|                                            ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|altsyncram:data_buffer_rtl_0                                                                                ; work         ;
 ;                |altsyncram_42e1:auto_generated|                                       ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|altsyncram:data_buffer_rtl_0|altsyncram_42e1:auto_generated                                                 ; work         ;
@@ -720,7 +720,7 @@ agreement for further details.
 ;                   |mult_o4t:auto_generated|                                           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult0|mult_o4t:auto_generated                                                      ; work         ;
 ;                |lpm_mult:Mult1|                                                       ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult1                                                                              ; work         ;
 ;                   |mult_66t:auto_generated|                                           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult1|mult_66t:auto_generated                                                      ; work         ;
-;          |Param_Manager:Param_Manager|                                                ; 82 (82)           ; 333 (333)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Param_Manager:Param_Manager                                                                                                 ; work         ;
+;          |Param_Manager:Param_Manager|                                                ; 83 (83)           ; 333 (333)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Param_Manager:Param_Manager                                                                                                 ; work         ;
 ;          |Reverb:Reverb|                                                              ; 1648 (41)         ; 1039 (41)    ; 294512      ; 24           ; 0       ; 12        ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb                                                                                                               ; work         ;
 ;             |FDN_4ch:fdn|                                                             ; 739 (739)         ; 359 (359)    ; 125952      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn                                                                                                   ; work         ;
 ;                |altsyncram:ch0_buffer_rtl_0|                                          ; 0 (0)             ; 0 (0)        ; 22768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|altsyncram:ch0_buffer_rtl_0                                                                       ; work         ;
@@ -770,12 +770,12 @@ agreement for further details.
 ;                |mult_m4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult0|mult_m4t:auto_generated                                                                        ; work         ;
 ;             |lpm_mult:Mult1|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult1                                                                                                ; work         ;
 ;                |mult_m4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult1|mult_m4t:auto_generated                                                                        ; work         ;
-;          |STFT:stft|                                                                  ; 15148 (9264)      ; 7986 (4942)  ; 614400      ; 304          ; 4       ; 150       ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft                                                                                                                   ; work         ;
-;             |STFT_LUT:stft_lut|                                                       ; 5829 (4633)       ; 3038 (3038)  ; 0           ; 12           ; 4       ; 4         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut                                                                                                 ; work         ;
+;          |STFT:stft|                                                                  ; 15150 (9268)      ; 7986 (4942)  ; 614400      ; 304          ; 4       ; 150       ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft                                                                                                                   ; work         ;
+;             |STFT_LUT:stft_lut|                                                       ; 5827 (4633)       ; 3038 (3038)  ; 0           ; 12           ; 4       ; 4         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut                                                                                                 ; work         ;
 ;                |cosine:cos_0|                                                         ; 299 (290)         ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_0                                                                                    ; work         ;
 ;                   |lpm_mult:Mult0|                                                    ; 9 (0)             ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_0|lpm_mult:Mult0                                                                     ; work         ;
 ;                      |mult_ubt:auto_generated|                                        ; 9 (9)             ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_0|lpm_mult:Mult0|mult_ubt:auto_generated                                             ; work         ;
-;                |cosine:cos_1|                                                         ; 301 (292)         ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_1                                                                                    ; work         ;
+;                |cosine:cos_1|                                                         ; 299 (290)         ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_1                                                                                    ; work         ;
 ;                   |lpm_mult:Mult0|                                                    ; 9 (0)             ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_1|lpm_mult:Mult0                                                                     ; work         ;
 ;                      |mult_ubt:auto_generated|                                        ; 9 (9)             ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_1|lpm_mult:Mult0|mult_ubt:auto_generated                                             ; work         ;
 ;                |cosine:cos_2|                                                         ; 298 (289)         ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_2                                                                                    ; work         ;
@@ -1080,7 +1080,7 @@ agreement for further details.
 ;                |mult_86t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|lpm_mult:Mult99|mult_86t:auto_generated                                                                           ; work         ;
 ;             |lpm_mult:Mult9|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|lpm_mult:Mult9                                                                                                    ; work         ;
 ;                |mult_86t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|lpm_mult:Mult9|mult_86t:auto_generated                                                                            ; work         ;
-;          |Stager:Stager|                                                              ; 878 (878)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager                                                                                                               ; work         ;
+;          |Stager:Stager|                                                              ; 889 (889)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager                                                                                                               ; work         ;
 ;          |Volume:final_volume|                                                        ; 20 (20)           ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Volume:final_volume                                                                                                         ; work         ;
 ;             |lpm_mult:Mult0|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Volume:final_volume|lpm_mult:Mult0                                                                                          ; work         ;
 ;                |mult_n4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Volume:final_volume|lpm_mult:Mult0|mult_n4t:auto_generated                                                                  ; work         ;
@@ -1409,9 +1409,9 @@ Encoding Type:  One-Hot
 ; Total registers                              ; 12133 ;
 ; Number of registers using Synchronous Clear  ; 383   ;
 ; Number of registers using Synchronous Load   ; 190   ;
-; Number of registers using Asynchronous Clear ; 6594  ;
+; Number of registers using Asynchronous Clear ; 6597  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 9258  ;
+; Number of registers using Clock Enable       ; 9255  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -1436,13 +1436,13 @@ Encoding Type:  One-Hot
 ; Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|current_gain_r[12]                                                                                        ; 3       ;
 ; Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|current_gain_r[13]                                                                                        ; 3       ;
 ; Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|current_gain_r[14]                                                                                        ; 3       ;
+; UART_qsys:UART_qsys|AvmWrapper:avmwrapper_sv_0|altshift_taps:command_r_rtl_0|shift_taps_s5n:auto_generated|dffe4                                 ; 7       ;
 ; UART_qsys:UART_qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain_out    ; 174     ;
-; UART_qsys:UART_qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain[0]     ; 1       ;
 ; UART_qsys:UART_qsys|UART_qsys_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:uart_0_s1_translator|waitrequest_reset_override ; 4       ;
-; UART_qsys:UART_qsys|AvmWrapper:avmwrapper_sv_0|avm_address_r[3]                                                                                  ; 9       ;
+; UART_qsys:UART_qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain[0]     ; 1       ;
 ; UART_qsys:UART_qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain[1]     ; 1       ;
 ; Top:top0|Player:player|is_init_r                                                                                                                 ; 3       ;
-; UART_qsys:UART_qsys|AvmWrapper:avmwrapper_sv_0|altshift_taps:command_r_rtl_0|shift_taps_s5n:auto_generated|dffe4                                 ; 7       ;
+; UART_qsys:UART_qsys|AvmWrapper:avmwrapper_sv_0|avm_address_r[3]                                                                                  ; 9       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_volume_control[0]                                                                                 ; 3       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_volume_control[6]                                                                                 ; 3       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_volume_control[5]                                                                                 ; 3       ;
@@ -2001,66 +2001,66 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |DE2_115|Top:top0|Player:player|o_DAC_DAT_r[10]                                                                                                         ;
 ; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |DE2_115|UART_qsys:UART_qsys|UART_qsys_uart_0:uart_0|UART_qsys_uart_0_rx:the_UART_qsys_uart_0_rx|unxshiftxrxd_shift_regxshift_reg_start_bit_nxx6_out[7] ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |DE2_115|Top:top0|Recorder:recorder|counter_r[2]                                                                                                        ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|o_data_r[5]                                                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|out[8]                                                                              ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|fb_data_r[0]                                                                                        ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|out[13]                                                                             ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|out[4]                                                                              ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|out[10]                                                                             ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|out[1]                                                                              ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch1_read[12]                                                                                        ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |DE2_115|Top:top0|Recorder:recorder|counter_r[1]                                                                                                        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|o_data_r[9]                                                                                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|out[0]                                                                              ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|fb_data_r[13]                                                                                       ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|out[5]                                                                              ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|out[8]                                                                              ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|out[8]                                                                              ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|out[14]                                                                             ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch1_read[6]                                                                                         ;
 ; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch0_read[14]                                                                                        ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch2_read[5]                                                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch3_read[8]                                                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|temp_0[12]                                                                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|temp_0[0]                                                                                                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch2_read[4]                                                                                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch3_read[11]                                                                                        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|temp_0[14]                                                                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|temp_0[11]                                                                                                          ;
 ; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|temp_0[8]                                                                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|temp_0[10]                                                                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|temp_0[15]                                                                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|temp_0[9]                                                                           ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DE2_115|UART_qsys:UART_qsys|UART_qsys_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:uart_0_s1_translator|wait_latency_counter[0]  ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|o_data[7]                                                                                               ;
-; 4:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_1_amp[25]                                                                                       ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|state_r[1]                                                                                                    ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|i_data_r[9]                                                                                         ;
-; 9:1                ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|bit_cnt_r[4]                                                                                                  ;
-; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|command_cnt_r[3]                                                                                              ;
-; 5:1                ; 37 bits   ; 111 LEs       ; 74 LEs               ; 37 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_2_amp[13]                                                                                       ;
-; 6:1                ; 37 bits   ; 148 LEs       ; 74 LEs               ; 74 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_3_amp[2]                                                                                        ;
-; 7:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|Buffer:buffer|out_data[13]                                                                                                            ;
-; 7:1                ; 37 bits   ; 148 LEs       ; 74 LEs               ; 74 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_4_id[3]                                                                                         ;
-; 65:1               ; 6 bits    ; 258 LEs       ; 96 LEs               ; 162 LEs                ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|cnt[4]                                                                                              ;
-; 65:1               ; 6 bits    ; 258 LEs       ; 252 LEs              ; 6 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|state[5]                                                                                          ;
-; 6:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|counter_r[14]                                                                                           ;
-; 31:1               ; 96 bits   ; 1920 LEs      ; 96 LEs               ; 1824 LEs               ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|response_image[24]                                                                                                  ;
-; 100:1              ; 128 bits  ; 8448 LEs      ; 3072 LEs             ; 5376 LEs               ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|temp_old_real[27]                                                                                                   ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|gain_r[4]                                                                           ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|gain_r[3]                                                                           ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|gain_r[7]                                                                           ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|gain_r[0]                                                                           ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|gain_r[7]                                                                           ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|i_data_r[10]                                                                                            ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|fuzz:Fuzz|i_data_r[13]                                                                                                        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|temp_0[7]                                                                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|temp_0[5]                                                                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|temp_0[2]                                                                           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DE2_115|UART_qsys:UART_qsys|UART_qsys_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:uart_0_s1_translator|wait_latency_counter[1]  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|o_data[4]                                                                                               ;
+; 4:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_1_amp[18]                                                                                       ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|state_r[2]                                                                                                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|i_data_r[14]                                                                                        ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|bit_cnt_r[1]                                                                                                  ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|command_cnt_r[0]                                                                                              ;
+; 5:1                ; 37 bits   ; 111 LEs       ; 74 LEs               ; 37 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_2_amp[18]                                                                                       ;
+; 6:1                ; 37 bits   ; 148 LEs       ; 74 LEs               ; 74 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_3_amp[7]                                                                                        ;
+; 7:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|Buffer:buffer|out_data[12]                                                                                                            ;
+; 7:1                ; 37 bits   ; 148 LEs       ; 74 LEs               ; 74 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_4_amp[18]                                                                                       ;
+; 65:1               ; 6 bits    ; 258 LEs       ; 96 LEs               ; 162 LEs                ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|cnt[3]                                                                                              ;
+; 65:1               ; 6 bits    ; 258 LEs       ; 252 LEs              ; 6 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|state[4]                                                                                          ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|counter_r[15]                                                                                           ;
+; 31:1               ; 96 bits   ; 1920 LEs      ; 96 LEs               ; 1824 LEs               ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|response_real[42]                                                                                                   ;
+; 100:1              ; 128 bits  ; 8448 LEs      ; 3072 LEs             ; 5376 LEs               ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|temp_new_real[18]                                                                                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|gain_r[1]                                                                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|gain_r[6]                                                                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|gain_r[0]                                                                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|gain_r[3]                                                                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|gain_r[0]                                                                           ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|i_data_r[8]                                                                                             ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|fuzz:Fuzz|i_data_r[14]                                                                                                        ;
 ; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|i_data_r[10]                                                                                              ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|i_data_r[5]                                                                                             ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|i_data_r[4]                                                                                             ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|rate[1]                                                                                                 ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|Recorder:recorder|Selector0                                                                                                           ;
 ; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|current_volume[12]                                                                                      ;
-; 3:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lut_idx[4]                                                                                    ;
-; 3:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|frac_q0_16[15]                                                                              ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Volume:final_volume|o_data[11]                                                                                                ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch1_curr[9]                                                                                         ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lut_idx[2]                                                                                    ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|frac_q0_16[14]                                                                              ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Volume:final_volume|o_data[9]                                                                                                 ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch1_curr[8]                                                                                         ;
 ; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch0_curr[14]                                                                                        ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch2_curr[9]                                                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch3_curr[4]                                                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|data_curr[3]                                                                                                  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|v_curr[14]                                                                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|v_curr[8]                                                                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|v_curr[1]                                                                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|v_curr[0]                                                                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|v_curr[10]                                                                          ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|state_w.S_MENU                                                                                                                        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch2_curr[8]                                                                                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch3_curr[0]                                                                                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|data_curr[2]                                                                                                  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|v_curr[1]                                                                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|v_curr[14]                                                                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|v_curr[8]                                                                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|v_curr[12]                                                                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|v_curr[7]                                                                           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|state_w.S_SETUP                                                                                                                       ;
 ; 4:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|Add106                                                                                            ;
 ; 5:1                ; 17 bits   ; 51 LEs        ; 34 LEs               ; 17 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|o_block8_in[13]                                                                                                 ;
 ; 5:1                ; 17 bits   ; 51 LEs        ; 34 LEs               ; 17 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|o_block9_in[8]                                                                                                  ;
@@ -13652,26 +13652,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; boundary_port         ; 480                         ;
 ; cycloneiii_ff         ; 12133                       ;
-;     CLR               ; 1371                        ;
+;     CLR               ; 1374                        ;
 ;     CLR SCLR          ; 6                           ;
-;     ENA               ; 3881                        ;
+;     ENA               ; 3878                        ;
 ;     ENA CLR           ; 4810                        ;
 ;     ENA CLR SCLR      ; 377                         ;
 ;     ENA CLR SLD       ; 30                          ;
 ;     ENA SLD           ; 160                         ;
 ;     plain             ; 1498                        ;
 ; cycloneiii_io_obuf    ; 141                         ;
-; cycloneiii_lcell_comb ; 23801                       ;
+; cycloneiii_lcell_comb ; 23831                       ;
 ;     arith             ; 8768                        ;
 ;         1 data inputs ; 1                           ;
 ;         2 data inputs ; 3404                        ;
 ;         3 data inputs ; 5363                        ;
-;     normal            ; 15033                       ;
+;     normal            ; 15063                       ;
 ;         0 data inputs ; 33                          ;
 ;         1 data inputs ; 305                         ;
-;         2 data inputs ; 674                         ;
-;         3 data inputs ; 3080                        ;
-;         4 data inputs ; 10941                       ;
+;         2 data inputs ; 678                         ;
+;         3 data inputs ; 3082                        ;
+;         4 data inputs ; 10965                       ;
 ; cycloneiii_mac_mult   ; 200                         ;
 ; cycloneiii_mac_out    ; 200                         ;
 ; cycloneiii_pll        ; 2                           ;
@@ -13687,7 +13687,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:01:40     ;
+; Top            ; 00:01:39     ;
 +----------------+--------------+
 
 
@@ -13697,7 +13697,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
-    Info: Processing started: Thu Jun 18 13:02:58 2026
+    Info: Processing started: Thu Jun 18 14:47:33 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file uart_qsys/synthesis/uart_qsys.v
@@ -13771,7 +13771,7 @@ Warning (10259): Verilog HDL error at Delay_Effect.sv(100): constant value overf
 Warning (10259): Verilog HDL error at Delay_Effect.sv(109): constant value overflow
 Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/delay_effect.sv
     Info (12023): Found entity 1: Delay_Effect
-Warning (10275): Verilog HDL Module Instantiation warning at DE2_115.sv(239): ignored dangling comma in List of Port Connections
+Warning (10275): Verilog HDL Module Instantiation warning at DE2_115.sv(246): ignored dangling comma in List of Port Connections
 Info (12021): Found 1 design units, including 1 entities, in source file de2_115.sv
     Info (12023): Found entity 1: DE2_115
 Warning (12019): Can't analyze file -- file ../blocks/fuzz.sv is missing
@@ -13803,11 +13803,13 @@ Info (12021): Found 3 design units, including 3 entities, in source file /users/
     Info (12023): Found entity 1: Volume
     Info (12023): Found entity 2: Data_Catcher
     Info (12023): Found entity 3: cosine
+Info (12021): Found 1 design units, including 1 entities, in source file pll_25m.v
+    Info (12023): Found entity 1: pll_25m
 Warning (10236): Verilog HDL Implicit Net warning at WM8731_init.sv(52): created implicit net for "dbg"
 Info (12127): Elaborating entity "DE2_115" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at DE2_115.sv(250): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at DE2_115.sv(252): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at DE2_115.sv(254): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at DE2_115.sv(257): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at DE2_115.sv(259): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at DE2_115.sv(261): truncated value with size 32 to match size of target (4)
 Warning (10034): Output port "LEDG[8]" at DE2_115.sv(8) has no driver
 Warning (10034): Output port "VGA_B" at DE2_115.sv(38) has no driver
 Warning (10034): Output port "VGA_G" at DE2_115.sv(41) has no driver
@@ -13910,8 +13912,9 @@ Warning (10230): Verilog HDL assignment warning at WM8731_init.sv(127): truncate
 Info (12128): Elaborating entity "Recorder" for hierarchy "Top:top0|Recorder:recorder"
 Warning (10230): Verilog HDL assignment warning at Recorder.sv(40): truncated value with size 32 to match size of target (5)
 Info (12128): Elaborating entity "DSP" for hierarchy "Top:top0|DSP:dsp"
-Warning (10036): Verilog HDL or VHDL warning at DSP.sv(310): object "test_addr" assigned a value but never read
-Info (10264): Verilog HDL Case Statement information at DSP.sv(564): all case item expressions in this case statement are onehot
+Warning (10036): Verilog HDL or VHDL warning at DSP.sv(307): object "test_addr" assigned a value but never read
+Info (10264): Verilog HDL Case Statement information at DSP.sv(561): all case item expressions in this case statement are onehot
+Warning (10030): Net "o_dsp_ledr_r[14..12]" at DSP.sv(229) has no driver or initial value, using a default initial value '0'
 Warning (10034): Output port "o_dsp_ledr[15]" at DSP.sv(53) has no driver
 Info (12128): Elaborating entity "Data_Catcher" for hierarchy "Top:top0|DSP:dsp|Data_Catcher:raw_data_catcher"
 Info (12128): Elaborating entity "STFT" for hierarchy "Top:top0|DSP:dsp|STFT:stft"
@@ -15309,6 +15312,9 @@ Warning (13004): Presettable and clearable registers converted to equivalent cir
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "SMA_CLKOUT" is stuck at GND
     Warning (13410): Pin "LEDG[8]" is stuck at GND
+    Warning (13410): Pin "LEDR[12]" is stuck at GND
+    Warning (13410): Pin "LEDR[13]" is stuck at GND
+    Warning (13410): Pin "LEDR[14]" is stuck at GND
     Warning (13410): Pin "LEDR[15]" is stuck at GND
     Warning (13410): Pin "HEX1[1]" is stuck at GND
     Warning (13410): Pin "HEX1[2]" is stuck at GND
@@ -15504,7 +15510,7 @@ Warning (332009): The launch and latch times for the relationship between source
 Info (17049): 20 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 2 node(s), including 0 DDIO, 2 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 86 input pin(s) that do not drive logic
+Warning (21074): Design contains 83 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "CLOCK2_50"
     Warning (15610): No output dependent on input pin "CLOCK3_50"
     Warning (15610): No output dependent on input pin "ENETCLK_25"
@@ -15526,9 +15532,6 @@ Warning (21074): Design contains 86 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[12]"
     Warning (15610): No output dependent on input pin "SW[13]"
     Warning (15610): No output dependent on input pin "SW[14]"
-    Warning (15610): No output dependent on input pin "SW[15]"
-    Warning (15610): No output dependent on input pin "SW[16]"
-    Warning (15610): No output dependent on input pin "SW[17]"
     Warning (15610): No output dependent on input pin "UART_RTS"
     Warning (15610): No output dependent on input pin "SD_WP_N"
     Warning (15610): No output dependent on input pin "ENET0_INT_N"
@@ -15591,18 +15594,18 @@ Warning (21074): Design contains 86 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[14]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[15]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[16]"
-Info (21057): Implemented 33880 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 33901 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 91 input pins
     Info (21059): Implemented 248 output pins
     Info (21060): Implemented 141 bidirectional pins
-    Info (21061): Implemented 32517 logic cells
+    Info (21061): Implemented 32538 logic cells
     Info (21064): Implemented 487 RAM segments
     Info (21065): Implemented 2 PLLs
     Info (21062): Implemented 394 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 733 warnings
-    Info: Peak virtual memory: 5203 megabytes
-    Info: Processing ended: Thu Jun 18 13:05:07 2026
-    Info: Elapsed time: 00:02:09
-    Info: Total CPU time (on all processors): 00:02:10
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 734 warnings
+    Info: Peak virtual memory: 5212 megabytes
+    Info: Processing ended: Thu Jun 18 14:49:34 2026
+    Info: Elapsed time: 00:02:01
+    Info: Total CPU time (on all processors): 00:02:08
 
 

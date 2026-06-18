@@ -1,5 +1,5 @@
 Flow report for DE2_115
-Thu Jun 18 13:08:50 2026
+Thu Jun 18 14:53:15 2026
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -41,15 +41,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Jun 18 13:08:25 2026       ;
+; Flow Status                        ; Successful - Thu Jun 18 14:52:50 2026       ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                      ; DE2_115                                     ;
 ; Top-level Entity Name              ; DE2_115                                     ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 27,471 / 114,480 ( 24 % )                   ;
-;     Total combinational functions  ; 23,808 / 114,480 ( 21 % )                   ;
+; Total logic elements               ; 27,535 / 114,480 ( 24 % )                   ;
+;     Total combinational functions  ; 23,838 / 114,480 ( 21 % )                   ;
 ;     Dedicated logic registers      ; 9,408 / 114,480 ( 8 % )                     ;
 ; Total registers                    ; 9408                                        ;
 ; Total pins                         ; 518 / 529 ( 98 % )                          ;
@@ -65,7 +65,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/18/2026 13:03:04 ;
+; Start date & time ; 06/18/2026 14:47:38 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE2_115             ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ agreement for further details.
 +-------------------------------------+--------------------------------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                                        ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+--------------------------------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 96830612119463.178175898426960                               ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 96830612119463.178176525804492                               ; --            ; --          ; --         ;
 ; ENABLE_SIGNALTAP                    ; On                                                           ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                           ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                            ; --            ; --          ; --         ;
@@ -84,6 +84,8 @@ agreement for further details.
 ; MISC_FILE                           ; UART_qsys/synthesis/../../UART_qsys.qsys                     ; --            ; --          ; --         ;
 ; MISC_FILE                           ; final/synthesis/../final_qsys.cmp                            ; --            ; --          ; --         ;
 ; MISC_FILE                           ; final/synthesis/../final_qsys.qsys                           ; --            ; --          ; --         ;
+; MISC_FILE                           ; pll_25m_bb.v                                                 ; --            ; --          ; --         ;
+; MISC_FILE                           ; pll_25m.ppf                                                  ; --            ; --          ; --         ;
 ; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                                            ; --            ; --          ; --         ;
 ; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                                            ; --            ; --          ; --         ;
 ; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                                                   ; --            ; --          ; --         ;
@@ -112,11 +114,11 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:02:03     ; 1.0                     ; 5203 MB             ; 00:02:05                           ;
-; Fitter                    ; 00:02:55     ; 3.8                     ; 6847 MB             ; 00:07:44                           ;
-; Assembler                 ; 00:00:14     ; 1.0                     ; 4857 MB             ; 00:00:06                           ;
-; TimeQuest Timing Analyzer ; 00:00:23     ; 1.4                     ; 5373 MB             ; 00:00:26                           ;
-; Total                     ; 00:05:35     ; --                      ; --                  ; 00:10:21                           ;
+; Analysis & Synthesis      ; 00:01:56     ; 1.1                     ; 5212 MB             ; 00:02:03                           ;
+; Fitter                    ; 00:02:54     ; 4.0                     ; 6875 MB             ; 00:08:04                           ;
+; Assembler                 ; 00:00:13     ; 1.0                     ; 4860 MB             ; 00:00:06                           ;
+; TimeQuest Timing Analyzer ; 00:00:23     ; 1.8                     ; 5367 MB             ; 00:00:27                           ;
+; Total                     ; 00:05:26     ; --                      ; --                  ; 00:10:40                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

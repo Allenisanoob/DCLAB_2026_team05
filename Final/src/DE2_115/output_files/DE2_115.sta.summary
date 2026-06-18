@@ -3,27 +3,27 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'UART_qsys|altpll_0|sd1|pll7|clk[2]'
-Slack : -10.322
-TNS   : -8508.057
+Slack : -10.392
+TNS   : -8699.786
 
 Type  : Slow 1200mV 85C Model Setup 'AUD_BCLK'
-Slack : -3.824
-TNS   : -58.991
+Slack : -3.795
+TNS   : -58.648
 
 Type  : Slow 1200mV 85C Model Setup 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 36.052
+Slack : 36.300
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Setup 'UART_qsys|altpll_0|sd1|pll7|clk[1]'
-Slack : 79.460
+Slack : 81.460
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'UART_qsys|altpll_0|sd1|pll7|clk[2]'
-Slack : 0.295
+Slack : 0.298
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 0.372
+Slack : 0.370
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'UART_qsys|altpll_0|sd1|pll7|clk[1]'
@@ -35,11 +35,11 @@ Slack : 0.440
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 36.286
+Slack : 36.373
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Removal 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 2.232
+Slack : 1.731
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
@@ -59,7 +59,7 @@ Slack : 19.707
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'AUD_BCLK'
-Slack : 41.123
+Slack : 41.131
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'UART_qsys|altpll_0|sd1|pll7|clk[2]'
@@ -71,31 +71,31 @@ Slack : 4999.711
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'UART_qsys|altpll_0|sd1|pll7|clk[2]'
-Slack : -9.430
-TNS   : -7649.994
+Slack : -9.392
+TNS   : -7817.625
 
 Type  : Slow 1200mV 0C Model Setup 'AUD_BCLK'
-Slack : -3.737
-TNS   : -57.049
+Slack : -3.670
+TNS   : -56.931
 
 Type  : Slow 1200mV 0C Model Setup 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 36.427
+Slack : 36.666
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'UART_qsys|altpll_0|sd1|pll7|clk[1]'
-Slack : 79.732
+Slack : 81.636
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'UART_qsys|altpll_0|sd1|pll7|clk[2]'
-Slack : 0.276
+Slack : 0.279
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
+Slack : 0.355
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'UART_qsys|altpll_0|sd1|pll7|clk[1]'
 Slack : 0.355
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Hold 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 0.356
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'AUD_BCLK'
@@ -103,11 +103,11 @@ Slack : 0.387
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 36.665
+Slack : 36.731
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Removal 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 2.007
+Slack : 1.561
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
@@ -123,43 +123,43 @@ Slack : 16.000
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 19.692
+Slack : 19.710
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'AUD_BCLK'
-Slack : 41.181
+Slack : 41.204
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'UART_qsys|altpll_0|sd1|pll7|clk[2]'
-Slack : 41.297
+Slack : 41.298
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'UART_qsys|altpll_0|sd1|pll7|clk[1]'
-Slack : 4999.712
+Slack : 4999.711
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'UART_qsys|altpll_0|sd1|pll7|clk[2]'
-Slack : -5.796
-TNS   : -4720.316
+Slack : -5.710
+TNS   : -4743.562
 
 Type  : Fast 1200mV 0C Model Setup 'AUD_BCLK'
-Slack : -1.715
-TNS   : -25.547
+Slack : -1.723
+TNS   : -25.453
 
 Type  : Fast 1200mV 0C Model Setup 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 38.111
+Slack : 38.215
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'UART_qsys|altpll_0|sd1|pll7|clk[1]'
-Slack : 81.322
+Slack : 82.417
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'UART_qsys|altpll_0|sd1|pll7|clk[2]'
-Slack : 0.108
+Slack : 0.110
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 0.162
+Slack : 0.141
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'UART_qsys|altpll_0|sd1|pll7|clk[1]'
@@ -171,11 +171,11 @@ Slack : 0.199
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 38.005
+Slack : 38.065
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Removal 'UART_qsys|altpll_0|sd1|pll7|clk[0]'
-Slack : 1.079
+Slack : 0.822
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
@@ -195,7 +195,7 @@ Slack : 19.753
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'AUD_BCLK'
-Slack : 40.644
+Slack : 40.613
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'UART_qsys|altpll_0|sd1|pll7|clk[2]'

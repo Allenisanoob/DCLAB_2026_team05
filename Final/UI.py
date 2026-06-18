@@ -32,6 +32,8 @@ v2 變更:
 import sys
 import math
 import threading
+import time
+
 
 # 優先用 PyQt5;若環境只有 PyQt6 也能跑
 try:
@@ -859,7 +861,6 @@ class UartManager(QtCore.QObject):
             except Exception as ex:
                 self.log.emit(f"TX fail: {ex}")
         self.log.emit(f"TX {tag}  {hexs}")
-        # print(pkt)
 
     # def send_param(self, module, key, value):
     #     mid = MODULES[module]["id"]; pid = PARAM_ID[(module, key)]
