@@ -104,83 +104,83 @@ except Exception:
 MODULES = {
     "Overdrive": {"id": 0x01,
         "params": [
-            ("i_gain", "Gain", "slider", 0.5, 1023),
-            ("L", "Level", "knob", 0.5, 65535)
+            ("i_gain", "Gain", "knob", 0.5, 1023),
+            ("L", "Level", "slider", 0.5, 65535)
         ],
-        "current_values": [0.5, 0.5]
+        "current_values": [0.5, 0.5],
     },
     "Fuzz": {"id": 0x02,
         "params": [
-            ("i_gain", "Gain", "slider", 0.6, 1023),
-            ("L", "Level", "knob", 0.5, 65535)
+            ("i_gain", "Gain", "knob", 0.6, 1023),
+            ("L", "Level", "slider", 0.5, 65535)
         ],
-        "current_values": [0.6, 0.5]
+        "current_values": [0.6, 0.5],
     },
     "Distortion": {"id": 0x03,
         "params": [
-            ("i_gain", "Gain", "slider", 0.6, 1023),
-            ("L", "Level", "knob", 0.5, 65535)
+            ("i_gain", "Gain", "knob", 0.6, 1023),
+            ("L", "Level", "slider", 0.5, 65535)
         ],
-        "current_values": [0.6, 0.5]
+        "current_values": [0.6, 0.5],
     },
     "Reverb": {"id": 0x04,
         "params": [
             ("wet_rate", "Wet", "slider", 0.4, 255),
-            ("ap_gain", "AP Gain", "knob", 0.5, 255)
+            ("ap_gain", "Width", "knob", 0.5, 255)
         ],
-        "current_values": [0.4, 0.5]
+        "current_values": [0.4, 0.5],
     },
     "NoiseGate": {"id": 0x05, "five": True,
         "params": [
             ("ng_rise_rate", "Rise", "slider", 0.4, 255),
-            ("ng_decay_rate", "Decay", "knob", 0.4, 255),
-            ("ng_hold", "Hold", "knob", 0.4, 65535),
+            ("ng_decay_rate", "Decay", "slider", 0.4, 255),
+            ("ng_hold", "Hold", "slider", 0.4, 65535),
             ("ng_threshold_low", "Th.Lo", "slider", 0.3, 32767),
             ("ng_threshold_high", "Th.Hi", "slider", 0.7, 32767)
         ],
-        "current_values": [0.4, 0.4, 0.4, 0.3, 0.7]
+        "current_values": [0.4, 0.4, 0.4, 0.3, 0.7],
     },
     "Delay": {"id": 0x06,
         "params": [
             ("delay_time", "Time", "knob", 0.4, 65535),
-            ("delay_feedback", "Feedback", "slider", 0.3, 255),
+            ("delay_feedback", "F.back", "slider", 0.3, 255),
             ("delay_mix", "Mix", "slider", 0.5, 255)
         ],
-        "current_values": [0.4, 0.3, 0.5]
+        "current_values": [0.4, 0.3, 0.5],
     },
     "Flanger": {"id": 0x07, "five": True,
         "params": [
-            ("inc", "Inc", "slider", 0.5, 127),
-            ("delay_base", "Base", "knob", 0.4, 1023),
-            ("delay_amp", "Amp", "knob", 0.4, 1023),
-            ("gain", "Gain", "slider", 0.5, 255),
-            ("wet_rate", "Wet", "slider", 0.5, 255)
+            ("inc", "Speed", "knob", 0.5, 127),
+            ("delay_base", "Depth", "knob", 0.4, 1023),
+            ("delay_amp", "Range", "knob", 0.4, 1023),
+            ("gain", "F.back", "knob", 0.5, 255),
+            ("wet_rate", "Mix", "knob", 0.5, 255)
         ],
-        "current_values": [0.5, 0.4, 0.4, 0.5, 0.5]
+        "current_values": [0.5, 0.4, 0.4, 0.5, 0.5],
     },
     "Chorus": {"id": 0x08,
         "params": [
-            ("in", "Inc", "slider", 0.5, 127),
-            ("delay_base", "Base", "knob", 0.4, 4095),
-            ("delay_amp", "Amp", "slider", 0.4, 4095),
-            ("wet_rate", "Wet", "slider", 0.5, 255)
+            ("in", "Speed", "knob", 0.5, 127),
+            ("delay_base", "Depth", "knob", 0.4, 4095),
+            ("delay_amp", "Range", "knob", 0.4, 4095),
+            ("wet_rate", "Mix", "slider", 0.5, 255)
         ],
-        "current_values": [0.5, 0.4, 0.4, 0.5]
+        "current_values": [0.5, 0.4, 0.4, 0.5],
     },
     "Auto_Wah": {"id": 0x09,
         "params": [
-            ("in", "Inc", "slider", 0.5, 127),
-            ("delay_base", "Base", "knob", 0.4, 4095),
-            ("delay_amp", "Amp", "slider", 0.4, 4095),
-            ("wet_rate", "Wet", "slider", 0.5, 255)
+            ("in", "Speed", "knob", 0.5, 127),
+            ("delay_base", "Depth", "knob", 0.4, 4095),
+            ("delay_amp", "Range", "knob", 0.4, 4095),
+            ("wet_rate", "Mix", "slider", 0.5, 255)
         ],
-        "current_values": [0.5, 0.4, 0.4, 0.5]
+        "current_values": [0.5, 0.4, 0.4, 0.5],
     },
     "Volume": {"id": 0x0B,
         "params": [
-            ("i_gain", "Master", "slider", 0.7, 127)
+            ("i_gain", "Master", "knob", 0.7, 127)
         ],
-        "current_values": [0.7]
+        "current_values": [0.7],
     },
 }
 
@@ -226,6 +226,7 @@ class Knob(QtWidgets.QWidget):
 
     # size 預設組: (widget_w, widget_h, knob_r, tick_r, seven_w, seven_h, font)
     SIZES = {
+        "tiny":   (84, 104, 21, 31, 6, 10, 5),
         "small":  (104, 128, 26, 39, 7, 13, 6),
         "normal": (128, 156, 33, 49, 9, 15, 7),
         "large":  (160, 196, 43, 63, 12, 20, 8),
@@ -379,7 +380,7 @@ class Knob(QtWidgets.QWidget):
 
         # ---- 七段顯示器 ----
         self._draw_seven(p, f"{int(round(self._value*100)):3d}", cx,
-                         cy + knob_r + 19, dim, sv_w, sv_h)
+                         cy + knob_r + 28, dim, sv_w, sv_h)
 
     def _draw_seven(self, p, text, cx, top, dim, w, h):
         gap, th = max(2, w * 0.45), max(1.5, w * 0.22)
@@ -419,8 +420,8 @@ class VSlider(QtWidgets.QWidget):
         if horizontal:
             self.setFixedSize(150, 46)
         else:
-            h = {"small": 112, "normal": 136, "large": 168}[size]
-            w = {"small": 44, "normal": 48, "large": 52}[size]
+            h = {"small": 112, "normal": 136, "bigger": 160, "large": 256}[size]
+            w = {"small": 30, "normal": 35, "bigger": 40, "large": 40}[size]
             self.setFixedSize(w, h)
 
     def value(self):
@@ -491,14 +492,14 @@ class VSlider(QtWidgets.QWidget):
         p.drawEllipse(QPointF(hx, hy), 7, 7)
 
         p.setPen(C.ink_dim if dim else C.ink_dim)
-        p.setFont(QtGui.QFont("Helvetica", 7))
+        p.setFont(QtGui.QFont("Helvetica", 10))
         if self._horizontal:
-            p.drawText(QRectF(0, 2, self.width(), 12), Qt.AlignHCenter,
+            p.drawText(QRectF(0, 2, self.width(), 24), Qt.AlignHCenter,
                        f"{self._label} {int(self._value*100)}")
         else:
             p.drawText(QRectF(0, self.height() - 26, self.width(), 12),
                        Qt.AlignHCenter, f"{int(self._value*100)}")
-            p.drawText(QRectF(0, self.height() - 14, self.width(), 12),
+            p.drawText(QRectF(0, self.height() - 12, self.width(), 12),
                        Qt.AlignHCenter, self._label)
 
 
@@ -510,7 +511,7 @@ class ModulePanel(QtWidgets.QFrame):
     previewToggled = pyqtSignal(str, bool)   # module, playing
 
     PANEL_W = 272
-    PANEL_H = 462
+    PANEL_H = 500
 
     def __init__(self, name, spec, parent=None):
         super().__init__(parent)
@@ -540,10 +541,16 @@ class ModulePanel(QtWidgets.QFrame):
 
         body = QtWidgets.QWidget()
         params = self.spec["params"]
-        if self.spec.get("five"):
-            self._build_five(body)
+        if self.name == "NoiseGate":
+            self._build_NG(body)
+        elif self.name == "Flanger":
+            self._build_FL(body)
         elif self._is_knob_slider_pair(params):
             self._build_centered_knob(body)   # 單旋鈕+單滑桿:大旋鈕置中
+        elif len(self.spec["params"]) == 2:
+            self._build_two_param(body)
+        elif len(self.spec["params"]) == 4:
+            self._build_four_param(body)
         else:
             self._build_normal(body)
         outer.addWidget(body, 1)
@@ -582,10 +589,108 @@ class ModulePanel(QtWidgets.QFrame):
             if n <= 2:
                 sz = "large"
             else:
-                sz = "large" if pr[2] == "knob" else "normal"
+                sz = "large"
             row.addWidget(self._make(pr[0], pr[1], pr[2], pr[3], size=sz), 0, Qt.AlignBottom | Qt.AlignHCenter)
         row.addStretch(1)
         lay.addLayout(row)
+        lay.addStretch(1)
+        
+    def _build_two_param(self, host):
+        # Explicitly create a Vertical Layout for 2-parameter pedals
+        v_layout = QtWidgets.QVBoxLayout(host)
+        v_layout.setSpacing(10)
+        v_layout.addStretch(5) # Pushes the knobs towards the center
+        
+        # Loop through the two parameters (e.g., Gain and Level)
+        for pr in self.spec["params"]:
+            # Manually unpack to avoid the previous argument collision bug
+            p_id, p_title, p_type, p_default, p_range = pr
+            
+            # Create the widget and add it to the vertical column
+            widget = self._make(p_id, p_title, p_type, default=p_default, size="normal")
+            v_layout.addWidget(widget, 0, Qt.AlignHCenter)
+            
+        v_layout.addStretch(1)
+        
+    def _build_four_param(self, host):
+        lay = QtWidgets.QVBoxLayout(host)
+        lay.setContentsMargins(0, 0, 0, 0); lay.setSpacing(4)
+        lay.addStretch(1)
+        row1 = QtWidgets.QHBoxLayout()
+        n = len(self.spec["params"])
+        row1.setSpacing(10 if n <= 2 else 6)
+        row1.addStretch(1)
+        for pr in self.spec["params"][0:2]:
+            sz = "normal"
+            row1.addWidget(self._make(pr[0], pr[1], pr[2], pr[3], size=sz), 0, Qt.AlignBottom | Qt.AlignHCenter)
+        row1.addStretch(1)
+        lay.addLayout(row1)
+        lay.addStretch(1)
+        
+        row2 = QtWidgets.QHBoxLayout()
+        n = len(self.spec["params"])
+        row2.setSpacing(10 if n <= 2 else 6)
+        row2.addStretch(1)
+        for pr in self.spec["params"][2:4]:
+            sz = "normal" if pr[2] == "knob" else "bigger"
+            row2.addWidget(self._make(pr[0], pr[1], pr[2], pr[3], size=sz), 0, Qt.AlignBottom | Qt.AlignHCenter)
+            row2.addStretch(35)
+        lay.addLayout(row2)
+        lay.addStretch(1)
+        
+    def _build_NG(self, host):
+        lay = QtWidgets.QVBoxLayout(host)
+        lay.setContentsMargins(0, 0, 0, 0); lay.setSpacing(4)
+        lay.addStretch(1)
+        row1 = QtWidgets.QHBoxLayout()
+        n = len(self.spec["params"])
+        row1.setSpacing(10 if n <= 2 else 6)
+        row1.addStretch(1)
+        for pr in self.spec["params"][0:5]:
+            sz = "large"
+            row1.addWidget(self._make(pr[0], pr[1], pr[2], pr[3], size=sz), 0, Qt.AlignBottom | Qt.AlignHCenter)
+        row1.addStretch(1)
+        lay.addLayout(row1)
+        lay.addStretch(1)
+        
+        
+    def _build_FL(self, host):
+        lay = QtWidgets.QVBoxLayout(host)
+        lay.setContentsMargins(0, 0, 0, 0); lay.setSpacing(4)
+        lay.addStretch(1)
+        row1 = QtWidgets.QHBoxLayout()
+        n = len(self.spec["params"])
+        row1.setSpacing(10 if n <= 2 else 6)
+        row1.addStretch(1)
+        for pr in self.spec["params"][0:2]:
+            sz = "normal"
+            row1.addWidget(self._make(pr[0], pr[1], pr[2], pr[3], size=sz), 0, Qt.AlignBottom | Qt.AlignHCenter)
+        row1.addStretch(1)
+        lay.addLayout(row1)
+        lay.addStretch(1)
+        
+        row2 = QtWidgets.QHBoxLayout()
+        n = len(self.spec["params"])
+        row2.setSpacing(10 if n <= 2 else 6)
+        row2.addStretch(35)
+        
+        pr = self.spec["params"][2]
+        sz = "normal" if pr[2] == "knob" else "bigger"
+        row2.addWidget(self._make(pr[0], pr[1], pr[2], pr[3], size=sz), 0, Qt.AlignHCenter)
+        row2.addStretch(35)
+        
+        lay.addLayout(row2)
+        lay.addStretch(1)
+        
+        row3 = QtWidgets.QHBoxLayout()
+        n = len(self.spec["params"])
+        row3.setSpacing(10 if n <= 2 else 6)
+        row3.addStretch(1)
+        for pr in self.spec["params"][3:5]:
+            sz = "normal" if pr[2] == "knob" else "bigger"
+            row3.addWidget(self._make(pr[0], pr[1], pr[2], pr[3], size=sz), 0, Qt.AlignBottom | Qt.AlignHCenter)
+            row3.addStretch(35)
+        lay.addLayout(row3)
         lay.addStretch(1)
 
     def _build_centered_knob(self, host):
@@ -754,7 +859,7 @@ class UartManager(QtCore.QObject):
             except Exception as ex:
                 self.log.emit(f"TX fail: {ex}")
         self.log.emit(f"TX {tag}  {hexs}")
-        print(pkt)
+        # print(pkt)
 
     # def send_param(self, module, key, value):
     #     mid = MODULES[module]["id"]; pid = PARAM_ID[(module, key)]
@@ -778,7 +883,7 @@ class UartManager(QtCore.QObject):
         
         # Grab the current float values (0.0 to 1.0)
         params = module["params"]
-        current_floats = [p[3] for p in params]
+        current_floats = module["current_values"]
         
         # You MUST scale these floats to your Verilog integers here!
         # Example: scaled_ints = [int(f * 65535) for f in current_floats]
@@ -792,7 +897,6 @@ class UartManager(QtCore.QObject):
             packet[idx_lo] = val & 0xFF
 
         self._write(packet, module_name)
-        print(1)
         
     def send_stager(self, stages):
         # if not self.ser or not self.ser.is_open:
@@ -963,7 +1067,7 @@ class FxPanelPage(QtWidgets.QWidget):
         lay.addStretch(1)
         for name, off in zip(names, pattern):
             pnl = ModulePanel(name, MODULES[name])
-            pnl.paramChanged.connect(self.uart.send_module_state)
+            pnl.paramChanged.connect(self.on_param_changed)
             pnl.previewToggled.connect(self._on_preview)
             self.panels[name] = pnl
             # 用上下 spacer 做 W 偏移
@@ -996,7 +1100,7 @@ class FxPanelPage(QtWidgets.QWidget):
 
     def _volume_box(self):
         box = QtWidgets.QFrame()
-        box.setFixedSize(120, 120)
+        box.setFixedSize(120, 140)
         box.setStyleSheet("QFrame{background:#141414;border:1px solid #BE9E60;"
                           "border-radius:10px;}")
         lay = QtWidgets.QVBoxLayout(box)
@@ -1005,9 +1109,10 @@ class FxPanelPage(QtWidgets.QWidget):
         cap.setStyleSheet("color:#BE9E60; font-weight:bold; letter-spacing:1px;")
         cap.setAlignment(Qt.AlignCenter)
         lay.addWidget(cap)
+        lay.addSpacing(5)
         # 全域音量滑桿,永遠可調;兩頁共用同一顆
-        self.vol = VSlider("Master", MODULES["Volume"]["params"][0][3], horizontal=True)
-        self.vol.valueChanged.connect(lambda v: self.uart.send_module_state("Volume", v))
+        self.vol = Knob("Master", MODULES["Volume"]["params"][0][3], size="tiny")
+        self.vol.valueChanged.connect(lambda v: self.on_param_changed("Volume", "i_gain", v))
         lay.addWidget(self.vol, 0, Qt.AlignHCenter)
         lay.addStretch(1)
         return box
@@ -1031,7 +1136,7 @@ class FxPanelPage(QtWidgets.QWidget):
 
     def _uart_box(self):
         box = QtWidgets.QFrame()
-        box.setFixedHeight(120)
+        box.setFixedHeight(140)
         box.setStyleSheet(
             "QFrame{background:#141414; border:1px solid #6e5e3c; border-radius:10px;}"
             "QLabel{color:#BE9E60;} QComboBox{background:#1f1f1f; color:#E8E2D4;"
@@ -1077,6 +1182,22 @@ class FxPanelPage(QtWidgets.QWidget):
             ok = self.uart.connect(self.port_combo.currentText(),
                                    self.baud_combo.currentText())
             self.connect_btn.setText("Disconnect" if ok else "Connect")
+            
+    def on_param_changed(self, module_name, param_name, new_value):
+        """
+        Updates the tracked state of a module and sends the full 32-byte payload.
+        """
+        # Look up the index using your existing PARAM_ID dictionary
+        param_index = PARAM_ID.get((module_name, param_name))
+        
+        if param_index is not None:
+            # Update the specific float value in our tracking list
+            MODULES[module_name]["current_values"][param_index] = new_value
+            
+            # Send the entire updated state to the FPGA
+            self.uart.send_module_state(module_name, 0)
+        else:
+            print(f"Warning: Parameter {param_name} not found in {module_name}")
 
 
 # =============================================================================
@@ -1096,20 +1217,19 @@ class StagerPage(QtWidgets.QWidget):
         root.setContentsMargins(28, 22, 28, 18)
 
         title = QtWidgets.QLabel("STAGE  CHAIN")
-        f = title.font(); f.setPointSize(16); f.setBold(True); title.setFont(f)
+        f = title.font(); f.setPointSize(20); f.setBold(True); title.setFont(f)
         title.setStyleSheet("color:#BE9E60; letter-spacing:6px;")
         title.setAlignment(Qt.AlignHCenter)
         root.addWidget(title)
         sub = QtWidgets.QLabel("Four fixed hardware stages. Pick an effect per stage "
                                "(None to skip), then adjust its controls.")
-        sub.setStyleSheet("color:#8a8270;")
+        sub.setStyleSheet("color:#8a8270; font-size:14px;")
         sub.setAlignment(Qt.AlignHCenter)
         root.addWidget(sub)
         root.addSpacing(16)
 
         row = QtWidgets.QHBoxLayout()
-        row.setSpacing(0)
-        row.addStretch(1)                          # 整排置中(左)
+        row.setSpacing(8)
         for i in range(4):
             slot = QtWidgets.QFrame()
             slot.setStyleSheet("QFrame{background:#141414; border:1px solid #6e5e3c;"
@@ -1140,23 +1260,16 @@ class StagerPage(QtWidgets.QWidget):
             sl.addWidget(host)
             sl.addStretch(1)
 
-            slot.setFixedWidth(300)                # 插槽加寬
-            row.addWidget(slot, 0, Qt.AlignTop)
+            # 4 段用比例伸縮,完整塞滿畫面寬度、不需橫向捲動
+            row.addWidget(slot, 1)
             if i < 3:
                 arrow = QtWidgets.QLabel("→")
                 arrow.setStyleSheet("color:#E8E2D4; font-size:24px;")
                 arrow.setAlignment(Qt.AlignCenter)
-                arrow.setFixedWidth(44)
+                arrow.setFixedWidth(36)
                 row.addWidget(arrow, 0, Qt.AlignVCenter)
-        row.addStretch(1)                          # 整排置中(右)
-        row_host = QtWidgets.QWidget()
-        row_host.setLayout(row)
-        sc = QtWidgets.QScrollArea()
-        sc.setWidget(row_host)
-        sc.setWidgetResizable(True)
-        _no_vscroll(sc)
-        sc.setStyleSheet("QScrollArea{background:transparent;border:none;}")
-        root.addWidget(sc)
+        # 直接用 QHBoxLayout 呈現(移除外層 QScrollArea,徹底解決橫桿遮擋)
+        root.addLayout(row)
         root.addStretch(1)
 
         send = QtWidgets.QPushButton("Apply chain to hardware")
@@ -1217,8 +1330,24 @@ class StagerPage(QtWidgets.QWidget):
         key, label, ctype, default, scale = pr
         w = (Knob(label, default, size=size) if ctype == "knob"
              else VSlider(label, default, size=size))
-        w.valueChanged.connect(lambda v, m=module, k=key: self.uart.send_module_state(m, v))
+        w.valueChanged.connect(lambda v: self.on_param_changed(module, key, v))
         return w
+    
+    def on_param_changed(self, module_name, param_name, new_value):
+        """
+        Updates the tracked state of a module and sends the full 32-byte payload.
+        """
+        # Look up the index using your existing PARAM_ID dictionary
+        param_index = PARAM_ID.get((module_name, param_name))
+        
+        if param_index is not None:
+            # Update the specific float value in our tracking list
+            MODULES[module_name]["current_values"][param_index] = new_value
+            
+            # Send the entire updated state to the FPGA
+            self.uart.send_module_state(module_name, 0)
+        else:
+            print(f"Warning: Parameter {param_name} not found in {module_name}")
 
 
 # =============================================================================
