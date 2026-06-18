@@ -34,7 +34,9 @@ module AvmWrapper (
 
     // ---- Conduit interface to upper layer (Param_Manager via DE2_115.sv) ----
     output logic [255:0] o_command, // 累積滿的 256-bit 命令
-    output logic         o_valid    // 1-cycle valid pulse
+    output logic         o_valid    // 1-cycle valid pulse,
+    // input logic [255:0] i_command, // 累積滿的 256-bit 命令
+    // input logic         i_valid    // 1-cycle valid pulse,
 );
 
 // -----------------------------------------------------------------------------

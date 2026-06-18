@@ -1074,8 +1074,6 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE stp2.stp
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name VERILOG_FILE UART_qsys/synthesis/UART_qsys.v
 set_global_assignment -name QIP_FILE UART_qsys/synthesis/UART_qsys.qip
 set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/STFT_LUT.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/STFT.sv
@@ -1108,10 +1106,10 @@ set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/Recorder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/Player.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/DSP.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../main_modules/Buffer.sv
-set_global_assignment -name VERILOG_FILE final/synthesis/final_qsys.v -library final_qsys
 set_global_assignment -name QIP_FILE final/synthesis/final_qsys.qip
 set_global_assignment -name SYSTEMVERILOG_FILE SevenHexDecoder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Debounce.sv
 set_global_assignment -name SDC_FILE DE2_115.sdc
 set_global_assignment -name SOURCE_FILE DE2_115.qsf
 set_global_assignment -name SYSTEMVERILOG_FILE ../blocks/DSP_lib.sv
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

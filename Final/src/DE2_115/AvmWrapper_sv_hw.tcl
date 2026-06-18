@@ -130,4 +130,5 @@ set_interface_property conduit_end SVD_ADDRESS_GROUP ""
 
 add_interface_port conduit_end o_command command Output 256
 add_interface_port conduit_end o_valid valid_out Output 1
-
+# add_interface_port conduit_end i_command command_in input 256
+# add_interface_port conduit_end i_valid valid_in input 1

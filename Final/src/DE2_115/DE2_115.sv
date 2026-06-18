@@ -196,7 +196,7 @@ Top top0(
 
 	// UART
 	.i_uart_command(uart_command),
-    .i_uart_valid(uart_valid)
+    .i_uart_valid(uart_valid),
 
 	// // SRAM
 	// .o_SRAM_ADDR(SRAM_ADDR), // [19:0]

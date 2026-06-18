@@ -130,9 +130,9 @@ set_global_assignment -entity "final_qsys_altpll_0" -library "final_qsys" -name 
 set_global_assignment -entity "final_qsys_altpll_0" -library "final_qsys" -name IP_COMPONENT_PARAMETER "QVVUT19JTkNMS19JTlRFUkZBQ0VfQ0xPQ0tfUkFURQ==::NTAwMDAwMDA=::QXV0byBDTE9DS19SQVRF"
 
 set_global_assignment -library "final_qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "final_qsys.v"]
-set_global_assignment -library "final_qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.v"]
-set_global_assignment -library "final_qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_synchronizer.v"]
-set_global_assignment -library "final_qsys" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.sdc"]
+# set_global_assignment -library "final_qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.v"]
+#set_global_assignment -library "final_qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_synchronizer.v"]
+#set_global_assignment -library "final_qsys" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.sdc"]
 set_global_assignment -library "final_qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/final_qsys_altpll_0.v"]
 
 set_global_assignment -entity "altera_reset_controller" -library "final_qsys" -name IP_TOOL_NAME "altera_reset_controller"

@@ -5,6 +5,10 @@ module Top (
 	input i_key_1,
 	input i_key_2,
 	input [17:0] i_sw,
+
+	input  [255:0] i_uart_command,
+    input          i_uart_valid,
+
 	
 	// // SRAM
 	// output [19:0] o_SRAM_ADDR,
@@ -143,6 +147,11 @@ module Top (
 		.o_buf_data_l(buf_data_l),
 		.o_buf_data_r(buf_data_r),
 		.i_fx_sw(i_sw),
+
+		// UART
+		.i_uart_command(i_uart_command),
+		.i_uart_valid(i_uart_valid),
+
 
 		// // SRAM I/O for 4 blocks (B0-B3)
 		// .o_B0_r_addr(B0_r_addr),

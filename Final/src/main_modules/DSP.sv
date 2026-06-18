@@ -250,7 +250,6 @@ module DSP (
 
     assign o_dsp_ledr[14:0] = o_dsp_ledr_r;
 
-
     // Staging up to 4 modules
     logic [31:0] staging_control;
     Stager Stager(
@@ -308,7 +307,7 @@ module DSP (
 
     // Managing parameters for all modules
     // logic [255:0] param_command;
-    // logic [7:0] test_addr;
+    logic [7:0] test_addr;
     // assign param_command = {8'd10, 216'b0, 24'b0, test_addr};
     Param_Manager Param_Manager(
         .i_clk(i_clk),
