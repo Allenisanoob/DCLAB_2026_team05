@@ -137,7 +137,7 @@ module DE2_115 (
 );
 
 logic key0down, key1down, key2down, key3down;
-logic CLK_12M, CLK_100K;
+logic CLK_12M, CLK_100K, CLK_25M;
 // logic CLK_800K;
 assign AUD_XCK = CLK_12M;
 
@@ -148,6 +148,13 @@ final_qsys pll0( // generate with qsys, please follow lab2 tutorials
 	.altpll_100k_clk(CLK_100K)
 	// .altpll_800k_clk(CLK_800K)
 );
+
+// pll_25m u_pll (
+//     .areset (1'b0),       // 不需要重置就綁 0;或接你的 reset 訊號
+//     .inclk0 (CLOCK_50),   // 50MHz 板載時脈
+//     .c0     (CLK_25M),    // 25MHz 輸出
+//     .locked ()            // 用不到就留空,或接一個 wire 當鎖定指示
+// );
 
 logic [255:0] uart_command;
 logic         uart_valid;

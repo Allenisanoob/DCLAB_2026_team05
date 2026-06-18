@@ -3,12 +3,12 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="95" />
+   <connections preferredWidth="47" />
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
  <library
-   expandedCategories="Project,Library/University Program/Communications,Library/Interface Protocols/Serial,Library/Interface Protocols,Library,Library/University Program" />
- <window width="1936" height="1048" x="-8" y="-8" />
- <generation path="UART_qsys" />
+   expandedCategories="Library/Basic Functions,Library,Library/Basic Functions/Clocks; PLLs and Resets,Library/Basic Functions/Clocks; PLLs and Resets/PLL,Project" />
+ <window width="2880" height="1704" x="0" y="0" />
+ <generation path="CLK_25M" />
 </preferences>

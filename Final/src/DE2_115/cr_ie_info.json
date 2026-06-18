@@ -1,0 +1,22 @@
+{
+	"system" : {
+		"platform" : "windows64",
+		"os_name" : "Windows 7",
+		"os_version" : "6.2"
+	},
+	"error" : {
+		"executable" : "quartus_map",
+		"comment" : "not_applicable",
+		"error_message" : "Access Violation at 0X00007FFB1A076F00",
+		"source_file" : "unknown",
+		"line" : "0",
+		"stack_trace" : "\t0x7ffb1a076eff: DB_HDB + 0x6eff (?get_library@HDB_SOURCE_FILE@@QEBAPEBDXZ + 0x3)\n\t0x7ffb2141549c: synth_sgn + 0x7549c (?sgn_source_file_processing@@YA?AW4SGN_STATE_ENUM@@PEAVCMP_FACADE@@@Z + 0x6131c)\n\t0x7ffb2146b76e: synth_sgn + 0xcb76e (?sgn_create_qsys_generation_report@@YAXPEAVCMP_FACADE@@@Z + 0x1444e)\n\t0x7ffb2146b02f: synth_sgn + 0xcb02f (?sgn_create_qsys_generation_report@@YAXPEAVCMP_FACADE@@@Z + 0x13d0f)\n\t0x7ffb2146b73b: synth_sgn + 0xcb73b (?sgn_create_qsys_generation_report@@YAXPEAVCMP_FACADE@@@Z + 0x1441b)\n\t0x7ffb2146b02f: synth_sgn + 0xcb02f (?sgn_create_qsys_generation_report@@YAXPEAVCMP_FACADE@@@Z + 0x13d0f)\n\t0x7ffb2146b73b: synth_sgn + 0xcb73b (?sgn_create_qsys_generation_report@@YAXPEAVCMP_FACADE@@@Z + 0x1441b)\n\t0x7ffb2146b02f: synth_sgn + 0xcb02f (?sgn_create_qsys_generation_report@@YAXPEAVCMP_FACADE@@@Z + 0x13d0f)\n\t0x7ffb2146b73b: synth_sgn + 0xcb73b (?sgn_create_qsys_generation_report@@YAXPEAVCMP_FACADE@@@Z + 0x1441b)\n\t0x7ffb2146b02f: synth_sgn + 0xcb02f (?sgn_create_qsys_generation_report@@YAXPEAVCMP_FACADE@@@Z + 0x13d0f)\n\t0x7ffb2146b73b: synth_sgn + 0xcb73b (?sgn_create_qsys_generation_report@@YAXPEAVCMP_FACADE@@@Z + 0x1441b)\n\t0x7ffb21463393: synth_sgn + 0xc3393 (?sgn_create_qsys_generation_report@@YAXPEAVCMP_FACADE@@@Z + 0xc073)\n\t0x7ffb213b36b4: synth_sgn + 0x136b4 (?sgn_qic_full@@YA?AW4SGN_STATE_ENUM@@PEAVCMP_FACADE@@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$MEM_STL_ALLOCATOR@D@@@std@@V?$MEM_STL_ALLOCATOR@V?$basic_string@DU?$char_traits@D@std@@V?$MEM_STL_ALLOCATOR@D@@@std@@@@@std@@AEAV?$vector@NV?$MEM_STL_ALLOCATOR@N@@@4@@Z + 0x1b4)\n\t0x7ff613a8489f: quartus_map + 0x489f\n\t0x7ff613a95356: quartus_map + 0x15356\n\t0x7ff613a94dea: quartus_map + 0x14dea\n\t0x7ffb1a72252c: comp_qexe + 0x1252c (?qexe_apply_ini_vars@@YAXXZ + 0x245c)\n\t0x7ffb1a727872: comp_qexe + 0x17872 (?qexe_process_cmdline_arguments@@YA_NPEAVQEXE_CMDLINE@@HPEAPEBD@Z + 0x2762)\n\t0x7ffb1a728601: comp_qexe + 0x18601 (?qexe_standard_main@@YAHPEAVQEXE_FRAMEWORK@@PEAPEBUQEXE_OPTION_DEFINITION@@HPEAPEBD@Z + 0xc1)\n\t0x7ff613a9c71d: quartus_map + 0x1c71d\n\t0x7ffb4b1dcbe8: CCL_MSG + 0xcbe8 (?msg_initialize_out_of_memory_handler@@YAXXZ + 0x378)\n\t0x7ffb4b1de31c: CCL_MSG + 0xe31c (?msg_set_stack_size@@YAXH@Z + 0x7c)\n\t0x7ffb4b2e4c0c: ccl_mem + 0x4c0c (?mem_malloc_wrapper@@YAPEAX_KPEAVMEM_TRACKER_THUNK@@PEBD@Z + 0x18c)\n\t0x7ffb4b1dc831: CCL_MSG + 0xc831 (?msg_exe_main@@YAHHPEAPEBDP6AHH0@Z@Z + 0xa1)\n\t0x7ff613aab072: quartus_map + 0x2b072\n\t0x7ffb6aea170b: KERNEL32 + 0xf170b (GetProcAddress + 0xeab8b)\n\t0x7ffb6ae215f7: KERNEL32 + 0x715f7 (GetProcAddress + 0x6aa77)\n\t0x7ffb6eaaf94f: ntdll + 0x21f94f\n",
+		"subsystem" : "unknown"
+	},
+	"quartus" : {
+		"quartus_bits" : "64",
+		"version" : "15.0.0",
+		"build" : "145",
+		"edition" : "Web Edition"
+	}
+}
