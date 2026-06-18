@@ -1,6 +1,6 @@
 Analysis & Synthesis report for DE2_115
-Thu Jun 18 08:50:51 2026
-Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
+Thu Jun 18 13:05:06 2026
+Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
 ---------------------
@@ -318,25 +318,26 @@ Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 310. Port Connectivity Checks: "Top:top0|DSP:dsp|Auto_Wah:Auto_Wah"
 311. Port Connectivity Checks: "Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh"
 312. Port Connectivity Checks: "Top:top0|DSP:dsp|Param_Manager:Param_Manager"
-313. Port Connectivity Checks: "Debounce:deb2"
-314. Port Connectivity Checks: "Debounce:deb1"
-315. Port Connectivity Checks: "Debounce:deb0"
-316. Port Connectivity Checks: "UART_qsys:UART_qsys|altera_reset_controller:rst_controller_001"
-317. Port Connectivity Checks: "UART_qsys:UART_qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
-318. Port Connectivity Checks: "UART_qsys:UART_qsys|altera_reset_controller:rst_controller"
-319. Port Connectivity Checks: "UART_qsys:UART_qsys|UART_qsys_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:uart_0_s1_translator"
-320. Port Connectivity Checks: "UART_qsys:UART_qsys|UART_qsys_mm_interconnect_0:mm_interconnect_0|altera_merlin_master_translator:avmwrapper_sv_0_avalon_master_0_translator"
-321. Port Connectivity Checks: "UART_qsys:UART_qsys|UART_qsys_uart_0:uart_0"
-322. Port Connectivity Checks: "UART_qsys:UART_qsys|UART_qsys_altpll_0:altpll_0|UART_qsys_altpll_0_altpll_m342:sd1"
-323. Port Connectivity Checks: "UART_qsys:UART_qsys|UART_qsys_altpll_0:altpll_0"
-324. Port Connectivity Checks: "UART_qsys:UART_qsys"
-325. Port Connectivity Checks: "final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
-326. Port Connectivity Checks: "final_qsys:pll0|altera_reset_controller:rst_controller"
-327. Port Connectivity Checks: "final_qsys:pll0|final_qsys_altpll_0:altpll_0|final_qsys_altpll_0_altpll_kpa2:sd1"
-328. Port Connectivity Checks: "final_qsys:pll0|final_qsys_altpll_0:altpll_0"
-329. Post-Synthesis Netlist Statistics for Top Partition
-330. Elapsed Time Per Partition
-331. Analysis & Synthesis Messages
+313. Port Connectivity Checks: "Top:top0"
+314. Port Connectivity Checks: "Debounce:deb2"
+315. Port Connectivity Checks: "Debounce:deb1"
+316. Port Connectivity Checks: "Debounce:deb0"
+317. Port Connectivity Checks: "UART_qsys:UART_qsys|altera_reset_controller:rst_controller_001"
+318. Port Connectivity Checks: "UART_qsys:UART_qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
+319. Port Connectivity Checks: "UART_qsys:UART_qsys|altera_reset_controller:rst_controller"
+320. Port Connectivity Checks: "UART_qsys:UART_qsys|UART_qsys_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:uart_0_s1_translator"
+321. Port Connectivity Checks: "UART_qsys:UART_qsys|UART_qsys_mm_interconnect_0:mm_interconnect_0|altera_merlin_master_translator:avmwrapper_sv_0_avalon_master_0_translator"
+322. Port Connectivity Checks: "UART_qsys:UART_qsys|UART_qsys_uart_0:uart_0"
+323. Port Connectivity Checks: "UART_qsys:UART_qsys|UART_qsys_altpll_0:altpll_0|UART_qsys_altpll_0_altpll_m342:sd1"
+324. Port Connectivity Checks: "UART_qsys:UART_qsys|UART_qsys_altpll_0:altpll_0"
+325. Port Connectivity Checks: "UART_qsys:UART_qsys"
+326. Port Connectivity Checks: "final_qsys:pll0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
+327. Port Connectivity Checks: "final_qsys:pll0|altera_reset_controller:rst_controller"
+328. Port Connectivity Checks: "final_qsys:pll0|final_qsys_altpll_0:altpll_0|final_qsys_altpll_0_altpll_kpa2:sd1"
+329. Port Connectivity Checks: "final_qsys:pll0|final_qsys_altpll_0:altpll_0"
+330. Post-Synthesis Netlist Statistics for Top Partition
+331. Elapsed Time Per Partition
+332. Analysis & Synthesis Messages
 
 
 
@@ -360,24 +361,24 @@ agreement for further details.
 
 
 
-+---------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                    ;
-+------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 18 08:50:50 2026      ;
-; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
-; Revision Name                      ; DE2_115                                    ;
-; Top-level Entity Name              ; DE2_115                                    ;
-; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 31,980                                     ;
-;     Total combinational functions  ; 23,838                                     ;
-;     Dedicated logic registers      ; 12,133                                     ;
-; Total registers                    ; 12133                                      ;
-; Total pins                         ; 480                                        ;
-; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 2,154,748                                  ;
-; Embedded Multiplier 9-bit elements ; 394                                        ;
-; Total PLLs                         ; 2                                          ;
-+------------------------------------+--------------------------------------------+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Jun 18 13:05:06 2026       ;
+; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
+; Revision Name                      ; DE2_115                                     ;
+; Top-level Entity Name              ; DE2_115                                     ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 31,936                                      ;
+;     Total combinational functions  ; 23,794                                      ;
+;     Dedicated logic registers      ; 12,133                                      ;
+; Total registers                    ; 12133                                       ;
+; Total pins                         ; 480                                         ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 2,154,748                                   ;
+; Embedded Multiplier 9-bit elements ; 394                                         ;
+; Total PLLs                         ; 2                                           ;
++------------------------------------+---------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------+
@@ -467,120 +468,127 @@ agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 
 
-Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
-+-------------------------------------+
-; Parallel Compilation                ;
-+----------------------------+--------+
-; Processors                 ; Number ;
-+----------------------------+--------+
-; Number detected on machine ; 8      ;
-; Maximum allowed            ; 1      ;
-+----------------------------+--------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-8         ; < 0.1%      ;
+;     Processors 9-12        ;   0.0%      ;
++----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                           ;
-+-------------------------------------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------------------------+------------+
-; File Name with User-Entered Path                                  ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                   ; Library    ;
-+-------------------------------------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------------------------+------------+
-; UART_qsys/synthesis/UART_qsys.v                                   ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/UART_qsys.v                                   ; UART_qsys  ;
-; UART_qsys/synthesis/submodules/altera_reset_controller.v          ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/altera_reset_controller.v          ; UART_qsys  ;
-; UART_qsys/synthesis/submodules/altera_reset_synchronizer.v        ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/altera_reset_synchronizer.v        ; UART_qsys  ;
-; UART_qsys/synthesis/submodules/UART_qsys_mm_interconnect_0.v      ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/UART_qsys_mm_interconnect_0.v      ; UART_qsys  ;
-; UART_qsys/synthesis/submodules/altera_merlin_slave_translator.sv  ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/altera_merlin_slave_translator.sv  ; UART_qsys  ;
-; UART_qsys/synthesis/submodules/altera_merlin_master_translator.sv ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/altera_merlin_master_translator.sv ; UART_qsys  ;
-; UART_qsys/synthesis/submodules/UART_qsys_uart_0.v                 ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/UART_qsys_uart_0.v                 ; UART_qsys  ;
-; UART_qsys/synthesis/submodules/UART_qsys_altpll_0.v               ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/UART_qsys_altpll_0.v               ; UART_qsys  ;
-; UART_qsys/synthesis/submodules/AvmWrapper.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/AvmWrapper.sv                      ; UART_qsys  ;
-; ../main_modules/STFT_LUT.sv                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/main_modules/STFT_LUT.sv                                                  ;            ;
-; ../main_modules/STFT.sv                                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/main_modules/STFT.sv                                                      ;            ;
-; ../main_modules/Find_4_in_36.sv                                   ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/main_modules/Find_4_in_36.sv                                              ;            ;
-; ../main_modules/Stager.sv                                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/main_modules/Stager.sv                                                    ;            ;
-; ../main_modules/Param_Manager.sv                                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/main_modules/Param_Manager.sv                                             ;            ;
-; ../blocks/tanh.sv                                                 ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/tanh.sv                                                            ;            ;
-; ../blocks/fuzz_pipeline.sv                                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/fuzz_pipeline.sv                                                   ;            ;
-; ../blocks/distortion_no_recip.sv                                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/distortion_no_recip.sv                                             ;            ;
-; ../blocks/Auto_Wah.sv                                             ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/Auto_Wah.sv                                                        ;            ;
-; ../blocks/overdrive_no_recip.sv                                   ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/overdrive_no_recip.sv                                              ;            ;
-; ../blocks/Chorus.sv                                               ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/Chorus.sv                                                          ;            ;
-; ../blocks/Flanger.sv                                              ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/Flanger.sv                                                         ;            ;
-; ../blocks/Schroeder_Allpass.sv                                    ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/Schroeder_Allpass.sv                                               ;            ;
-; ../blocks/FDN_4ch.sv                                              ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/FDN_4ch.sv                                                         ;            ;
-; ../blocks/Reverb.sv                                               ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/Reverb.sv                                                          ;            ;
-; ../blocks/Noise_Gate.sv                                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/Noise_Gate.sv                                                      ;            ;
-; ../blocks/Delay_Effect.sv                                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/Delay_Effect.sv                                                    ;            ;
-; DE2_115.sv                                                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/DE2_115.sv                                                        ;            ;
-; ../Digital_EFX_Processer.sv                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/Digital_EFX_Processer.sv                                                  ;            ;
-; ../main_modules/WM8731_init.sv                                    ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/main_modules/WM8731_init.sv                                               ;            ;
-; ../main_modules/Recorder.sv                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/main_modules/Recorder.sv                                                  ;            ;
-; ../main_modules/Player.sv                                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/main_modules/Player.sv                                                    ;            ;
-; ../main_modules/DSP.sv                                            ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/main_modules/DSP.sv                                                       ;            ;
-; ../main_modules/Buffer.sv                                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/main_modules/Buffer.sv                                                    ;            ;
-; final/synthesis/final_qsys.v                                      ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/final/synthesis/final_qsys.v                                      ; final_qsys ;
-; final/synthesis/submodules/final_qsys_altpll_0.v                  ; yes             ; User Verilog HDL File        ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/final/synthesis/submodules/final_qsys_altpll_0.v                  ; final_qsys ;
-; SevenHexDecoder.sv                                                ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/SevenHexDecoder.sv                                                ;            ;
-; Debounce.sv                                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/Debounce.sv                                                       ;            ;
-; ../blocks/DSP_lib.sv                                              ; yes             ; User SystemVerilog HDL File  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/blocks/DSP_lib.sv                                                         ;            ;
-; altera_std_synchronizer.v                                         ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altera_std_synchronizer.v                                                       ;            ;
-; altsyncram.tdf                                                    ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altsyncram.tdf                                                                  ;            ;
-; stratix_ram_block.inc                                             ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/stratix_ram_block.inc                                                           ;            ;
-; lpm_mux.inc                                                       ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_mux.inc                                                                     ;            ;
-; lpm_decode.inc                                                    ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_decode.inc                                                                  ;            ;
-; aglobal150.inc                                                    ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/aglobal150.inc                                                                  ;            ;
-; a_rdenreg.inc                                                     ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/a_rdenreg.inc                                                                   ;            ;
-; altrom.inc                                                        ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altrom.inc                                                                      ;            ;
-; altram.inc                                                        ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altram.inc                                                                      ;            ;
-; altdpram.inc                                                      ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altdpram.inc                                                                    ;            ;
-; db/altsyncram_rbi1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_rbi1.tdf                                            ;            ;
-; db/altsyncram_03e1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_03e1.tdf                                            ;            ;
-; db/altsyncram_nli1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_nli1.tdf                                            ;            ;
-; db/altsyncram_tki1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_tki1.tdf                                            ;            ;
-; db/altsyncram_pki1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_pki1.tdf                                            ;            ;
-; db/altsyncram_1li1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_1li1.tdf                                            ;            ;
-; db/altsyncram_r5j1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_r5j1.tdf                                            ;            ;
-; db/decode_rsa.tdf                                                 ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/decode_rsa.tdf                                                 ;            ;
-; db/mux_qob.tdf                                                    ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mux_qob.tdf                                                    ;            ;
-; db/altsyncram_42e1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_42e1.tdf                                            ;            ;
-; db/altsyncram_dli1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_dli1.tdf                                            ;            ;
-; db/altsyncram_hoi1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_hoi1.tdf                                            ;            ;
-; db/decode_osa.tdf                                                 ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/decode_osa.tdf                                                 ;            ;
-; db/mux_pob.tdf                                                    ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mux_pob.tdf                                                    ;            ;
-; altshift_taps.tdf                                                 ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altshift_taps.tdf                                                               ;            ;
-; lpm_counter.inc                                                   ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_counter.inc                                                                 ;            ;
-; lpm_compare.inc                                                   ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_compare.inc                                                                 ;            ;
-; lpm_constant.inc                                                  ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_constant.inc                                                                ;            ;
-; db/shift_taps_s5n.tdf                                             ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/shift_taps_s5n.tdf                                             ;            ;
-; db/altsyncram_42b1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_42b1.tdf                                            ;            ;
-; db/cntr_oqf.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/cntr_oqf.tdf                                                   ;            ;
-; db/cmpr_rgc.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/cmpr_rgc.tdf                                                   ;            ;
-; db/cntr_eah.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/cntr_eah.tdf                                                   ;            ;
-; lpm_divide.tdf                                                    ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_divide.tdf                                                                  ;            ;
-; abs_divider.inc                                                   ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/abs_divider.inc                                                                 ;            ;
-; sign_div_unsign.inc                                               ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/sign_div_unsign.inc                                                             ;            ;
-; db/lpm_divide_i9m.tdf                                             ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/lpm_divide_i9m.tdf                                             ;            ;
-; db/sign_div_unsign_7kh.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/sign_div_unsign_7kh.tdf                                        ;            ;
-; db/alt_u_div_24f.tdf                                              ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/alt_u_div_24f.tdf                                              ;            ;
-; db/add_sub_7pc.tdf                                                ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/add_sub_7pc.tdf                                                ;            ;
-; db/add_sub_8pc.tdf                                                ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/add_sub_8pc.tdf                                                ;            ;
-; lpm_mult.tdf                                                      ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_mult.tdf                                                                    ;            ;
-; lpm_add_sub.inc                                                   ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_add_sub.inc                                                                 ;            ;
-; multcore.inc                                                      ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/multcore.inc                                                                    ;            ;
-; bypassff.inc                                                      ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/bypassff.inc                                                                    ;            ;
-; altshift.inc                                                      ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altshift.inc                                                                    ;            ;
-; db/mult_n4t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_n4t.tdf                                                   ;            ;
-; db/mult_e6t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_e6t.tdf                                                   ;            ;
-; db/mult_86t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_86t.tdf                                                   ;            ;
-; db/mult_96t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_96t.tdf                                                   ;            ;
-; db/mult_i6t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_i6t.tdf                                                   ;            ;
-; db/mult_j6t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_j6t.tdf                                                   ;            ;
-; db/mult_m4t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_m4t.tdf                                                   ;            ;
-; db/mult_o4t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_o4t.tdf                                                   ;            ;
-; db/mult_p4t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_p4t.tdf                                                   ;            ;
-; db/mult_adt.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_adt.tdf                                                   ;            ;
-; db/mult_66t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_66t.tdf                                                   ;            ;
-; db/mult_b6t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_b6t.tdf                                                   ;            ;
-; db/mult_ubt.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/DCLAB/Documents/DCLAB_2026_team05/Final/src/DE2_115/db/mult_ubt.tdf                                                   ;            ;
-+-------------------------------------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------------------------+------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                         ;
++-------------------------------------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------+------------+
+; File Name with User-Entered Path                                  ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                 ; Library    ;
++-------------------------------------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------+------------+
+; UART_qsys/synthesis/UART_qsys.v                                   ; yes             ; User Verilog HDL File        ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/UART_qsys.v                                   ; UART_qsys  ;
+; UART_qsys/synthesis/submodules/altera_reset_controller.v          ; yes             ; User Verilog HDL File        ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/altera_reset_controller.v          ; UART_qsys  ;
+; UART_qsys/synthesis/submodules/altera_reset_synchronizer.v        ; yes             ; User Verilog HDL File        ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/altera_reset_synchronizer.v        ; UART_qsys  ;
+; UART_qsys/synthesis/submodules/UART_qsys_mm_interconnect_0.v      ; yes             ; User Verilog HDL File        ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/UART_qsys_mm_interconnect_0.v      ; UART_qsys  ;
+; UART_qsys/synthesis/submodules/altera_merlin_slave_translator.sv  ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/altera_merlin_slave_translator.sv  ; UART_qsys  ;
+; UART_qsys/synthesis/submodules/altera_merlin_master_translator.sv ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/altera_merlin_master_translator.sv ; UART_qsys  ;
+; UART_qsys/synthesis/submodules/UART_qsys_uart_0.v                 ; yes             ; User Verilog HDL File        ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/UART_qsys_uart_0.v                 ; UART_qsys  ;
+; UART_qsys/synthesis/submodules/UART_qsys_altpll_0.v               ; yes             ; User Verilog HDL File        ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/UART_qsys_altpll_0.v               ; UART_qsys  ;
+; UART_qsys/synthesis/submodules/AvmWrapper.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/UART_qsys/synthesis/submodules/AvmWrapper.sv                      ; UART_qsys  ;
+; ../main_modules/STFT_LUT.sv                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/main_modules/STFT_LUT.sv                                                  ;            ;
+; ../main_modules/STFT.sv                                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/main_modules/STFT.sv                                                      ;            ;
+; ../main_modules/Find_4_in_36.sv                                   ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/main_modules/Find_4_in_36.sv                                              ;            ;
+; ../main_modules/Stager.sv                                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/main_modules/Stager.sv                                                    ;            ;
+; ../main_modules/Param_Manager.sv                                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/main_modules/Param_Manager.sv                                             ;            ;
+; ../blocks/tanh.sv                                                 ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/tanh.sv                                                            ;            ;
+; ../blocks/fuzz_pipeline.sv                                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/fuzz_pipeline.sv                                                   ;            ;
+; ../blocks/distortion_no_recip.sv                                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/distortion_no_recip.sv                                             ;            ;
+; ../blocks/Auto_Wah.sv                                             ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/Auto_Wah.sv                                                        ;            ;
+; ../blocks/overdrive_no_recip.sv                                   ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/overdrive_no_recip.sv                                              ;            ;
+; ../blocks/Chorus.sv                                               ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/Chorus.sv                                                          ;            ;
+; ../blocks/Flanger.sv                                              ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/Flanger.sv                                                         ;            ;
+; ../blocks/Schroeder_Allpass.sv                                    ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/Schroeder_Allpass.sv                                               ;            ;
+; ../blocks/FDN_4ch.sv                                              ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/FDN_4ch.sv                                                         ;            ;
+; ../blocks/Reverb.sv                                               ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/Reverb.sv                                                          ;            ;
+; ../blocks/Noise_Gate.sv                                           ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/Noise_Gate.sv                                                      ;            ;
+; ../blocks/Delay_Effect.sv                                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/Delay_Effect.sv                                                    ;            ;
+; DE2_115.sv                                                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/DE2_115.sv                                                        ;            ;
+; ../Digital_EFX_Processer.sv                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/Digital_EFX_Processer.sv                                                  ;            ;
+; ../main_modules/WM8731_init.sv                                    ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/main_modules/WM8731_init.sv                                               ;            ;
+; ../main_modules/Recorder.sv                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/main_modules/Recorder.sv                                                  ;            ;
+; ../main_modules/Player.sv                                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/main_modules/Player.sv                                                    ;            ;
+; ../main_modules/DSP.sv                                            ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/main_modules/DSP.sv                                                       ;            ;
+; ../main_modules/Buffer.sv                                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/main_modules/Buffer.sv                                                    ;            ;
+; final/synthesis/final_qsys.v                                      ; yes             ; User Verilog HDL File        ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/final/synthesis/final_qsys.v                                      ; final_qsys ;
+; final/synthesis/submodules/final_qsys_altpll_0.v                  ; yes             ; User Verilog HDL File        ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/final/synthesis/submodules/final_qsys_altpll_0.v                  ; final_qsys ;
+; SevenHexDecoder.sv                                                ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/SevenHexDecoder.sv                                                ;            ;
+; Debounce.sv                                                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/Debounce.sv                                                       ;            ;
+; ../blocks/DSP_lib.sv                                              ; yes             ; User SystemVerilog HDL File  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/blocks/DSP_lib.sv                                                         ;            ;
+; altera_std_synchronizer.v                                         ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altera_std_synchronizer.v                                                     ;            ;
+; altsyncram.tdf                                                    ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altsyncram.tdf                                                                ;            ;
+; stratix_ram_block.inc                                             ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/stratix_ram_block.inc                                                         ;            ;
+; lpm_mux.inc                                                       ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_mux.inc                                                                   ;            ;
+; lpm_decode.inc                                                    ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_decode.inc                                                                ;            ;
+; aglobal150.inc                                                    ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/aglobal150.inc                                                                ;            ;
+; a_rdenreg.inc                                                     ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/a_rdenreg.inc                                                                 ;            ;
+; altrom.inc                                                        ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altrom.inc                                                                    ;            ;
+; altram.inc                                                        ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altram.inc                                                                    ;            ;
+; altdpram.inc                                                      ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altdpram.inc                                                                  ;            ;
+; db/altsyncram_rbi1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_rbi1.tdf                                            ;            ;
+; db/altsyncram_03e1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_03e1.tdf                                            ;            ;
+; db/altsyncram_nli1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_nli1.tdf                                            ;            ;
+; db/altsyncram_tki1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_tki1.tdf                                            ;            ;
+; db/altsyncram_pki1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_pki1.tdf                                            ;            ;
+; db/altsyncram_1li1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_1li1.tdf                                            ;            ;
+; db/altsyncram_r5j1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_r5j1.tdf                                            ;            ;
+; db/decode_rsa.tdf                                                 ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/decode_rsa.tdf                                                 ;            ;
+; db/mux_qob.tdf                                                    ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mux_qob.tdf                                                    ;            ;
+; db/altsyncram_42e1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_42e1.tdf                                            ;            ;
+; db/altsyncram_dli1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_dli1.tdf                                            ;            ;
+; db/altsyncram_hoi1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_hoi1.tdf                                            ;            ;
+; db/decode_osa.tdf                                                 ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/decode_osa.tdf                                                 ;            ;
+; db/mux_pob.tdf                                                    ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mux_pob.tdf                                                    ;            ;
+; altshift_taps.tdf                                                 ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altshift_taps.tdf                                                             ;            ;
+; lpm_counter.inc                                                   ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_counter.inc                                                               ;            ;
+; lpm_compare.inc                                                   ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_compare.inc                                                               ;            ;
+; lpm_constant.inc                                                  ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_constant.inc                                                              ;            ;
+; db/shift_taps_s5n.tdf                                             ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/shift_taps_s5n.tdf                                             ;            ;
+; db/altsyncram_42b1.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/altsyncram_42b1.tdf                                            ;            ;
+; db/cntr_oqf.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/cntr_oqf.tdf                                                   ;            ;
+; db/cmpr_rgc.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/cmpr_rgc.tdf                                                   ;            ;
+; db/cntr_eah.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/cntr_eah.tdf                                                   ;            ;
+; lpm_divide.tdf                                                    ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_divide.tdf                                                                ;            ;
+; abs_divider.inc                                                   ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/abs_divider.inc                                                               ;            ;
+; sign_div_unsign.inc                                               ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/sign_div_unsign.inc                                                           ;            ;
+; db/lpm_divide_i9m.tdf                                             ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/lpm_divide_i9m.tdf                                             ;            ;
+; db/sign_div_unsign_7kh.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/sign_div_unsign_7kh.tdf                                        ;            ;
+; db/alt_u_div_24f.tdf                                              ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/alt_u_div_24f.tdf                                              ;            ;
+; db/add_sub_7pc.tdf                                                ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/add_sub_7pc.tdf                                                ;            ;
+; db/add_sub_8pc.tdf                                                ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/add_sub_8pc.tdf                                                ;            ;
+; lpm_mult.tdf                                                      ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_mult.tdf                                                                  ;            ;
+; lpm_add_sub.inc                                                   ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_add_sub.inc                                                               ;            ;
+; multcore.inc                                                      ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/multcore.inc                                                                  ;            ;
+; bypassff.inc                                                      ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/bypassff.inc                                                                  ;            ;
+; altshift.inc                                                      ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altshift.inc                                                                  ;            ;
+; db/mult_n4t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_n4t.tdf                                                   ;            ;
+; db/mult_e6t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_e6t.tdf                                                   ;            ;
+; db/mult_86t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_86t.tdf                                                   ;            ;
+; db/mult_96t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_96t.tdf                                                   ;            ;
+; db/mult_i6t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_i6t.tdf                                                   ;            ;
+; db/mult_j6t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_j6t.tdf                                                   ;            ;
+; db/mult_m4t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_m4t.tdf                                                   ;            ;
+; db/mult_o4t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_o4t.tdf                                                   ;            ;
+; db/mult_p4t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_p4t.tdf                                                   ;            ;
+; db/mult_adt.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_adt.tdf                                                   ;            ;
+; db/mult_66t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_66t.tdf                                                   ;            ;
+; db/mult_b6t.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_b6t.tdf                                                   ;            ;
+; db/mult_ubt.tdf                                                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/tho13/Desktop/DCLAB_2026_team05/Final/src/DE2_115/db/mult_ubt.tdf                                                   ;            ;
++-------------------------------------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------+------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -588,17 +596,17 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                             ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 31,980                                                                                            ;
+; Estimated Total logic elements              ; 31,936                                                                                            ;
 ;                                             ;                                                                                                   ;
-; Total combinational functions               ; 23838                                                                                             ;
+; Total combinational functions               ; 23794                                                                                             ;
 ; Logic element usage by number of LUT inputs ;                                                                                                   ;
-;     -- 4 input functions                    ; 10971                                                                                             ;
-;     -- 3 input functions                    ; 8451                                                                                              ;
-;     -- <=2 input functions                  ; 4416                                                                                              ;
+;     -- 4 input functions                    ; 10941                                                                                             ;
+;     -- 3 input functions                    ; 8443                                                                                              ;
+;     -- <=2 input functions                  ; 4410                                                                                              ;
 ;                                             ;                                                                                                   ;
 ; Logic elements by mode                      ;                                                                                                   ;
-;     -- normal mode                          ; 15055                                                                                             ;
-;     -- arithmetic mode                      ; 8783                                                                                              ;
+;     -- normal mode                          ; 15026                                                                                             ;
+;     -- arithmetic mode                      ; 8768                                                                                              ;
 ;                                             ;                                                                                                   ;
 ; Total registers                             ; 12133                                                                                             ;
 ;     -- Dedicated logic registers            ; 12133                                                                                             ;
@@ -614,7 +622,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                                             ;                                                                                                   ;
 ; Maximum fan-out node                        ; final_qsys:pll0|final_qsys_altpll_0:altpll_0|final_qsys_altpll_0_altpll_kpa2:sd1|wire_pll7_clk[0] ;
 ; Maximum fan-out                             ; 12371                                                                                             ;
-; Total fan-out                               ; 138160                                                                                            ;
+; Total fan-out                               ; 138005                                                                                            ;
 ; Average fan-out                             ; 3.64                                                                                              ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
 
@@ -624,18 +632,18 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                                            ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                   ; Library Name ;
 +---------------------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |DE2_115                                                                              ; 23838 (3)         ; 12133 (0)    ; 2154748     ; 394          ; 6       ; 194       ; 480  ; 0            ; |DE2_115                                                                                                                                              ; work         ;
+; |DE2_115                                                                              ; 23794 (3)         ; 12133 (0)    ; 2154748     ; 394          ; 6       ; 194       ; 480  ; 0            ; |DE2_115                                                                                                                                              ; work         ;
 ;    |Debounce:deb0|                                                                    ; 6 (6)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Debounce:deb0                                                                                                                                ; work         ;
 ;    |SevenHexDecoder:seven_dec0|                                                       ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|SevenHexDecoder:seven_dec0                                                                                                                   ; work         ;
 ;    |SevenHexDecoder:seven_dec4|                                                       ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|SevenHexDecoder:seven_dec4                                                                                                                   ; work         ;
 ;    |SevenHexDecoder:seven_dec6|                                                       ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|SevenHexDecoder:seven_dec6                                                                                                                   ; work         ;
-;    |Top:top0|                                                                         ; 23705 (47)        ; 11946 (1)    ; 2154608     ; 394          ; 6       ; 194       ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                                     ; work         ;
+;    |Top:top0|                                                                         ; 23661 (1)         ; 11946 (1)    ; 2154608     ; 394          ; 6       ; 194       ; 0    ; 0            ; |DE2_115|Top:top0                                                                                                                                     ; work         ;
 ;       |Buffer:buffer|                                                                 ; 175 (175)         ; 170 (170)    ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer                                                                                                                       ; work         ;
 ;          |altsyncram:buf_data_l_rtl_0|                                                ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0                                                                                           ; work         ;
 ;             |altsyncram_rbi1:auto_generated|                                          ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_l_rtl_0|altsyncram_rbi1:auto_generated                                                            ; work         ;
 ;          |altsyncram:buf_data_r_rtl_0|                                                ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0                                                                                           ; work         ;
 ;             |altsyncram_rbi1:auto_generated|                                          ; 0 (0)             ; 0 (0)        ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|Buffer:buffer|altsyncram:buf_data_r_rtl_0|altsyncram_rbi1:auto_generated                                                            ; work         ;
-;       |DSP:dsp|                                                                       ; 23353 (12)        ; 11700 (15)   ; 2154096     ; 394          ; 6       ; 194       ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp                                                                                                                             ; work         ;
+;       |DSP:dsp|                                                                       ; 23355 (12)        ; 11700 (15)   ; 2154096     ; 394          ; 6       ; 194       ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp                                                                                                                             ; work         ;
 ;          |Auto_Wah:Auto_Wah|                                                          ; 398 (398)         ; 137 (137)    ; 32768       ; 10           ; 0       ; 5         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah                                                                                                           ; work         ;
 ;             |altsyncram:data_buffer_rtl_0|                                            ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|altsyncram:data_buffer_rtl_0                                                                              ; work         ;
 ;                |altsyncram_42e1:auto_generated|                                       ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Auto_Wah:Auto_Wah|altsyncram:data_buffer_rtl_0|altsyncram_42e1:auto_generated                                               ; work         ;
@@ -670,7 +678,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;             |lpm_mult:Mult4|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult4                                                                                                ; work         ;
 ;                |mult_m4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Chorus:Chorus|lpm_mult:Mult4|mult_m4t:auto_generated                                                                        ; work         ;
 ;          |Data_Catcher:raw_data_catcher|                                              ; 1 (1)             ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Data_Catcher:raw_data_catcher                                                                                               ; work         ;
-;          |Delay_Effect:Delay_Effect|                                                  ; 243 (236)         ; 90 (87)      ; 1048576     ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect                                                                                                   ; work         ;
+;          |Delay_Effect:Delay_Effect|                                                  ; 250 (243)         ; 90 (87)      ; 1048576     ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect                                                                                                   ; work         ;
 ;             |altsyncram:delay_ram_rtl_0|                                              ; 7 (0)             ; 3 (0)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|altsyncram:delay_ram_rtl_0                                                                        ; work         ;
 ;                |altsyncram_r5j1:auto_generated|                                       ; 7 (0)             ; 3 (3)        ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|altsyncram:delay_ram_rtl_0|altsyncram_r5j1:auto_generated                                         ; work         ;
 ;                   |decode_rsa:decode2|                                                ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|altsyncram:delay_ram_rtl_0|altsyncram_r5j1:auto_generated|decode_rsa:decode2                      ; work         ;
@@ -678,7 +686,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                |mult_o4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|lpm_mult:Mult0|mult_o4t:auto_generated                                                            ; work         ;
 ;             |lpm_mult:Mult1|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|lpm_mult:Mult1                                                                                    ; work         ;
 ;                |mult_o4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|lpm_mult:Mult1|mult_o4t:auto_generated                                                            ; work         ;
-;          |Find_4_in_36:find_4_in_36|                                                  ; 2485 (2485)       ; 1347 (1347)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36                                                                                                   ; work         ;
+;          |Find_4_in_36:find_4_in_36|                                                  ; 2484 (2484)       ; 1347 (1347)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36                                                                                                   ; work         ;
 ;          |Flanger:Flanger|                                                            ; 674 (376)         ; 155 (155)    ; 32768       ; 15           ; 1       ; 7         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger                                                                                                             ; work         ;
 ;             |altsyncram:data_buffer_rtl_0|                                            ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|altsyncram:data_buffer_rtl_0                                                                                ; work         ;
 ;                |altsyncram_42e1:auto_generated|                                       ; 0 (0)             ; 0 (0)        ; 16384       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|altsyncram:data_buffer_rtl_0|altsyncram_42e1:auto_generated                                                 ; work         ;
@@ -699,7 +707,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                |mult_m4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|lpm_mult:Mult4|mult_m4t:auto_generated                                                                      ; work         ;
 ;             |lpm_mult:Mult5|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|lpm_mult:Mult5                                                                                              ; work         ;
 ;                |mult_m4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|lpm_mult:Mult5|mult_m4t:auto_generated                                                                      ; work         ;
-;          |Noise_Gate:Noise_Gate|                                                      ; 177 (177)         ; 78 (78)      ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate                                                                                                       ; work         ;
+;          |Noise_Gate:Noise_Gate|                                                      ; 176 (176)         ; 78 (78)      ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate                                                                                                       ; work         ;
 ;             |lpm_mult:Mult0|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult0                                                                                        ; work         ;
 ;                |mult_86t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult0|mult_86t:auto_generated                                                                ; work         ;
 ;             |lpm_mult:Mult1|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|lpm_mult:Mult1                                                                                        ; work         ;
@@ -712,7 +720,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                   |mult_o4t:auto_generated|                                           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult0|mult_o4t:auto_generated                                                      ; work         ;
 ;                |lpm_mult:Mult1|                                                       ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult1                                                                              ; work         ;
 ;                   |mult_66t:auto_generated|                                           ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lpm_mult:Mult1|mult_66t:auto_generated                                                      ; work         ;
-;          |Param_Manager:Param_Manager|                                                ; 85 (85)           ; 333 (333)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Param_Manager:Param_Manager                                                                                                 ; work         ;
+;          |Param_Manager:Param_Manager|                                                ; 82 (82)           ; 333 (333)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Param_Manager:Param_Manager                                                                                                 ; work         ;
 ;          |Reverb:Reverb|                                                              ; 1648 (41)         ; 1039 (41)    ; 294512      ; 24           ; 0       ; 12        ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb                                                                                                               ; work         ;
 ;             |FDN_4ch:fdn|                                                             ; 739 (739)         ; 359 (359)    ; 125952      ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn                                                                                                   ; work         ;
 ;                |altsyncram:ch0_buffer_rtl_0|                                          ; 0 (0)             ; 0 (0)        ; 22768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|altsyncram:ch0_buffer_rtl_0                                                                       ; work         ;
@@ -762,12 +770,12 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                |mult_m4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult0|mult_m4t:auto_generated                                                                        ; work         ;
 ;             |lpm_mult:Mult1|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult1                                                                                                ; work         ;
 ;                |mult_m4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|lpm_mult:Mult1|mult_m4t:auto_generated                                                                        ; work         ;
-;          |STFT:stft|                                                                  ; 15150 (9268)      ; 7986 (4942)  ; 614400      ; 304          ; 4       ; 150       ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft                                                                                                                   ; work         ;
-;             |STFT_LUT:stft_lut|                                                       ; 5827 (4633)       ; 3038 (3038)  ; 0           ; 12           ; 4       ; 4         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut                                                                                                 ; work         ;
+;          |STFT:stft|                                                                  ; 15148 (9264)      ; 7986 (4942)  ; 614400      ; 304          ; 4       ; 150       ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft                                                                                                                   ; work         ;
+;             |STFT_LUT:stft_lut|                                                       ; 5829 (4633)       ; 3038 (3038)  ; 0           ; 12           ; 4       ; 4         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut                                                                                                 ; work         ;
 ;                |cosine:cos_0|                                                         ; 299 (290)         ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_0                                                                                    ; work         ;
 ;                   |lpm_mult:Mult0|                                                    ; 9 (0)             ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_0|lpm_mult:Mult0                                                                     ; work         ;
 ;                      |mult_ubt:auto_generated|                                        ; 9 (9)             ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_0|lpm_mult:Mult0|mult_ubt:auto_generated                                             ; work         ;
-;                |cosine:cos_1|                                                         ; 299 (290)         ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_1                                                                                    ; work         ;
+;                |cosine:cos_1|                                                         ; 301 (292)         ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_1                                                                                    ; work         ;
 ;                   |lpm_mult:Mult0|                                                    ; 9 (0)             ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_1|lpm_mult:Mult0                                                                     ; work         ;
 ;                      |mult_ubt:auto_generated|                                        ; 9 (9)             ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_1|lpm_mult:Mult0|mult_ubt:auto_generated                                             ; work         ;
 ;                |cosine:cos_2|                                                         ; 298 (289)         ; 0 (0)        ; 0           ; 3            ; 1       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|cosine:cos_2                                                                                    ; work         ;
@@ -1072,7 +1080,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                |mult_86t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|lpm_mult:Mult99|mult_86t:auto_generated                                                                           ; work         ;
 ;             |lpm_mult:Mult9|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|lpm_mult:Mult9                                                                                                    ; work         ;
 ;                |mult_86t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|lpm_mult:Mult9|mult_86t:auto_generated                                                                            ; work         ;
-;          |Stager:Stager|                                                              ; 876 (876)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager                                                                                                               ; work         ;
+;          |Stager:Stager|                                                              ; 878 (878)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager                                                                                                               ; work         ;
 ;          |Volume:final_volume|                                                        ; 20 (20)           ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Volume:final_volume                                                                                                         ; work         ;
 ;             |lpm_mult:Mult0|                                                          ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Volume:final_volume|lpm_mult:Mult0                                                                                          ; work         ;
 ;                |mult_n4t:auto_generated|                                              ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |DE2_115|Top:top0|DSP:dsp|Volume:final_volume|lpm_mult:Mult0|mult_n4t:auto_generated                                                                  ; work         ;
@@ -1428,6 +1436,13 @@ Encoding Type:  One-Hot
 ; Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|current_gain_r[12]                                                                                        ; 3       ;
 ; Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|current_gain_r[13]                                                                                        ; 3       ;
 ; Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|current_gain_r[14]                                                                                        ; 3       ;
+; UART_qsys:UART_qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain_out    ; 174     ;
+; UART_qsys:UART_qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain[0]     ; 1       ;
+; UART_qsys:UART_qsys|UART_qsys_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:uart_0_s1_translator|waitrequest_reset_override ; 4       ;
+; UART_qsys:UART_qsys|AvmWrapper:avmwrapper_sv_0|avm_address_r[3]                                                                                  ; 9       ;
+; UART_qsys:UART_qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain[1]     ; 1       ;
+; Top:top0|Player:player|is_init_r                                                                                                                 ; 3       ;
+; UART_qsys:UART_qsys|AvmWrapper:avmwrapper_sv_0|altshift_taps:command_r_rtl_0|shift_taps_s5n:auto_generated|dffe4                                 ; 7       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_volume_control[0]                                                                                 ; 3       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_volume_control[6]                                                                                 ; 3       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_volume_control[5]                                                                                 ; 3       ;
@@ -1435,11 +1450,11 @@ Encoding Type:  One-Hot
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_volume_control[3]                                                                                 ; 3       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_volume_control[2]                                                                                 ; 3       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_volume_control[1]                                                                                 ; 3       ;
-; Top:top0|Player:player|is_init_r                                                                                                                 ; 3       ;
-; UART_qsys:UART_qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain_out    ; 174     ;
-; UART_qsys:UART_qsys|AvmWrapper:avmwrapper_sv_0|altshift_taps:command_r_rtl_0|shift_taps_s5n:auto_generated|dffe4                                 ; 7       ;
-; UART_qsys:UART_qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain[0]     ; 1       ;
-; UART_qsys:UART_qsys|UART_qsys_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:uart_0_s1_translator|waitrequest_reset_override ; 4       ;
+; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fz_gain[7]                                                                                        ; 1       ;
+; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fz_gain[6]                                                                                        ; 1       ;
+; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fz_gain[5]                                                                                        ; 1       ;
+; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fz_gain[4]                                                                                        ; 1       ;
+; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fz_gain[2]                                                                                        ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_dt_gain[7]                                                                                        ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_dt_gain[2]                                                                                        ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_dt_gain[6]                                                                                        ; 1       ;
@@ -1451,13 +1466,7 @@ Encoding Type:  One-Hot
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_od_gain[6]                                                                                        ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_od_gain[5]                                                                                        ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_od_gain[4]                                                                                        ; 1       ;
-; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fz_gain[7]                                                                                        ; 1       ;
-; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fz_gain[6]                                                                                        ; 1       ;
-; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fz_gain[5]                                                                                        ; 1       ;
-; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fz_gain[4]                                                                                        ; 1       ;
-; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fz_gain[2]                                                                                        ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_de_mix[5]                                                                                         ; 1       ;
-; UART_qsys:UART_qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain[1]     ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_ch_rate[6]                                                                                        ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fg_rate[6]                                                                                        ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_rv_w_rate[5]                                                                                      ; 1       ;
@@ -1470,10 +1479,9 @@ Encoding Type:  One-Hot
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_de_time[5]                                                                                        ; 3       ;
 ; Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|first_pass_r                                                                                          ; 2       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_aw_rate[6]                                                                                        ; 1       ;
-; UART_qsys:UART_qsys|AvmWrapper:avmwrapper_sv_0|avm_address_r[3]                                                                                  ; 9       ;
+; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fz_level[15]                                                                                      ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_dt_level[15]                                                                                      ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_od_level[15]                                                                                      ; 1       ;
-; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_fz_level[15]                                                                                      ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_ch_base[9]                                                                                        ; 2       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_ng_decay_rate[1]                                                                                  ; 1       ;
 ; Top:top0|DSP:dsp|Param_Manager:Param_Manager|o_ng_rise_rate[1]                                                                                   ; 1       ;
@@ -1991,92 +1999,92 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |DE2_115|Top:top0|Player:player|o_DAC_DAT_r[6]                                                                                                          ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |DE2_115|UART_qsys:UART_qsys|UART_qsys_uart_0:uart_0|UART_qsys_uart_0_rx:the_UART_qsys_uart_0_rx|unxshiftxrxd_shift_regxshift_reg_start_bit_nxx6_out[2] ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |DE2_115|Top:top0|Player:player|o_DAC_DAT_r[10]                                                                                                         ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |DE2_115|UART_qsys:UART_qsys|UART_qsys_uart_0:uart_0|UART_qsys_uart_0_rx:the_UART_qsys_uart_0_rx|unxshiftxrxd_shift_regxshift_reg_start_bit_nxx6_out[7] ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |DE2_115|Top:top0|Recorder:recorder|counter_r[2]                                                                                                        ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|o_data_r[10]                                                                                        ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|out[0]                                                                              ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|fb_data_r[13]                                                                                       ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|out[8]                                                                              ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|out[0]                                                                              ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|out[9]                                                                              ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|out[2]                                                                              ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch1_read[0]                                                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch0_read[6]                                                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch2_read[9]                                                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch3_read[3]                                                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|temp_0[9]                                                                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|o_data_r[5]                                                                                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|out[8]                                                                              ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|fb_data_r[0]                                                                                        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|out[13]                                                                             ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|out[4]                                                                              ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|out[10]                                                                             ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|out[1]                                                                              ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch1_read[12]                                                                                        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch0_read[14]                                                                                        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch2_read[5]                                                                                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch3_read[8]                                                                                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|temp_0[12]                                                                          ;
 ; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|temp_0[0]                                                                                                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|temp_0[2]                                                                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|temp_0[7]                                                                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|temp_0[4]                                                                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|temp_0[10]                                                                          ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DE2_115|UART_qsys:UART_qsys|UART_qsys_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:uart_0_s1_translator|wait_latency_counter[1]  ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|o_data[15]                                                                                              ;
-; 4:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_1_amp[31]                                                                                       ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|temp_0[8]                                                                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|temp_0[10]                                                                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|temp_0[15]                                                                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|temp_0[9]                                                                           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DE2_115|UART_qsys:UART_qsys|UART_qsys_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:uart_0_s1_translator|wait_latency_counter[0]  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|o_data[7]                                                                                               ;
+; 4:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_1_amp[25]                                                                                       ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|state_r[1]                                                                                                    ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|i_data_r[3]                                                                                         ;
-; 9:1                ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|bit_cnt_r[1]                                                                                                  ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Delay_Effect:Delay_Effect|i_data_r[9]                                                                                         ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|bit_cnt_r[4]                                                                                                  ;
 ; 9:1                ; 4 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |DE2_115|Top:top0|WM8731_init:wm8731_init|command_cnt_r[3]                                                                                              ;
-; 5:1                ; 37 bits   ; 111 LEs       ; 74 LEs               ; 37 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_2_amp[30]                                                                                       ;
-; 6:1                ; 37 bits   ; 148 LEs       ; 74 LEs               ; 74 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_3_amp[6]                                                                                        ;
-; 7:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|Buffer:buffer|out_data[5]                                                                                                             ;
+; 5:1                ; 37 bits   ; 111 LEs       ; 74 LEs               ; 37 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_2_amp[13]                                                                                       ;
+; 6:1                ; 37 bits   ; 148 LEs       ; 74 LEs               ; 74 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_3_amp[2]                                                                                        ;
+; 7:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top0|Buffer:buffer|out_data[13]                                                                                                            ;
 ; 7:1                ; 37 bits   ; 148 LEs       ; 74 LEs               ; 74 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|top_4_id[3]                                                                                         ;
 ; 65:1               ; 6 bits    ; 258 LEs       ; 96 LEs               ; 162 LEs                ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|cnt[4]                                                                                              ;
 ; 65:1               ; 6 bits    ; 258 LEs       ; 252 LEs              ; 6 LEs                  ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|state[5]                                                                                          ;
-; 6:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|counter_r[3]                                                                                            ;
-; 31:1               ; 96 bits   ; 1920 LEs      ; 96 LEs               ; 1824 LEs               ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|response_image[27]                                                                                                  ;
-; 100:1              ; 128 bits  ; 8448 LEs      ; 3072 LEs             ; 5376 LEs               ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|temp_old_image[12]                                                                                                  ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|gain_r[5]                                                                           ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|gain_r[4]                                                                           ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|counter_r[14]                                                                                           ;
+; 31:1               ; 96 bits   ; 1920 LEs      ; 96 LEs               ; 1824 LEs               ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|response_image[24]                                                                                                  ;
+; 100:1              ; 128 bits  ; 8448 LEs      ; 3072 LEs             ; 5376 LEs               ; Yes        ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|temp_old_real[27]                                                                                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|gain_r[4]                                                                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|gain_r[3]                                                                           ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|gain_r[7]                                                                           ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|gain_r[7]                                                                           ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|gain_r[0]                                                                           ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|i_data_r[5]                                                                                             ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|fuzz:Fuzz|i_data_r[7]                                                                                                         ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|i_data_r[12]                                                                                              ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|i_data_r[3]                                                                                             ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|gain_r[0]                                                                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|gain_r[7]                                                                           ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|i_data_r[10]                                                                                            ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|fuzz:Fuzz|i_data_r[13]                                                                                                        ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|i_data_r[10]                                                                                              ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|i_data_r[5]                                                                                             ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|rate[1]                                                                                                 ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|Recorder:recorder|Selector1                                                                                                           ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|current_volume[14]                                                                                      ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Volume:final_volume|o_data[4]                                                                                                 ;
-; 3:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lut_idx[6]                                                                                    ;
-; 3:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|frac_q0_16[9]                                                                               ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch1_curr[14]                                                                                        ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch0_curr[8]                                                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch2_curr[2]                                                                                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch3_curr[15]                                                                                        ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|data_curr[0]                                                                                                  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|v_curr[15]                                                                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|v_curr[6]                                                                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|v_curr[7]                                                                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|v_curr[2]                                                                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|v_curr[8]                                                                           ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|state_w.S_SETUP                                                                                                                       ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|Recorder:recorder|Selector0                                                                                                           ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|current_volume[12]                                                                                      ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Overdrive:Overdrive|tanh:u_tanh|lut_idx[4]                                                                                    ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|distortion:Distortion|tanh:u_tanh|frac_q0_16[15]                                                                              ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Volume:final_volume|o_data[11]                                                                                                ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch1_curr[9]                                                                                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch0_curr[14]                                                                                        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch2_curr[9]                                                                                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|FDN_4ch:fdn|ch3_curr[4]                                                                                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Flanger:Flanger|data_curr[3]                                                                                                  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_4|v_curr[14]                                                                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_3|v_curr[8]                                                                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_2|v_curr[1]                                                                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_1|v_curr[0]                                                                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Reverb:Reverb|Schroeder_Allpass:allpass_0|v_curr[10]                                                                          ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top0|state_w.S_MENU                                                                                                                        ;
 ; 4:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|Add106                                                                                            ;
-; 5:1                ; 17 bits   ; 51 LEs        ; 34 LEs               ; 17 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|o_block8_in[2]                                                                                                  ;
-; 5:1                ; 17 bits   ; 51 LEs        ; 34 LEs               ; 17 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|o_block9_in[15]                                                                                                 ;
-; 5:1                ; 17 bits   ; 51 LEs        ; 34 LEs               ; 17 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|o_block7_in[0]                                                                                                  ;
-; 5:1                ; 17 bits   ; 51 LEs        ; 34 LEs               ; 17 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|o_block4_in[7]                                                                                                  ;
+; 5:1                ; 17 bits   ; 51 LEs        ; 34 LEs               ; 17 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|o_block8_in[13]                                                                                                 ;
+; 5:1                ; 17 bits   ; 51 LEs        ; 34 LEs               ; 17 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|o_block9_in[8]                                                                                                  ;
+; 5:1                ; 17 bits   ; 51 LEs        ; 34 LEs               ; 17 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|o_block7_in[9]                                                                                                  ;
+; 5:1                ; 17 bits   ; 51 LEs        ; 34 LEs               ; 17 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|o_block4_in[0]                                                                                                  ;
 ; 5:1                ; 15 bits   ; 45 LEs        ; 45 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|fuzz:Fuzz|y_val                                                                                                               ;
 ; 36:1               ; 62 bits   ; 1488 LEs      ; 0 LEs                ; 1488 LEs               ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|Add5                                                                                                                ;
 ; 36:1               ; 96 bits   ; 2304 LEs      ; 2304 LEs             ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|Add7                                                                                                                ;
-; 64:1               ; 32 bits   ; 1344 LEs      ; 800 LEs              ; 544 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|Mux13                                                                                               ;
+; 64:1               ; 32 bits   ; 1344 LEs      ; 800 LEs              ; 544 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|Find_4_in_36:find_4_in_36|Mux27                                                                                               ;
 ; 64:1               ; 32 bits   ; 1344 LEs      ; 32 LEs               ; 1312 LEs               ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|Mux1                                                                                              ;
-; 64:1               ; 28 bits   ; 1176 LEs      ; 700 LEs              ; 476 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|Mux45                                                                                             ;
-; 36:1               ; 4 bits    ; 96 LEs        ; 96 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|Add105                                                                                            ;
+; 64:1               ; 28 bits   ; 1176 LEs      ; 700 LEs              ; 476 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|Mux41                                                                                             ;
+; 36:1               ; 4 bits    ; 96 LEs        ; 96 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|Add106                                                                                            ;
 ; 8:1                ; 15 bits   ; 75 LEs        ; 75 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|Add106                                                                                            ;
-; 20:1               ; 17 bits   ; 221 LEs       ; 102 LEs              ; 119 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|data_bus_1[12]                                                                                                  ;
-; 20:1               ; 17 bits   ; 221 LEs       ; 102 LEs              ; 119 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|data_bus_2[0]                                                                                                   ;
-; 20:1               ; 17 bits   ; 221 LEs       ; 102 LEs              ; 119 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|valid_bus_3                                                                                                     ;
-; 20:1               ; 17 bits   ; 221 LEs       ; 102 LEs              ; 119 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|o_end_valid                                                                                                     ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|state_w.S_HOLD                                                                                          ;
-; 33:1               ; 2 bits    ; 44 LEs        ; 4 LEs                ; 40 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|Mux128                                                                                                              ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|state_w.S_DECAY                                                                                         ;
+; 20:1               ; 17 bits   ; 221 LEs       ; 102 LEs              ; 119 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|data_bus_1[7]                                                                                                   ;
+; 20:1               ; 17 bits   ; 221 LEs       ; 102 LEs              ; 119 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|data_bus_2[8]                                                                                                   ;
+; 20:1               ; 17 bits   ; 221 LEs       ; 102 LEs              ; 119 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|data_bus_3[12]                                                                                                  ;
+; 20:1               ; 17 bits   ; 221 LEs       ; 102 LEs              ; 119 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|Stager:Stager|o_end_data[8]                                                                                                   ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|state_w.S_RECOVER                                                                                       ;
+; 33:1               ; 2 bits    ; 44 LEs        ; 4 LEs                ; 40 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|Mux129                                                                                                              ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|Noise_Gate:Noise_Gate|state_w.S_NORMAL                                                                                        ;
 ; 16:1               ; 15 bits   ; 150 LEs       ; 150 LEs              ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|Add106                                                                                            ;
 ; 51:1               ; 4 bits    ; 136 LEs       ; 100 LEs              ; 36 LEs                 ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|Mux47                                                                                             ;
 ; 7:1                ; 34 bits   ; 136 LEs       ; 0 LEs                ; 136 LEs                ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|Add5                                                                                                                ;
-; 7:1                ; 30 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|Add106                                                                                            ;
+; 7:1                ; 30 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; No         ; |DE2_115|Top:top0|DSP:dsp|STFT:stft|STFT_LUT:stft_lut|Add105                                                                                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -13344,6 +13352,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
 
 
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Top:top0"                                                                                                  ;
++--------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                                                  ;
++--------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; o_ledg ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
 +--------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "Debounce:deb2"                                                                                                  ;
 +-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
@@ -13644,24 +13661,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA SLD           ; 160                         ;
 ;     plain             ; 1498                        ;
 ; cycloneiii_io_obuf    ; 141                         ;
-; cycloneiii_lcell_comb ; 23845                       ;
-;     arith             ; 8783                        ;
+; cycloneiii_lcell_comb ; 23801                       ;
+;     arith             ; 8768                        ;
 ;         1 data inputs ; 1                           ;
-;         2 data inputs ; 3419                        ;
+;         2 data inputs ; 3404                        ;
 ;         3 data inputs ; 5363                        ;
-;     normal            ; 15062                       ;
+;     normal            ; 15033                       ;
 ;         0 data inputs ; 33                          ;
-;         1 data inputs ; 306                         ;
-;         2 data inputs ; 664                         ;
-;         3 data inputs ; 3088                        ;
-;         4 data inputs ; 10971                       ;
+;         1 data inputs ; 305                         ;
+;         2 data inputs ; 674                         ;
+;         3 data inputs ; 3080                        ;
+;         4 data inputs ; 10941                       ;
 ; cycloneiii_mac_mult   ; 200                         ;
 ; cycloneiii_mac_out    ; 200                         ;
 ; cycloneiii_pll        ; 2                           ;
 ; cycloneiii_ram_block  ; 487                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 21.70                       ;
-; Average LUT depth     ; 7.60                        ;
+; Average LUT depth     ; 7.63                        ;
 +-----------------------+-----------------------------+
 
 
@@ -13670,7 +13687,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:01:51     ;
+; Top            ; 00:01:40     ;
 +----------------+--------------+
 
 
@@ -13679,10 +13696,10 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
-    Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
-    Info: Processing started: Thu Jun 18 08:48:21 2026
+    Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
+    Info: Processing started: Thu Jun 18 13:02:58 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
-Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file uart_qsys/synthesis/uart_qsys.v
     Info (12023): Found entity 1: UART_qsys
 Info (12021): Found 1 design units, including 1 entities, in source file uart_qsys/synthesis/submodules/altera_reset_controller.v
@@ -13708,68 +13725,68 @@ Info (12021): Found 4 design units, including 4 entities, in source file uart_qs
     Info (12023): Found entity 4: UART_qsys_altpll_0
 Info (12021): Found 1 design units, including 1 entities, in source file uart_qsys/synthesis/submodules/avmwrapper.sv
     Info (12023): Found entity 1: AvmWrapper
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/main_modules/stft_lut.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/main_modules/stft_lut.sv
     Info (12023): Found entity 1: STFT_LUT
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/main_modules/stft.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/main_modules/stft.sv
     Info (12023): Found entity 1: STFT
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/main_modules/find_4_in_36.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/main_modules/find_4_in_36.sv
     Info (12023): Found entity 1: Find_4_in_36
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/main_modules/stager.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/main_modules/stager.sv
     Info (12023): Found entity 1: Stager
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/main_modules/param_manager.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/main_modules/param_manager.sv
     Info (12023): Found entity 1: Param_Manager
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/main_modules/avmwrapper.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/main_modules/avmwrapper.sv
     Info (12023): Found entity 1: AvmWrapper
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/tanh_o.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/tanh_o.sv
     Info (12023): Found entity 1: tanh_o
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/tanh.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/tanh.sv
     Info (12023): Found entity 1: tanh
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/fuzz_pipeline.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/fuzz_pipeline.sv
     Info (12023): Found entity 1: fuzz
 Warning (12019): Can't analyze file -- file ../blocks/tanh_new.sv is missing
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/distortion_no_recip.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/distortion_no_recip.sv
     Info (12023): Found entity 1: distortion
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/auto_wah.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/auto_wah.sv
     Info (12023): Found entity 1: Auto_Wah
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/overdrive_no_recip.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/overdrive_no_recip.sv
     Info (12023): Found entity 1: Overdrive
 Warning (12019): Can't analyze file -- file ../blocks/recip_tanh.sv is missing
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/chorus.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/chorus.sv
     Info (12023): Found entity 1: Chorus
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/flanger.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/flanger.sv
     Info (12023): Found entity 1: Flanger
 Warning (10259): Verilog HDL error at Reverb_basic.sv(84): constant value overflow
 Warning (10259): Verilog HDL error at Reverb_basic.sv(92): constant value overflow
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/archived/reverb_basic.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/archived/reverb_basic.sv
     Info (12023): Found entity 1: Reverb_basic
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/schroeder_allpass.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/schroeder_allpass.sv
     Info (12023): Found entity 1: Schroeder_Allpass
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/fdn_4ch.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/fdn_4ch.sv
     Info (12023): Found entity 1: FDN_4ch
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/reverb.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/reverb.sv
     Info (12023): Found entity 1: Reverb
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/noise_gate.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/noise_gate.sv
     Info (12023): Found entity 1: Noise_Gate
 Warning (10259): Verilog HDL error at Delay_Effect.sv(100): constant value overflow
 Warning (10259): Verilog HDL error at Delay_Effect.sv(109): constant value overflow
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/delay_effect.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/delay_effect.sv
     Info (12023): Found entity 1: Delay_Effect
 Warning (10275): Verilog HDL Module Instantiation warning at DE2_115.sv(239): ignored dangling comma in List of Port Connections
 Info (12021): Found 1 design units, including 1 entities, in source file de2_115.sv
     Info (12023): Found entity 1: DE2_115
 Warning (12019): Can't analyze file -- file ../blocks/fuzz.sv is missing
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/digital_efx_processer.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/digital_efx_processer.sv
     Info (12023): Found entity 1: Top
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/main_modules/wm8731_init.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/main_modules/wm8731_init.sv
     Info (12023): Found entity 1: WM8731_init
 Warning (12019): Can't analyze file -- file ../main_modules/SRAM_Scheduler.sv is missing
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/main_modules/recorder.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/main_modules/recorder.sv
     Info (12023): Found entity 1: Recorder
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/main_modules/player.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/main_modules/player.sv
     Info (12023): Found entity 1: Player
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/main_modules/dsp.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/main_modules/dsp.sv
     Info (12023): Found entity 1: DSP
-Info (12021): Found 1 design units, including 1 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/main_modules/buffer.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/main_modules/buffer.sv
     Info (12023): Found entity 1: Buffer
 Info (12021): Found 1 design units, including 1 entities, in source file final/synthesis/final_qsys.v
     Info (12023): Found entity 1: final_qsys
@@ -13782,7 +13799,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file sevenhe
     Info (12023): Found entity 1: SevenHexDecoder
 Info (12021): Found 1 design units, including 1 entities, in source file debounce.sv
     Info (12023): Found entity 1: Debounce
-Info (12021): Found 3 design units, including 3 entities, in source file /users/dclab/documents/dclab_2026_team05/final/src/blocks/dsp_lib.sv
+Info (12021): Found 3 design units, including 3 entities, in source file /users/tho13/desktop/dclab_2026_team05/final/src/blocks/dsp_lib.sv
     Info (12023): Found entity 1: Volume
     Info (12023): Found entity 2: Data_Catcher
     Info (12023): Found entity 3: cosine
@@ -13791,6 +13808,7 @@ Info (12127): Elaborating entity "DE2_115" for the top level hierarchy
 Warning (10230): Verilog HDL assignment warning at DE2_115.sv(250): truncated value with size 32 to match size of target (4)
 Warning (10230): Verilog HDL assignment warning at DE2_115.sv(252): truncated value with size 32 to match size of target (4)
 Warning (10230): Verilog HDL assignment warning at DE2_115.sv(254): truncated value with size 32 to match size of target (4)
+Warning (10034): Output port "LEDG[8]" at DE2_115.sv(8) has no driver
 Warning (10034): Output port "VGA_B" at DE2_115.sv(38) has no driver
 Warning (10034): Output port "VGA_G" at DE2_115.sv(41) has no driver
 Warning (10034): Output port "VGA_R" at DE2_115.sv(43) has no driver
@@ -13882,6 +13900,8 @@ Info (12128): Elaborating entity "Debounce" for hierarchy "Debounce:deb0"
 Warning (10230): Verilog HDL assignment warning at Debounce.sv(23): truncated value with size 32 to match size of target (3)
 Warning (10230): Verilog HDL assignment warning at Debounce.sv(25): truncated value with size 32 to match size of target (3)
 Info (12128): Elaborating entity "Top" for hierarchy "Top:top0"
+Warning (10036): Verilog HDL or VHDL warning at Digital_EFX_Processer.sv(60): object "current_volume" assigned a value but never read
+Warning (10034): Output port "o_ledg" at Digital_EFX_Processer.sv(35) has no driver
 Info (12128): Elaborating entity "WM8731_init" for hierarchy "Top:top0|WM8731_init:wm8731_init"
 Warning (10036): Verilog HDL or VHDL warning at WM8731_init.sv(52): object "dbg" assigned a value but never read
 Warning (10230): Verilog HDL assignment warning at WM8731_init.sv(52): truncated value with size 4 to match size of target (1)
@@ -15138,7 +15158,7 @@ Info (12133): Instantiated megafunction "Top:top0|DSP:dsp|STFT:stft|lpm_mult:Mul
     Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
     Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Warning (12241): 7 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (12241): 8 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13014): Ignored 156 buffer(s)
     Info (13019): Ignored 156 SOFT buffer(s)
 Warning (13039): The following bidirectional pins have no drivers
@@ -15571,18 +15591,18 @@ Warning (21074): Design contains 86 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[14]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[15]"
     Warning (15610): No output dependent on input pin "HSMC_RX_D_P[16]"
-Info (21057): Implemented 33924 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 33880 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 91 input pins
     Info (21059): Implemented 248 output pins
     Info (21060): Implemented 141 bidirectional pins
-    Info (21061): Implemented 32561 logic cells
+    Info (21061): Implemented 32517 logic cells
     Info (21064): Implemented 487 RAM segments
     Info (21065): Implemented 2 PLLs
     Info (21062): Implemented 394 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 731 warnings
-    Info: Peak virtual memory: 5058 megabytes
-    Info: Processing ended: Thu Jun 18 08:50:51 2026
-    Info: Elapsed time: 00:02:30
-    Info: Total CPU time (on all processors): 00:02:04
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 733 warnings
+    Info: Peak virtual memory: 5203 megabytes
+    Info: Processing ended: Thu Jun 18 13:05:07 2026
+    Info: Elapsed time: 00:02:09
+    Info: Total CPU time (on all processors): 00:02:10
 
 

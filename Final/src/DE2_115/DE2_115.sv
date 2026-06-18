@@ -162,7 +162,7 @@ UART_qsys UART_qsys(
 	.uart_0_external_connection_txd(UART_TXD)         //                            .txd
 );
 
-
+assign LEDG[7:0] = uart_command[7:0];
 
 // you can decide key down settings on your own, below is just an example
 Debounce deb0(
@@ -220,7 +220,7 @@ Top top0(
 	.o_AUD_DACDAT(AUD_DACDAT),
 
 	// LED
-	.o_ledg(LEDG), // [8:0]
+	// .o_ledg(LEDG), // [8:0]
 	.o_ledr(LEDR), // [17:0]
 
 	// For Debugging

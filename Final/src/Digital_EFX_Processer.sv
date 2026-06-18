@@ -84,15 +84,15 @@ module Top (
 	// assign current_volume = (buf_data_r[15]) ? -buf_data_r : buf_data_r;
 	assign current_volume = (out_data[15]) ? -out_data : out_data;
 
-	assign o_ledg[0] = (current_volume > 16'h0080);
-	assign o_ledg[1] = (current_volume > 16'h0100);
-	assign o_ledg[2] = (current_volume > 16'h0200);
-	assign o_ledg[3] = (current_volume > 16'h0400);
-	assign o_ledg[4] = (current_volume > 16'h0800);
-	assign o_ledg[5] = (current_volume > 16'h1000);
-	assign o_ledg[6] = (current_volume > 16'h2000);
-	assign o_ledg[7] = (current_volume > 16'h4000);
-	assign o_ledg[8] = 1'b0;
+	// assign o_ledg[0] = (current_volume > 16'h0080);
+	// assign o_ledg[1] = (current_volume > 16'h0100);
+	// assign o_ledg[2] = (current_volume > 16'h0200);
+	// assign o_ledg[3] = (current_volume > 16'h0400);
+	// assign o_ledg[4] = (current_volume > 16'h0800);
+	// assign o_ledg[5] = (current_volume > 16'h1000);
+	// assign o_ledg[6] = (current_volume > 16'h2000);
+	// assign o_ledg[7] = (current_volume > 16'h4000);
+	// assign o_ledg[8] = 1'b0;
 
 	// Show the current state on LEDR
 	assign o_ledr[17] = (state_r == S_SETUP);
